@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百萬富翁 - Who Wants to Be a Millionaire?</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft JhengHei', sans-serif; background: linear-gradient(180deg, #0c3483 0%, #1a237e 50%, #0d1442 100%); min-height: 100vh; color: #fff; }
+        .start-screen, .game-screen, .result-screen { display: none; min-height: 100vh; padding: 20px; }
+        .start-screen.active, .game-screen.active, .result-screen.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .start-screen h1 { font-size: 3em; color: #ffd700; text-shadow: 0 0 20px #ffd700; margin-bottom: 10px; animation: glow 2s ease-in-out infinite alternate; }
+        @keyframes glow { from { text-shadow: 0 0 20px #ffd700; } to { text-shadow: 0 0 30px #ffd700, 0 0 60px #ffd700; } }
+        .subtitle { font-size: 1.2em; color: #90caf9; margin-bottom: 30px; }
+        .name-input { background: rgba(255,255,255,0.1); border: 2px solid #ffd700; border-radius: 10px; padding: 15px 30px; font-size: 1.2em; color: #fff; text-align: center; margin-bottom: 20px; width: 300px; }
+        .name-input::placeholder { color: #888; }
+        .start-btn { background: linear-gradient(135deg, #ffd700, #ff8f00); border: none; border-radius: 10px; padding: 15px 50px; font-size: 1.3em; color: #000; cursor: pointer; font-weight: bold; transition: all 0.3s; margin-bottom: 30px; }
+        .start-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px #ffd700; }
+        .category-section { background: rgba(0,0,0,0.3); border-radius: 15px; padding: 20px; margin-bottom: 20px; max-width: 500px; }
+        .category-section h3 { color: #ffd700; margin-bottom: 15px; }
+        .categories { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .cat-btn { background: linear-gradient(180deg, #1976d2, #0d47a1); border: 2px solid #42a5f5; border-radius: 20px; padding: 8px 16px; color: #fff; cursor: pointer; transition: all 0.3s; font-size: 0.9em; }
+        .cat-btn:hover { background: linear-gradient(180deg, #2196f3, #1565c0); }
+        .cat-btn.selected { background: linear-gradient(180deg, #ffd700, #ff8f00); border-color: #ffd700; color: #000; }
+        .game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%; max-width: 800px; }
+        .logo { font-size: 1.5em; color: #ffd700; text-shadow: 0 0 10px #ffd700; font-weight: bold; }
+        .player-info { text-align: right; }
+        .player-name { color: #90caf9; font-size: 1.1em; }
+        .player-money { color: #4caf50; font-size: 1.3em; font-weight: bold; }
+        .pyramid-container { display: flex; gap: 20px; margin-bottom: 20px; width: 100%; max-width: 800px; }
+        .pyramid { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+        .pyramid-row { display: flex; align-items: center; gap: 5px; }
+        .pyramid-level { width: 30px; text-align: center; font-size: 0.7em; color: #888; }
+        .pyramid-item { flex: 1; padding: 4px 8px; border-radius: 4px; font-size: 0.7em; text-align: center; background: #333; color: #666; border: 1px solid #444; }
+        .pyramid-item.reached { background: #1b5e20; color: #fff; border-color: #4caf50; }
+        .pyramid-item.current { background: #ffd700; color: #000; border-color: #ffd700; font-weight: bold; box-shadow: 0 0 10px #ffd700; animation: pulse 1s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 0 10px #ffd700; } 50% { box-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700; } }
+        .question-area { background: linear-gradient(180deg, #1565c0, #0d47a1); border-radius: 15px; padding: 30px; margin-bottom: 20px; border: 2px solid #42a5f5; width: 100%; max-width: 800px; }
+        .question-number { color: #ffd700; font-size: 1em; margin-bottom: 10px; }
+        .question-text { color: #fff; font-size: 1.5em; line-height: 1.5; margin-bottom: 25px; }
+        .answers { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .answer-btn { background: linear-gradient(180deg, #1976d2, #0d47a1); border: 2px solid #42a5f5; border-radius: 10px; padding: 15px 20px; color: #fff; font-size: 1em; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 10px; text-align: left; }
+        .answer-btn:hover:not(:disabled) { background: linear-gradient(180deg, #2196f3, #1565c0); transform: scale(1.02); box-shadow: 0 0 15px rgba(33,150,243,0.5); }
+        .answer-btn:disabled { cursor: not-allowed; opacity: 0.7; }
+        .answer-btn.selected { background: linear-gradient(180deg, #ff9800, #f57c00) !important; border-color: #ffb74d !important; box-shadow: 0 0 20px rgba(255,152,0,0.5); }
+        .answer-btn.correct { background: linear-gradient(180deg, #4caf50, #2e7d32) !important; border-color: #81c784 !important; box-shadow: 0 0 20px rgba(76,175,80,0.5); }
+        .answer-btn.wrong { background: linear-gradient(180deg, #f44336, #c62828) !important; border-color: #ef5350 !important; box-shadow: 0 0 20px rgba(244,67,54,0.5); }
+        .answer-btn.eliminated { visibility: hidden; height: 0; padding: 0; margin: 0; border: none; }
+        .answer-letter { background: #0d47a1; padding: 5px 12px; border-radius: 5px; font-weight: bold; min-width: 35px; text-align: center; }
+        .lifelines { display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; }
+        .lifeline-btn { background: linear-gradient(180deg, #7b1fa2, #4a148c); border: 2px solid #ba68c8; border-radius: 10px; padding: 12px 25px; color: #fff; cursor: pointer; transition: all 0.3s; font-size: 1em; }
+        .lifeline-btn:hover:not(:disabled) { transform: scale(1.05); box-shadow: 0 0 15px rgba(156,39,176,0.5); }
+        .lifeline-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .confirm-modal, .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 1000; }
+        .confirm-modal.active, .modal.active { display: flex; }
+        .confirm-content, .modal-content { background: linear-gradient(180deg, #1a237e, #0d1442); border: 3px solid #ffd700; border-radius: 20px; padding: 30px; max-width: 450px; width: 90%; text-align: center; box-shadow: 0 0 50px rgba(255,215,0,0.3); }
+        .confirm-content h2, .modal h2 { color: #ffd700; margin-bottom: 15px; font-size: 1.5em; }
+        .confirm-content p, .modal p { color: #fff; margin-bottom: 10px; font-size: 1.1em; }
+        .confirm-question { background: rgba(0,0,0,0.3); border-radius: 10px; padding: 15px; margin: 15px 0; font-size: 1.2em; color: #fff; }
+        .confirm-answer { color: #4caf50 !important; font-size: 1.4em !important; font-weight: bold; margin-top: 15px !important; }
+        .confirm-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
+        .confirm-yes { background: linear-gradient(135deg, #4caf50, #2e7d32); border: none; border-radius: 10px; padding: 12px 35px; color: #fff; font-size: 1.1em; cursor: pointer; font-weight: bold; transition: all 0.3s; }
+        .confirm-yes:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(76,175,80,0.5); }
+        .confirm-no { background: linear-gradient(135deg, #f44336, #c62828); border: none; border-radius: 10px; padding: 12px 35px; color: #fff; font-size: 1.1em; cursor: pointer; font-weight: bold; transition: all 0.3s; }
+        .confirm-no:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(244,67,54,0.5); }
+        .modal-close { background: #666; border: none; border-radius: 8px; padding: 10px 30px; color: #fff; cursor: pointer; margin-top: 10px; }
+        .audience-bar { display: flex; align-items: flex-end; gap: 10px; height: 150px; justify-content: center; margin: 20px 0; }
+        .audience-bar div { width: 40px; background: linear-gradient(180deg, #667eea, #764ba2); border-radius: 5px 5px 0 0; display: flex; justify-content: center; color: #fff; font-size: 0.8em; }
+        .phone-animation { font-size: 3em; animation: shake 0.5s infinite; }
+        @keyframes shake { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-15deg); } 75% { transform: rotate(15deg); } }
+        .result-title { font-size: 2.5em; color: #ffd700; text-shadow: 0 0 20px #ffd700; margin-bottom: 20px; }
+        .result-title.lose { color: #f44336; text-shadow: 0 0 20px #f44336; }
+        .result-message { font-size: 1.3em; color: #fff; margin-bottom: 20px; }
+        .result-prize { font-size: 3em; color: #4caf50; margin-bottom: 30px; }
+        .back-home-btn { background: linear-gradient(135deg, #ffd700, #ff8f00); border: none; border-radius: 10px; padding: 15px 40px; font-size: 1.2em; color: #000; cursor: pointer; font-weight: bold; transition: all 0.3s; }
+        .back-home-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px #ffd700; }
+        .loading-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 2000; flex-direction: column; }
+        .loading-overlay.active { display: flex; }
+        .loading-spinner { width: 60px; height: 60px; border: 4px solid rgba(255,215,0,0.3); border-top-color: #ffd700; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { color: #ffd700; font-size: 1.2em; }
+        .leaderboard { background: rgba(0,0,0,0.3); border-radius: 15px; padding: 20px; max-width: 400px; width: 100%; }
+        .leaderboard h3 { color: #ffd700; margin-bottom: 15px; }
+        .leaderboard-list { list-style: none; }
+        .leaderboard-list li { display: flex; justify-content: space-between; padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .leaderboard-list li:nth-child(1) { color: #ffd700; }
+        .leaderboard-list li:nth-child(2) { color: #c0c0c0; }
+        .leaderboard-list li:nth-child(3) { color: #cd7f32; }
+        .leaderboard-empty { color: #888; text-align: center; padding: 20px; }
+        @media (max-width: 600px) { .answers { grid-template-columns: 1fr; } .pyramid-container { flex-direction: column; } .start-screen h1 { font-size: 2em; } .question-text { font-size: 1.2em; } }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div><div class="loading-text">🎮 載入題目中...</div></div>
+    
+    <!-- Start Screen -->
+    <div class="start-screen active" id="startScreen">
+        <h1>🎰 百萬富翁</h1>
+        <p class="subtitle">Who Wants to Be a Millionaire?</p>
+        <input type="text" class="name-input" id="playerName" placeholder="輸入你的名字" maxlength="20">
+        <button class="start-btn" onclick="startGame()">開始遊戲</button>
+        <div class="category-section">
+            <h3>📚 選擇題目類別</h3>
+            <div class="categories">
+                <button class="cat-btn selected" data-cat="隨機">🎲 隨機</button>
+                <button class="cat-btn" data-cat="金融">💰 金融</button>
+                <button class="cat-btn" data-cat="卡通">🎨 卡通</button>
+                <button class="cat-btn" data-cat="新聞">📰 新聞</button>
+                <button class="cat-btn" data-cat="地理">🌍 地理</button>
+                <button class="cat-btn" data-cat="天文">🔭 天文</button>
+                <button class="cat-btn" data-cat="教育">📖 教育</button>
+                <button class="cat-btn" data-cat="音樂">🎵 音樂</button>
+                <button class="cat-btn" data-cat="電影">🎬 電影</button>
+                <button class="cat-btn" data-cat="食物">🍜 食物</button>
+                <button class="cat-btn" data-cat="國家">🏳️ 國家</button>
+            </div>
+        </div>
+        <div class="leaderboard">
+            <h3>🏆 排行榜 Top 10</h3>
+            <ul class="leaderboard-list" id="leaderboardList"><li class="leaderboard-empty">載入中...</li></ul>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div class="game-screen" id="gameScreen">
+        <div class="game-header">
+            <div class="logo">🎰 百萬富翁</div>
+            <div class="player-info">
+                <div class="player-name" id="displayName">玩家</div>
+                <div class="player-money" id="currentMoney">$100</div>
+            </div>
+        </div>
+        <div class="pyramid-container">
+            <div class="pyramid" id="pyramid"></div>
+        </div>
+        <div class="question-area">
+            <div class="question-number" id="questionNumber">第 1 題</div>
+            <div class="question-text" id="questionText">題目載入中...</div>
+            <div class="answers" id="answers"></div>
+        </div>
+        <div class="lifelines">
+            <button class="lifeline-btn" id="fiftyBtn" onclick="useLifeline('fifty')">💡 50/50</button>
+            <button class="lifeline-btn" id="phoneBtn" onclick="useLifeline('phone')">📞 打電話</button>
+            <button class="lifeline-btn" id="audienceBtn" onclick="useLifeline('audience')">👥 觀眾</button>
+        </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div class="result-screen" id="resultScreen">
+        <h2 class="result-title" id="resultTitle">🎉 恭喜！</h2>
+        <p class="result-message" id="resultMessage">你贏得了 $0</p>
+        <div class="result-prize" id="resultPrize"></div>
+        <button class="back-home-btn" onclick="goHome()">🏠 返回首頁</button>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div class="confirm-modal" id="confirmModal">
+        <div class="confirm-content">
+            <h2>⚠️ 最終確認</h2>
+            <p>你確定要選擇呢個答案嗎？</p>
+            <div class="confirm-question" id="confirmQuestion">題目</div>
+            <div class="confirm-answer" id="confirmAnswer">答案</div>
+            <div class="confirm-buttons">
+                <button class="confirm-yes" onclick="confirmAnswer()">✓ 確定</button>
+                <button class="confirm-no" onclick="cancelAnswer()">✗ 取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audience Modal -->
+    <div class="modal" id="audienceModal">
+        <div class="modal-content">
+            <h2>👥 觀眾投票</h2>
+            <div class="audience-bar" id="audienceBar"></div>
+            <p id="audienceQuestion">問題</p>
+            <p id="audienceAdvice">觀眾建議：</p>
+            <button class="modal-close" onclick="closeModal('audienceModal')">關閉</button>
+        </div>
+    </div>
+
+    <!-- Phone Modal -->
+    <div class="modal" id="phoneModal">
+        <div class="modal-content">
+            <h2>📞 打電話俾朋友</h2>
+            <div class="phone-animation">📱</div>
+            <p id="phoneQuestion">問題</p>
+            <p id="phoneAnswer">朋友答案：</p>
+            <button class="modal-close" onclick="closeModal('phoneModal')">關閉</button>
+        </div>
+    </div>
+
+    <script>
+const MONEY_LEVELS = [100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000, 1000000];
+const SAFE_LEVELS = [4, 9, 14];
+const LETTERS = ['A', 'B', 'C', 'D'];
+let currentLevel = 0;
+let questions = [];
+let selectedCategory = '隨機';
+let pendingAnswer = null;
+let currentBgm = null;
+let lifelines = { fifty: true, phone: true, audience: true };
+
+const QUESTION_BANK = {
+    '隨機': [
+        { q: "香港面積最大嘅區議會係邊個？", opts: ["西貢區", "南丫島", "大埔區", "屯門區"], a: 0 },
+        { q: "邊個係香港最長嘅河流？", opts: ["城門河", "深圳河", "東涌河", "青山公路"], a: 1 },
+        { q: "香港有幾多個行政區？", opts: ["15區", "18區", "20區", "12區"], a: 1 },
+        { q: "香港最高峰係邊座山？", opts: ["獅子山", "大帽山", "鳳凰山", "大東山"], a: 1 },
+        { q: "邊個年份係香港回歸祖國？", opts: ["1995", "1996", "1997", "1998"], a: 2 },
+    ],
+    '金融': [
+        { q: "香港嘅法定貨幣係咩？", opts: ["美元", "英鎊", "港幣", "澳門幣"], a: 2 },
+        { q: "香港交易所嘅股票代號係邊個？", opts: ["HKE", "HKEX", "SEHK", "HKS"], a: 1 },
+        { q: "金管局係邊個機構？", opts: ["警察", "金融管理局", "貿易發展局", "投資推廣署"], a: 1 },
+        { q: "港幣兌美元嘅聯繫匯率係幾多？", opts: ["7.5", "7.8", "8.0", "7.85"], a: 1 },
+        { q: "邊間係香港最大嘅銀行？", opts: ["匯豐", "渣打", "恒生", "東亞"], a: 0 },
+    ],
+    '卡通': [
+        { q: "《多啦A夢》中主角嘅名係？", opts: ["小夫", "胖虎", "大雄", "靜香"], a: 2 },
+        { q: "《海賊王》嘅主角叫咩名？", opts: ["索隆", "路飛", "娜美", "香吉士"], a: 1 },
+        { q: "《龍珠》入面孫悟空變身超級撒亞人時嘅頭髮顏色係？", opts: ["藍色", "紅色", "金色", "白色"], a: 2 },
+        { q: "《火影忍者》嘅主角叫咩名？", opts: ["佐助", "卡卡西", "鳴人", "小李"], a: 2 },
+        { q: "邊個唔係《少年Jump》嘅代表作？", opts: ["火影忍者", "死神", "麵包超人", "ONE PIECE"], a: 2 },
+    ],
+    '天文': [
+        { q: "太陽系有幾多個行星？", opts: ["7個", "8個", "9個", "10個"], a: 1 },
+        { q: "邊個係距離太陽最遠嘅行星？", opts: ["土星", "天王星", "海王星", "冥王星"], a: 2 },
+        { q: "月亮係地球嘅咩？", opts: ["行星", "衛星", "流星", "隕石"], a: 1 },
+        { q: "香港太空館位於邊區？", opts: ["中西區", "灣仔區", "油尖旺區", "屯門區"], a: 1 },
+        { q: "邊個係最大嘅星系？", opts: ["銀河系", "仙女座星系", "麥哲倫星系", " Andromeda"], a: 1 },
+    ],
+    '地理': [
+        { q: "香港係邊個國家嘅特別行政區？", opts: ["英國", "中國", "台灣", "澳門"], a: 1 },
+        { q: "邊個係亞洲最高峰？", opts: ["富士山", "珠穆朗瑪峰", "玉山", "K2"], a: 1 },
+        { q: "香港有幾多個離島？", opts: ["200多個", "150多個", "100多個", "250多個"], a: 0 },
+        { q: "維多利亞港位於香港邊個位置？", opts: ["香港島與九龍之間", "新界", "大嶼山", "南丫島"], a: 0 },
+        { q: "邊個係全球面積最大嘅國家？", opts: ["中國", "加拿大", "俄羅斯", "美國"], a: 2 },
+    ],
+    '教育': [
+        { q: "香港有多少間大學？", opts: ["5間", "8間", "10間", "12間"], a: 1 },
+        { q: "香港大學嘅創校年份係？", opts: ["1910年", "1911年", "1912年", "1913年"], a: 1 },
+        { q: "中學有多少個年級？", opts: ["3年", "5年", "6年", "7年"], a: 2 },
+        { q: "香港有多少間資助大學？", opts: ["7間", "8間", "9間", "10間"], a: 1 },
+        { q: "香港科技大學位於邊個海灣？", opts: ["清水灣", "吐露港", "大鵬灣", "淺水灣"], a: 1 },
+    ],
+    '食物': [
+        { q: "港式茶餐廳必備嘅奶茶係用咩茶葉整？", opts: ["綠茶", "普洱", "錫蘭紅茶", "龍井"], a: 2 },
+        { q: "香港地膽嘅早餐通常包括咩？", opts: ["麥當勞", "茶餐廳", "麵包店", "便利店"], a: 1 },
+        { q: "邊個唔係香港著名街頭小食？", opts: ["魚蛋", "雞蛋仔", "臭豆腐", "咖喱魚蛋"], a: 2 },
+        { q: "香港著名的蛋撻係源自邊個地區？", opts: ["英國", "葡萄牙", "日本", "泰國"], a: 1 },
+        { q: "港式雲吞麵嘅雲吞入面有咩餡料？", opts: ["牛肉", "豬肉", "蝦肉", "魚肉"], a: 2 },
+    ],
+    '國家': [
+        { q: "日本首都是邊個城市？", opts: ["大阪", "東京", "京都", "橫濱"], a: 1 },
+        { q: "台灣嘅主要語言係咩？", opts: ["英語", "普通話", "國語", "日語"], a: 2 },
+        { q: "邊個唔係聯合國安全理事會常任理事國？", opts: ["美國", "英國", "德國", "法國"], a: 2 },
+        { q: "新加坡嘅官方語言包括？", opts: ["英語", "普通話", "馬來語", "全部都是"], a: 3 },
+        { q: "邊個係全球人口最多嘅國家？", opts: ["印度", "美國", "中國", "印尼"], a: 2 },
+    ],
+    '新聞': [
+        { q: "香港最近嘅大型基建項目係？", opts: ["明日大嶼", "北部都會區", "兩項都是", "兩項都不是"], a: 2 },
+        { q: "香港房屋政策嘅主要目標係？", opts: ["增加供應", "降低價格", "滿足需求", "全部都是"], a: 3 },
+        { q: "香港有多少個口岸連接內地？", opts: ["6個", "7個", "8個", "9個"], a: 1 },
+        { q: "香港國際機場位於邊個地區？", opts: ["九龍", "新界", "大嶼山", "香港島"], a: 2 },
+        { q: "香港最近舉辦嘅大型國際活動係？", opts: ["演唱會", "展覽", "金融峰會", "體育賽事"], a: 2 },
+    ],
+    '音樂': [
+        { q: "張學友被稱為？", opts: ["歌神", "歌王", "歌聖", "歌俠"], a: 0 },
+        { q: "香港著名嘅演唱會場地係？", opts: ["紅館", "大球場", "兩者都是", "兩者都不是"], a: 2 },
+        { q: "邊個唔係香港天王級歌手？", opts: ["劉德華", "張學友", "郭富城", "林俊傑"], a: 3 },
+        { q: "香港樂壇四大天王包括？", opts: ["張劉郭黎明", "張劉郭黃", "張劉郭鄭", "張劉郭陳"], a: 0 },
+        { q: "《海闊天空》係邊個樂隊嘅作品？", opts: ["Beyond", "草蜢", "達明一派", "溫拿"], a: 0 },
+    ],
+    '電影': [
+        { q: "香港電影金像獎每年舉辦幾多次？", opts: ["每年一次", "每年兩次", "每兩年一次", "每年三次"], a: 0 },
+        { q: "邊個導演被稱為「香港電影之父」？", opts: ["徐克", "王家衛", "杜琪峯", "黎民偉"], a: 3 },
+        { q: "《無間道》嘅主演演員包括？", opts: ["劉德華、梁朝偉", "周潤發、成龍", "張學友、郭富城", "黃秋生、吳鎮宇"], a: 0 },
+        { q: "香港電影金像獎創辦於幾時？", opts: ["1980年", "1982年", "1984年", "1986年"], a: 1 },
+        { q: "周星馳嘅代表作包括？", opts: ["功夫", "少林足球", "兩者都是", "兩者都不是"], a: 2 },
+    ],
+};
+
+// Add more questions to make 15 per category
+Object.keys(QUESTION_BANK).forEach(cat => {
+    const base = QUESTION_BANK[cat];
+    while (QUESTION_BANK[cat].length < 15) {
+        const extra = base.map(q => ({
+            q: q.q + "（變化版）",
+            opts: [...q.opts],
+            a: q.a
+        }));
+        QUESTION_BANK[cat].push(...extra.slice(0, 15 - QUESTION_BANK[cat].length));
+    }
+});
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function loadQuestions() {
+    const bank = QUESTION_BANK[selectedCategory] || QUESTION_BANK['隨機'];
+    questions = shuffle([...bank]).slice(0, 15);
+}
+
+function renderPyramid() {
+    const pyramid = document.getElementById('pyramid');
+    pyramid.innerHTML = '';
+    for (let i = 14; i >= 0; i--) {
+        const reached = i < currentLevel;
+        const current = i === currentLevel;
+        const safe = SAFE_LEVELS.includes(i);
+        let cls = 'pyramid-item';
+        if (reached) cls += ' reached';
+        if (current) cls += ' current';
+        if (safe && reached) cls += ' safe';
+        const money = MONEY_LEVELS[i].toLocaleString();
+        pyramid.innerHTML += `<div class="pyramid-row"><span class="pyramid-level">${i+1}</span><div class="${cls}">$${money}</div></div>`;
+    }
+}
+
+function renderQuestion() {
+    const q = questions[currentLevel];
+    document.getElementById('questionNumber').textContent = `第 ${currentLevel + 1} 題`;
+    document.getElementById('questionText').textContent = q.q;
+    document.getElementById('currentMoney').textContent = '$' + MONEY_LEVELS[currentLevel].toLocaleString();
+    document.getElementById('displayName').textContent = playerName;
+    const answersDiv = document.getElementById('answers');
+    answersDiv.innerHTML = '';
+    q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'answer-btn';
+        btn.innerHTML = `<span class="answer-letter">${LETTERS[idx]}</span><span>${opt}</span>`;
+        btn.onclick = () => selectAnswer(idx);
+        answersDiv.appendChild(btn);
+    });
+    pendingAnswer = null;
+    renderPyramid();
+    updateLifelineButtons();
+}
+
+function updateLifelineButtons() {
+    document.getElementById('fiftyBtn').disabled = !lifelines.fifty;
+    document.getElementById('phoneBtn').disabled = !lifelines.phone;
+    document.getElementById('audienceBtn').disabled = !lifelines.audience;
+}
+
+function selectAnswer(idx) {
+    if (pendingAnswer !== null) return;
+    const btns = document.querySelectorAll('.answer-btn');
+    btns.forEach(b => b.classList.remove('selected'));
+    btns[idx].classList.add('selected');
+    pendingAnswer = idx;
+    showConfirmModal();
+}
+
+function showConfirmModal() {
+    const q = questions[currentLevel];
+    document.getElementById('confirmQuestion').textContent = q.q;
+    document.getElementById('confirmAnswer').textContent = `${LETTERS[pendingAnswer]}: ${q.opts[pendingAnswer]}`;
+    document.getElementById('confirmModal').classList.add('active');
+}
+
+function confirmAnswer() {
+    document.getElementById('confirmModal').classList.remove('active');
+    checkAnswer(pendingAnswer);
+}
+
+function cancelAnswer() {
+    document.getElementById('confirmModal').classList.remove('active');
+    const btns = document.querySelectorAll('.answer-btn');
+    btns.forEach(b => b.classList.remove('selected'));
+    pendingAnswer = null;
+}
+
+function checkAnswer(idx) {
+    const q = questions[currentLevel];
+    const btns = document.querySelectorAll('.answer-btn');
+    
+    if (idx === q.a) {
+        btns[idx].classList.add('correct');
+        currentLevel++;
+        if (currentLevel >= 15) {
+            showResult(true, MONEY_LEVELS[14]);
+        } else {
+            setTimeout(() => renderQuestion(), 1500);
+        }
+    } else {
+        btns[idx].classList.add('wrong');
+        btns[q.a].classList.add('correct');
+        const safeMoney = SAFE_LEVELS.filter(l => l < currentLevel).pop() || 0;
+        setTimeout(() => showResult(false, MONEY_LEVELS[safeMoney]), 2000);
+    }
+}
+
+function useLifeline(type) {
+    const q = questions[currentLevel];
+    if (type === 'fifty' && lifelines.fifty) {
+        lifelines.fifty = false;
+        const wrong = q.options.map((_, i) => i).filter(i => i !== q.a);
+        shuffle(wrong);
+        const toRemove = wrong.slice(0, 2);
+        const btns = document.querySelectorAll('.answer-btn');
+        toRemove.forEach(i => btns[i].classList.add('eliminated'));
+        updateLifelineButtons();
+    } else if (type === 'phone' && lifelines.phone) {
+        lifelines.phone = false;
+        document.getElementById('phoneQuestion').textContent = q.q;
+        document.getElementById('phoneAnswer').textContent = `朋友建議：${LETTERS[q.a]}（${q.opts[q.a]}）`;
+        document.getElementById('phoneModal').classList.add('active');
+        updateLifelineButtons();
+    } else if (type === 'audience' && lifelines.audience) {
+        lifelines.audience = false;
+        const bar = document.getElementById('audienceBar');
+        bar.innerHTML = '';
+        const percents = q.options.map((_, i) => {
+            if (i === q.a) return 50 + Math.random() * 40;
+            return Math.random() * 20;
+        });
+        const total = percents.reduce((a, b) => a + b, 0);
+        const heights = percents.map(p => (p / total * 120) + 20);
+        const maxIdx = heights.indexOf(Math.max(...heights));
+        q.options.forEach((opt, i) => {
+            const div = document.createElement('div');
+            div.style.height = heights[i] + 'px';
+            div.textContent = LETTERS[i];
+            if (i === maxIdx) div.style.background = 'linear-gradient(180deg, #4caf50, #2e7d32)';
+            bar.appendChild(div);
+        });
+        document.getElementById('audienceQuestion').textContent = q.q;
+        document.getElementById('audienceAdvice').textContent = `觀眾建議：${LETTERS[maxIdx]}`;
+        document.getElementById('audienceModal').classList.add('active');
+        updateLifelineButtons();
+    }
+}
+
+function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+}
+
+let playerName = '玩家';
+
+function startGame() {
+    playerName = document.getElementById('playerName').value || '玩家';
+    const selected = document.querySelector('.cat-btn.selected');
+    selectedCategory = selected ? selected.dataset.cat : '隨機';
+    document.getElementById('startScreen').classList.remove('active');
+    document.getElementById('gameScreen').classList.add('active');
+    currentLevel = 0;
+    lifelines = { fifty: true, phone: true, audience: true };
+    loadQuestions();
+    renderQuestion();
+}
+
+function showResult(won, money) {
+    document.getElementById('gameScreen').classList.remove('active');
+    document.getElementById('resultScreen').classList.add('active');
+    const title = document.getElementById('resultTitle');
+    const msg = document.getElementById('resultMessage');
+    const prize = document.getElementById('resultPrize');
+    if (won) {
+        title.textContent = '🎉 恭喜！你成為百萬富翁！';
+        title.className = 'result-title';
+        msg.textContent = '你贏得了';
+        prize.textContent = '$' + money.toLocaleString();
+    } else {
+        title.textContent = '😢 遊戲結束';
+        title.className = 'result-title lose';
+        msg.textContent = '你贏得了';
+        prize.textContent = '$' + money.toLocaleString();
+    }
+    saveScore(money);
+}
+
+function goHome() {
+    document.getElementById('resultScreen').classList.remove('active');
+    document.getElementById('startScreen').classList.add('active');
+    loadLeaderboard();
+}
+
+async function saveScore(score) {
+    try {
+        await fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify({ name: playerName, score: score })
+        });
+    } catch (e) { console.log('Score save skipped'); }
+}
+
+function loadLeaderboard() {
+    document.getElementById('leaderboardList').innerHTML = '<li class="leaderboard-empty">暫無排名</li>';
+}
+
+// Category selection
+document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+    });
+});
+
+loadLeaderboard();
+    </script>
+</body>
+</html>
