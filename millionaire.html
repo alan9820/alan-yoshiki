@@ -339,7 +339,7 @@ function renderQuestion() {
     document.getElementById('displayName').textContent = playerName;
     const answersDiv = document.getElementById('answers');
     answersDiv.innerHTML = '';
-    q.options.forEach((opt, idx) => {
+    q.opts.forEach((opt, idx) => {
         const btn = document.createElement('button');
         btn.className = 'answer-btn';
         btn.innerHTML = `<span class="answer-letter">${LETTERS[idx]}</span><span>${opt}</span>`;
@@ -409,7 +409,7 @@ function useLifeline(type) {
     const q = questions[currentLevel];
     if (type === 'fifty' && lifelines.fifty) {
         lifelines.fifty = false;
-        const wrong = q.options.map((_, i) => i).filter(i => i !== q.a);
+        const wrong = q.opts.map((_, i) => i).filter(i => i !== q.a);
         shuffle(wrong);
         const toRemove = wrong.slice(0, 2);
         const btns = document.querySelectorAll('.answer-btn');
@@ -425,14 +425,14 @@ function useLifeline(type) {
         lifelines.audience = false;
         const bar = document.getElementById('audienceBar');
         bar.innerHTML = '';
-        const percents = q.options.map((_, i) => {
+        const percents = q.opts.map((_, i) => {
             if (i === q.a) return 50 + Math.random() * 40;
             return Math.random() * 20;
         });
         const total = percents.reduce((a, b) => a + b, 0);
         const heights = percents.map(p => (p / total * 120) + 20);
         const maxIdx = heights.indexOf(Math.max(...heights));
-        q.options.forEach((opt, i) => {
+        q.opts.forEach((opt, i) => {
             const div = document.createElement('div');
             div.style.height = heights[i] + 'px';
             div.textContent = LETTERS[i];
