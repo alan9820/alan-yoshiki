@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alan 的網站</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft JhengHei', sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); min-height: 100vh; color: #fff; padding: 40px 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { text-align: center; color: #ffd700; font-size: 2.5em; margin-bottom: 40px; text-shadow: 0 0 20px rgba(255,215,0,0.5); }
+        .articles { display: grid; gap: 20px; }
+        .article-card { background: rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; border: 1px solid rgba(255,255,255,0.2); transition: transform 0.3s, box-shadow 0.3s; }
+        .article-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .article-card h2 { color: #ffd700; margin-bottom: 10px; }
+        .article-card p { color: #ccc; line-height: 1.6; }
+        .article-card .date { color: #888; font-size: 0.9em; margin-top: 10px; }
+        .article-card a { display: inline-block; margin-top: 15px; color: #667eea; text-decoration: none; font-weight: bold; }
+        .article-card a:hover { color: #ffd700; }
+        .footer { text-align: center; margin-top: 50px; color: #888; font-size: 0.9em; }
+        @media (max-width: 600px) { h1 { font-size: 1.8em; } .container { padding: 0 10px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Alan 的文章</h1>
+        <div class="articles">
+            <div class="article-card">
+                <h2>💰 知識與幸運的終極對決</h2>
+                <p>百萬富翁遊戲與六合彩二獎的概率分析——知識永遠大於幸運</p>
+                <div class="date">2026-06-08</div>
+                <a href="articles/百萬富翁與六合博彩概率對決.html">閱讀全文 →</a>
+            </div>
+            <div class="article-card">
+                <h2>🦎 蜥蜴人理論</h2>
+                <p>探索地球內部文明與蜥蜴人統治的陰謀論</p>
+                <div class="date">2026-06-03</div>
+                <a href="articles/蜥蜴人理論.html">閱讀全文 →</a>
+            </div>
+            <div class="article-card">
+                <h2>🤝 依賴他人</h2>
+                <p>關於依賴與獨立的人生思考</p>
+                <div class="date">2026-06-06</div>
+                <a href="依賴他人.html">閱讀全文 →</a>
+            </div>
+        </div>
+        <div class="footer">
+            <p>#HorizonTeam</p>
+        </div>
+    </div>
+</body>
+</html>
