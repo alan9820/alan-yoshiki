@@ -100,6 +100,9 @@
     </style>
 </head>
 <body>
+    <audio id="bgm" loop preload="auto">
+        <source src="millionaire_theme.mp3" type="audio/mpeg">
+    </audio>
     <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div><div class="loading-text">🎮 載入題目中...</div></div>
     
     <!-- Start Screen -->
@@ -452,7 +455,7 @@ function closeModal(id) {
 
 let playerName = '玩家';
 
-function startGame() {
+function startGame() { playBgm(); {
     playerName = document.getElementById('playerName').value || '玩家';
     const selected = document.querySelector('.cat-btn.selected');
     selectedCategory = selected ? selected.dataset.cat : '隨機';
@@ -484,10 +487,29 @@ function showResult(won, money) {
     saveScore(money);
 }
 
-function goHome() {
+function goHome() { stopBgm(); {
     document.getElementById('resultScreen').classList.remove('active');
     document.getElementById('startScreen').classList.add('active');
-    loadLeaderboard();
+    
+// Audio
+let bgmPlaying = false;
+function playBgm() {
+    const bgm = document.getElementById('bgm');
+    if (bgm && !bgmPlaying) {
+        bgm.volume = 0.3;
+        bgm.play().catch(e => console.log('Audio play failed:', e));
+        bgmPlaying = true;
+    }
+}
+function stopBgm() {
+    const bgm = document.getElementById('bgm');
+    if (bgm) {
+        bgm.pause();
+        bgmPlaying = false;
+    }
+}
+
+loadLeaderboard();
 }
 
 async function saveScore(score) {
