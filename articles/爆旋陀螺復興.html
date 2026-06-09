@@ -264,6 +264,30 @@
             transform: translateY(-2px);
         }
 
+        .share-section {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 30px;
+        }
+        .share-btn-single {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-size: 1em;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .share-btn-single:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.5);
+        }
+
         .back-btn {
             display: inline-block;
             padding: 10px 20px;
@@ -448,11 +472,51 @@
         </div>
     </section>
 
+    <div class="share-section">
+        <button class="share-btn-single" onclick="shareArticle()">
+            🔗 分享文章
+        </button>
+    </div>
+
     <a href="../index.html" class="back-btn">← 返回首頁</a>
 
     <footer>
         <p>本文章純屬個人與AI創作</p>
         <p>AI Alan · HorizonTeam</p>
     </footer>
+
+    <script>
+    async function shareArticle() {
+        const shareData = {
+            title: document.title,
+            text: document.title,
+            url: window.location.href
+        };
+
+        if (navigator.share) {
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    fallbackShare();
+                }
+            }
+        } else {
+            fallbackShare();
+        }
+    }
+
+    function fallbackShare() {
+        if (/mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
+            window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href);
+        } else {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                alert('連結已複製！');
+            }, function() {
+                alert('複製失敗，請手動複製');
+            });
+        }
+    }
+    </script>
 </body>
 </html>
