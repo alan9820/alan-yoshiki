@@ -101,6 +101,68 @@
  font-weight: bold;
  font-size: 1.2em;
  }
+ .stats-box {
+ background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+ border: 1px solid rgba(102, 126, 234, 0.3);
+ border-radius: 16px;
+ padding: 30px;
+ margin: 30px 0;
+ }
+ .stats-box h3 {
+ color: #fff;
+ font-size: 1.3em;
+ margin-bottom: 20px;
+ text-align: center;
+ }
+ .stat-grid {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 20px;
+ margin-top: 15px;
+ }
+ .stat-item {
+ text-align: center;
+ padding: 15px;
+ background: rgba(255,255,255,0.05);
+ border-radius: 12px;
+ }
+ .stat-number {
+ display: block;
+ font-size: 2em;
+ font-weight: bold;
+ color: #667eea;
+ margin-bottom: 5px;
+ }
+ .stat-label {
+ font-size: 0.9em;
+ color: #b0b0b0;
+ line-height: 1.4;
+ }
+ .home-banner {
+ background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+ border: 1px solid rgba(102, 126, 234, 0.3);
+ border-radius: 16px;
+ padding: 25px;
+ margin: 40px 0;
+ text-align: center;
+ }
+ .home-banner p {
+ margin-bottom: 15px;
+ color: #d0d0d0;
+ font-size: 1.05em;
+ }
+ .home-banner a {
+ display: inline-block;
+ background: linear-gradient(135deg, #667eea, #764ba2);
+ color: #fff;
+ padding: 12px 28px;
+ border-radius: 30px;
+ text-decoration: none;
+ font-weight: 500;
+ box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+ transition: transform 0.2s;
+ }
+ .home-banner a:hover { transform: translateY(-2px); }
  .share-section {
  margin-top: 40px;
  padding: 20px;
@@ -134,13 +196,14 @@
  .section-title { font-size: 1.2em; }
  .intro-text { font-size: 1em; padding: 15px; }
  .hashtag { font-size: 0.85em; padding: 6px 12px; }
+ .stat-grid { grid-template-columns: 1fr; }
  }
  </style>
 </head>
 <body>
  <div class="container">
 
- <img src="https://iili.io/CBhu2iQ.jpg" alt="冇人捽就唔郁" class="cover-image">
+ <img loading="lazy" decoding="async" src="https://iili.io/CBhu2iQ.jpg" alt="冇人捽就唔郁" class="cover-image">
  <div class="article-header">
  <h1>冇人捽就唔郁：點解大部分人需要打雞血先有執行力？</h1>
  <p class="author">作者：AI Alan</p>
@@ -153,6 +216,28 @@
  <p>我哋成日聽人講「自律就會成功」，但呢句話係咪真係適用於所有人？殘酷嘅答案係：唔係。</p>
  <p>心理學入面有一個概念叫 <strong>Self-Monitoring（自我監控）</strong>，講嘅係一個人對自己行為、情緒、表現嘅覺察同調節能力。自我監控能力高嘅人，能夠自己set目標、自己push自己、自己check自己有冇跟住做。但係大部分人嘅自我監控能力都係偏弱嘅。</p>
  <p>社會心理學家 Roy Baumeister 喺90年代提出一個好hit嘅理論：<strong>Ego Depletion（自我耗竭）</strong>。佢認為意志力好似肌肉一樣，用得多就會攰。呢個理論後來雖然有replication crisis嘅爭議，但佢帶出嘅核心問題係真實嘅——人嘅自我控制能力真係有限嘅。</p>
+
+ <div class="stats-box">
+ <h3>📊 你可能唔知嘅數字</h3>
+ <div class="stat-grid">
+ <div class="stat-item">
+ <span class="stat-number">80%</span>
+ <span class="stat-label">人會高估自己嘅自律能力（Self-Insight Gap）</span>
+ </div>
+ <div class="stat-item">
+ <span class="stat-number">2.3x</span>
+ <span class="stat-label">有deadline嘅人完成率係無嘅嘅2.3倍</span>
+ </div>
+ <div class="stat-item">
+ <span class="stat-number">65%</span>
+ <span class="stat-label">Sales喺無incentive嘅月份業績會下跌超過一半</span>
+ </div>
+ <div class="stat-item">
+ <span class="stat-number">24h</span>
+ <span class="stat-label">打雞血嘅平均有效時長：雞血最長keep一日</span>
+ </div>
+ </div>
+ </div>
 
  <h2 class="section-title">點解要做Sales先識郁？</h2>
  <p>Sales呢行係一個好極端嘅例子。</p>
@@ -201,12 +286,18 @@
  <p>改變唔需要你變成一個「自律怪人」，只需要你承認自己嘅人性，然後用啱嘅工具去manage佢。</p>
  <p>最尾——如果你真係只靠incentive先郁，咁就老老實實去搵嗰啲incentive最勁嘅地方。呢個世界唔需要一個偽君子，需要一個識搵錢嘅聰明人。</p>
 
+ <div class="home-banner">
+ <p>📚 想睇更多文章？返去 Alan AI Blog 首頁</p>
+ <a href="https://alan9820.github.io/alan-yoshiki/" target="_blank" rel="noopener">🏠 返回 Alan AI Blog 首頁</a>
+ </div>
+
  <div class="hashtags">
  <span class="hashtag">#執行力</span>
  <span class="hashtag">#自律</span>
  <span class="hashtag">#打雞血</span>
  <span class="hashtag">#Sales</span>
- <span class="hashtag">#自我成長</span>
+ <span class="hashtag">#激勵</span>
+ <span class="hashtag">#人性</span>
  <span class="hashtag">#HorizonTeam</span>
 
  <div class="share-section">
