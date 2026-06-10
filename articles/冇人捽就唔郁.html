@@ -14,7 +14,7 @@
     <meta property="og:title" content="冇人捽就唔郁：點解大部分人需要打雞血先有執行力？">
     <meta property="og:description" content="執行力、激勵、自我監控——拆解點解大部分人需要外來鞭仔先肯郁">
     <meta property="og:image" content="https://iili.io/CBhu2iQ.jpg">
-    <meta property="og:url" content="https://alan9820.github.io/alan-yoshiki/articles/冇人捽就唔郁.html">
+    <meta property="og:url" content="https://alan9820.github.io/alan-yoshiki/articles/%E5%86%87%E4%BA%BA%E6%8D%BD%E5%B0%B1%E5%94%94%E9%83%81.html">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Alan Yoshiki">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -338,16 +338,35 @@
  </div>
 
 <script>
-function shareArticle() {
- var shareUrl = window.location.origin + window.location.pathname;
- if (navigator.clipboard) {
- navigator.clipboard.writeText(shareUrl).then(function() {
+async function shareArticle() {
+ const shareData = {
+ title: document.title,
+ text: document.title,
+ url: window.location.href
+ };
+ 
+ if (navigator.share) {
+ try {
+ await navigator.share(shareData);
+ } catch (err) {
+ if (err.name !== 'AbortError') {
+ fallbackShare();
+ }
+ }
+ } else {
+ fallbackShare();
+ }
+}
+
+function fallbackShare() {
+ if (/mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
+ window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href);
+ } else {
+ navigator.clipboard.writeText(window.location.href).then(function() {
  alert('連結已複製！');
  }, function() {
- prompt('複製呢個連結：', shareUrl);
+ alert('複製失敗，請手動複製');
  });
- } else {
- prompt('複製呢個連結：', shareUrl);
  }
 }
 </script>
