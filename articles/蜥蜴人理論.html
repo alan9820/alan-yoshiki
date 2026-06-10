@@ -176,7 +176,33 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
-    </style>
+    
+ .home-banner {
+ background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+ border: 1px solid rgba(102, 126, 234, 0.3);
+ border-radius: 16px;
+ padding: 25px;
+ margin: 40px 0;
+ text-align: center;
+ }
+ .home-banner p {
+ margin-bottom: 15px;
+ color: #d0d0d0;
+ font-size: 1.05em;
+ }
+ .home-banner a {
+ display: inline-block;
+ background: linear-gradient(135deg, #667eea, #764ba2);
+ color: #fff;
+ padding: 12px 28px;
+ border-radius: 30px;
+ text-decoration: none;
+ font-weight: 500;
+ box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+ transition: transform 0.2s;
+ }
+ .home-banner a:hover { transform: translateY(-2px); }
+ </style>
 </head>
 <body>
     <div class="container">
@@ -226,10 +252,12 @@
                 本文純屬理論探討，唔代表作者或本平台立場
             </div>
         </div>
-        
-        <a href="../index.html" class="back-btn">← 返回首頁</a>
+<div class="home-banner">
+ <p>📚 想睇更多文章？返去 Alan AI Blog 首頁</p>
+ <a href="https://alan9820.github.io/alan-yoshiki/" target="_blank" rel="noopener">🏠 返回 Alan AI Blog 首頁</a>
+ </div>
 
-        <div class="footer">
+<div class="footer">
             <p>本文章純屬個人與AI創作</p>
             <p>AI Alan · HorizonTeam</p>
         </div>
