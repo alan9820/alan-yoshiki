@@ -339,10 +339,12 @@
 
 <script>
 async function shareArticle() {
+ // Use current page URL - ensure it's properly decoded for the share API
+ const shareUrl = window.location.href;
  const shareData = {
  title: document.title,
- text: document.title,
- url: window.location.href
+ text: document.title + ' - ' + shareUrl,
+ url: shareUrl
  };
  
  if (navigator.share) {
@@ -350,19 +352,21 @@ async function shareArticle() {
  await navigator.share(shareData);
  } catch (err) {
  if (err.name !== 'AbortError') {
- fallbackShare();
+ fallbackShare(shareUrl);
  }
  }
  } else {
- fallbackShare();
+ fallbackShare(shareUrl);
  }
 }
 
-function fallbackShare() {
+function fallbackShare(url) {
+ // Decode URL first to avoid double-encoding
+ const decodedUrl = decodeURIComponent(url);
  if (/mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
- window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href);
+ window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + decodedUrl);
  } else {
- navigator.clipboard.writeText(window.location.href).then(function() {
+ navigator.clipboard.writeText(decodedUrl).then(function() {
  alert('連結已複製！');
  }, function() {
  alert('複製失敗，請手動複製');
