@@ -316,8 +316,14 @@
  <span class="hashtag">#激勵</span>
  <span class="hashtag">#人性</span>
  <span class="hashtag">#HorizonTeam</span>
+ </div>
 
- 
+ <div class="share-section">
+ <button class="share-btn-single" onclick="shareArticle()">
+ 🔗 分享文章
+ </button>
+ </div>
+
 <div class="home-banner">
  <p>📚 想睇更多文章？返去 Alan AI Blog 首頁</p>
  <a href="https://alan9820.github.io/alan-yoshiki/" target="_blank" rel="noopener">🏠 返回 Alan AI Blog 首頁</a>
@@ -331,6 +337,39 @@
  </div>
  </div>
 
+<script>
+async function shareArticle() {
+ const shareData = {
+ title: document.title,
+ text: document.title,
+ url: window.location.href
+ };
  
+ if (navigator.share) {
+ try {
+ await navigator.share(shareData);
+ } catch (err) {
+ if (err.name !== 'AbortError') {
+ fallbackShare();
+ }
+ }
+ } else {
+ fallbackShare();
+ }
+}
+
+function fallbackShare() {
+ if (/mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
+ window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href);
+ } else {
+ navigator.clipboard.writeText(window.location.href).then(function() {
+ alert('連結已複製！');
+ }, function() {
+ alert('複製失敗，請手動複製');
+ });
+ }
+}
+</script>
+
 </body>
 </html>
