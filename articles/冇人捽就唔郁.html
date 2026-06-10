@@ -339,8 +339,8 @@
 
 <script>
 async function shareArticle() {
- // Use current page URL - ensure it's properly decoded for the share API
- const shareUrl = window.location.href;
+ // Use origin + pathname to avoid any double-encoding issues with window.location.href
+ const shareUrl = window.location.origin + window.location.pathname;
  const shareData = {
  title: document.title,
  text: document.title + ' - ' + shareUrl,
@@ -361,12 +361,10 @@ async function shareArticle() {
 }
 
 function fallbackShare(url) {
- // Decode URL first to avoid double-encoding
- const decodedUrl = decodeURIComponent(url);
  if (/mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
- window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + decodedUrl);
+ window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + url);
  } else {
- navigator.clipboard.writeText(decodedUrl).then(function() {
+ navigator.clipboard.writeText(url).then(function() {
  alert('連結已複製！');
  }, function() {
  alert('複製失敗，請手動複製');
