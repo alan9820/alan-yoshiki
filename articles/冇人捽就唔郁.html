@@ -338,37 +338,16 @@
  </div>
 
 <script>
-async function shareArticle() {
- // Use origin + pathname to avoid any double-encoding issues with window.location.href
- const shareUrl = window.location.origin + window.location.pathname;
- const shareData = {
- title: document.title,
- text: document.title + ' - ' + shareUrl,
- url: shareUrl
- };
- 
- if (navigator.share) {
- try {
- await navigator.share(shareData);
- } catch (err) {
- if (err.name !== 'AbortError') {
- fallbackShare(shareUrl);
- }
- }
- } else {
- fallbackShare(shareUrl);
- }
-}
-
-function fallbackShare(url) {
- if (/mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
- window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + url);
- } else {
- navigator.clipboard.writeText(url).then(function() {
+function shareArticle() {
+ var shareUrl = window.location.origin + window.location.pathname;
+ if (navigator.clipboard) {
+ navigator.clipboard.writeText(shareUrl).then(function() {
  alert('連結已複製！');
  }, function() {
- alert('複製失敗，請手動複製');
+ prompt('複製呢個連結：', shareUrl);
  });
+ } else {
+ prompt('複製呢個連結：', shareUrl);
  }
 }
 </script>
