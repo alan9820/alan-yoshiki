@@ -238,36 +238,36 @@ h1 {
   transform: translateY(-2px);
 }
 
-/* Share buttons */
-.share-buttons {
-  margin: 24px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+/* Share section */
+.share-section {
+  margin: 40px 0 20px;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
 }
 
-.share-btn {
+.share-btn-single {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 1em;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: 8px;
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.9em;
+  gap: 8px;
   font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s, opacity 0.2s;
+  box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.share-btn:hover { transform: translateY(-2px); opacity: 0.9; }
-.share-btn.whatsapp { background: #25D366; }
-.share-btn.telegram { background: #0088cc; }
-.share-btn.facebook { background: #1877f2; }
-.share-btn.twitter  { background: #1da1f2; }
-.share-btn.copy     { background: #555; }
+.share-btn-single:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102,126,234,0.5);
+}
 
 /* Home banner */
 .home-banner {
@@ -475,12 +475,10 @@ footer p { margin: 4px 0; }
       <span class="hashtag">#信念的力量</span>
     </div>
 
-    <div class="share-buttons">
-      <a class="share-btn whatsapp"  href="https://wa.me/?text=流星許願會實現嗎？%20-%20一篇超靚嘅哲學文章%20https://alan9820.github.io/alan-yoshiki/articles/流星許願哲學研究.html" target="_blank">💬 WhatsApp</a>
-      <a class="share-btn telegram" href="https://t.me/share/url?url=https://alan9820.github.io/alan-yoshiki/articles/流星許願哲學研究.html&text=流星許願會實現嗎？" target="_blank">✈️ Telegram</a>
-      <a class="share-btn facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://alan9820.github.io/alan-yoshiki/articles/流星許願哲學研究.html" target="_blank">📘 Facebook</a>
-      <a class="share-btn twitter"  href="https://twitter.com/intent/tweet?text=流星許願會實現嗎？&url=https://alan9820.github.io/alan-yoshiki/articles/流星許願哲學研究.html" target="_blank">🐦 Twitter</a>
-      <button class="share-btn copy" onclick="navigator.clipboard.writeText('https://alan9820.github.io/alan-yoshiki/articles/流星許願哲學研究.html'); this.innerText='✅ 已複製！'">🔗 複製連結</button>
+    <div class="share-section">
+      <button class="share-btn-single" onclick="shareArticle()">
+        🔗 分享文章
+      </button>
     </div>
 
     <div class="home-banner">
@@ -497,6 +495,40 @@ footer p { margin: 4px 0; }
   </footer>
 
 </div>
+
+<script>
+async function shareArticle() {
+  const shareData = {
+    title: document.title,
+    text: document.title,
+    url: window.location.href
+  };
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+    } catch (err) {
+      if (err.name !== 'AbortError') fallbackShare();
+    }
+  } else {
+    fallbackShare();
+  }
+}
+
+function fallbackShare() {
+  const url = window.location.href;
+  if (/mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
+    window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + url);
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(function() {
+      alert('連結已複製！');
+    }, function() {
+      alert('複製失敗，請手動複製');
+    });
+  } else {
+    alert('請手動複製連結：' + url);
+  }
+}
+</script>
 
 </body>
 </html>
