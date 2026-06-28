@@ -250,6 +250,29 @@
             padding: 16px;
             font-style: italic;
         }
+        .leaderboard-save-status {
+            text-align: center;
+            font-size: 0.85em;
+            padding: 4px 8px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            min-height: 0;
+            transition: all 0.3s;
+            word-break: break-word;
+        }
+        .leaderboard-save-status:empty { display: none; }
+        .leaderboard-save-status.pending {
+            background: rgba(255, 200, 0, 0.15);
+            color: #ffc800;
+        }
+        .leaderboard-save-status.ok {
+            background: rgba(76, 175, 80, 0.18);
+            color: #4caf50;
+        }
+        .leaderboard-save-status.error {
+            background: rgba(255, 0, 0, 0.15);
+            color: #ff8a8a;
+        }
         .bank-status {
             margin-top: 12px;
             padding: 8px 16px;
@@ -262,6 +285,36 @@
             letter-spacing: 1px;
         }
         .bank-status span { color: var(--c-gold); font-weight: 700; }
+        /* .update-bank-btn removed in v4 (auto refill) */
+        .update-bank-status {
+            margin-top: 8px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.78em;
+            line-height: 1.5;
+            display: none;
+        }
+        .update-bank-status.pending {
+            display: block;
+            background: rgba(255, 152, 0, 0.1);
+            color: #ff9800;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+        .update-bank-status.success {
+            display: block;
+            background: rgba(76, 175, 80, 0.1);
+            color: #4caf50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+        .start-btn-locked {
+            opacity: 0.5;
+            cursor: not-allowed !important;
+            background: rgba(100, 100, 100, 0.3) !important;
+        }
+        .start-btn-locked:hover {
+            transform: none !important;
+            box-shadow: none !important;
+        }
 
         /* === Game screen === */
         .game-header {
@@ -381,6 +434,185 @@
             opacity: 0.3;
             cursor: not-allowed;
             text-decoration: line-through;
+        }
+
+        /* === Quit / Walk Away === */
+        .quit-btn {
+            background: linear-gradient(180deg, #b71c1c, #7f0000);
+            border: 2px solid #ff5252;
+            border-radius: 50px;
+            padding: 10px 16px;
+            color: #fff;
+            font-size: 0.85em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: inherit;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .quit-btn:active {
+            background: #ff5252;
+            color: #000;
+            transform: scale(0.95);
+        }
+        .quit-btn:hover {
+            box-shadow: 0 0 20px rgba(255, 82, 82, 0.6);
+        }
+
+        /* === Simulated Check (for walk away) === */
+        .check-wrapper {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffe082 100%);
+            border: 3px solid #b8860b;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px auto;
+            max-width: 480px;
+            box-shadow: 0 8px 24px rgba(184, 134, 11, 0.4), inset 0 0 30px rgba(255, 255, 255, 0.3);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            position: relative;
+            overflow: hidden;
+        }
+        .check-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(184, 134, 11, 0.03) 10px, rgba(184, 134, 11, 0.03) 20px);
+            pointer-events: none;
+        }
+        .check-header {
+            text-align: center;
+            border-bottom: 2px dashed #b8860b;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+        .check-header .logo {
+            font-size: 1.1em;
+            font-weight: 800;
+            color: #6d4c00;
+            letter-spacing: 2px;
+        }
+        .check-header .subtitle {
+            font-size: 0.75em;
+            color: #8d6e00;
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .check-amount {
+            text-align: center;
+            margin: 16px 0;
+            font-size: 2.4em;
+            font-weight: 900;
+            color: #b71c1c;
+            text-shadow: 1px 1px 0 #fff;
+            letter-spacing: 1px;
+        }
+        .check-amount-label {
+            text-align: center;
+            font-size: 0.75em;
+            color: #6d4c00;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .check-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.9em;
+            color: #4a3000;
+            border-bottom: 1px dotted rgba(184, 134, 11, 0.3);
+        }
+        .check-row .label {
+            font-weight: 600;
+        }
+        .check-stamp {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 90px;
+            height: 90px;
+            border: 3px solid #b71c1c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-15deg);
+            color: #b71c1c;
+            font-size: 0.7em;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.1;
+            opacity: 0.75;
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .check-stamp::before {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(15deg);
+            font-size: 2.4em;
+            opacity: 0.2;
+        }
+
+        /* === Share buttons (game style) === */
+        .share-section-game {
+            margin: 20px 0 12px;
+            padding: 16px;
+            border-top: 1px solid var(--c-gold-dark);
+            border-bottom: 1px solid var(--c-gold-dark);
+            text-align: center;
+        }
+        .share-section-game .label {
+            color: var(--c-gold);
+            font-size: 0.9em;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .share-buttons-game {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .share-btn-game {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--c-gold);
+            color: var(--c-gold);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .share-btn-game:hover {
+            background: var(--c-gold);
+            color: #000;
+            transform: translateY(-1px);
+        }
+        .download-check-btn {
+            background: linear-gradient(180deg, #2e7d32, #1b5e20);
+            border: 1px solid #66bb6a;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 12px 0;
+            font-family: inherit;
+        }
+        .download-check-btn:hover {
+            background: #66bb6a;
+            color: #000;
         }
 
         /* === Question area === */
@@ -573,6 +805,8 @@
             .timer-text { font-size: 0.85em; }
         }
     </style>
+<!-- Google AdSense Verification -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8953374000835577" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -589,14 +823,17 @@
         <p class="subtitle">Who Wants to Be a Millionaire?</p>
     </div>
     <input type="text" id="playerName" class="name-input" placeholder="輸入玩家名稱" maxlength="20">
-    <button class="start-btn" id="startBtn">▶ 開始挑戰</button>
+    <button class="start-btn" id="startBtn" onclick="startGame()">▶ 開始挑戰</button>
+    <div id="updateBankStatus" class="update-bank-status"></div>
 
     <div class="leaderboard-section">
-        <h3>🏆 玩家排行榜 (頭 10 名)</h3>
+        <h3>🏆 玩家排行榜 <span id="leaderboardCount"></span></h3>
+        <div id="leaderboardSaveStatus" class="leaderboard-save-status"></div>
         <ul id="leaderboardList" class="leaderboard-list"></ul>
     </div>
     <div class="bank-status" id="bankStatus">
         📚 題目庫：<span id="bankTotal">--</span> 條 ｜ 已玩 <span id="bankUsed">--</span> / <span id="bankTotal2">--</span>
+        <!-- v9: pickQuestions session-only, 全部 500 條 refresh 可用 -->
     </div>
 </section>
 
@@ -622,6 +859,7 @@
         <button class="lifeline-btn" id="fiftyBtn">💡 50:50</button>
         <button class="lifeline-btn" id="phoneBtn">📞 問朋友</button>
         <button class="lifeline-btn" id="audienceBtn">👥 觀眾</button>
+        <button class="quit-btn" id="quitBtn">🚪 棄權</button>
     </div>
 
     <div class="question-area">
@@ -662,6 +900,19 @@
     </div>
 </div>
 
+<!-- 棄權確認 modal -->
+<div id="quitConfirmModal" class="modal">
+    <div class="modal-content">
+        <h2>🚪 確定棄權？</h2>
+        <p>你將會結束遊戲，帶走 <strong style="color: var(--c-gold); font-size: 1.3em;" id="quitPrizePreview">$0</strong> <span id="quitPrizeDesc">安全線獎金</span></p>
+        <p style="color: var(--c-gold-light); font-size: 0.85em;">⚠️ 棄權後可以分享你嘅成績</p>
+        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 16px;">
+            <button class="primary-btn" id="quitYesBtn">✓ 確定棄權</button>
+            <button class="secondary-btn" id="quitNoBtn">✗ 繼續作答</button>
+        </div>
+    </div>
+</div>
+
 <!-- 電話 modal -->
 <div id="phoneModal" class="modal">
     <div class="modal-content">
@@ -699,233 +950,462 @@
 // 優先從 questions.json load (可以隨時 update)，fetch 失敗才用 embedded
 // ============================================
 const EMBEDDED_QUESTIONS = [
-  // 金融 (17)
-  { id: 'fin-01', cat: '金融', q: '香港嘅法定貨幣係咩？', opts: ['美元','英鎊','港幣','澳門幣'], a: 2 },
-  { id: 'fin-02', cat: '金融', q: '香港交易所嘅股票代號係邊個？', opts: ['HKE','HKEX','SEHK','HKS'], a: 1 },
-  { id: 'fin-03', cat: '金融', q: '金管局全稱係咩？', opts: ['金融管理局','金融監督處','投資推廣署','貿易發展局'], a: 0 },
-  { id: 'fin-04', cat: '金融', q: '港幣兌美元聯繫匯率大約係幾多？', opts: ['7.5','7.8','8.0','7.85'], a: 1 },
-  { id: 'fin-05', cat: '金融', q: '香港最大嘅銀行係邊間？', opts: ['匯豐','渣打','恒生','東亞'], a: 0 },
-  { id: 'fin-06', cat: '金融', q: 'Bitcoin 由邊個發明？', opts: ['中本聰','Vitalik','Satoshi','未公開'], a: 0 },
-  { id: 'fin-07', cat: '金融', q: 'Bitcoin 總量上限係幾多？', opts: ['1000萬','2100萬','1億','無限'], a: 1 },
-  { id: 'fin-08', cat: '金融', q: 'NASDAQ 總部喺邊個城市？', opts: ['紐約','三藩市','芝加哥','洛杉磯'], a: 0 },
-  { id: 'fin-09', cat: '金融', q: 'Ethereum 創辦人係邊個？', opts: ['Vitalik Buterin','中本聰','CZ','Sam Bankman-Fried'], a: 0 },
-  { id: 'fin-10', cat: '金融', q: 'Apple 股票代號係咩？', opts: ['APPL','AAPL','APL','AP'], a: 1 },
-  { id: 'fin-11', cat: '金融', q: 'Tesla 股票代號係咩？', opts: ['TSL','TSLA','TS','TES'], a: 1 },
-  { id: 'fin-12', cat: '金融', q: '恒生指數由幾多隻成份股組成？', opts: ['50','82','100','200'], a: 1 },
-  { id: 'fin-13', cat: '金融', q: '黃金 1 公斤等於幾多盎司？', opts: ['32.15','35.27','28.35','40.00'], a: 0 },
-  { id: 'fin-14', cat: '金融', q: 'Bitcoin 區塊鏈平均每幾多分鐘出塊？', opts: ['1','5','10','60'], a: 2 },
-  { id: 'fin-15', cat: '金融', q: '香港最早嘅鈔票由邊間銀行發行？', opts: ['匯豐','渣打','東亞','大新'], a: 0 },
-  { id: 'fin-16', cat: '金融', q: 'IPO 全稱係咩？', opts: ['首次公開募股','股票買賣權','內部配售','私人投資'], a: 0 },
-  { id: 'fin-17', cat: '金融', q: '香港聯交所主板上市最低盈利要求？', opts: ['1000萬','2000萬','5000萬','1億'], a: 1 },
-
-  // 卡通 (17)
-  { id: 'cart-01', cat: '卡通', q: '《多啦A夢》主角大雄養嘅機械貓叫咩名？', opts: ['多啦A夢','加菲貓','Hello Kitty','Tom'], a: 0 },
-  { id: 'cart-02', cat: '卡通', q: '《海賊王》主角叫咩名？', opts: ['索隆','路飛','娜美','香吉士'], a: 1 },
-  { id: 'cart-03', cat: '卡通', q: '孫悟空變身超級撒亞人時頭髮變咩色？', opts: ['藍色','紅色','金色','白色'], a: 2 },
-  { id: 'cart-04', cat: '卡通', q: '《火影忍者》主角叫咩名？', opts: ['佐助','卡卡西','鳴人','小李'], a: 2 },
-  { id: 'cart-05', cat: '卡通', q: '邊個唔係《少年Jump》嘅代表作？', opts: ['火影忍者','死神','麵包超人','ONE PIECE'], a: 2 },
-  { id: 'cart-06', cat: '卡通', q: '《蠟筆小新》主角叫咩名？', opts: ['小新','小丸子','阿笨','大雄'], a: 0 },
-  { id: 'cart-07', cat: '卡通', q: '《IQ博士》主角叫咩名？', opts: ['多啦A夢','小丸子','阿拉蕾','小新'], a: 2 },
-  { id: 'cart-08', cat: '卡通', q: '《櫻桃小丸子》作者係邊個？', opts: ['臼井儀人','櫻桃子','鳥山明','尾田榮一郎'], a: 1 },
-  { id: 'cart-09', cat: '卡通', q: '《名偵探柯南》主角工藤新一變咗邊個？', opts: ['怪盗基德','柯南','服部平次','灰原哀'], a: 1 },
-  { id: 'cart-10', cat: '卡通', q: '《寵物小精靈》主角叫咩名？', opts: ['小智','小茂','小剛','小霞'], a: 0 },
-  { id: 'cart-11', cat: '卡通', q: 'Pikachu 係咩類型精靈？', opts: ['火','水','電','草'], a: 2 },
-  { id: 'cart-12', cat: '卡通', q: 'Hello Kitty 屬於邊個品牌？', opts: ['Disney','Sanrio','San-X','Bandai'], a: 1 },
-  { id: 'cart-13', cat: '卡通', q: '《史力加》主角係咩生物？', opts: ['恐龍','龍貓','樹人','食人魔'], a: 3 },
-  { id: 'cart-14', cat: '卡通', q: '《龍珠》悟空嘅師父叫咩名？', opts: ['比達','笛子魔童','龜仙人','克林'], a: 2 },
-  { id: 'cart-15', cat: '卡通', q: '《鬼滅之刃》主角叫咩名？', opts: ['炭治郎','善逸','伊之助','義勇'], a: 0 },
-  { id: 'cart-16', cat: '卡通', q: '《進擊嘅巨人》主角叫咩名？', opts: ['艾倫','米卡莎','阿爾敏','里維'], a: 0 },
-  { id: 'cart-17', cat: '卡通', q: '邊個係宮崎駿嘅作品？', opts: ['千與千尋','七龍珠','海賊王','火影'], a: 0 },
-
-  // 新聞 (17)
-  { id: 'news-01', cat: '新聞', q: '2024 巴黎奧運喺邊度開幕？', opts: ['塞納河','巴黎鐵塔','羅浮宮','凱旋門'], a: 0 },
-  { id: 'news-02', cat: '新聞', q: 'Tesla CEO 係邊個？', opts: ['貝佐斯','馬斯克','朱克伯格','庫克'], a: 1 },
-  { id: 'news-03', cat: '新聞', q: 'ChatGPT 公開發布年份？', opts: ['2020','2021','2022','2023'], a: 2 },
-  { id: 'news-04', cat: '新聞', q: 'TikTok 母公司係？', opts: ['Meta','字節跳動','Google','Alibaba'], a: 1 },
-  { id: 'news-05', cat: '新聞', q: 'iPhone 第一代推出年份？', opts: ['2005','2006','2007','2008'], a: 2 },
-  { id: 'news-06', cat: '新聞', q: '英女王伊利沙伯二世駕崩年份？', opts: ['2020','2021','2022','2023'], a: 2 },
-  { id: 'news-07', cat: '新聞', q: 'OpenAI 行政總裁係邊個？', opts: ['Sam Altman','Elon Musk','Mark Zuckerberg','Jeff Bezos'], a: 0 },
-  { id: 'news-08', cat: '新聞', q: '2028 夏季奧運喺邊個城市舉行？', opts: ['巴黎','洛杉磯','東京','布里斯班'], a: 1 },
-  { id: 'news-09', cat: '新聞', q: 'Bitcoin 創世區塊诞生年份？', opts: ['2007','2008','2009','2010'], a: 2 },
-  { id: 'news-10', cat: '新聞', q: '新冠疫情 WHO 宣佈 PHEIC 嘅年份？', opts: ['2019','2020','2021','2022'], a: 1 },
-  { id: 'news-11', cat: '新聞', q: 'ChatGPT 月活躍用戶突破 1 億嘅時間？', opts: ['1 個月','2 個月','3 個月','6 個月'], a: 1 },
-  { id: 'news-12', cat: '新聞', q: '英國脫歐正式生效日期？', opts: ['2019/1/31','2020/1/31','2021/1/1','2020/12/31'], a: 1 },
-  { id: 'news-13', cat: '新聞', q: 'Bitcoin 首次突破 10,000 美元年份？', opts: ['2016','2017','2018','2019'], a: 1 },
-  { id: 'news-14', cat: '新聞', q: '邊個係 2022 年世界盃冠軍？', opts: ['巴西','德國','阿根廷','法國'], a: 2 },
-  { id: 'news-15', cat: '新聞', q: '2026 世界盃喺邊度舉行？', opts: ['加拿大','墨西哥','美國','以上皆是'], a: 3 },
-  { id: 'news-16', cat: '新聞', q: '邊個喺 2024 當選美國總統？', opts: ['拜登','特朗普','賀錦麗','DeSantis'], a: 1 },
-  { id: 'news-17', cat: '新聞', q: 'Tesla 上市年份？', opts: ['2008','2010','2012','2014'], a: 1 },
-
-  // 地理 (17)
-  { id: 'geo-01', cat: '地理', q: '中國最大嘅省係邊個？', opts: ['新疆','西藏','內蒙古','青海'], a: 0 },
-  { id: 'geo-02', cat: '地理', q: '世界最長嘅河係邊條？', opts: ['尼羅河','亞馬遜河','長江','密西西比河'], a: 0 },
-  { id: 'geo-03', cat: '地理', q: '澳洲首都係邊度？', opts: ['悉尼','墨爾本','坎培拉','柏斯'], a: 2 },
-  { id: 'geo-04', cat: '地理', q: '日本最北嘅島係邊個？', opts: ['本州','北海道','九州','沖繩'], a: 1 },
-  { id: 'geo-05', cat: '地理', q: '世界最高峰係邊座？', opts: ['K2','珠穆朗瑪峰','麥金利峰','乞力馬扎羅'], a: 1 },
-  { id: 'geo-06', cat: '地理', q: '香港最高峰？', opts: ['獅子山','大帽山','鳳凰山','大東山'], a: 1 },
-  { id: 'geo-07', cat: '地理', q: '撒哈拉沙漠喺邊個洲？', opts: ['亞洲','非洲','南美洲','澳洲'], a: 1 },
-  { id: 'geo-08', cat: '地理', q: '法國首都？', opts: ['巴黎','里昂','馬賽','尼斯'], a: 0 },
-  { id: 'geo-09', cat: '地理', q: '世界最深嘅海溝？', opts: ['馬里亞納海溝','湯加海溝','日本海溝','菲律賓海溝'], a: 0 },
-  { id: 'geo-10', cat: '地理', q: '加拿大最大城市？', opts: ['多倫多','溫哥華','滿地可','卡加利'], a: 0 },
-  { id: 'geo-11', cat: '地理', q: '德國首都？', opts: ['柏林','慕尼黑','漢堡','法蘭克福'], a: 0 },
-  { id: 'geo-12', cat: '地理', q: '日本最高峰？', opts: ['富士山','阿蘇山','白山','奧穗高岳'], a: 0 },
-  { id: 'geo-13', cat: '地理', q: '台灣最高山？', opts: ['阿里山','玉山','合歡山','雪山'], a: 1 },
-  { id: 'geo-14', cat: '地理', q: '冰島首都？', opts: ['雷克雅維克','哥本哈根','奧斯陸','赫爾辛基'], a: 0 },
-  { id: 'geo-15', cat: '地理', q: '亞馬遜河喺邊個洲？', opts: ['亞洲','非洲','南美洲','北美洲'], a: 2 },
-  { id: 'geo-16', cat: '地理', q: '邊個係世界最細嘅國家？', opts: ['摩納哥','梵蒂岡','聖馬力諾','列支敦士登'], a: 1 },
-  { id: 'geo-17', cat: '地理', q: '世界最長嘅山脈？', opts: ['喜馬拉雅','安第斯','洛磯','阿爾卑斯'], a: 1 },
-
-  // 天文 (17)
-  { id: 'astro-01', cat: '天文', q: '太陽系最大嘅行星？', opts: ['地球','木星','土星','火星'], a: 1 },
-  { id: 'astro-02', cat: '天文', q: '距離太陽最近嘅行星？', opts: ['金星','地球','水星','火星'], a: 2 },
-  { id: 'astro-03', cat: '天文', q: '銀河系屬於邊種星系？', opts: ['橢圓','螺旋','不規則','透鏡'], a: 1 },
-  { id: 'astro-04', cat: '天文', q: '地球公轉太陽一圈要幾耐？', opts: ['24小時','30日','365日','1秒'], a: 2 },
-  { id: 'astro-05', cat: '天文', q: '月球距離地球幾遠？', opts: ['38萬公里','100萬','1億','10萬'], a: 0 },
-  { id: 'astro-06', cat: '天文', q: '太陽系有幾多行星？', opts: ['7','8','9','10'], a: 1 },
-  { id: 'astro-07', cat: '天文', q: '地球自轉一圈要幾耐？', opts: ['12小時','24小時','365日','1秒'], a: 1 },
-  { id: 'astro-08', cat: '天文', q: '太陽主要成分？', opts: ['氧氣','氮氣','氫氣','二氧化碳'], a: 2 },
-  { id: 'astro-09', cat: '天文', q: '金星表面溫度？', opts: ['約100°C','約200°C','約460°C','約600°C'], a: 2 },
-  { id: 'astro-10', cat: '天文', q: '火星嘅衛星有幾多個？', opts: ['0','1','2','4'], a: 2 },
-  { id: 'astro-11', cat: '天文', q: '木星有幾多衛星？', opts: ['4','12','79+','2'], a: 2 },
-  { id: 'astro-12', cat: '天文', q: '土星嘅標誌性特徵？', opts: ['大紅斑','光環','極光','黑子'], a: 1 },
-  { id: 'astro-13', cat: '天文', q: '太陽核心溫度約幾多？', opts: ['1000°C','10萬°C','150萬°C','1500萬°C'], a: 3 },
-  { id: 'astro-14', cat: '天文', q: '哈雷彗星回歸周期？', opts: ['約24年','約76年','約100年','約200年'], a: 1 },
-  { id: 'astro-15', cat: '天文', q: '黑洞由邊個預言？', opts: ['愛因斯坦','霍金','拉普拉斯','牛頓'], a: 1 },
-  { id: 'astro-16', cat: '天文', q: '太陽佔太陽系總質量幾多？', opts: ['50%','75%','99.8%','100%'], a: 2 },
-  { id: 'astro-17', cat: '天文', q: '光速大約係幾多？', opts: ['30萬 km/s','3萬 km/s','300萬 km/s','無限'], a: 0 },
-
-  // 歷史 (17)
-  { id: 'hist-01', cat: '歷史', q: '香港回歸祖國年份？', opts: ['1995','1996','1997','1998'], a: 2 },
-  { id: 'hist-02', cat: '歷史', q: '二戰結束年份？', opts: ['1943','1944','1945','1946'], a: 2 },
-  { id: 'hist-03', cat: '歷史', q: '秦始皇統一中國年份？', opts: ['前221年','前200年','前300年','前100年'], a: 0 },
-  { id: 'hist-04', cat: '歷史', q: '美國獨立年份？', opts: ['1765','1776','1783','1789'], a: 1 },
-  { id: 'hist-05', cat: '歷史', q: '法國大革命爆發年份？', opts: ['1776','1789','1804','1815'], a: 1 },
-  { id: 'hist-06', cat: '歷史', q: '香港開埠年份？', opts: ['1839','1841','1842','1860'], a: 1 },
-  { id: 'hist-07', cat: '歷史', q: '中日甲午戰爭年份？', opts: ['1894','1895','1900','1911'], a: 0 },
-  { id: 'hist-08', cat: '歷史', q: '辛亥革命年份？', opts: ['1900','1905','1911','1912'], a: 2 },
-  { id: 'hist-09', cat: '歷史', q: '蘇聯解體年份？', opts: ['1989','1990','1991','1992'], a: 2 },
-  { id: 'hist-10', cat: '歷史', q: '柏林圍牆倒塌年份？', opts: ['1987','1989','1990','1991'], a: 1 },
-  { id: 'hist-11', cat: '歷史', q: '九七回歸前港督最後一位？', opts: ['彭定康','衛奕信','尤德','麥理浩'], a: 0 },
-  { id: 'hist-12', cat: '歷史', q: '蘋果電腦創辦年份？', opts: ['1974','1976','1978','1980'], a: 1 },
-  { id: 'hist-13', cat: '歷史', q: '邊個發明電話？', opts: ['愛迪生','貝爾','特斯拉','馬可尼'], a: 1 },
-  { id: 'hist-14', cat: '歷史', q: '邊個發現美洲？', opts: ['麥哲倫','哥倫布','達伽馬','維京人'], a: 1 },
-  { id: 'hist-15', cat: '歷史', q: '日本戰敗投降日期？', opts: ['1945/8/14','1945/8/15','1945/9/2','1945/9/3'], a: 1 },
-  { id: 'hist-16', cat: '歷史', q: '香港成為英國殖民地嘅條約？', opts: ['南京條約','北京條約','展拓香港界址專條','辛丑條約'], a: 0 },
-  { id: 'hist-17', cat: '歷史', q: '邊個係日本明治維新嘅推動者？', opts: ['豐臣秀吉','德川家康','明治天皇','伊藤博文'], a: 2 },
-
-  // 音樂 (17)
-  { id: 'mus-01', cat: '音樂', q: '「海闊天空」原唱係邊個樂隊？', opts: ['達明一派','Beyond','草蜢','太極'], a: 1 },
-  { id: 'mus-02', cat: '音樂', q: '莫扎特係邊國人？', opts: ['德國','奧地利','意大利','法國'], a: 1 },
-  { id: 'mus-03', cat: '音樂', q: '結他通常有幾多條弦？', opts: ['4','5','6','7'], a: 2 },
-  { id: 'mus-04', cat: '音樂', q: 'Beatles 來自邊個國家？', opts: ['美國','英國','加拿大','澳洲'], a: 1 },
-  { id: 'mus-05', cat: '音樂', q: '鋼琴有幾多個鍵？', opts: ['76','82','88','92'], a: 2 },
-  { id: 'mus-06', cat: '音樂', q: '邊個歌手叫「歌神」？', opts: ['張學友','劉德華','陳奕迅','周杰倫'], a: 0 },
-  { id: 'mus-07', cat: '音樂', q: 'Ed Sheeran 國籍？', opts: ['美國','英國','愛爾蘭','澳洲'], a: 1 },
-  { id: 'mus-08', cat: '音樂', q: 'Taylor Swift 出生年份？', opts: ['1986','1988','1989','1990'], a: 2 },
-  { id: 'mus-09', cat: '音樂', q: 'BTS 來自邊個國家？', opts: ['日本','韓國','中國','泰國'], a: 1 },
-  { id: 'mus-10', cat: '音樂', q: '小提琴通常有幾多條弦？', opts: ['3','4','5','6'], a: 1 },
-  { id: 'mus-11', cat: '音樂', q: '邊個係 K-pop 組合 BLACKPINK 嘅成員？', opts: ['IU','Lisa','Jennie','以上皆是'], a: 3 },
-  { id: 'mus-12', cat: '音樂', q: '邊個樂隊唱咗《Bohemian Rhapsody》？', opts: ['The Beatles','Queen','Led Zeppelin','Pink Floyd'], a: 1 },
-  { id: 'mus-13', cat: '音樂', q: '鋼琴家朗朗係邊國人？', opts: ['日本','韓國','中國','俄羅斯'], a: 2 },
-  { id: 'mus-14', cat: '音樂', q: '邊個唱咗《Shape of You》？', opts: ['Justin Bieber','Ed Sheeran','Bruno Mars','Taylor Swift'], a: 1 },
-  { id: 'mus-15', cat: '音樂', q: 'CD 容量大約係幾多 MB？', opts: ['100MB','700MB','1.4GB','4.7GB'], a: 1 },
-  { id: 'mus-16', cat: '音樂', q: '邊個音樂符號代表四分音符？', opts: ['♩','♪','♫','𝅗𝅥'], a: 0 },
-  { id: 'mus-17', cat: '音樂', q: '陳奕迅嘅綽號？', opts: ['E神','歌神','歌王','E臣'], a: 0 },
-
-  // 電影 (17)
-  { id: 'mov-01', cat: '電影', q: '《阿凡達》導演係？', opts: ['史匹堡','卡梅隆','諾蘭','伊斯特伍德'], a: 1 },
-  { id: 'mov-02', cat: '電影', q: '《鐵達尼號》沉沒年份？', opts: ['1908','1912','1918','1920'], a: 1 },
-  { id: 'mov-03', cat: '電影', q: '漫威「鐵甲奇俠」演員？', opts: ['Chris Evans','RDJ','Chris Hemsworth','Mark Ruffalo'], a: 1 },
-  { id: 'mov-04', cat: '電影', q: '首部《星球大戰》上映年份？', opts: ['1975','1977','1979','1981'], a: 1 },
-  { id: 'mov-05', cat: '電影', q: '奧斯卡金像獎頒發畀邊類？', opts: ['音樂','電影','體育','新聞'], a: 1 },
-  { id: 'mov-06', cat: '電影', q: '《少年Pi的奇幻漂流》導演？', opts: ['李安','張藝謀','王家衛','陳凱歌'], a: 0 },
-  { id: 'mov-07', cat: '電影', q: 'Marvel 電影宇宙第一齣？', opts: ['鐵甲奇俠','美國隊長','雷神','變形俠醫'], a: 0 },
-  { id: 'mov-08', cat: '電影', q: '「蜘蛛俠」Peter Parker 住邊個城市？', opts: ['紐約','芝加哥','三藩市','洛杉磯'], a: 0 },
-  { id: 'mov-09', cat: '電影', q: '《哈利波特》作者？', opts: ['托爾金','J.K. Rowling','C.S. Lewis','Stephen King'], a: 1 },
-  { id: 'mov-10', cat: '電影', q: '邊個演咗《007 James Bond》系列？', opts: ['Tom Cruise','Daniel Craig','Brad Pitt','Leonardo DiCaprio'], a: 1 },
-  { id: 'mov-11', cat: '電影', q: '《無間道》港版上映年份？', opts: ['2000','2002','2004','2006'], a: 1 },
-  { id: 'mov-12', cat: '電影', q: '宮崎駿嘅《天空之城》女主角叫咩名？', opts: ['希達','娜烏西卡','千尋','波妞'], a: 0 },
-  { id: 'mov-13', cat: '電影', q: '邊個導演拍咗《Drive My Car》？', opts: ['是枝裕和','濱口�的亮','李相日','岩井俊二'], a: 1 },
-  { id: 'mov-14', cat: '電影', q: '首部《Mission: Impossible》上映年份？', opts: ['1994','1996','1998','2000'], a: 1 },
-  { id: 'mov-15', cat: '電影', q: '「Inception」導演？', opts: ['Christopher Nolan','Steven Spielberg','Denis Villeneuve','Ridley Scott'], a: 0 },
-  { id: 'mov-16', cat: '電影', q: '邊個系列電影主角叫「Jack Sparrow」？', opts: ['Harry Potter','Pirates of the Caribbean','Indiana Jones','Star Wars'], a: 1 },
-  { id: 'mov-17', cat: '電影', q: '《無間道》入面梁朝偉飾演邊個角色？', opts: ['陳永仁','劉健明','韓琛','黃Sir'], a: 1 },
-
-  // 食物 (17)
-  { id: 'food-01', cat: '食物', q: '壽司嘅日文係咩？', opts: ['鮨/寿司','天ぷら','味噌汁','刺身'], a: 0 },
-  { id: 'food-02', cat: '食物', q: 'Pizza 源自邊個國家？', opts: ['法國','意大利','美國','西班牙'], a: 1 },
-  { id: 'food-03', cat: '食物', q: '叉燒包係邊國菜？', opts: ['日本','韓國','中國','泰國'], a: 2 },
-  { id: 'food-04', cat: '食物', q: '咖啡豆原產地？', opts: ['巴西','埃塞俄比亞','哥倫比亞','越南'], a: 1 },
-  { id: 'food-05', cat: '食物', q: '魚子醬最正宗來源？', opts: ['三文魚','鱘魚','鱈魚','吞拿'], a: 1 },
-  { id: 'food-06', cat: '食物', q: '邊個係日本料理代表？', opts: ['壽司','漢堡','Pizza','北京烤鴨'], a: 0 },
-  { id: 'food-07', cat: '食物', q: '「臭豆腐」源自邊度？', opts: ['北京','上海','台灣','以上皆是'], a: 3 },
-  { id: 'food-08', cat: '食物', q: '海南雞飯源自邊個國家？', opts: ['泰國','新加坡','馬來西亞','印尼'], a: 0 },
-  { id: 'food-09', cat: '食物', q: '「珍珠奶茶」源自邊度？', opts: ['日本','台灣','韓國','中國'], a: 1 },
-  { id: 'food-10', cat: '食物', q: '邊個食材最常用嚟做 sushi？', opts: ['米','麵','麵粉','薯仔'], a: 0 },
-  { id: 'food-11', cat: '食物', q: '「忌廉」喺英文係咩？', opts: ['Cream','Cheese','Butter','Milk'], a: 0 },
-  { id: 'food-12', cat: '食物', q: '邊個係抹茶嘅原產地？', opts: ['中國','日本','韓國','台灣'], a: 1 },
-  { id: 'food-13', cat: '食物', q: '「法式長棍麵包」法文叫咩名？', opts: ['Baguette','Croissant','Brioche','Pain'], a: 0 },
-  { id: 'food-14', cat: '食物', q: '日本拉麵源自邊國？', opts: ['中國','韓國','日本','美國'], a: 0 },
-  { id: 'food-15', cat: '食物', q: '邊個係港式點心代表？', opts: ['餃子','燒賣','壽司','Pizza'], a: 1 },
-  { id: 'food-16', cat: '食物', q: '「意大利粉」源自邊國？', opts: ['法國','意大利','西班牙','希臘'], a: 1 },
-  { id: 'food-17', cat: '食物', q: '邊個係「威靈頓牛柳」嘅原產地？', opts: ['法國','英國','美國','澳洲'], a: 1 },
-
-  // 教育 (17)
-  { id: 'edu-01', cat: '教育', q: '香港大學成立年份？', opts: ['1901','1911','1921','1931'], a: 1 },
-  { id: 'edu-02', cat: '教育', q: '「三人行必有我師」出自邊位？', opts: ['孔子','孟子','老子','莊子'], a: 0 },
-  { id: 'edu-03', cat: '教育', q: 'DSE 全稱？', opts: ['香港中學文憑試','大學入學試','高考','公開試'], a: 0 },
-  { id: 'edu-04', cat: '教育', q: 'π 嘅近似值？', opts: ['3.12','3.14','3.16','3.18'], a: 1 },
-  { id: 'edu-05', cat: '教育', q: '《論語》共有幾篇？', opts: ['10','20','30','40'], a: 1 },
-  { id: 'edu-06', cat: '教育', q: '光速大約係幾多 m/s？', opts: ['3千萬','3億','300萬','300億'], a: 1 },
-  { id: 'edu-07', cat: '教育', q: '牛頓發現咩定律？', opts: ['相對論','萬有引力','進化論','熱力學'], a: 1 },
-  { id: 'edu-08', cat: '教育', q: '元素週期表發現者？', opts: ['愛因斯坦','門德列夫','牛頓','居里夫人'], a: 1 },
-  { id: 'edu-09', cat: '教育', q: '「相對論」提出者？', opts: ['牛頓','愛因斯坦','霍金','伽利略'], a: 1 },
-  { id: 'edu-10', cat: '教育', q: '「達爾文」提出咩理論？', opts: ['進化論','相對論','量子論','熱力學'], a: 0 },
-  { id: 'edu-11', cat: '教育', q: '「勾股定理」邊個國？', opts: ['古希臘','古中國','古埃及','古印度'], a: 0 },
-  { id: 'edu-12', cat: '教育', q: 'Newton 三大運動定律發表年份？', opts: ['1666','1687','1700','1736'], a: 1 },
-  { id: 'edu-13', cat: '教育', q: '邊個發現萬有引力？', opts: ['愛因斯坦','牛頓','伽利略','霍金'], a: 1 },
-  { id: 'edu-14', cat: '教育', q: 'DNA 雙螺旋結構發現者？', opts: ['達爾文','孟德爾','華生與克里克','霍金'], a: 2 },
-  { id: 'edu-15', cat: '教育', q: '元素週期表有幾多元素？', opts: ['100','118','126','150'], a: 1 },
-  { id: 'edu-16', cat: '教育', q: '「哈利波特」作者邊個國籍？', opts: ['美國','英國','澳洲','加拿大'], a: 1 },
-  { id: 'edu-17', cat: '教育', q: '「C++」主要用嚟做咩？', opts: ['繪圖','編程','文書','音樂'], a: 1 },
-
-  // 國家 (17)
-  { id: 'cn-01', cat: '國家', q: '聯合國總部喺邊？', opts: ['紐約','日內瓦','巴黎','倫敦'], a: 0 },
-  { id: 'cn-02', cat: '國家', q: 'G7 有幾多個成員國？', opts: ['5','6','7','8'], a: 2 },
-  { id: 'cn-03', cat: '國家', q: '邊個係歐盟最大經濟體？', opts: ['法國','德國','意大利','西班牙'], a: 1 },
-  { id: 'cn-04', cat: '國家', q: '人口最多嘅國家？', opts: ['美國','印尼','中國','印度'], a: 3 },
-  { id: 'cn-05', cat: '國家', q: 'G20 包括幾多國？', opts: ['15','19','20','25'], a: 2 },
-  { id: 'cn-06', cat: '國家', q: '南美洲最大國家？', opts: ['阿根廷','巴西','秘魯','智利'], a: 1 },
-  { id: 'cn-07', cat: '國家', q: '邊個係 BRICS 嘅成員？', opts: ['巴西','俄羅斯','印度','以上皆是'], a: 3 },
-  { id: 'cn-08', cat: '國家', q: '北約 NATO 創始成員有幾多？', opts: ['8','10','12','15'], a: 2 },
-  { id: 'cn-09', cat: '國家', q: '邊個係歐盟創始成員？', opts: ['法國','英國','瑞典','以上皆是'], a: 0 },
-  { id: 'cn-10', cat: '國家', q: 'APEC 創始成員有幾多？', opts: ['10','12','15','18'], a: 1 },
-  { id: 'cn-11', cat: '國家', q: '「金磚五國」邊個唔係？', opts: ['巴西','俄羅斯','日本','南非'], a: 2 },
-  { id: 'cn-12', cat: '國家', q: '邊個係世界島 (World Island) 概念？', opts: ['斯皮克曼','麥金德','布熱津斯基','以上皆是'], a: 3 },
-  { id: 'cn-13', cat: '國家', q: '「東盟」ASEAN 有幾多成員？', opts: ['8','9','10','11'], a: 2 },
-  { id: 'cn-14', cat: '國家', q: '「一帶一路」由邊個提出？', opts: ['普京','習近平','莫迪','拜登'], a: 1 },
-  { id: 'cn-15', cat: '國家', q: '「RCEP」最大經濟體？', opts: ['日本','中國','印尼','韓國'], a: 1 },
-  { id: 'cn-16', cat: '國家', q: '「上合組織」有幾多正式成員？', opts: ['6','7','8','9'], a: 3 },
-  { id: 'cn-17', cat: '國家', q: '邊個係 G7 2024 主席國？', opts: ['美國','英國','意大利','日本'], a: 2 },
-
-  // 冷知識 (13)
-  { id: 'tri-01', cat: '冷知識', q: '邊隻動物嘅心跳最快？', opts: ['貓','狗','蜂鳥','老鼠'], a: 2 },
-  { id: 'tri-02', cat: '冷知識', q: '邊隻動物冇腦？', opts: ['海星','水母','珊瑚','海綿'], a: 1 },
-  { id: 'tri-03', cat: '冷知識', q: '邊隻動物識得認鏡？', opts: ['狗','貓','海豚','以上皆是'], a: 3 },
-  { id: 'tri-04', cat: '冷知識', q: '邊個國家有「幸福國度」之稱？', opts: ['丹麥','不丹','瑞士','芬蘭'], a: 1 },
-  { id: 'tri-05', cat: '冷知識', q: '邊個係人體最大嘅器官？', opts: ['肝臟','皮膚','肺','大腦'], a: 1 },
-  { id: 'tri-06', cat: '冷知識', q: '人體有幾多塊骨頭？', opts: ['186','206','226','256'], a: 1 },
-  { id: 'tri-07', cat: '冷知識', q: '邊隻動物有藍色血液？', opts: ['章魚','馬蹄蟹','海星','水母'], a: 1 },
-  { id: 'tri-08', cat: '冷知識', q: '「OK」嘅來源係咩？', opts: ['希臘文','拉丁文','all correct 嘅縮寫','以上皆是'], a: 2 },
-  { id: 'tri-09', cat: '冷知識', q: '邊個國家嘅鈔票有「恐龍」？', opts: ['中國','蒙古','澳洲','巴西'], a: 1 },
-  { id: 'tri-10', cat: '冷知識', q: '邊隻動物唔識得跳？', opts: ['大象','河馬','犀牛','以上皆是'], a: 3 },
-  { id: 'tri-11', cat: '冷知識', q: '邊個係人體最硬嘅組織？', opts: ['骨頭','牙齒琺瑯質','指甲','頭髮'], a: 1 },
-  { id: 'tri-12', cat: '冷知識', q: '邊隻動物嘅蛋最大？', opts: ['鴕鳥','恐龍(已滅絕)','象龜','鯨鯊'], a: 1 },
-  { id: 'tri-13', cat: '冷知識', q: '邊個係世界上最細嘅鳥？', opts: ['蜂鳥','麻雀','太陽鳥','繡眼鳥'], a: 0 },
+  // 金融 (31)
+  { id: 'fin-01', cat: '金融', q: "香港嘅法定貨幣係咩？", opts: ['美元','英鎊','港幣','澳門幣'], a: 2 },
+  { id: 'fin-02', cat: '金融', q: "香港交易所嘅股票代號係邊個？", opts: ['HKE','HKEX','SEHK','HKS'], a: 1 },
+  { id: 'fin-03', cat: '金融', q: "金管局全稱係咩？", opts: ['金融管理局','金融監督處','投資推廣署','貿易發展局'], a: 0 },
+  { id: 'fin-04', cat: '金融', q: "港幣兌美元聯繫匯率大約係幾多？", opts: ['7.5','7.8','8.0','7.85'], a: 1 },
+  { id: 'fin-05', cat: '金融', q: "香港最大嘅銀行係邊間？", opts: ['匯豐','渣打','恒生','東亞'], a: 0 },
+  { id: 'fin-06', cat: '金融', q: "Bitcoin 由邊個發明？", opts: ['中本聰','Vitalik','Satoshi','未公開'], a: 0 },
+  { id: 'fin-07', cat: '金融', q: "Bitcoin 總量上限係幾多？", opts: ['1000萬','2100萬','1億','無限'], a: 1 },
+  { id: 'fin-08', cat: '金融', q: "NASDAQ 總部喺邊個城市？", opts: ['紐約','三藩市','芝加哥','洛杉磯'], a: 0 },
+  { id: 'fin-09', cat: '金融', q: "Ethereum 創辦人係邊個？", opts: ['Vitalik Buterin','中本聰','CZ','Sam Bankman-Fried'], a: 0 },
+  { id: 'fin-10', cat: '金融', q: "Apple 股票代號係咩？", opts: ['APPL','AAPL','APL','AP'], a: 1 },
+  { id: 'fin-11', cat: '金融', q: "Tesla 股票代號係咩？", opts: ['TSL','TSLA','TS','TES'], a: 1 },
+  { id: 'fin-12', cat: '金融', q: "恒生指數由幾多隻成份股組成？", opts: ['50','82','100','200'], a: 1 },
+  { id: 'fin-13', cat: '金融', q: "黃金 1 公斤等於幾多盎司？", opts: ['32.15','35.27','28.35','40.00'], a: 0 },
+  { id: 'fin-14', cat: '金融', q: "Bitcoin 區塊鏈平均每幾多分鐘出塊？", opts: ['1','5','10','60'], a: 2 },
+  { id: 'fin-15', cat: '金融', q: "香港最早嘅鈔票由邊間銀行發行？", opts: ['匯豐','渣打','東亞','大新'], a: 0 },
+  { id: 'fin-16', cat: '金融', q: "IPO 全稱係咩？", opts: ['首次公開募股','股票買賣權','內部配售','私人投資'], a: 0 },
+  { id: 'fin-17', cat: '金融', q: "香港聯交所主板上市最低盈利要求？", opts: ['1000萬','2000萬','5000萬','1億'], a: 1 },
+  { id: 'fin-18', cat: '金融', q: "Bitcoin 喺邊一年面世？", opts: ['2007','2008','2009','2010'], a: 2 },
+  { id: 'fin-19', cat: '金融', q: "納斯達克綜合指數係以下邊個交易所嘅股票指數？", opts: ['紐約證券交易所','納斯達克交易所','倫敦證券交易所','東京證券交易所'], a: 1 },
+  { id: 'fin-20', cat: '金融', q: "「巴菲特」華倫·巴菲特係邊間公司嘅行政總裁？", opts: ['微軟','蘋果','巴郡哈撒韋','亞馬遜'], a: 2 },
+  { id: 'fin-21', cat: '金融', q: "比特幣喺 2021 年曾升至每枚幾多美元？", opts: ['約 4 萬','約 5 萬','約 6 萬','約 7 萬'], a: 2 },
+  { id: 'fin-22', cat: '金融', q: "以下邊個唔係傳統避險資產？", opts: ['黃金','美元','以太幣','瑞士法郎'], a: 2 },
+  { id: 'fin-23', cat: '金融', q: "「鰂魚涌」係邊間跨國金融機構喺香港嘅標誌性總部？", opts: ['滙豐','渣打','花旗','摩根大通'], a: 0 },
+  { id: 'fin-24', cat: '金融', q: "比特幣區塊鏈嘅「工作量證明」共識機制係為咗防止咩攻擊？", opts: ['DDOS 攻擊','51% 攻擊','木馬病毒','SQL 注入'], a: 1 },
+  { id: 'fin-25', cat: '金融', q: "恒生指數係由邊間公司編製？", opts: ['香港交易及結算所','恒生銀行','上海證券交易所','道瓊斯公司'], a: 1 },
+  { id: 'fin-26', cat: '金融', q: "以太坊喺 2022 年由工作量證明轉用咗咩共識機制？", opts: ['POS 權益證明','POW 工作量證明','DPOS 委托權益證明','PBFT 實用拜占庭容錯'], a: 0 },
+  { id: 'fin-27', cat: '金融', q: "「聯繫匯率制度」係香港邊間發鈔銀行公布匯率？", opts: ['全部三家','只係滙豐','只係渣打','只係中銀香港'], a: 0 },
+  { id: 'fin-28', cat: '金融', q: "以下邊間公司係「S&P 500」指數最大成分股之一？", opts: ['NVIDIA','AMD','英特爾','三星'], a: 0 },
+  { id: 'fin-29', cat: '金融', q: "比特幣最終總量被限定為幾多枚？", opts: ['2100 萬','2000 萬','2200 萬','1900 萬'], a: 0 },
+  { id: 'fin-30', cat: '金融', q: "「以太坊」嘅創辦人係邊位？", opts: ['Vitalik Buterin','Satoshi Nakamoto','Charles Hoskinson','Gavin Wood'], a: 0 },
+  { id: 'fin-31', cat: '金融', q: "「道瓊斯工業平均指數」包含幾間主要美國公司？", opts: ['20 間','30 間','40 間','50 間'], a: 1 },
+  // 卡通 (40)
+  { id: 'ani-01', cat: '卡通', q: "《ONE PIECE》入面，主角路飛係橡膠乜嘢果實能力者？", opts: ['橡膠果實','身體可以自由伸缩','橡膠果實 惡魔果實','橡膠人'], a: 2 },
+  { id: 'ani-02', cat: '卡通', q: "《龍珠》入面，悟空個仔叫咩名？", opts: ['悟飯','悟天','比迪麗','杜拉格斯'], a: 0 },
+  { id: 'ani-03', cat: '卡通', q: "《哈爾移動城堡》嘅導演係邊位？", opts: ['新海誠','宮崎駿','細田守','庵野秀明'], a: 1 },
+  { id: 'ani-04', cat: '卡通', q: "《櫻桃小丸子》入面，小丸子最好朋友係邊個？", opts: ['小玉','花輪同學','野口同學','丸尾同學'], a: 0 },
+  { id: 'ani-05', cat: '卡通', q: "《SPY×FAMILY 間諜過家家》入面，安妮亞係CIA 間諜邊個嘅女兒？", opts: ['黃昏','佛傑','洛依德','約兒'], a: 0 },
+  { id: 'ani-06', cat: '卡通', q: "《少年Jump》漫畫《火影忍者》嘅鳴人係邊個村子嘅忍者？", opts: ['砂隱村','木葉隱村','霧隱村','岩隱村'], a: 1 },
+  { id: 'ani-07', cat: '卡通', q: "《鬼滅之刃》主角炭治郎個妹妹禰豆子變成咗咩？", opts: ['蜘蛛','鬼','妖怪','幽靈'], a: 1 },
+  { id: 'ani-08', cat: '卡通', q: "《叮噹》漫畫版《多啦A夢》作者係邊位？", opts: ['藤子·F·不二雄','藤子·A·不二雄','石之森章太郎','手塚治虫'], a: 0 },
+  { id: 'ani-09', cat: '卡通', q: "《寵物小精靈》入面，小智嘅第一個夥伴係邊隻？", opts: ['妙蛙種子','小火龍','傑尼龜','皮卡丘'], a: 3 },
+  { id: 'ani-10', cat: '卡通', q: "《進擊的巨人》入面，城墙內係由邊個家族統治？", opts: ['雷斯家族','古洛斯家族','艾爾迪亞家族','弗里茨家族'], a: 0 },
+  { id: 'ani-11', cat: '卡通', q: "《葬送的芙莉蓮》芙莉蓮係咩種族？", opts: ['人類','精靈','矮人','魔族'], a: 1 },
+  { id: 'ani-18', cat: '卡通', q: "《鬼滅之刃》中，「禰豆子」變成人之前係邊個角色嘅親妹妹？", opts: ['炭治郎','我妻善逸','嘴平伊之助','富岡義勇'], a: 0 },
+  { id: 'ani-19', cat: '卡通', q: "《SPY×FAMILY》裏面嘅安妮亞係「賞金獵人」約兒嘅乜嘢身份？", opts: ['親生女兒','收養嘅女兒','偽裝成嘅女兒','學生'], a: 2 },
+  { id: 'ani-20', cat: '卡通', q: "邊個唔係《ONE PIECE》草帽一夥嘅成員？", opts: ['布魯克','培羅娜','伊娃科夫','喬巴'], a: 2 },
+  { id: 'ani-21', cat: '卡通', q: "《Detective Conan》入面嘅怪盜基德唔擅長以下邊個範疇？", opts: ['魔術','偽裝','滑板','易容'], a: 2 },
+  { id: 'ani-22', cat: '卡通', q: "《哈姆太郎》入面，哈姆太郎嘅主人叫乜嘢名字？", opts: ['小春','正男','阿寧','阿宏'], a: 0 },
+  { id: 'ani-23', cat: '卡通', q: "《達爾大冒險》(Dragon Quest: Dai) 嘅原作漫畫家係邊個？", opts: ['三條陸','鳥山明','冨樫義博','岸本齊史'], a: 0 },
+  { id: 'ani-24', cat: '卡通', q: "《我推的孩子》入面，演員挖礦撈嘅「奇蹟」職業係乜嘢？", opts: ['演員','偶像','歌手','聲優'], a: 1 },
+  { id: 'ani-25', cat: '卡通', q: "《咒術迴戰》入面，虎杖悠仁食咗邊個手指先至開始接觸咒術？", opts: ['宿儺','五條悟','七海','乙骨'], a: 0 },
+  { id: 'ani-26', cat: '卡通', q: "邊個唔係《Frozen》冰雪奇緣嘅主要角色？", opts: ['艾莎','安娜','漢斯','拉王子'], a: 3 },
+  { id: 'ani-27', cat: '卡通', q: "《Peppa Pig》入面，豬爸爸嘅全名係乜嘢？", opts: ['Richard Pig',' Mortimer Pig','George Pig','Simon Pig'], a: 1 },
+  { id: 'ani-28', cat: '卡通', q: "《Naruto》中，「九尾」被封印喺邊個角色體內？", opts: ['卡卡西','我愛羅','鳴人','佐助'], a: 2 },
+  { id: 'ani-29', cat: '卡通', q: "《Chainsaw Man》嘅主人公電次身體入面住住邊個惡魔？", opts: ['鯊魚惡魔','狗惡魔','蝙蝠惡魔','鏈鋸惡魔'], a: 3 },
+  { id: 'cart-01', cat: '卡通', q: "《多啦A夢》主角大雄養嘅機械貓叫咩名？", opts: ['多啦A夢','加菲貓','Hello Kitty','Tom'], a: 0 },
+  { id: 'cart-02', cat: '卡通', q: "《海賊王》主角叫咩名？", opts: ['索隆','路飛','娜美','香吉士'], a: 1 },
+  { id: 'cart-03', cat: '卡通', q: "孫悟空變身超級撒亞人時頭髮變咩色？", opts: ['藍色','紅色','金色','白色'], a: 2 },
+  { id: 'cart-04', cat: '卡通', q: "《火影忍者》主角叫咩名？", opts: ['佐助','卡卡西','鳴人','小李'], a: 2 },
+  { id: 'cart-05', cat: '卡通', q: "邊個唔係《少年Jump》嘅代表作？", opts: ['火影忍者','死神','麵包超人','ONE PIECE'], a: 2 },
+  { id: 'cart-06', cat: '卡通', q: "《蠟筆小新》主角叫咩名？", opts: ['小新','小丸子','阿笨','大雄'], a: 0 },
+  { id: 'cart-07', cat: '卡通', q: "《IQ博士》主角叫咩名？", opts: ['多啦A夢','小丸子','阿拉蕾','小新'], a: 2 },
+  { id: 'cart-08', cat: '卡通', q: "《櫻桃小丸子》作者係邊個？", opts: ['臼井儀人','櫻桃子','鳥山明','尾田榮一郎'], a: 1 },
+  { id: 'cart-09', cat: '卡通', q: "《名偵探柯南》主角工藤新一變咗邊個？", opts: ['怪盗基德','柯南','服部平次','灰原哀'], a: 1 },
+  { id: 'cart-10', cat: '卡通', q: "《寵物小精靈》主角叫咩名？", opts: ['小智','小茂','小剛','小霞'], a: 0 },
+  { id: 'cart-11', cat: '卡通', q: "Pikachu 係咩類型精靈？", opts: ['火','水','電','草'], a: 2 },
+  { id: 'cart-12', cat: '卡通', q: "Hello Kitty 屬於邊個品牌？", opts: ['Disney','Sanrio','San-X','Bandai'], a: 1 },
+  { id: 'cart-13', cat: '卡通', q: "《史力加》主角係咩生物？", opts: ['恐龍','龍貓','樹人','食人魔'], a: 3 },
+  { id: 'cart-14', cat: '卡通', q: "《龍珠》悟空嘅師父叫咩名？", opts: ['比達','笛子魔童','龜仙人','克林'], a: 2 },
+  { id: 'cart-15', cat: '卡通', q: "《鬼滅之刃》主角叫咩名？", opts: ['炭治郎','善逸','伊之助','義勇'], a: 0 },
+  { id: 'cart-16', cat: '卡通', q: "《進擊嘅巨人》主角叫咩名？", opts: ['艾倫','米卡莎','阿爾敏','里維'], a: 0 },
+  { id: 'cart-17', cat: '卡通', q: "邊個係宮崎駿嘅作品？", opts: ['千與千尋','七龍珠','海賊王','火影'], a: 0 },
+  // 新聞 (29)
+  { id: 'new-15', cat: '新聞', q: "2024年巴黎奧運會閉幕典禮係幾時舉行？", opts: ['8月8日','8月11日','8月15日','9月1日'], a: 0 },
+  { id: 'new-16', cat: '新聞', q: "2024年世界移動通信大會（MWC）喺邊個城市舉行？", opts: ['倫敦','巴塞隆拿','東京','舊金山'], a: 1 },
+  { id: 'new-17', cat: '新聞', q: "香港房屋局喺2024年公佈《施政報告》前，已公佈咗「簡樸房」最新監管制度，簡樸房嘅最低面積要求係幾多平方呎？", opts: ['128平方呎','150平方呎','180平方呎','200平方呎'], a: 0 },
+  { id: 'new-18', cat: '新聞', q: "格陵蘭融化速度加快，對以下邊個重大影響最大？", opts: ['全球糖價','全球樓價','全球海平面','全球失業率'], a: 2 },
+  { id: 'new-19', cat: '新聞', q: "以下邊間「唔係」香港免費電視台？", opts: ['TVB','ViuTV','奇妙電視 (HOY TV)','有線電視 (i-Cable)'], a: 3 },
+  { id: 'new-20', cat: '新聞', q: "2023年諾貝爾和平獎頒發咗俾邊位人士？", opts: ['馬斯克','澤連斯基','納爾吉斯·穆罕默迪','特朗普'], a: 2 },
+  { id: 'new-21', cat: '新聞', q: "根據IMD世界競爭力排名，2024年世界上最具競爭力嘅經濟體係邊個？", opts: ['香港','新加坡','美國','瑞士'], a: 1 },
+  { id: 'new-22', cat: '新聞', q: "「植樹節」呢個概念係源於1981年邊個國際公約嘅訂立？", opts: ['生物多樣性公約','防止沙漠化公約','植樹公約','气候变化框架公约'], a: 1 },
+  { id: 'new-23', cat: '新聞', q: "2025年二十國集團（G20）峰會邊個國家擔任主席國？", opts: ['巴西','印度','南非','美國'], a: 2 },
+  { id: 'new-24', cat: '新聞', q: "《煙草控制框架公約》係由以下邊個組織推動？", opts: ['世界衛生組織','世界銀行','聯合國','國際貨幣基金組織'], a: 0 },
+  { id: 'new-25', cat: '新聞', q: "2024年，美國聯邦儲備局最終喺咩季度開始減息？", opts: ['第一季','第二季','第三季','第四季'], a: 2 },
+  { id: 'new-26', cat: '新聞', q: "2024年「七國集團」（G7）峰會喺邊個國家舉行？", opts: ['美國','英國','意大利','德國'], a: 2 },
+  { id: 'news-01', cat: '新聞', q: "2024 巴黎奧運喺邊度開幕？", opts: ['塞納河','巴黎鐵塔','羅浮宮','凱旋門'], a: 0 },
+  { id: 'news-02', cat: '新聞', q: "Tesla CEO 係邊個？", opts: ['貝佐斯','馬斯克','朱克伯格','庫克'], a: 1 },
+  { id: 'news-03', cat: '新聞', q: "ChatGPT 公開發布年份？", opts: ['2020','2021','2022','2023'], a: 2 },
+  { id: 'news-04', cat: '新聞', q: "TikTok 母公司係？", opts: ['Meta','字節跳動','Google','Alibaba'], a: 1 },
+  { id: 'news-05', cat: '新聞', q: "iPhone 第一代推出年份？", opts: ['2005','2006','2007','2008'], a: 2 },
+  { id: 'news-06', cat: '新聞', q: "英女王伊利沙伯二世駕崩年份？", opts: ['2020','2021','2022','2023'], a: 2 },
+  { id: 'news-07', cat: '新聞', q: "OpenAI 行政總裁係邊個？", opts: ['Sam Altman','Elon Musk','Mark Zuckerberg','Jeff Bezos'], a: 0 },
+  { id: 'news-08', cat: '新聞', q: "2028 夏季奧運喺邊個城市舉行？", opts: ['巴黎','洛杉磯','東京','布里斯班'], a: 1 },
+  { id: 'news-09', cat: '新聞', q: "Bitcoin 創世區塊诞生年份？", opts: ['2007','2008','2009','2010'], a: 2 },
+  { id: 'news-10', cat: '新聞', q: "新冠疫情 WHO 宣佈 PHEIC 嘅年份？", opts: ['2019','2020','2021','2022'], a: 1 },
+  { id: 'news-11', cat: '新聞', q: "ChatGPT 月活躍用戶突破 1 億嘅時間？", opts: ['1 個月','2 個月','3 個月','6 個月'], a: 1 },
+  { id: 'news-12', cat: '新聞', q: "英國脫歐正式生效日期？", opts: ['2019/1/31','2020/1/31','2021/1/1','2020/12/31'], a: 1 },
+  { id: 'news-13', cat: '新聞', q: "Bitcoin 首次突破 10,000 美元年份？", opts: ['2016','2017','2018','2019'], a: 1 },
+  { id: 'news-14', cat: '新聞', q: "邊個係 2022 年世界盃冠軍？", opts: ['巴西','德國','阿根廷','法國'], a: 2 },
+  { id: 'news-15', cat: '新聞', q: "2026 世界盃喺邊度舉行？", opts: ['加拿大','墨西哥','美國','以上皆是'], a: 3 },
+  { id: 'news-16', cat: '新聞', q: "邊個喺 2024 當選美國總統？", opts: ['拜登','特朗普','賀錦麗','DeSantis'], a: 1 },
+  { id: 'news-17', cat: '新聞', q: "Tesla 上市年份？", opts: ['2008','2010','2012','2014'], a: 1 },
+  // 地理 (26)
+  { id: 'geo-01', cat: '地理', q: "中國最大嘅省係邊個？", opts: ['新疆','西藏','內蒙古','青海'], a: 0 },
+  { id: 'geo-02', cat: '地理', q: "世界最長嘅河係邊條？", opts: ['尼羅河','亞馬遜河','長江','密西西比河'], a: 0 },
+  { id: 'geo-03', cat: '地理', q: "澳洲首都係邊度？", opts: ['悉尼','墨爾本','坎培拉','柏斯'], a: 2 },
+  { id: 'geo-04', cat: '地理', q: "日本最北嘅島係邊個？", opts: ['本州','北海道','九州','沖繩'], a: 1 },
+  { id: 'geo-05', cat: '地理', q: "世界最高峰係邊座？", opts: ['K2','珠穆朗瑪峰','麥金利峰','乞力馬扎羅'], a: 1 },
+  { id: 'geo-06', cat: '地理', q: "香港最高峰？", opts: ['獅子山','大帽山','鳳凰山','大東山'], a: 1 },
+  { id: 'geo-07', cat: '地理', q: "撒哈拉沙漠喺邊個洲？", opts: ['亞洲','非洲','南美洲','澳洲'], a: 1 },
+  { id: 'geo-08', cat: '地理', q: "法國首都？", opts: ['巴黎','里昂','馬賽','尼斯'], a: 0 },
+  { id: 'geo-09', cat: '地理', q: "世界最深嘅海溝？", opts: ['馬里亞納海溝','湯加海溝','日本海溝','菲律賓海溝'], a: 0 },
+  { id: 'geo-10', cat: '地理', q: "加拿大最大城市？", opts: ['多倫多','溫哥華','滿地可','卡加利'], a: 0 },
+  { id: 'geo-11', cat: '地理', q: "德國首都？", opts: ['柏林','慕尼黑','漢堡','法蘭克福'], a: 0 },
+  { id: 'geo-12', cat: '地理', q: "日本最高峰？", opts: ['富士山','阿蘇山','白山','奧穗高岳'], a: 0 },
+  { id: 'geo-13', cat: '地理', q: "台灣最高山？", opts: ['阿里山','玉山','合歡山','雪山'], a: 1 },
+  { id: 'geo-14', cat: '地理', q: "冰島首都？", opts: ['雷克雅維克','哥本哈根','奧斯陸','赫爾辛基'], a: 0 },
+  { id: 'geo-15', cat: '地理', q: "亞馬遜河喺邊個洲？", opts: ['亞洲','非洲','南美洲','北美洲'], a: 2 },
+  { id: 'geo-16', cat: '地理', q: "邊個係世界最細嘅國家？", opts: ['摩納哥','梵蒂岡','聖馬力諾','列支敦士登'], a: 1 },
+  { id: 'geo-17', cat: '地理', q: "世界最長嘅山脈？", opts: ['喜馬拉雅','安第斯','洛磯','阿爾卑斯'], a: 1 },
+  { id: 'geo-18', cat: '地理', q: "世界上面積最大嘅沙漠係邊個？", opts: ['撒哈拉沙漠','阿拉伯沙漠','戈壁沙漠','南極沙漠'], a: 0 },
+  { id: 'geo-19', cat: '地理', q: "歐洲最高峰係邊座山？", opts: ['厄爾布魯士峰','白朗峰','阿爾卑斯山','乞力馬扎羅山'], a: 0 },
+  { id: 'geo-20', cat: '地理', q: "中國最大嘅淡水湖係邊個？", opts: ['鄱陽湖','洞庭湖','太湖','西湖'], a: 0 },
+  { id: 'geo-21', cat: '地理', q: "多瑙河流入邊個海？", opts: ['黑海','地中海','北海','波羅的海'], a: 0 },
+  { id: 'geo-22', cat: '地理', q: "世界上岛屿最多嘅國家係邊個？", opts: ['印度尼西亞','菲律賓','日本','馬來西亞'], a: 0 },
+  { id: 'geo-23', cat: '地理', q: "黃河又被稱為我哋文明嘅乜嘢？", opts: ['中華民族嘅搖籃','亞洲嘅母親河','世界最深嘅河','亞洲最長嘅河'], a: 0 },
+  { id: 'geo-24', cat: '地理', q: "世界上島嶼總面積最大嘅國家係邊個？", opts: ['印度尼西亞','格陵蘭','日本','英國'], a: 0 },
+  { id: 'geo-25', cat: '地理', q: "流入黑海嘅河流中，最長嘅係邊條？", opts: ['多瑙河','伏爾加河','尼羅河','萊茵河'], a: 0 },
+  { id: 'geo-26', cat: '地理', q: "世界上最深嘅湖泊係邊個？", opts: ['貝加爾湖','青海湖','洞庭湖','蘇必利爾湖'], a: 0 },
+  // 天文 (29)
+  { id: 'ast-15', cat: '天文', q: "冥王星被國際天文聯合會降級為乜嘢？", opts: ['矮行星','行星','恆星','衛星'], a: 0 },
+  { id: 'ast-16', cat: '天文', q: "銀河系係咩形狀嘅星系？", opts: ['螺旋星系','橢圓星系','不規則星系','棒旋星系'], a: 3 },
+  { id: 'ast-17', cat: '天文', q: "黑洞係咩嘢天體？", opts: ['引力場極強嘅天體','發光嘅恆星','冰冷嘅星體','氣體雲'], a: 0 },
+  { id: 'ast-18', cat: '天文', q: "光每秒大約傳播幾多公里？", opts: ['30萬公里','15萬公里','45萬公里','10萬公里'], a: 0 },
+  { id: 'ast-19', cat: '天文', q: "太陽系中邊個行星有最明顯同壯觀嘅光環？", opts: ['土星','木星','天王星','海王星'], a: 0 },
+  { id: 'ast-20', cat: '天文', q: "織女星同牛郎星之間大約相隔幾遠？", opts: ['約16光年','約1光年','約100光年','約1,000光年'], a: 0 },
+  { id: 'ast-21', cat: '天文', q: "北極星位於邊個星座？", opts: ['小熊座','大熊座','仙后座','天蠍座'], a: 0 },
+  { id: 'ast-22', cat: '天文', q: "哈雷彗星嘅公轉週期大約係幾耐？", opts: ['約76年','約46年','約100年','約200年'], a: 0 },
+  { id: 'ast-23', cat: '天文', q: "太陽黑子嘅活動週期大約幾耐？", opts: ['約11年','約5年','約22年','約30年'], a: 0 },
+  { id: 'ast-24', cat: '天文', q: "天狼星係邊個星座中最光亮嘅星？", opts: ['大犬座','小犬座','獵戶座','雙子座'], a: 0 },
+  { id: 'ast-25', cat: '天文', q: "月球自轉一圈大約需要幾耐？", opts: ['約27天','約24小時','約30天','約365天'], a: 0 },
+  { id: 'ast-26', cat: '天文', q: "火星同木星之間嘅小行星帶叫咩名？", opts: ['主小行星帶','古柏帶','歐特雲','半人馬小行星'], a: 0 },
+  { id: 'astro-01', cat: '天文', q: "太陽系最大嘅行星？", opts: ['地球','木星','土星','火星'], a: 1 },
+  { id: 'astro-02', cat: '天文', q: "距離太陽最近嘅行星？", opts: ['金星','地球','水星','火星'], a: 2 },
+  { id: 'astro-03', cat: '天文', q: "銀河系屬於邊種星系？", opts: ['橢圓','螺旋','不規則','透鏡'], a: 1 },
+  { id: 'astro-04', cat: '天文', q: "地球公轉太陽一圈要幾耐？", opts: ['24小時','30日','365日','1秒'], a: 2 },
+  { id: 'astro-05', cat: '天文', q: "月球距離地球幾遠？", opts: ['38萬公里','100萬','1億','10萬'], a: 0 },
+  { id: 'astro-06', cat: '天文', q: "太陽系有幾多行星？", opts: ['7','8','9','10'], a: 1 },
+  { id: 'astro-07', cat: '天文', q: "地球自轉一圈要幾耐？", opts: ['12小時','24小時','365日','1秒'], a: 1 },
+  { id: 'astro-08', cat: '天文', q: "太陽主要成分？", opts: ['氧氣','氮氣','氫氣','二氧化碳'], a: 2 },
+  { id: 'astro-09', cat: '天文', q: "金星表面溫度？", opts: ['約100°C','約200°C','約460°C','約600°C'], a: 2 },
+  { id: 'astro-10', cat: '天文', q: "火星嘅衛星有幾多個？", opts: ['0','1','2','4'], a: 2 },
+  { id: 'astro-11', cat: '天文', q: "木星有幾多衛星？", opts: ['4','12','79+','2'], a: 2 },
+  { id: 'astro-12', cat: '天文', q: "土星嘅標誌性特徵？", opts: ['大紅斑','光環','極光','黑子'], a: 1 },
+  { id: 'astro-13', cat: '天文', q: "太陽核心溫度約幾多？", opts: ['1000°C','10萬°C','150萬°C','1500萬°C'], a: 3 },
+  { id: 'astro-14', cat: '天文', q: "哈雷彗星回歸周期？", opts: ['約24年','約76年','約100年','約200年'], a: 1 },
+  { id: 'astro-15', cat: '天文', q: "黑洞由邊個預言？", opts: ['愛因斯坦','霍金','拉普拉斯','牛頓'], a: 1 },
+  { id: 'astro-16', cat: '天文', q: "太陽佔太陽系總質量幾多？", opts: ['50%','75%','99.8%','100%'], a: 2 },
+  { id: 'astro-17', cat: '天文', q: "光速大約係幾多？", opts: ['30萬 km/s','3萬 km/s','300萬 km/s','無限'], a: 0 },
+  // 歷史 (29)
+  { id: 'his-15', cat: '歷史', q: "唐朝邊個皇帝發動咗玄武門之變？", opts: ['李世民','李淵','李隆基','李建成'], a: 0 },
+  { id: 'his-16', cat: '歷史', q: "圓周率係邊個數學家最先精確計算到第七位？", opts: ['祖沖之','劉徽','張衡','徐光啟'], a: 0 },
+  { id: 'his-17', cat: '歷史', q: "甲午戰爭喺邊一年爆發？", opts: ['1894年','1895年','1896年','1893年'], a: 0 },
+  { id: 'his-18', cat: '歷史', q: "科舉制度係邊個皇帝開始正式採用？", opts: ['隋煬帝','唐太宗','朱元璋','漢武帝'], a: 0 },
+  { id: 'his-19', cat: '歷史', q: "鄭和一生總共下西洋幾多次？", opts: ['七次','三次','五次','九次'], a: 0 },
+  { id: 'his-20', cat: '歷史', q: "「烽火戲諸侯」呢個典故係關於邊個周朝皇帝？", opts: ['周幽王','周武王','周成王','周桓王'], a: 0 },
+  { id: 'his-21', cat: '歷史', q: "「臥薪嘗膽」係關於邊個越國君主？", opts: ['勾踐','夫差','伍子胥','范蠡'], a: 0 },
+  { id: 'his-22', cat: '歷史', q: "赤壁之戰發生於邊一年？", opts: ['208年','200年','220年','198年'], a: 0 },
+  { id: 'his-23', cat: '歷史', q: "秦始皇焚書坑儒主要焚燒嘅係邊類書籍？", opts: ['諸子百家嘅書','農業技術書','醫藥書','天文曆法書'], a: 0 },
+  { id: 'his-24', cat: '歷史', q: "明朝永樂皇帝將首都從邊度遷移到北京？", opts: ['南京','西安','洛陽','杭州'], a: 0 },
+  { id: 'his-25', cat: '歷史', q: "鄭和下西洋最遠到達邊個地方？", opts: ['非洲東海岸','北美洲','南美洲','歐洲'], a: 0 },
+  { id: 'his-26', cat: '歷史', q: "清朝康熙皇帝嘅廟號係咩？", opts: ['聖祖','太祖','太宗','世宗'], a: 0 },
+  { id: 'hist-01', cat: '歷史', q: "香港回歸祖國年份？", opts: ['1995','1996','1997','1998'], a: 2 },
+  { id: 'hist-02', cat: '歷史', q: "二戰結束年份？", opts: ['1943','1944','1945','1946'], a: 2 },
+  { id: 'hist-03', cat: '歷史', q: "秦始皇統一中國年份？", opts: ['前221年','前200年','前300年','前100年'], a: 0 },
+  { id: 'hist-04', cat: '歷史', q: "美國獨立年份？", opts: ['1765','1776','1783','1789'], a: 1 },
+  { id: 'hist-05', cat: '歷史', q: "法國大革命爆發年份？", opts: ['1776','1789','1804','1815'], a: 1 },
+  { id: 'hist-06', cat: '歷史', q: "香港開埠年份？", opts: ['1839','1841','1842','1860'], a: 1 },
+  { id: 'hist-07', cat: '歷史', q: "中日甲午戰爭年份？", opts: ['1894','1895','1900','1911'], a: 0 },
+  { id: 'hist-08', cat: '歷史', q: "辛亥革命年份？", opts: ['1900','1905','1911','1912'], a: 2 },
+  { id: 'hist-09', cat: '歷史', q: "蘇聯解體年份？", opts: ['1989','1990','1991','1992'], a: 2 },
+  { id: 'hist-10', cat: '歷史', q: "柏林圍牆倒塌年份？", opts: ['1987','1989','1990','1991'], a: 1 },
+  { id: 'hist-11', cat: '歷史', q: "九七回歸前港督最後一位？", opts: ['彭定康','衛奕信','尤德','麥理浩'], a: 0 },
+  { id: 'hist-12', cat: '歷史', q: "蘋果電腦創辦年份？", opts: ['1974','1976','1978','1980'], a: 1 },
+  { id: 'hist-13', cat: '歷史', q: "邊個發明電話？", opts: ['愛迪生','貝爾','特斯拉','馬可尼'], a: 1 },
+  { id: 'hist-14', cat: '歷史', q: "邊個發現美洲？", opts: ['麥哲倫','哥倫布','達伽馬','維京人'], a: 1 },
+  { id: 'hist-15', cat: '歷史', q: "日本戰敗投降日期？", opts: ['1945/8/14','1945/8/15','1945/9/2','1945/9/3'], a: 1 },
+  { id: 'hist-16', cat: '歷史', q: "香港成為英國殖民地嘅條約？", opts: ['南京條約','北京條約','展拓香港界址專條','辛丑條約'], a: 0 },
+  { id: 'hist-17', cat: '歷史', q: "邊個係日本明治維新嘅推動者？", opts: ['豐臣秀吉','德川家康','明治天皇','伊藤博文'], a: 2 },
+  // 音樂 (31)
+  { id: 'mus-01', cat: '音樂', q: "「海闊天空」原唱係邊個樂隊？", opts: ['達明一派','Beyond','草蜢','太極'], a: 1 },
+  { id: 'mus-02', cat: '音樂', q: "莫扎特係邊國人？", opts: ['德國','奧地利','意大利','法國'], a: 1 },
+  { id: 'mus-03', cat: '音樂', q: "結他通常有幾多條弦？", opts: ['4','5','6','7'], a: 2 },
+  { id: 'mus-04', cat: '音樂', q: "Beatles 來自邊個國家？", opts: ['美國','英國','加拿大','澳洲'], a: 1 },
+  { id: 'mus-05', cat: '音樂', q: "鋼琴有幾多個鍵？", opts: ['76','82','88','92'], a: 2 },
+  { id: 'mus-06', cat: '音樂', q: "邊個歌手叫「歌神」？", opts: ['張學友','劉德華','陳奕迅','周杰倫'], a: 0 },
+  { id: 'mus-07', cat: '音樂', q: "Ed Sheeran 國籍？", opts: ['美國','英國','愛爾蘭','澳洲'], a: 1 },
+  { id: 'mus-08', cat: '音樂', q: "Taylor Swift 出生年份？", opts: ['1986','1988','1989','1990'], a: 2 },
+  { id: 'mus-09', cat: '音樂', q: "BTS 來自邊個國家？", opts: ['日本','韓國','中國','泰國'], a: 1 },
+  { id: 'mus-10', cat: '音樂', q: "小提琴通常有幾多條弦？", opts: ['3','4','5','6'], a: 1 },
+  { id: 'mus-11', cat: '音樂', q: "邊個係 K-pop 組合 BLACKPINK 嘅成員？", opts: ['IU','Lisa','Jennie','以上皆是'], a: 3 },
+  { id: 'mus-12', cat: '音樂', q: "邊個樂隊唱咗《Bohemian Rhapsody》？", opts: ['The Beatles','Queen','Led Zeppelin','Pink Floyd'], a: 1 },
+  { id: 'mus-13', cat: '音樂', q: "鋼琴家朗朗係邊國人？", opts: ['日本','韓國','中國','俄羅斯'], a: 2 },
+  { id: 'mus-14', cat: '音樂', q: "邊個唱咗《Shape of You》？", opts: ['Justin Bieber','Ed Sheeran','Bruno Mars','Taylor Swift'], a: 1 },
+  { id: 'mus-15', cat: '音樂', q: "CD 容量大約係幾多 MB？", opts: ['100MB','700MB','1.4GB','4.7GB'], a: 1 },
+  { id: 'mus-16', cat: '音樂', q: "邊個音樂符號代表四分音符？", opts: ['♩','♪','♫','𝅗𝅥'], a: 0 },
+  { id: 'mus-17', cat: '音樂', q: "陳奕迅嘅綽號？", opts: ['E神','歌神','歌王','E臣'], a: 0 },
+  { id: 'mus-18', cat: '音樂', q: "莫扎特係邊個時期嘅作曲家？", opts: ['古典主義時期','巴洛克時期','浪漫主義時期','印象派時期'], a: 0 },
+  { id: 'mus-19', cat: '音樂', q: "鋼琴有幾多個白鍵？", opts: ['52個','36個','48個','44個'], a: 0 },
+  { id: 'mus-20', cat: '音樂', q: "邊個係「香港樂壇四大天王」之一？", opts: ['黎明','陳奕迅','張學友','李克勤'], a: 2 },
+  { id: 'mus-21', cat: '音樂', q: "《K歌之王》係邊個歌手嘅代表作？", opts: ['陳奕迅','張學友','劉德華','郭富城'], a: 0 },
+  { id: 'mus-22', cat: '音樂', q: "古典音樂入面，「柴可夫斯基」係邊個國家嘅作曲家？", opts: ['俄羅斯','德國','奧地利','法國'], a: 0 },
+  { id: 'mus-23', cat: '音樂', q: "Guitar通常有幾條弦？", opts: ['6條','4條','5條','7條'], a: 0 },
+  { id: 'mus-24', cat: '音樂', q: "容祖兒喺香港樂壇有「邊個稱號」？", opts: ['香港女歌手段嘅天后','百變天后','平民天后','少女天后'], a: 0 },
+  { id: 'mus-25', cat: '音樂', q: "邊個樂隊以《青春住了我》呢首歌為代表作？", opts: ['草蜢','Twins','beyond','達明一派'], a: 1 },
+  { id: 'mus-26', cat: '音樂', q: "《富士山下》係邊個歌手嘅作品？", opts: ['陳奕迅','張學友','林俊杰','周杰倫'], a: 0 },
+  { id: 'mus-27', cat: '音樂', q: "小提琴通常有幾條弦？", opts: ['4條','5條','6條','3條'], a: 0 },
+  { id: 'mus-28', cat: '音樂', q: "邊個係台灣「周杰倫」嘅出道年份？", opts: ['2000年','1998年','2002年','1999年'], a: 0 },
+  { id: 'mus-29', cat: '音樂', q: "張敬軒代表作品《櫻花樹下》出自邊張專輯？", opts: ['《The Edge》','《我的好時光》','《感情的死刑犯》','《笑忘書》'], a: 0 },
+  { id: 'mus-30', cat: '音樂', q: "古典樂曲《命運交響曲》係邊個作曲家嘅作品？", opts: ['貝多芬','莫扎特','蕭邦','柴可夫斯基'], a: 0 },
+  { id: 'mus-31', cat: '音樂', q: "Saxophone屬於邊類樂器？", opts: ['木管樂器','銅管樂器','弦樂器','敲擊樂器'], a: 0 },
+  // 電影 (31)
+  { id: 'mov-01', cat: '電影', q: "《阿凡達》導演係？", opts: ['史匹堡','卡梅隆','諾蘭','伊斯特伍德'], a: 1 },
+  { id: 'mov-02', cat: '電影', q: "《鐵達尼號》沉沒年份？", opts: ['1908','1912','1918','1920'], a: 1 },
+  { id: 'mov-03', cat: '電影', q: "漫威「鐵甲奇俠」演員？", opts: ['Chris Evans','RDJ','Chris Hemsworth','Mark Ruffalo'], a: 1 },
+  { id: 'mov-04', cat: '電影', q: "首部《星球大戰》上映年份？", opts: ['1975','1977','1979','1981'], a: 1 },
+  { id: 'mov-05', cat: '電影', q: "奧斯卡金像獎頒發畀邊類？", opts: ['音樂','電影','體育','新聞'], a: 1 },
+  { id: 'mov-06', cat: '電影', q: "《少年Pi的奇幻漂流》導演？", opts: ['李安','張藝謀','王家衛','陳凱歌'], a: 0 },
+  { id: 'mov-07', cat: '電影', q: "Marvel 電影宇宙第一齣？", opts: ['鐵甲奇俠','美國隊長','雷神','變形俠醫'], a: 0 },
+  { id: 'mov-08', cat: '電影', q: "「蜘蛛俠」Peter Parker 住邊個城市？", opts: ['紐約','芝加哥','三藩市','洛杉磯'], a: 0 },
+  { id: 'mov-09', cat: '電影', q: "《哈利波特》作者？", opts: ['托爾金','J.K. Rowling','C.S. Lewis','Stephen King'], a: 1 },
+  { id: 'mov-10', cat: '電影', q: "邊個演咗《007 James Bond》系列？", opts: ['Tom Cruise','Daniel Craig','Brad Pitt','Leonardo DiCaprio'], a: 1 },
+  { id: 'mov-11', cat: '電影', q: "《無間道》港版上映年份？", opts: ['2000','2002','2004','2006'], a: 1 },
+  { id: 'mov-12', cat: '電影', q: "宮崎駿嘅《天空之城》女主角叫咩名？", opts: ['希達','娜烏西卡','千尋','波妞'], a: 0 },
+  { id: 'mov-13', cat: '電影', q: "邊個導演拍咗《Drive My Car》？", opts: ['是枝裕和','濱口�的亮','李相日','岩井俊二'], a: 1 },
+  { id: 'mov-14', cat: '電影', q: "首部《Mission: Impossible》上映年份？", opts: ['1994','1996','1998','2000'], a: 1 },
+  { id: 'mov-15', cat: '電影', q: "「Inception」導演？", opts: ['Christopher Nolan','Steven Spielberg','Denis Villeneuve','Ridley Scott'], a: 0 },
+  { id: 'mov-16', cat: '電影', q: "邊個系列電影主角叫「Jack Sparrow」？", opts: ['Harry Potter','Pirates of the Caribbean','Indiana Jones','Star Wars'], a: 1 },
+  { id: 'mov-17', cat: '電影', q: "《無間道》入面梁朝偉飾演邊個角色？", opts: ['陳永仁','劉健明','韓琛','黃Sir'], a: 1 },
+  { id: 'mov-18', cat: '電影', q: "邊個係《復仇者聯盟》系列嘅導演？", opts: ['羅素兄弟','史蒂芬史匹柏','占士金馬倫','基斯托夫路斯'], a: 0 },
+  { id: 'mov-19', cat: '電影', q: "《重慶森林》係邊個導演嘅作品？", opts: ['王家衛','杜琪峯','吳宇森','徐克'], a: 0 },
+  { id: 'mov-20', cat: '電影', q: "《玩轉極樂園》係由邊間製作公司製作？", opts: ['彼思','迪士尼','夢工場','藍天工作室'], a: 0 },
+  { id: 'mov-21', cat: '電影', q: "梁朝偉因為邊套電影獲得康城影展最佳男主角？", opts: ['《花樣年華》','《重慶森林》','《無間道》','《擺渡人》'], a: 0 },
+  { id: 'mov-22', cat: '電影', q: "《你的名字》係邊個國家嘅動畫電影？", opts: ['日本','韓國','中國','台灣'], a: 0 },
+  { id: 'mov-23', cat: '電影', q: "占士金馬倫導演嘅《阿凡達》係用咩拍攝技術？", opts: ['3D立體拍攝','IMAX','動態捕捉','全部都係'], a: 3 },
+  { id: 'mov-24', cat: '電影', q: "《古惑仔》系列電影改編自邊個漫畫？", opts: ['牛佬','馬榮成','黃玉郎','其他'], a: 0 },
+  { id: 'mov-25', cat: '電影', q: "邊個演員扮演《蝙蝠俠》電影入面嘅布魯斯韋恩？", opts: ['基斯托夫路斯','里安納度狄卡比奧','賓艾佛力','基努李維'], a: 0 },
+  { id: 'mov-26', cat: '電影', q: "《一代宗師》係邊個導演嘅作品？", opts: ['王家衛','徐克','杜琪峯','吳宇森'], a: 0 },
+  { id: 'mov-27', cat: '電影', q: "《千與千尋》嘅導演係邊個？", opts: ['宮崎駿','新海誠','細田守','押井守'], a: 0 },
+  { id: 'mov-28', cat: '電影', q: "《刺激1995》係由邊個演員主演？", opts: ['添·羅賓斯','摩根費里曼','奇洛·李維','布斯·韋利士'], a: 0 },
+  { id: 'mov-29', cat: '電影', q: "邊個係《星球大戰》嘅導演？", opts: ['佐治魯卡斯','史蒂芬史匹柏','朗侯活','占士金馬倫'], a: 0 },
+  { id: 'mov-30', cat: '電影', q: "《那些年，我們一起追的女孩》係邊個導演嘅作品？", opts: ['九把刀','周星馳','張藝謀','陳可辛'], a: 0 },
+  { id: 'mov-31', cat: '電影', q: "《權力遊戲》電視劇係改編自邊個作者嘅小說？", opts: ['喬治RR馬田','JRR托爾金','史蒂芬京','其他'], a: 0 },
+  // 食物 (29)
+  { id: 'foo-15', cat: '食物', q: "以下邊種日本料理唔屬於「外賣店」常見類別？", opts: ['刺身壽司','吉列豬扒飯','咖喱魚蛋','燒味'], a: 3 },
+  { id: 'foo-16', cat: '食物', q: "喺香港，「蛋撻」分為酥皮同酥盒，酥皮撻嘅特色係外層呈現金黃色酥皮，如果撻皮完全係酥皮而唔係撻盒，呢種叫咩名稱？", opts: ['牛油撻','酥皮撻','葡撻','曲奇撻'], a: 1 },
+  { id: 'foo-17', cat: '食物', q: "「張記口水雞」係香港一間有名嘅外賣店，口水雞係源於邊個中國省份嘅菜式？", opts: ['四川','湖南','貴州','雲南'], a: 0 },
+  { id: 'foo-18', cat: '食物', q: "以下邊種食材唔係日本「基本調味」常見成分？", opts: ['味噌','味醂','羅望子','出汁'], a: 2 },
+  { id: 'foo-19', cat: '食物', q: "「有種牛油」係指以下邊種？", opts: ['法國AOP牛油','鹽味牛油','人造牛油','羊奶牛油'], a: 2 },
+  { id: 'foo-20', cat: '食物', q: "「冬蔭功」係邊個國家嘅國菜？", opts: ['越南','泰國','馬來西亞','新加坡'], a: 1 },
+  { id: 'foo-21', cat: '食物', q: "「燒肉」喺韓國通常指邊個部位？", opts: ['五花腩','牛柳','豬頸肉','牛肩胛'], a: 0 },
+  { id: 'foo-22', cat: '食物', q: "法國波爾多葡萄酒區，以下邊個唔係法定五大葡萄酒產區？", opts: ['Margaux','Pauillac','Saint-Émilion','Champagne'], a: 3 },
+  { id: 'foo-23', cat: '食物', q: "「氈酒」（Gin）咁多種入面，以下邊種唔係常見蒸餾方式？", opts: ['London Dry Gin','Compound Gin','Pot Still Gin','Old Tom Gin'], a: 2 },
+  { id: 'foo-24', cat: '食物', q: "以下邊種唔係傳統意大利薄餅嘅基本配料？", opts: ['水牛芝士','番茄醬','菠蘿','羅勒'], a: 2 },
+  { id: 'foo-25', cat: '食物', q: "香港茶餐廳文化中，「茶走」係指將奶茶入面嘅邊樣嘢改為煉奶？", opts: ['淡奶','砂糖','植脂末','奶粉'], a: 0 },
+  { id: 'foo-26', cat: '食物', q: "「越南咖啡」最大特色係用邊種方式製作？", opts: ['凍飲加冰','滴漏式',' Cappuccino式','法壓壺'], a: 1 },
+  { id: 'food-01', cat: '食物', q: "壽司嘅日文係咩？", opts: ['鮨/寿司','天ぷら','味噌汁','刺身'], a: 0 },
+  { id: 'food-02', cat: '食物', q: "Pizza 源自邊個國家？", opts: ['法國','意大利','美國','西班牙'], a: 1 },
+  { id: 'food-03', cat: '食物', q: "叉燒包係邊國菜？", opts: ['日本','韓國','中國','泰國'], a: 2 },
+  { id: 'food-04', cat: '食物', q: "咖啡豆原產地？", opts: ['巴西','埃塞俄比亞','哥倫比亞','越南'], a: 1 },
+  { id: 'food-05', cat: '食物', q: "魚子醬最正宗來源？", opts: ['三文魚','鱘魚','鱈魚','吞拿'], a: 1 },
+  { id: 'food-06', cat: '食物', q: "邊個係日本料理代表？", opts: ['壽司','漢堡','Pizza','北京烤鴨'], a: 0 },
+  { id: 'food-07', cat: '食物', q: "「臭豆腐」源自邊度？", opts: ['北京','上海','台灣','以上皆是'], a: 3 },
+  { id: 'food-08', cat: '食物', q: "海南雞飯源自邊個國家？", opts: ['泰國','新加坡','馬來西亞','印尼'], a: 0 },
+  { id: 'food-09', cat: '食物', q: "「珍珠奶茶」源自邊度？", opts: ['日本','台灣','韓國','中國'], a: 1 },
+  { id: 'food-10', cat: '食物', q: "邊個食材最常用嚟做 sushi？", opts: ['米','麵','麵粉','薯仔'], a: 0 },
+  { id: 'food-11', cat: '食物', q: "「忌廉」喺英文係咩？", opts: ['Cream','Cheese','Butter','Milk'], a: 0 },
+  { id: 'food-12', cat: '食物', q: "邊個係抹茶嘅原產地？", opts: ['中國','日本','韓國','台灣'], a: 1 },
+  { id: 'food-13', cat: '食物', q: "「法式長棍麵包」法文叫咩名？", opts: ['Baguette','Croissant','Brioche','Pain'], a: 0 },
+  { id: 'food-14', cat: '食物', q: "日本拉麵源自邊國？", opts: ['中國','韓國','日本','美國'], a: 0 },
+  { id: 'food-15', cat: '食物', q: "邊個係港式點心代表？", opts: ['餃子','燒賣','壽司','Pizza'], a: 1 },
+  { id: 'food-16', cat: '食物', q: "「意大利粉」源自邊國？", opts: ['法國','意大利','西班牙','希臘'], a: 1 },
+  { id: 'food-17', cat: '食物', q: "邊個係「威靈頓牛柳」嘅原產地？", opts: ['法國','英國','美國','澳洲'], a: 1 },
+  // 教育 (26)
+  { id: 'edu-01', cat: '教育', q: "香港大學成立年份？", opts: ['1901','1911','1921','1931'], a: 1 },
+  { id: 'edu-02', cat: '教育', q: "「三人行必有我師」出自邊位？", opts: ['孔子','孟子','老子','莊子'], a: 0 },
+  { id: 'edu-03', cat: '教育', q: "DSE 全稱？", opts: ['香港中學文憑試','大學入學試','高考','公開試'], a: 0 },
+  { id: 'edu-04', cat: '教育', q: "π 嘅近似值？", opts: ['3.12','3.14','3.16','3.18'], a: 1 },
+  { id: 'edu-05', cat: '教育', q: "《論語》共有幾篇？", opts: ['10','20','30','40'], a: 1 },
+  { id: 'edu-06', cat: '教育', q: "光速大約係幾多 m/s？", opts: ['3千萬','3億','300萬','300億'], a: 1 },
+  { id: 'edu-07', cat: '教育', q: "牛頓發現咩定律？", opts: ['相對論','萬有引力','進化論','熱力學'], a: 1 },
+  { id: 'edu-08', cat: '教育', q: "元素週期表發現者？", opts: ['愛因斯坦','門德列夫','牛頓','居里夫人'], a: 1 },
+  { id: 'edu-09', cat: '教育', q: "「相對論」提出者？", opts: ['牛頓','愛因斯坦','霍金','伽利略'], a: 1 },
+  { id: 'edu-10', cat: '教育', q: "「達爾文」提出咩理論？", opts: ['進化論','相對論','量子論','熱力學'], a: 0 },
+  { id: 'edu-11', cat: '教育', q: "「勾股定理」邊個國？", opts: ['古希臘','古中國','古埃及','古印度'], a: 0 },
+  { id: 'edu-12', cat: '教育', q: "Newton 三大運動定律發表年份？", opts: ['1666','1687','1700','1736'], a: 1 },
+  { id: 'edu-13', cat: '教育', q: "邊個發現萬有引力？", opts: ['愛因斯坦','牛頓','伽利略','霍金'], a: 1 },
+  { id: 'edu-14', cat: '教育', q: "DNA 雙螺旋結構發現者？", opts: ['達爾文','孟德爾','華生與克里克','霍金'], a: 2 },
+  { id: 'edu-15', cat: '教育', q: "元素週期表有幾多元素？", opts: ['100','118','126','150'], a: 1 },
+  { id: 'edu-16', cat: '教育', q: "「哈利波特」作者邊個國籍？", opts: ['美國','英國','澳洲','加拿大'], a: 1 },
+  { id: 'edu-17', cat: '教育', q: "「C++」主要用嚟做咩？", opts: ['繪圖','編程','文書','音樂'], a: 1 },
+  { id: 'edu-18', cat: '教育', q: "香港會考喺2012年之後被咩取代？", opts: ['香港中學文憑考試','國際文憑大學預科課程','英國高考','台灣學測'], a: 0 },
+  { id: 'edu-19', cat: '教育', q: "「普通話」係用咩字母表達？", opts: ['漢語拼音','注音字母','威妥瑪拼音','其他'], a: 0 },
+  { id: 'edu-20', cat: '教育', q: "香港大學嘅醫學院叫咩名？", opts: ['李嘉誠醫學院','港大醫學院','威爾斯親王醫院','瑪麗醫院'], a: 0 },
+  { id: 'edu-21', cat: '教育', q: "「IELTS」考試係由邊個機構主辦？", opts: ['英國文化協會、IDP教育同埋劍橋大學考試局','美國教育考試服務中心','法語聯盟','德國歌德學院'], a: 0 },
+  { id: 'edu-22', cat: '教育', q: "「微積分」主要研究咩？", opts: ['函數嘅變化同埋累積','幾何形狀','代數方程','數論'], a: 0 },
+  { id: 'edu-23', cat: '教育', q: "香港科技大學位於邊個地區？", opts: ['清水灣','沙田','屯門','大埔'], a: 0 },
+  { id: 'edu-24', cat: '教育', q: "「博士」學位喺香港大學通常係用咩英文簡稱？", opts: ['PhD','MPhil','EdD','DBA'], a: 0 },
+  { id: 'edu-25', cat: '教育', q: "「普通話水平測試」係邊個國家或地區常用嘅語言測試？", opts: ['中國內地','香港','台灣','新加坡'], a: 0 },
+  { id: 'edu-26', cat: '教育', q: "香港教育大學之前叫咩名？", opts: ['香港教育學院','香港師範學院','香港專上學院','香港教育中心'], a: 0 },
+  // 國家 (31)
+  { id: 'cn-01', cat: '國家', q: "聯合國總部喺邊？", opts: ['紐約','日內瓦','巴黎','倫敦'], a: 0 },
+  { id: 'cn-02', cat: '國家', q: "G7 有幾多個成員國？", opts: ['5','6','7','8'], a: 2 },
+  { id: 'cn-03', cat: '國家', q: "邊個係歐盟最大經濟體？", opts: ['法國','德國','意大利','西班牙'], a: 1 },
+  { id: 'cn-04', cat: '國家', q: "人口最多嘅國家？", opts: ['美國','印尼','中國','印度'], a: 3 },
+  { id: 'cn-05', cat: '國家', q: "G20 包括幾多國？", opts: ['15','19','20','25'], a: 2 },
+  { id: 'cn-06', cat: '國家', q: "南美洲最大國家？", opts: ['阿根廷','巴西','秘魯','智利'], a: 1 },
+  { id: 'cn-07', cat: '國家', q: "邊個係 BRICS 嘅成員？", opts: ['巴西','俄羅斯','印度','以上皆是'], a: 3 },
+  { id: 'cn-08', cat: '國家', q: "北約 NATO 創始成員有幾多？", opts: ['8','10','12','15'], a: 2 },
+  { id: 'cn-09', cat: '國家', q: "邊個係歐盟創始成員？", opts: ['法國','英國','瑞典','以上皆是'], a: 0 },
+  { id: 'cn-10', cat: '國家', q: "APEC 創始成員有幾多？", opts: ['10','12','15','18'], a: 1 },
+  { id: 'cn-11', cat: '國家', q: "「金磚五國」邊個唔係？", opts: ['巴西','俄羅斯','日本','南非'], a: 2 },
+  { id: 'cn-12', cat: '國家', q: "邊個係世界島 (World Island) 概念？", opts: ['斯皮克曼','麥金德','布熱津斯基','以上皆是'], a: 3 },
+  { id: 'cn-13', cat: '國家', q: "「東盟」ASEAN 有幾多成員？", opts: ['8','9','10','11'], a: 2 },
+  { id: 'cn-14', cat: '國家', q: "「一帶一路」由邊個提出？", opts: ['普京','習近平','莫迪','拜登'], a: 1 },
+  { id: 'cn-15', cat: '國家', q: "「RCEP」最大經濟體？", opts: ['日本','中國','印尼','韓國'], a: 1 },
+  { id: 'cn-16', cat: '國家', q: "「上合組織」有幾多正式成員？", opts: ['6','7','8','9'], a: 3 },
+  { id: 'cn-17', cat: '國家', q: "邊個係 G7 2024 主席國？", opts: ['美國','英國','意大利','日本'], a: 2 },
+  { id: 'cou-15', cat: '國家', q: "加拿大被稱為「楓葉之國」，咩特色農產品聞名全世界？", opts: ['楓糖漿','蜂蜜','蘋果','葡萄'], a: 0 },
+  { id: 'cou-16', cat: '國家', q: "「袋鼠之國」係邊個國家嘅稱號？", opts: ['澳大利亞','新西蘭','巴布亞新畿內亞','肯尼亞'], a: 0 },
+  { id: 'cou-17', cat: '國家', q: "巴西使用咩語言作為官方語言？", opts: ['葡萄牙語','西班牙語','英語','法語'], a: 0 },
+  { id: 'cou-18', cat: '國家', q: "「亞洲底」呢個稱號通常用嚟形容邊個國家？", opts: ['泰國','緬甸','老撾','柬埔寨'], a: 0 },
+  { id: 'cou-19', cat: '國家', q: "緬甸嘅首都係邊個城市？", opts: ['內比都','仰光','曼德勒','蒲甘'], a: 0 },
+  { id: 'cou-20', cat: '國家', q: "印度尼西亞嘅首都係邊個城市？", opts: ['雅加達','泗水','棉蘭','萬隆'], a: 0 },
+  { id: 'cou-21', cat: '國家', q: "伊斯蘭教嘅發源地係邊個國家？", opts: ['沙特阿拉伯','埃及','伊朗','伊拉克'], a: 0 },
+  { id: 'cou-22', cat: '國家', q: "韓國嘅首都係邊個城市？", opts: ['首爾','釜山','仁川','大邱'], a: 0 },
+  { id: 'cou-23', cat: '國家', q: "埃及嘅首都係邊個城市？", opts: ['開羅','亞歷山大港','孟菲斯','蘇伊士'], a: 0 },
+  { id: 'cou-24', cat: '國家', q: "意大利嘅首都係邊個城市？", opts: ['羅馬','米蘭','威尼斯','佛羅倫斯'], a: 0 },
+  { id: 'cou-25', cat: '國家', q: "哈薩克斯坦嘅首都係邊個城市？", opts: ['阿斯塔納','阿拉木圖','努爾蘇丹','突厥斯坦'], a: 0 },
+  { id: 'cou-26', cat: '國家', q: "挪威嘅首都係邊個城市？", opts: ['奧斯陸','卑爾根','特羅姆瑟','斯塔萬格'], a: 0 },
+  { id: 'cou-27', cat: '國家', q: "印度嘅首都係邊個城市？", opts: ['新德里','孟買','加爾各答','班加羅爾'], a: 0 },
+  { id: 'cou-28', cat: '國家', q: "泰國嘅官方語言係咩語？", opts: ['泰語','緬甸語','高棉語','馬來語'], a: 0 },
+  // 冷知識 (17)
+  { id: 'tri-01', cat: '冷知識', q: "邊隻動物嘅心跳最快？", opts: ['貓','狗','蜂鳥','老鼠'], a: 2 },
+  { id: 'tri-02', cat: '冷知識', q: "邊隻動物冇腦？", opts: ['海星','水母','珊瑚','海綿'], a: 1 },
+  { id: 'tri-03', cat: '冷知識', q: "邊隻動物識得認鏡？", opts: ['狗','貓','海豚','以上皆是'], a: 3 },
+  { id: 'tri-04', cat: '冷知識', q: "邊個國家有「幸福國度」之稱？", opts: ['丹麥','不丹','瑞士','芬蘭'], a: 1 },
+  { id: 'tri-05', cat: '冷知識', q: "邊個係人體最大嘅器官？", opts: ['肝臟','皮膚','肺','大腦'], a: 1 },
+  { id: 'tri-06', cat: '冷知識', q: "人體有幾多塊骨頭？", opts: ['186','206','226','256'], a: 1 },
+  { id: 'tri-07', cat: '冷知識', q: "邊隻動物有藍色血液？", opts: ['章魚','馬蹄蟹','海星','水母'], a: 1 },
+  { id: 'tri-08', cat: '冷知識', q: "「OK」嘅來源係咩？", opts: ['希臘文','拉丁文','all correct 嘅縮寫','以上皆是'], a: 2 },
+  { id: 'tri-09', cat: '冷知識', q: "邊個國家嘅鈔票有「恐龍」？", opts: ['中國','蒙古','澳洲','巴西'], a: 1 },
+  { id: 'tri-10', cat: '冷知識', q: "邊隻動物唔識得跳？", opts: ['大象','河馬','犀牛','以上皆是'], a: 3 },
+  { id: 'tri-11', cat: '冷知識', q: "邊個係人體最硬嘅組織？", opts: ['骨頭','牙齒琺瑯質','指甲','頭髮'], a: 1 },
+  { id: 'tri-12', cat: '冷知識', q: "邊隻動物嘅蛋最大？", opts: ['鴕鳥','恐龍(已滅絕)','象龜','鯨鯊'], a: 1 },
+  { id: 'tri-13', cat: '冷知識', q: "邊個係世界上最細嘅鳥？", opts: ['蜂鳥','麻雀','太陽鳥','繡眼鳥'], a: 0 },
+  { id: 'tri-14', cat: '冷知識', q: "聖旨嘅顏色通常係咩顏色？", opts: ['黃色','紅色','白色','藍色'], a: 0 },
+  { id: 'tri-15', cat: '冷知識', q: "北極熊嘅皮膚係咩顏色？", opts: ['黑色','白色','粉紅色','透明'], a: 0 },
+  { id: 'tri-16', cat: '冷知識', q: "菠蘿係邊個植物科別？", opts: ['鳳梨科','蘭科','菊科','豆科'], a: 0 },
+  { id: 'tri-17', cat: '冷知識', q: "人類嘅DNA同香蕉有几相似？", opts: ['約60%','約10%','約90%','約30%'], a: 0 },
+  // 科技 (28)
+  { id: 'tec-01', cat: '科技', q: "邊間公司開發咗ChatGPT？", opts: ['Microsoft','OpenAI','Google','Meta'], a: 1 },
+  { id: 'tec-02', cat: '科技', q: "iPhone嘅作業系統叫咩名？", opts: ['Android','Windows','iOS','Linux'], a: 2 },
+  { id: 'tec-03', cat: '科技', q: "Tesla汽車係由邊個企業家創立？", opts: ['Jeff Bezos','Elon Musk','Tim Cook','Mark Zuckerberg'], a: 1 },
+  { id: 'tec-04', cat: '科技', q: "以下邊個係社交媒體平台？", opts: ['YouTube','Instagram','WhatsApp','Zoom'], a: 1 },
+  { id: 'tec-05', cat: '科技', q: "「Metaverse」概念係由邊間公司提出？", opts: ['Apple','Microsoft','Meta (Facebook)','Amazon'], a: 2 },
+  { id: 'tec-06', cat: '科技', q: "Nintendo Switch係由邊個公司推出？", opts: ['Sony','Microsoft','Nintendo','Sega'], a: 2 },
+  { id: 'tec-07', cat: '科技', q: "以下邊個唔係搜索引擎？", opts: ['Google','Bing','Yahoo','Instagram'], a: 3 },
+  { id: 'tec-08', cat: '科技', q: "5G網絡嘅「G」代表咩意思？", opts: ['Generation','Global','Group','Gateway'], a: 0 },
+  { id: 'tec-09', cat: '科技', q: "香港最多人用嘅流動支付工具係邊個？", opts: ['Apple Pay','Google Pay','PayMe','Samsung Pay'], a: 2 },
+  { id: 'tec-10', cat: '科技', q: "Microsoft Surface係咩類型產品？", opts: ['智能手錶','平板電腦','遊戲機','路由器'], a: 1 },
+  { id: 'tec-11', cat: '科技', q: "比特幣（Bitcoin）係基於咩技術？", opts: ['區塊鏈','人工智能','雲端運算','大數據'], a: 0 },
+  { id: 'tec-12', cat: '科技', q: "以下邊個係Sony推出嘅遊戲主機？", opts: ['Xbox','Nintendo Switch','PlayStation','Steam Deck'], a: 2 },
+  { id: 'tec-13', cat: '科技', q: "Apple Watch可以做到以下邊樣嘢？", opts: ['測量血壓','偵測心律','測血糖','測體溫'], a: 1 },
+  { id: 'tec-14', cat: '科技', q: "Zoom係用嚟做咩嘅軟件？", opts: ['文書處理','影片會議','相片編輯','音樂播放'], a: 1 },
+  { id: 'tec-15', cat: '科技', q: "Elon Musk旗下唔包括以下邊間公司？", opts: ['SpaceX','Tesla','Neuralink','Blue Origin'], a: 3 },
+  { id: 'tec-16', cat: '科技', q: "以下邊個唔係雲端儲存服務？", opts: ['Google Drive','Dropbox','iCloud','Wikipedia'], a: 3 },
+  { id: 'tec-17', cat: '科技', q: "Pokémon GO係用咩技術令玩家可以捕捉虛擬精靈？", opts: ['VR','AR','MR','AI'], a: 1 },
+  { id: 'tec-18', cat: '科技', q: "Samsung最大敵人係邊個品牌？", opts: ['Huawei','Apple','Xiaomi','Oppo'], a: 1 },
+  { id: 'tec-19', cat: '科技', q: "ChatGPT所属公司OpenAI嘅總部喺邊？", opts: ['倫敦','三藩市','紐約','東京'], a: 1 },
+  { id: 'tec-20', cat: '科技', q: "以下邊個唔係人工智能嘅應用？", opts: ['智能助理','自動駕駛','光纖寬頻','圖像識別'], a: 2 },
+  { id: 'tec-21', cat: '科技', q: "Wi-Fi係基於邊個網絡標準？", opts: ['IEEE 802.11','IEEE 802.3','IEEE 802.15','IEEE 802.16'], a: 0 },
+  { id: 'tec-22', cat: '科技', q: "香港電子競技（eSports）選手曾經喺邊個項目取得世界冠軍？", opts: ['英雄聯盟','PUBG','街頭霸王','魔獸世界'], a: 2 },
+  { id: 'tec-23', cat: '科技', q: "Tesla工廠嘅名稱係用邊個物理學家命名？", opts: ['牛頓','愛因斯坦','尼古拉·特斯拉','居里夫人'], a: 2 },
+  { id: 'tec-24', cat: '科技', q: "以下邊個係Google開發嘅人工智能模型？", opts: ['GPT','Claude','Gemini','Llama'], a: 2 },
+  { id: 'tec-25', cat: '科技', q: "Microsoft Windows最新作業系統截至2024年叫咩名？", opts: ['Windows 10','Windows 11','Windows 12','Windows X'], a: 1 },
+  { id: 'tec-26', cat: '科技', q: "第一代iPhone喺邊一年推出？", opts: ['2005','2006','2007','2008'], a: 2 },
+  { id: 'tec-27', cat: '科技', q: "以下邊個唔係编程語言？", opts: ['Python','Java','Photoshop','C++'], a: 2 },
+  { id: 'tec-28', cat: '科技', q: "Netflix係一间咩類型嘅公司？", opts: ['社交媒體','串流影視','電子商務','搜索引擎'], a: 1 },
+  // 體育 (24)
+  { id: 'spo-01', cat: '體育', q: "香港足球代表隊被球迷稱為咩？", opts: ['港足','快馬','羚羊','飛鷹'], a: 0 },
+  { id: 'spo-02', cat: '體育', q: "2024年奧運會喺邊個城市舉行？", opts: ['東京','巴黎','北京','悉尼'], a: 1 },
+  { id: 'spo-03', cat: '體育', q: "世界盃足球賽每幾年舉行一次？", opts: ['2年','3年','4年','5年'], a: 2 },
+  { id: 'spo-04', cat: '體育', q: "香港網球公開賽係 WTA 幾多級別嘅賽事？", opts: ['WTA 1000','WTA 500','WTA 250','WTA 125'], a: 2 },
+  { id: 'spo-05', cat: '體育', q: "以下邊個唔係歐洲足球勁旅？", opts: ['曼聯','皇家馬德里','拜仁慕尼黑','恒大'], a: 3 },
+  { id: 'spo-06', cat: '體育', q: "NBA冠軍戒指最多嘅球員係邊個？", opts: ['Michael Jordan','LeBron James','Bill Russell','Kobe Bryant'], a: 2 },
+  { id: 'spo-07', cat: '體育', q: "F1一級方程式賽車每場比賽大概有幾多圈？", opts: ['20-40圈','50-70圈','80-100圈','100-120圈'], a: 1 },
+  { id: 'spo-08', cat: '體育', q: "游泳比賽中「自由式」嘅英文係咩？", opts: ['Breaststroke','Backstroke','Freestyle','Butterfly'], a: 2 },
+  { id: 'spo-09', cat: '體育', q: "香港游泳運動員何詩蓓專長係咩泳式？", opts: ['蛙式','背泳','蝶泳','自由泳'], a: 3 },
+  { id: 'spo-10', cat: '體育', q: "世界排名第一嘅男子網球員Carlos Alcaraz係邊個國家嘅人？", opts: ['塞爾維亞','西班牙','美國','瑞士'], a: 1 },
+  { id: 'spo-11', cat: '體育', q: "2022年世界盃足球賽冠軍係邊個國家？", opts: ['法國','巴西','阿根廷','克羅地亞'], a: 2 },
+  { id: 'spo-12', cat: '體育', q: "香港有沒有球隊參加過亞洲聯賽冠軍盃（AFC Champions League）？", opts: ['有','沒有','曾經有','正在申請'], a: 0 },
+  { id: 'spo-13', cat: '體育', q: "以下邊項唔係奧運會項目？", opts: ['劍擊','拳擊','欖球','棒球'], a: 3 },
+  { id: 'spo-14', cat: '體育', q: "香港「牛下女車神」係邊個運動員嘅稱號？", opts: ['吳敏霞','李慧詩','何詩蓓','陳晞文'], a: 1 },
+  { id: 'spo-15', cat: '體育', q: "歐洲國家盃（UEFA Euro）每幾年舉行一次？", opts: ['2年','3年','4年','5年'], a: 2 },
+  { id: 'spo-16', cat: '體育', q: "F1賽車手Lewis Hamilton係邊個國家嘅人？", opts: ['英國','德國','美國','芬蘭'], a: 0 },
+  { id: 'spo-17', cat: '體育', q: "香港康文署管理嘅運動場館「香港大球場」位於邊區？", opts: ['旺角','銅鑼灣','灣仔','將軍澳'], a: 2 },
+  { id: 'spo-18', cat: '體育', q: "NBA籃球賽每場分為幾多節？", opts: ['2節','3節','4節','5節'], a: 2 },
+  { id: 'spo-19', cat: '體育', q: "2021年東京奧運會香港唯一金牌係邊個運動員奪得？", opts: ['張家朗','何詩蓓','李慧詩','石偉雄'], a: 0 },
+  { id: 'spo-20', cat: '體育', q: "以下邊個唔係游泳泳式？", opts: ['蝶泳','仰泳','狗仔式','蛙泳'], a: 2 },
+  { id: 'spo-21', cat: '體育', q: "Manchester United位於邊個英國城市？", opts: ['倫敦','曼徹斯特','利物浦','伯明翰'], a: 1 },
+  { id: 'spo-22', cat: '體育', q: "香港足球代表隊曾經試過世界排名幾多位？", opts: ['低於180','140-150','155-165','從未上榜'], a: 2 },
+  { id: 'spo-23', cat: '體育', q: "Roger Federer係邊個國家嘅網球員？", opts: ['西班牙','美國','瑞士','塞爾維亞'], a: 2 },
+  { id: 'spo-24', cat: '體育', q: "香港「東亞運動會」金牌得主，通常係以下邊個運動項目？", opts: ['足球','武術','籃球','排球'], a: 1 },
 ];
 
 // 動態加載 questions.json，如果成功就用 fetch 嗰個，否則用 embedded fallback
 let QUESTION_BANK = EMBEDDED_QUESTIONS;
+let ARCHIVED_IDS = [];
+
+// ============================================
+// Analytics & Monitoring (Tier 1: GA Events, Tier 2: Webhook.site)
+// ============================================
+const MONITOR_WEBHOOK = 'https://webhook.site/7757293b-a040-409a-85ed-caf31c2ff8c0'; // webhook.site inbox for game activity + update requests
+let monitorEnabled = true;
+
+function trackGameEvent(action, params = {}) {
+    // Tier 1: Google Analytics (always on, no PII)
+    if (typeof gtag !== 'undefined') {
+        gtag('event', action, Object.assign({
+            event_category: 'millionaire_game',
+            send_page_view: false
+        }, params));
+    }
+    // Tier 2: webhook.site (instant notification, requires setup)
+    if (monitorEnabled && MONITOR_WEBHOOK.includes('http')) {
+        try {
+            const payload = Object.assign({
+                ts: new Date().toISOString(),
+                action: action,
+                page: 'millionaire',
+                user_agent: navigator.userAgent.slice(0, 100)
+            }, params);
+            // Use sendBeacon for reliability (works during page unload)
+            if (navigator.sendBeacon) {
+                navigator.sendBeacon(MONITOR_WEBHOOK, JSON.stringify(payload));
+            } else {
+                fetch(MONITOR_WEBHOOK, { method: 'POST', body: JSON.stringify(payload), mode: 'no-cors' }).catch(() => {});
+            }
+        } catch (e) {
+            // Silently fail
+        }
+    }
+}
+
 async function loadQuestions() {
     try {
         const res = await fetch('questions.json?_=' + Date.now());
@@ -934,6 +1414,8 @@ async function loadQuestions() {
             if (data.questions && Array.isArray(data.questions) && data.questions.length > 0) {
                 QUESTION_BANK = data.questions;
                 console.log('✅ Loaded', QUESTION_BANK.length, 'questions from questions.json');
+                // 同時 load archive list (已用過嘅題目)
+                await loadArchive();
                 return true;
             }
         }
@@ -943,11 +1425,35 @@ async function loadQuestions() {
     return false;
 }
 
+// Load archive list (master blocklist of already-used question IDs)
+async function loadArchive() {
+    try {
+        const res = await fetch('questions_archived.json?_=' + Date.now());
+        if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data.archived_ids)) {
+                ARCHIVED_IDS = data.archived_ids;
+                console.log('🚫 Loaded', ARCHIVED_IDS.length, 'archived question IDs');
+                // Track archive load
+                trackGameEvent('archive_loaded', {
+                    event_label: 'success',
+                    archive_size: ARCHIVED_IDS.length,
+                    last_updated: data.last_updated || 'unknown'
+                });
+            }
+        }
+    } catch (e) {
+        console.log('⚠ questions_archived.json load failed (using localStorage only):', e.message);
+        ARCHIVED_IDS = [];
+        trackGameEvent('archive_loaded', { event_label: 'failed', error: e.message.slice(0, 50) });
+    }
+}
+
 // ============================================
 // Game State
 // ============================================
-const MONEY_LEVELS = [100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000, 1000000];
-const SAFE_LEVELS = [4, 9]; // $1,000 + $32,000
+const MONEY_LEVELS = [1000, 2000, 3000, 4000, 8000, 10000, 20000, 30000, 40000, 60000, 80000, 150000, 250000, 500000, 1000000];
+const SAFE_LEVELS = [4, 9]; // Q5 $8,000 + Q10 $60,000
 const QUESTION_TIME = 30; // 30 seconds per question
 
 let state = {
@@ -983,18 +1489,122 @@ function clearUsedIds() {
     localStorage.removeItem(STORAGE_KEYS.USED);
 }
 
-function getLeaderboard() {
+// ============================================
+// Cross-device leaderboard (Google Apps Script backend)
+// ============================================
+const LEADERBOARD_API_URL = 'https://script.google.com/macros/s/AKfycbyIr8CpFkohboxL1i58CDrGpU6rbStOKOceyqmlRIzRJNb5JQ3uc4QSDqJB9GoE1L-v/exec';
+const LEADERBOARD_API_TIMEOUT = 8000;  // 8s timeout
+
+function getLocalLeaderboard() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.LEADERBOARD) || '[]'); }
     catch { return []; }
 }
-function setLeaderboard(lb) {
+function setLocalLeaderboard(lb) {
     localStorage.setItem(STORAGE_KEYS.LEADERBOARD, JSON.stringify(lb));
 }
-function addToLeaderboard(name, score) {
-    const lb = getLeaderboard();
-    lb.push({ name, score, ts: Date.now() });
-    lb.sort((a, b) => b.score - a.score);
-    setLeaderboard(lb.slice(0, 10));
+function mergeLeaderboard(local, remote) {
+    // Merge local + remote, dedupe by name+ts, keep top 100 by score
+    // (Deprecated: server is now source of truth. Kept for future use.)
+    const map = new Map();
+    [...(remote || []), ...(local || [])].forEach(e => {
+        if (!e.name) return;
+        const key = `${e.name}_${e.ts || Math.random()}`;
+        const cur = map.get(key);
+        if (!cur || e.score > cur.score) map.set(key, e);
+    });
+    return Array.from(map.values()).sort((a, b) => b.score - a.score).slice(0, 100);
+}
+
+async function getLeaderboard() {
+    // Try remote first (server is source of truth)
+    if (LEADERBOARD_API_URL.includes('REPLACE_WITH')) {
+        console.warn('[leaderboard] API URL not configured, using local only');
+        return getLocalLeaderboard();
+    }
+    try {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), LEADERBOARD_API_TIMEOUT);
+        const res = await fetch(LEADERBOARD_API_URL, { method: 'GET', signal: ctrl.signal });
+        clearTimeout(t);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        if (data && data.success) {
+            // Server is source of truth — sync local cache to match
+            const remote = data.leaderboard || [];
+            setLocalLeaderboard(remote);
+            return remote;
+        }
+        return getLocalLeaderboard();
+    } catch (e) {
+        console.warn('[leaderboard] fetch failed, using local cache:', e.message);
+        return getLocalLeaderboard();
+    }
+}
+
+async function addToLeaderboard(name, score) {
+    console.log(`[leaderboard] Saving: ${name} = ${score}`);
+    // Always save to local first (resilient)
+    const local = getLocalLeaderboard();
+    local.push({ name, score, ts: Date.now() });
+    local.sort((a, b) => b.score - a.score);
+    setLocalLeaderboard(local);
+
+    // Update visible status (immediate)
+    setLeaderboardSaveStatus('pending', name, score);
+
+    if (LEADERBOARD_API_URL.includes('REPLACE_WITH')) {
+        setLeaderboardSaveStatus('error', name, score, 'API URL not configured');
+        return;
+    }
+
+    // v6: Retry POST 3 times
+    for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+            const ctrl = new AbortController();
+            const t = setTimeout(() => ctrl.abort(), LEADERBOARD_API_TIMEOUT);
+            const res = await fetch(LEADERBOARD_API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, score }),
+                signal: ctrl.signal
+            });
+            clearTimeout(t);
+            if (res.ok) {
+                console.log(`[leaderboard] ✓ Saved to server (attempt ${attempt}): ${name} = ${score}`);
+                setLeaderboardSaveStatus('ok', name, score, attempt);
+                return;
+            } else {
+                console.warn(`[leaderboard] Attempt ${attempt}: HTTP ${res.status}`);
+                if (attempt === 3) setLeaderboardSaveStatus('error', name, score, `HTTP ${res.status} (after 3 retries)`);
+            }
+        } catch (e) {
+            console.warn(`[leaderboard] Attempt ${attempt} failed:`, e.message);
+            if (attempt === 3) setLeaderboardSaveStatus('error', name, score, `${e.message} (after 3 retries)`);
+        }
+        // Wait 1 second before retry
+        if (attempt < 3) await new Promise(r => setTimeout(r, 1000));
+    }
+}
+
+function setLeaderboardSaveStatus(status, name, score, detail) {
+    const el = $('leaderboardSaveStatus');
+    if (!el) return;
+    if (status === 'pending') {
+        el.innerHTML = '⏳ 儲存到雲端中...';
+        el.className = 'leaderboard-save-status pending';
+    } else if (status === 'ok') {
+        el.innerHTML = `✅ 已儲存到雲端 (${name} = $${score.toLocaleString()})`;
+        el.className = 'leaderboard-save-status ok';
+        setTimeout(() => {
+            if (el.className.includes('ok')) {
+                el.innerHTML = '';
+                el.className = 'leaderboard-save-status';
+            }
+        }, 5000);
+    } else {
+        el.innerHTML = `⚠️ 儲存失敗: ${detail || 'unknown'} (已 save 喺 localStorage)`;
+        el.className = 'leaderboard-save-status error';
+    }
 }
 
 function addWinner(email, name) {
@@ -1113,18 +1723,27 @@ function formatMoney(n) { return '$' + n.toLocaleString(); }
 // Question Selection (no repeats within session)
 // ============================================
 function pickQuestions() {
-    const used = getUsedIds();
-    let available = QUESTION_BANK.filter(q => !used.includes(q.id));
-
-    // Reset if running low
-    if (available.length < 15) {
-        clearUsedIds();
-        available = [...QUESTION_BANK];
+    // v9: Session-only dedup (no cross-game blocklist)
+    // 500 條全部可隨時取用, 玩家可以重複玩 (確保 500 條都用得到)
+    // 累積 used IDs (display progress, 唔 block game logic)
+    const shuffled = shuffle([...QUESTION_BANK]);
+    const picked = [];
+    const seen = new Set();
+    for (const q of shuffled) {
+        if (picked.length >= 15) break;
+        if (!seen.has(q.id)) {
+            picked.push(q);
+            seen.add(q.id);
+        }
     }
-
-    // Pick 15 random
-    const picked = shuffle(available).slice(0, 15);
-    setUsedIds([...used, ...picked.map(q => q.id)]);
+    // Fallback: 萬一 picked 唔夠 15 條
+    while (picked.length < 15 && shuffled.length > 0) {
+        picked.push(shuffled[picked.length % shuffled.length]);
+    }
+    // 累積 used 進 localStorage (for display 進度)
+    const existing = new Set(getUsedIds());
+    for (const id of seen) existing.add(id);
+    setUsedIds(Array.from(existing));
     return picked;
 }
 
@@ -1147,8 +1766,11 @@ function switchScreen(name) {
 // Start Screen
 // ============================================
 function renderLeaderboard() {
-    const lb = getLeaderboard();
+    // Wait for async getLeaderboard
+    getLeaderboard().then(lb => {
     const listEl = $('leaderboardList');
+    const countEl = $('leaderboardCount');
+    if (countEl) countEl.textContent = lb.length > 0 ? `(頭 10 名 / 共 ${lb.length} 名)` : '';
     if (lb.length === 0) {
         listEl.innerHTML = '<li class="leaderboard-empty">暫無排名，做第一個挑戰者吧！</li>';
         return;
@@ -1161,6 +1783,7 @@ function renderLeaderboard() {
             <span class="leaderboard-score">$${e.score.toLocaleString()}</span>
         </li>`;
     }).join('');
+    });
 }
 
 function escapeHtml(s) {
@@ -1169,6 +1792,15 @@ function escapeHtml(s) {
 
 function startGame() {
     try {
+        // Lock check: 題庫 < 20 條時禁止開始
+        const total = QUESTION_BANK.length;
+        const used = getUsedIds();
+        const remaining = total - new Set(used).size;
+        if (remaining < 20) {
+            const c = getCountdownToRefill();
+            alert('⏳ 題目庫不足 (剩餘 ' + remaining + ' 條 < 20)\n\n下一個自動更新：' + c.hours + ' 小時 ' + c.minutes + ' 分鐘後\n\n請稍後再來！');
+            return;
+        }
         state.playerName = $('playerName').value.trim() || '玩家';
         state.currentLevel = 0;
         state.lifelines = { fifty: true, phone: true, audience: true };
@@ -1180,6 +1812,13 @@ function startGame() {
         startBgm();
         updateLifelineButtons();
         renderQuestion();
+        // Track game start
+        trackGameEvent('game_start', {
+            event_label: state.playerName,
+            player_name: state.playerName.slice(0, 32),
+            question_pool_size: QUESTION_BANK.length,
+            archive_size: ARCHIVED_IDS.length
+        });
     } catch (e) {
         console.error('startGame error:', e);
         alert('開始失敗：' + e.message);
@@ -1288,7 +1927,7 @@ function timeoutWrong() {
         btns.forEach(b => b.disabled = true);
         playWrongSound();
         setTimeout(() => {
-            const safeLevel = Math.max(...SAFE_LEVELS.filter(s => s < state.currentLevel), -1);
+            const safeLevel = Math.max(...SAFE_LEVELS.filter(s => s <= state.currentLevel), -1);
             const money = safeLevel >= 0 ? MONEY_LEVELS[safeLevel] : 0;
             showResult(false, money, '時間到！');
         }, 2000);
@@ -1324,11 +1963,21 @@ function finalAnswer() {
     btns[correct].classList.add('correct');
     btns.forEach(b => b.disabled = true);
 
-    if (state.selectedAnswer !== correct) {
+    const isCorrect = state.selectedAnswer === correct;
+    // Track question answer
+    trackGameEvent('question_answered', {
+        event_label: isCorrect ? 'correct' : 'wrong',
+        level: state.currentLevel + 1,
+        level_money: MONEY_LEVELS[state.currentLevel],
+        category: q.cat,
+        correct: isCorrect ? 1 : 0
+    });
+
+    if (!isCorrect) {
         btns[state.selectedAnswer].classList.add('wrong');
         playWrongSound();
         setTimeout(() => {
-            const safeLevel = Math.max(...SAFE_LEVELS.filter(s => s < state.currentLevel), -1);
+            const safeLevel = Math.max(...SAFE_LEVELS.filter(s => s <= state.currentLevel), -1);
             const money = safeLevel >= 0 ? MONEY_LEVELS[safeLevel] : 0;
             showResult(false, money);
         }, 2500);
@@ -1352,6 +2001,13 @@ function useLifeline(type) {
         updateLifelineButtons();
         const q = state.questions[state.currentLevel];
         if (!q) return;
+
+        // Track lifeline usage
+        trackGameEvent('lifeline_used', {
+            event_label: type,
+            lifeline_type: type,
+            level: state.currentLevel + 1
+        });
 
         if (type === 'fifty') {
             const wrong = [0, 1, 2, 3].filter(i => i !== q.a);
@@ -1415,6 +2071,17 @@ function showResult(won, money, reason) {
     stopBgm();
     switchScreen('result');
 
+    // Track game completion
+    const finalLevel = state.currentLevel + (won ? 1 : 0);
+    trackGameEvent('game_complete', {
+        event_label: won ? 'win' : 'lose',
+        won: won ? 1 : 0,
+        final_money: money,
+        final_level: finalLevel,
+        reason: (reason || '').slice(0, 32),
+        player_name: (state.playerName || '').slice(0, 32)
+    });
+
     if (won && money === 1000000) {
         // $1M winner special flow
         playWinSound();
@@ -1437,17 +2104,43 @@ function showResult(won, money, reason) {
         addToLeaderboard(state.playerName, money);
         renderLeaderboard();
     } else {
-        // Normal result
+        // Normal result (v7: render cheque if money > 0)
+        const chequeHtml = (money > 0) ? renderChequeHTML(money, `第 ${state.currentLevel + 1} 題`) : '';
         $('resultContent').innerHTML = `
             <h1 class="${won ? '' : 'lose'}">${won ? '🎉 恭喜！' : '💔 ' + (reason || '差少少...')}</h1>
             <p class="result-msg">${won ? '你贏得了' : '你帶走安全線獎金：'}</p>
             <div class="result-prize">${formatMoney(money)}</div>
+            ${chequeHtml}
+            <button class="download-check-btn" id="downloadCheckBtn" style="${money > 0 ? '' : 'display:none;'}">📷 下載支票圖片</button>
             <button class="back-home-btn" id="backHomeBtn">🏠 返回首頁</button>
         `;
+        if (money > 0) $('downloadCheckBtn').onclick = downloadCheckImage;
         $('backHomeBtn').addEventListener('click', goHome);
-        if (money > 0) addToLeaderboard(state.playerName, money);
+        addToLeaderboard(state.playerName, money);  // v5: 記住所有局 (包括 0 分)
         renderLeaderboard();
     }
+}
+
+function renderChequeHTML(money, levelLabel) {
+    const today = new Date();
+    const dateStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+    const timeStr = `${String(today.getHours()).padStart(2,'0')}:${String(today.getMinutes()).padStart(2,'0')}`;
+    const amountInWords = numberToChinese(money);
+    return `
+        <div id="checkCanvas" class="check-wrapper">
+            <div class="check-header">
+                <div class="logo">HORIZON TEAM</div>
+                <div class="subtitle">TVB 港版百萬富翁 · 模擬支票</div>
+            </div>
+            <div class="check-amount-label">金額 AMOUNT</div>
+            <div class="check-amount">${formatMoney(money)}</div>
+            <div class="check-row"><span class="label">抬頭 PAY TO</span><span>${state.playerName || '玩家'}</span></div>
+            <div class="check-row"><span class="label">遊戲階段</span><span>${levelLabel}</span></div>
+            <div class="check-row"><span class="label">日期 DATE</span><span>${dateStr} ${timeStr}</span></div>
+            <div class="check-row"><span class="label">金額（大寫）</span><span>${amountInWords}</span></div>
+            <div class="check-stamp">HORIZON<br>TEAM<br>VERIFIED</div>
+        </div>
+    `;
 }
 
 function handleWinnerSubmit(e) {
@@ -1473,6 +2166,175 @@ function goHome() {
 }
 
 // ============================================
+// Quit / Walk Away Feature
+// ============================================
+function getSafeLevelPrize(currentLevel) {
+    // v8 (Alan rule): 任何情況只要過咗保險線就拎 safe level
+    // 例: currentLevel=4 (Q5 答錯) → 拎 $8,000 (因為過咗 Q5 safe line)
+    const safeLevel = Math.max(...SAFE_LEVELS.filter(s => s <= currentLevel), -1);
+    return safeLevel >= 0 ? MONEY_LEVELS[safeLevel] : 0;
+}
+
+function showQuitConfirm() {
+    if (!state.questions || state.questions.length === 0) return;
+    const prize = getSafeLevelPrize(state.currentLevel);
+    const previewEl = $('quitPrizePreview');
+    const descEl = $('quitPrizeDesc');
+    if (prize > 0) {
+        previewEl.textContent = formatMoney(prize);
+        if (descEl) descEl.textContent = '安全線獎金';
+    } else {
+        previewEl.textContent = '$0';
+        if (descEl) descEl.textContent = '你仲未過第一條安全線 (Q5)，棄權後唔會拎到任何獎金';
+    }
+    $('quitConfirmModal').classList.add('active');
+    trackGameEvent('quit_attempt', {
+        event_label: 'show_confirm',
+        current_level: state.currentLevel,
+        potential_prize: prize
+    });
+}
+
+function confirmQuit() {
+    closeModal('quitConfirmModal');
+    const prize = getSafeLevelPrize(state.currentLevel);
+    const levelReached = state.currentLevel; // 0-indexed; level just before next question
+    showWalkAwayResult(prize, levelReached);
+}
+
+function showWalkAwayResult(money, levelReached) {
+    clearTimer();
+    stopBgm();
+    switchScreen('result');
+
+    const reason = '你選擇棄權';
+    const finalLevel = levelReached + 1;
+    trackGameEvent('game_complete', {
+        event_label: 'walked_away',
+        won: 0,
+        final_money: money,
+        final_level: finalLevel,
+        reason: reason.slice(0, 32),
+        player_name: (state.playerName || '').slice(0, 32)
+    });
+
+    const today = new Date();
+    const dateStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+    const timeStr = `${String(today.getHours()).padStart(2,'0')}:${String(today.getMinutes()).padStart(2,'0')}`;
+    const level1 = levelReached + 1; // 1-indexed question number
+    let levelLabel;
+    if (level1 <= 4) {
+        levelLabel = `第 ${level1} 題 (未過安全線)`;
+    } else if (level1 === 5) {
+        levelLabel = `第 5 題 🔒 第一安全線`;
+    } else if (level1 <= 9) {
+        levelLabel = `第 ${level1} 題 (已過第一安全線)`;
+    } else if (level1 === 10) {
+        levelLabel = `第 10 題 🔒 第二安全線`;
+    } else {
+        levelLabel = `第 ${level1} 題 (已過第二安全線)`;
+    }
+    const amountInWords = numberToChinese(money);
+
+    const shareUrl = 'https://alan9820.github.io/alan-yoshiki/millionaire.html';
+    const shareText = `我喺 Alan AI 百萬富翁遊戲棄權，帶走 $${money.toLocaleString()} 獎金！💰\n\n你都可以嚟挑戰：${shareUrl}\n\n#HorizonTeam #百萬富翁 #AIAlan`;
+
+    $('resultContent').innerHTML = `
+        <h1 style="color: var(--c-gold);">🚶 你選擇棄權</h1>
+        <p class="result-msg">你帶走安全線獎金：</p>
+
+        <div id="checkCanvas" class="check-wrapper">
+            <div class="check-header">
+                <div class="logo">HORIZON TEAM</div>
+                <div class="subtitle">TVB 港版百萬富翁 · 模擬支票</div>
+            </div>
+            <div class="check-amount-label">金額 AMOUNT</div>
+            <div class="check-amount">${formatMoney(money)}</div>
+            <div class="check-row"><span class="label">抬頭 PAY TO</span><span>${state.playerName || '玩家'}</span></div>
+            <div class="check-row"><span class="label">遊戲階段</span><span>${levelLabel}</span></div>
+            <div class="check-row"><span class="label">日期 DATE</span><span>${dateStr} ${timeStr}</span></div>
+            <div class="check-row"><span class="label">金額（大寫）</span><span>${amountInWords}</span></div>
+            <div class="check-stamp">HORIZON<br>TEAM<br>VERIFIED</div>
+        </div>
+
+        <button class="download-check-btn" id="downloadCheckBtn">📷 下載支票圖片</button>
+
+        <div class="share-section-game">
+            <div class="label">📲 分享你嘅成績</div>
+            <div class="share-buttons-game">
+                <a class="share-btn-game" id="shareWhatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+                <a class="share-btn-game" id="shareTelegram" target="_blank" rel="noopener">✈️ Telegram</a>
+                <a class="share-btn-game" id="shareFacebook" target="_blank" rel="noopener">📘 Facebook</a>
+                <a class="share-btn-game" id="shareTwitter" target="_blank" rel="noopener">🐦 Twitter</a>
+                <a class="share-btn-game" id="shareCopy" href="#">🔗 複製連結</a>
+            </div>
+        </div>
+
+        <button class="back-home-btn" id="backHomeBtn">🏠 返回首頁</button>
+    `;
+
+    // Bind share buttons
+    const encText = encodeURIComponent(shareText);
+    $('shareWhatsapp').href = `https://api.whatsapp.com/send?text=${encText}`;
+    $('shareTelegram').href = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText.split('\n')[0])}`;
+    $('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+    $('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText.split('\n')[0])}&url=${encodeURIComponent(shareUrl)}`;
+    $('shareCopy').onclick = (e) => {
+        e.preventDefault();
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(shareText).then(() => {
+                const btn = $('shareCopy');
+                const orig = btn.innerHTML;
+                btn.innerHTML = '✅ 已複製！';
+                setTimeout(() => { btn.innerHTML = orig; }, 2000);
+            });
+        } else {
+            prompt('複製呢段文字：', shareText);
+        }
+    };
+
+    $('downloadCheckBtn').onclick = downloadCheckImage;
+    $('backHomeBtn').onclick = goHome;
+    addToLeaderboard(state.playerName, money);  // v5: 記住所有局 (包括 0 分)
+    renderLeaderboard();
+}
+
+function downloadCheckImage() {
+    const checkEl = $('checkCanvas');
+    if (!checkEl) return alert('找不到支票元素');
+    // Use html2canvas via CDN
+    if (typeof html2canvas === 'undefined') {
+        const s = document.createElement('script');
+        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+        s.onload = () => doDownloadCheck(checkEl);
+        s.onerror = () => alert('下載功能載入失敗');
+        document.head.appendChild(s);
+    } else {
+        doDownloadCheck(checkEl);
+    }
+}
+
+function doDownloadCheck(el) {
+    html2canvas(el, { backgroundColor: null, scale: 2 }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `HorizonTeam-Check-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        trackGameEvent('check_downloaded', { prize: getSafeLevelPrize(state.currentLevel) });
+    }).catch(err => {
+        console.error('Check download failed:', err);
+        alert('下載失敗：' + err.message);
+    });
+}
+
+function numberToChinese(num) {
+    if (num === 0) return '零元';
+    if (num >= 1000000) return `HK$ ${(num/1000000).toFixed(2)}M`;
+    if (num >= 1000) return `HK$ ${(num/1000).toFixed(1)}K`;
+    return `HK$ ${num.toLocaleString()}`;
+}
+
+// ============================================
 // Global error handler
 // ============================================
 window.addEventListener('error', (e) => {
@@ -1491,6 +2353,9 @@ $('confirmYesBtn').addEventListener('click', finalAnswer);
 $('confirmNoBtn').addEventListener('click', closeConfirm);
 $('audienceCloseBtn').addEventListener('click', () => closeModal('audienceModal'));
 $('phoneCloseBtn').addEventListener('click', () => closeModal('phoneModal'));
+$('quitBtn').addEventListener('click', showQuitConfirm);
+$('quitYesBtn').addEventListener('click', confirmQuit);
+$('quitNoBtn').addEventListener('click', () => closeModal('quitConfirmModal'));
 
 // Init
 async function init() {
@@ -1501,14 +2366,81 @@ async function init() {
 
 function updateBankStatus() {
     const total = QUESTION_BANK.length;
-    const used = getUsedIds();
-    const usedCount = used.length;
+    const used = getUsedIds().length;
     const totalEl = document.getElementById('bankTotal');
     const total2El = document.getElementById('bankTotal2');
     const usedEl = document.getElementById('bankUsed');
     if (totalEl) totalEl.textContent = total;
     if (total2El) total2El.textContent = total;
-    if (usedEl) usedEl.textContent = usedCount;
+    // v9 + v3.1: 改為顯示「已玩 X / 500」令用戶清楚睇到題庫大小
+    if (usedEl) usedEl.textContent = used;
+    checkForceUpdate(total);
+}
+
+// v4: Auto-refill via cron job (00:00 + 12:00 daily). No manual button.
+// When bank < 20, show countdown to next refill.
+
+function getNextRefillTime() {
+    // Next refill at 00:00 or 12:00 HKT
+    const now = new Date();
+    const hkt = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Hong_Kong' }));
+    const hour = hkt.getHours();
+    let next;
+    if (hour < 12) {
+        next = new Date(hkt);
+        next.setHours(12, 0, 0, 0);
+    } else {
+        next = new Date(hkt);
+        next.setDate(next.getDate() + 1);
+        next.setHours(0, 0, 0, 0);
+    }
+    return next;
+}
+
+function getCountdownToRefill() {
+    const now = new Date();
+    const next = getNextRefillTime();
+    const diff = next - now; // ms
+    if (diff <= 0) return { hours: 0, minutes: 0, total_minutes: 0, next };
+    const total_minutes = Math.floor(diff / 60000);
+    const hours = Math.floor(total_minutes / 60);
+    const minutes = total_minutes % 60;
+    return { hours, minutes, total_minutes, next };
+}
+
+function checkForceUpdate(remaining) {
+    const startBtn = document.getElementById('startBtn');
+    const statusEl = document.getElementById('updateBankStatus');
+    if (!startBtn || !statusEl) return;
+
+    if (remaining < 20) {
+        const cd = getCountdownToRefill();
+        // Lock visual (唔覆蓋 onclick — 避免 conflict with addEventListener)
+        startBtn.classList.add('start-btn-locked');
+        startBtn.title = '題目不足，請等下一個自動更新';
+        // Show countdown message
+        statusEl.className = 'update-bank-status pending';
+        statusEl.innerHTML = '⏳ <strong>題目庫不足</strong> (剩餘 ' + remaining + ' 條)<br>下一個自動更新：<strong>' + cd.hours + ' 小時 ' + cd.minutes + ' 分鐘後</strong> (00:00 / 12:00 HKT)';
+        // Update countdown every minute
+        if (!window._countdownInterval) {
+            window._countdownInterval = setInterval(() => {
+                const c = getCountdownToRefill();
+                const el = document.getElementById('updateBankStatus');
+                if (el && el.className.includes('pending')) {
+                    el.innerHTML = '⏳ <strong>題目庫不足</strong> (剩餘 ' + remaining + ' 條)<br>下一個自動更新：<strong>' + c.hours + ' 小時 ' + c.minutes + ' 分鐘後</strong> (00:00 / 12:00 HKT)';
+                }
+            }, 60000);
+        }
+    } else {
+        startBtn.classList.remove('start-btn-locked');
+        startBtn.title = '';
+        statusEl.className = 'update-bank-status';
+        statusEl.innerHTML = '';
+        if (window._countdownInterval) {
+            clearInterval(window._countdownInterval);
+            window._countdownInterval = null;
+        }
+    }
 }
 
 init();
