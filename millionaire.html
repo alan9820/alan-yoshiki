@@ -9,532 +9,1509 @@
   gtag('js', new Date());
   gtag('config', 'G-32X6WDJM63');
 </script>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>百萬富翁 - Who Wants to Be a Millionaire?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>百萬富翁 - 香港版 | Who Wants to Be a Millionaire?</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Microsoft JhengHei', sans-serif; background: linear-gradient(180deg, #0c3483 0%, #1a237e 50%, #0d1442 100%); min-height: 100vh; color: #fff; }
-        .start-screen, .game-screen, .result-screen { display: none; min-height: 100vh; padding: 20px; }
-        .start-screen.active, .game-screen.active, .result-screen.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .start-screen h1 { font-size: 3em; color: #ffd700; text-shadow: 0 0 20px #ffd700; margin-bottom: 10px; animation: glow 2s ease-in-out infinite alternate; }
-        @keyframes glow { from { text-shadow: 0 0 20px #ffd700; } to { text-shadow: 0 0 30px #ffd700, 0 0 60px #ffd700; } }
-        .subtitle { font-size: 1.2em; color: #90caf9; margin-bottom: 30px; }
-        .name-input { background: rgba(255,255,255,0.1); border: 2px solid #ffd700; border-radius: 10px; padding: 15px 30px; font-size: 1.2em; color: #fff; text-align: center; margin-bottom: 20px; width: 300px; }
-        .name-input::placeholder { color: #888; }
-        .start-btn { background: linear-gradient(135deg, #ffd700, #ff8f00); border: none; border-radius: 10px; padding: 15px 50px; font-size: 1.3em; color: #000; cursor: pointer; font-weight: bold; transition: all 0.3s; margin-bottom: 30px; }
-        .start-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px #ffd700; }
-        .category-section { background: rgba(0,0,0,0.3); border-radius: 15px; padding: 20px; margin-bottom: 20px; max-width: 500px; }
-        .category-section h3 { color: #ffd700; margin-bottom: 15px; }
-        .categories { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-        .cat-btn { background: linear-gradient(180deg, #1976d2, #0d47a1); border: 2px solid #42a5f5; border-radius: 20px; padding: 8px 16px; color: #fff; cursor: pointer; transition: all 0.3s; font-size: 0.9em; }
-        .cat-btn:hover { background: linear-gradient(180deg, #2196f3, #1565c0); }
-        .cat-btn.selected { background: linear-gradient(180deg, #ffd700, #ff8f00); border-color: #ffd700; color: #000; }
-        .game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%; max-width: 800px; }
-        .logo { font-size: 1.5em; color: #ffd700; text-shadow: 0 0 10px #ffd700; font-weight: bold; }
-        .player-info { text-align: right; }
-        .player-name { color: #90caf9; font-size: 1.1em; }
-        .player-money { color: #4caf50; font-size: 1.3em; font-weight: bold; }
-        .pyramid-container { display: flex; gap: 20px; margin-bottom: 20px; width: 100%; max-width: 800px; }
-        .pyramid { display: flex; flex-direction: column; gap: 3px; flex: 1; }
-        .pyramid-row { display: flex; align-items: center; gap: 5px; }
-        .pyramid-level { width: 30px; text-align: center; font-size: 0.7em; color: #888; }
-        .pyramid-item { flex: 1; padding: 4px 8px; border-radius: 4px; font-size: 0.7em; text-align: center; background: #333; color: #666; border: 1px solid #444; }
-        .pyramid-item.reached { background: #1b5e20; color: #fff; border-color: #4caf50; }
-        .pyramid-item.current { background: #ffd700; color: #000; border-color: #ffd700; font-weight: bold; box-shadow: 0 0 10px #ffd700; animation: pulse 1s ease-in-out infinite; }
-        @keyframes pulse { 0%, 100% { box-shadow: 0 0 10px #ffd700; } 50% { box-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700; } }
-        .question-area { background: linear-gradient(180deg, #1565c0, #0d47a1); border-radius: 15px; padding: 30px; margin-bottom: 20px; border: 2px solid #42a5f5; width: 100%; max-width: 800px; }
-        .question-number { color: #ffd700; font-size: 1em; margin-bottom: 10px; }
-        .question-text { color: #fff; font-size: 1.5em; line-height: 1.5; margin-bottom: 25px; }
-        .answers { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .answer-btn { background: linear-gradient(180deg, #1976d2, #0d47a1); border: 2px solid #42a5f5; border-radius: 10px; padding: 15px 20px; color: #fff; font-size: 1em; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 10px; text-align: left; }
-        .answer-btn:hover:not(:disabled) { background: linear-gradient(180deg, #2196f3, #1565c0); transform: scale(1.02); box-shadow: 0 0 15px rgba(33,150,243,0.5); }
-        .answer-btn:disabled { cursor: not-allowed; opacity: 0.7; }
-        .answer-btn.selected { background: linear-gradient(180deg, #ff9800, #f57c00) !important; border-color: #ffb74d !important; box-shadow: 0 0 20px rgba(255,152,0,0.5); }
-        .answer-btn.correct { background: linear-gradient(180deg, #4caf50, #2e7d32) !important; border-color: #81c784 !important; box-shadow: 0 0 20px rgba(76,175,80,0.5); }
-        .answer-btn.wrong { background: linear-gradient(180deg, #f44336, #c62828) !important; border-color: #ef5350 !important; box-shadow: 0 0 20px rgba(244,67,54,0.5); }
+        /* ============================================
+           TVB 港版「百萬富翁」v2 - 手機優化
+           ============================================ */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        :root {
+            --c-purple-deep: #1a0938;
+            --c-purple-mid: #2d1b4e;
+            --c-purple-light: #4a2c6e;
+            --c-gold: #ffd700;
+            --c-gold-dark: #b8860b;
+            --c-gold-light: #ffed4e;
+            --c-black: #000;
+            --c-red: #d32f2f;
+            --c-green: #2e7d32;
+            --c-timer-ok: #4caf50;
+            --c-timer-warn: #ff9800;
+            --c-timer-crit: #f44336;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Microsoft JhengHei', 'Heiti TC', sans-serif;
+            background: radial-gradient(ellipse at center, #2d1b4e 0%, #1a0938 40%, #000 100%);
+            color: #fff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body { min-height: 100vh; overflow-y: auto; }
+
+        /* === Studio 背景 === */
+        .studio-floor {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 200px;
+            background:
+                linear-gradient(to top, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, transparent 0%, rgba(45, 27, 78, 0.5) 100%);
+            pointer-events: none; z-index: 0;
+        }
+        .spotlight {
+            position: fixed; top: -50px; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 100vh;
+            background: radial-gradient(ellipse at top, rgba(255, 215, 0, 0.15) 0%, transparent 60%);
+            pointer-events: none; z-index: 0;
+            animation: spotlight-pulse 4s ease-in-out infinite;
+        }
+        @keyframes spotlight-pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* === Screens === */
+        .screen {
+            display: none;
+            min-height: 100vh;
+            padding: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        .screen.active {
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .screen.center { justify-content: center; }
+
+        /* === Mute button (top-right) === */
+        .mute-btn {
+            position: fixed;
+            top: 8px;
+            right: 8px;
+            z-index: 100;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.65);
+            border: 1.5px solid var(--c-gold);
+            color: var(--c-gold);
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            transition: all 0.2s;
+        }
+        .mute-btn:hover { background: var(--c-gold); color: #000; }
+        .mute-btn.muted { opacity: 0.5; }
+
+        /* === TVB 港版 Logo === */
+        .tvb-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--c-gold);
+            border-radius: 6px;
+            font-size: 0.85em;
+            color: var(--c-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* === Title === */
+        .title-banner { text-align: center; margin-bottom: 16px; }
+        .millionaire-title {
+            font-size: 3.2em;
+            font-weight: 900;
+            color: var(--c-gold);
+            text-shadow: 0 0 20px var(--c-gold), 0 0 40px var(--c-gold-dark), 2px 2px 0 var(--c-gold-dark);
+            letter-spacing: 4px;
+            font-style: italic;
+            line-height: 1;
+            margin-bottom: 6px;
+            animation: title-glow 3s ease-in-out infinite alternate;
+        }
+        @keyframes title-glow {
+            from { text-shadow: 0 0 20px var(--c-gold), 0 0 40px var(--c-gold-dark), 2px 2px 0 var(--c-gold-dark); }
+            to { text-shadow: 0 0 30px var(--c-gold), 0 0 60px var(--c-gold), 2px 2px 0 var(--c-gold-dark); }
+        }
+        .millionaire-dollars {
+            display: flex; justify-content: center; gap: 16px;
+            font-size: 2em; color: var(--c-gold);
+            text-shadow: 0 0 15px var(--c-gold);
+            margin-bottom: 12px;
+        }
+        .subtitle {
+            font-size: 0.9em; color: var(--c-gold-light);
+            letter-spacing: 2px; font-style: italic;
+        }
+
+        /* === Inputs === */
+        .name-input, .email-input {
+            background: rgba(0,0,0,0.6);
+            border: 2px solid var(--c-gold);
+            border-radius: 10px;
+            padding: 14px 24px;
+            font-size: 1.1em;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 14px;
+            width: 100%;
+            max-width: 320px;
+            font-family: inherit;
+        }
+        .name-input::placeholder, .email-input::placeholder { color: #888; }
+        .name-input:focus, .email-input:focus {
+            outline: none; box-shadow: 0 0 20px var(--c-gold);
+        }
+
+        /* === Buttons === */
+        .start-btn {
+            background: linear-gradient(135deg, var(--c-gold), var(--c-gold-dark));
+            border: 2px solid var(--c-gold-light);
+            border-radius: 50px;
+            padding: 16px 50px;
+            font-size: 1.2em;
+            color: var(--c-black);
+            font-weight: 900;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 20px rgba(255,215,0,0.5);
+            margin: 14px 0;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .start-btn:active { transform: scale(0.97); }
+
+        .secondary-btn, .primary-btn {
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 6px;
+            font-family: inherit;
+        }
+        .secondary-btn {
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            border: 1px solid var(--c-gold);
+        }
+        .primary-btn {
+            background: linear-gradient(135deg, var(--c-gold), var(--c-gold-dark));
+            color: var(--c-black);
+            border: 1px solid var(--c-gold-light);
+        }
+
+        /* === Leaderboard === */
+        .leaderboard-section {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 24px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--c-gold-dark);
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .leaderboard-section h3 {
+            color: var(--c-gold);
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        .leaderboard-list {
+            list-style: none;
+        }
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255,215,0,0.1);
+            font-size: 0.95em;
+        }
+        .leaderboard-item:last-child { border-bottom: none; }
+        .leaderboard-rank {
+            min-width: 28px;
+            text-align: center;
+            font-weight: 900;
+            color: var(--c-gold);
+        }
+        .leaderboard-rank.top-1 { color: #ffd700; font-size: 1.3em; }
+        .leaderboard-rank.top-2 { color: #c0c0c0; }
+        .leaderboard-rank.top-3 { color: #cd7f32; }
+        .leaderboard-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .leaderboard-score {
+            color: #4caf50;
+            font-weight: 700;
+        }
+        .leaderboard-empty {
+            text-align: center;
+            color: #888;
+            font-size: 0.9em;
+            padding: 16px;
+            font-style: italic;
+        }
+        .bank-status {
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--c-gold-dark);
+            border-radius: 8px;
+            color: var(--c-gold-light);
+            font-size: 0.85em;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .bank-status span { color: var(--c-gold); font-weight: 700; }
+
+        /* === Game screen === */
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            width: 100%;
+            max-width: 800px;
+            padding: 10px 56px 10px 16px; /* 右上留位給 mute btn */
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--c-gold-dark);
+            border-radius: 10px;
+        }
+        .game-header .logo {
+            font-size: 1em;
+            color: var(--c-gold);
+            font-weight: 700;
+            font-style: italic;
+        }
+        .player-info { text-align: right; font-size: 0.85em; }
+        .player-name { color: var(--c-gold-light); }
+        .player-money { color: #4caf50; font-size: 1.1em; font-weight: 800; }
+
+        /* === Timer === */
+        .timer-bar {
+            width: 100%;
+            max-width: 800px;
+            height: 10px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 8px;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+        .timer-fill {
+            height: 100%;
+            background: var(--c-timer-ok);
+            transition: width 1s linear, background 0.5s;
+            width: 100%;
+        }
+        .timer-fill.warn { background: var(--c-timer-warn); }
+        .timer-fill.crit {
+            background: var(--c-timer-crit);
+            animation: pulse-crit 0.5s ease-in-out infinite;
+        }
+        @keyframes pulse-crit {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .timer-text {
+            text-align: center;
+            font-size: 1em;
+            color: var(--c-gold);
+            margin-bottom: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .timer-text.warn { color: var(--c-timer-warn); }
+        .timer-text.crit { color: var(--c-timer-crit); }
+
+        /* === Money display (above question) === */
+        .current-prize {
+            text-align: center;
+            margin-bottom: 12px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .current-prize-label {
+            font-size: 0.85em;
+            color: var(--c-gold-light);
+            letter-spacing: 2px;
+            margin-bottom: 2px;
+        }
+        .current-prize-amount {
+            font-size: 2.4em;
+            color: var(--c-gold);
+            font-weight: 900;
+            font-style: italic;
+            text-shadow: 0 0 20px var(--c-gold);
+            letter-spacing: 2px;
+        }
+        .current-prize.safe-mark::after {
+            content: ' 🛡';
+            font-size: 0.5em;
+            color: var(--c-gold-light);
+        }
+
+        /* === Lifelines === */
+        .lifelines {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+        .lifeline-btn {
+            background: linear-gradient(180deg, var(--c-purple-light), var(--c-purple-mid));
+            border: 2px solid var(--c-gold);
+            border-radius: 50px;
+            padding: 10px 16px;
+            color: #fff;
+            font-size: 0.85em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .lifeline-btn:active:not(:disabled) {
+            background: var(--c-gold);
+            color: #000;
+            transform: scale(0.95);
+        }
+        .lifeline-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        /* === Question area === */
+        .question-area {
+            background: linear-gradient(180deg, rgba(45, 27, 78, 0.95), rgba(26, 9, 56, 0.95));
+            border: 2px solid var(--c-gold);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 20px rgba(255,215,0,0.3);
+            width: 100%;
+            max-width: 800px;
+        }
+        .question-number {
+            color: var(--c-gold);
+            font-size: 0.85em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        .question-text {
+            color: #fff;
+            font-size: 1.1em;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        .answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .answer-btn {
+            background: linear-gradient(180deg, var(--c-purple-light), var(--c-purple-mid));
+            border: 2px solid var(--c-gold-dark);
+            border-radius: 8px;
+            padding: 12px 14px;
+            color: #fff;
+            font-size: 0.9em;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: inherit;
+            min-height: 48px;
+            transition: all 0.2s;
+        }
+        .answer-btn:active:not(:disabled) {
+            background: linear-gradient(180deg, var(--c-gold), var(--c-gold-dark)) !important;
+            color: var(--c-black) !important;
+            transform: scale(0.98);
+        }
+        .answer-btn:disabled { cursor: not-allowed; }
+        .answer-btn.selected { background: linear-gradient(180deg, var(--c-gold), var(--c-gold-dark)) !important; color: var(--c-black) !important; }
+        .answer-btn.correct { background: var(--c-green) !important; border-color: #66bb6a !important; }
+        .answer-btn.wrong { background: var(--c-red) !important; border-color: #ef5350 !important; }
         .answer-btn.eliminated { visibility: hidden; height: 0; padding: 0; margin: 0; border: none; }
-        .answer-letter { background: #0d47a1; padding: 5px 12px; border-radius: 5px; font-weight: bold; min-width: 35px; text-align: center; }
-        .lifelines { display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; }
-        .lifeline-btn { background: linear-gradient(180deg, #7b1fa2, #4a148c); border: 2px solid #ba68c8; border-radius: 10px; padding: 12px 25px; color: #fff; cursor: pointer; transition: all 0.3s; font-size: 1em; }
-        .lifeline-btn:hover:not(:disabled) { transform: scale(1.05); box-shadow: 0 0 15px rgba(156,39,176,0.5); }
-        .lifeline-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-        .confirm-modal, .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 1000; }
-        .confirm-modal.active, .modal.active { display: flex; }
-        .confirm-content, .modal-content { background: linear-gradient(180deg, #1a237e, #0d1442); border: 3px solid #ffd700; border-radius: 20px; padding: 30px; max-width: 450px; width: 90%; text-align: center; box-shadow: 0 0 50px rgba(255,215,0,0.3); }
-        .confirm-content h2, .modal h2 { color: #ffd700; margin-bottom: 15px; font-size: 1.5em; }
-        .confirm-content p, .modal p { color: #fff; margin-bottom: 10px; font-size: 1.1em; }
-        .confirm-question { background: rgba(0,0,0,0.3); border-radius: 10px; padding: 15px; margin: 15px 0; font-size: 1.2em; color: #fff; }
-        .confirm-answer { color: #4caf50 !important; font-size: 1.4em !important; font-weight: bold; margin-top: 15px !important; }
-        .confirm-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
-        .confirm-yes { background: linear-gradient(135deg, #4caf50, #2e7d32); border: none; border-radius: 10px; padding: 12px 35px; color: #fff; font-size: 1.1em; cursor: pointer; font-weight: bold; transition: all 0.3s; }
-        .confirm-yes:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(76,175,80,0.5); }
-        .confirm-no { background: linear-gradient(135deg, #f44336, #c62828); border: none; border-radius: 10px; padding: 12px 35px; color: #fff; font-size: 1.1em; cursor: pointer; font-weight: bold; transition: all 0.3s; }
-        .confirm-no:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(244,67,54,0.5); }
-        .modal-close { background: #666; border: none; border-radius: 8px; padding: 10px 30px; color: #fff; cursor: pointer; margin-top: 10px; }
-        .audience-bar { display: flex; align-items: flex-end; gap: 10px; height: 150px; justify-content: center; margin: 20px 0; }
-        .audience-bar div { width: 40px; background: linear-gradient(180deg, #667eea, #764ba2); border-radius: 5px 5px 0 0; display: flex; justify-content: center; color: #fff; font-size: 0.8em; }
-        .phone-animation { font-size: 3em; animation: shake 0.5s infinite; }
-        @keyframes shake { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-15deg); } 75% { transform: rotate(15deg); } }
-        .result-title { font-size: 2.5em; color: #ffd700; text-shadow: 0 0 20px #ffd700; margin-bottom: 20px; }
-        .result-title.lose { color: #f44336; text-shadow: 0 0 20px #f44336; }
-        .result-message { font-size: 1.3em; color: #fff; margin-bottom: 20px; }
-        .result-prize { font-size: 3em; color: #4caf50; margin-bottom: 30px; }
-        .back-home-btn { background: linear-gradient(135deg, #ffd700, #ff8f00); border: none; border-radius: 10px; padding: 15px 40px; font-size: 1.2em; color: #000; cursor: pointer; font-weight: bold; transition: all 0.3s; }
-        .back-home-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px #ffd700; }
-        .loading-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 2000; flex-direction: column; }
-        .loading-overlay.active { display: flex; }
-        .loading-spinner { width: 60px; height: 60px; border: 4px solid rgba(255,215,0,0.3); border-top-color: #ffd700; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .loading-text { color: #ffd700; font-size: 1.2em; }
-        .leaderboard { background: rgba(0,0,0,0.3); border-radius: 15px; padding: 20px; max-width: 400px; width: 100%; }
-        .leaderboard h3 { color: #ffd700; margin-bottom: 15px; }
-        .leaderboard-list { list-style: none; }
-        .leaderboard-list li { display: flex; justify-content: space-between; padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .leaderboard-list li:nth-child(1) { color: #ffd700; }
-        .leaderboard-list li:nth-child(2) { color: #c0c0c0; }
-        .leaderboard-list li:nth-child(3) { color: #cd7f32; }
-        .leaderboard-empty { color: #888; text-align: center; padding: 20px; }
-        @media (max-width: 600px) { .answers { grid-template-columns: 1fr; } .pyramid-container { flex-direction: column; } .start-screen h1 { font-size: 2em; } .question-text { font-size: 1.2em; } }
+        .answer-letter {
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 900;
+            min-width: 28px;
+            text-align: center;
+            color: var(--c-gold);
+            font-size: 0.9em;
+        }
+
+        /* === Modals === */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 16px;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: linear-gradient(180deg, var(--c-purple-mid), var(--c-purple-deep));
+            border: 3px solid var(--c-gold);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255,215,0,0.5);
+        }
+        .modal-content h2 { color: var(--c-gold); margin-bottom: 12px; font-size: 1.4em; }
+        .modal-content p { color: #fff; margin-bottom: 10px; font-size: 1em; }
+        .modal-close {
+            background: var(--c-purple-light);
+            border: 2px solid var(--c-gold);
+            border-radius: 8px;
+            padding: 10px 28px;
+            color: var(--c-gold);
+            font-weight: 700;
+            margin-top: 12px;
+            font-family: inherit;
+        }
+
+        /* === Result screen === */
+        .result-content {
+            text-align: center;
+            background: rgba(0,0,0,0.6);
+            border: 3px solid var(--c-gold);
+            border-radius: 16px;
+            padding: 30px 20px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 0 50px rgba(255,215,0,0.5);
+        }
+        .result-content h1 {
+            font-size: 2.5em;
+            color: var(--c-gold);
+            margin-bottom: 16px;
+            font-style: italic;
+            text-shadow: 0 0 20px var(--c-gold);
+        }
+        .result-content h1.lose { color: #f44336; text-shadow: 0 0 20px #f44336; }
+        .result-msg { color: #fff; font-size: 1.2em; margin-bottom: 16px; }
+        .result-prize {
+            color: var(--c-gold);
+            font-size: 2.2em;
+            font-weight: 900;
+            margin: 16px 0;
+            text-shadow: 0 0 20px var(--c-gold);
+        }
+        .back-home-btn {
+            background: linear-gradient(180deg, var(--c-purple-light), var(--c-purple-mid));
+            border: 2px solid var(--c-gold);
+            border-radius: 10px;
+            padding: 12px 30px;
+            color: var(--c-gold);
+            font-size: 1em;
+            font-weight: 700;
+            margin-top: 16px;
+            font-family: inherit;
+        }
+
+        /* === $1M winner special === */
+        .winner-prize {
+            background: linear-gradient(135deg, var(--c-gold) 0%, #ff8f00 100%);
+            color: var(--c-black);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 2em;
+            font-weight: 900;
+            margin: 16px 0;
+            animation: winner-pulse 1s ease-in-out infinite;
+        }
+        @keyframes winner-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px var(--c-gold); }
+            50% { transform: scale(1.05); box-shadow: 0 0 40px var(--c-gold); }
+        }
+        .email-form {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--c-gold);
+            border-radius: 10px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+
+        /* === Audio bar (bottom) === */
+        .money-tooltip {
+            position: fixed;
+            bottom: 4px;
+            right: 8px;
+            color: var(--c-gold-dark);
+            font-size: 0.6em;
+            opacity: 0.4;
+        }
+
+        /* === Responsive === */
+        @media (max-width: 600px) {
+            body { font-size: 14px; }
+            .screen { padding: 12px; }
+            .millionaire-title { font-size: 2.4em; letter-spacing: 2px; }
+            .millionaire-dollars { font-size: 1.4em; gap: 10px; }
+            .start-btn { padding: 14px 40px; font-size: 1.1em; }
+            .current-prize-amount { font-size: 1.8em; }
+            .answers { grid-template-columns: 1fr; }
+            .question-text { font-size: 1em; }
+            .lifeline-btn { padding: 8px 12px; font-size: 0.8em; }
+            .result-content { padding: 20px 16px; }
+            .result-content h1 { font-size: 1.8em; }
+            .result-prize, .winner-prize { font-size: 1.6em; padding: 12px 20px; }
+            .timer-text { font-size: 0.85em; }
+        }
     </style>
 </head>
 <body>
-    <audio id="bgm" loop preload="auto">
-        <source src="millionaire_theme.mp3" type="audio/mpeg">
-    </audio>
-    <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div><div class="loading-text">🎮 載入題目中...</div></div>
-    
-    <!-- Start Screen -->
-    <div class="start-screen active" id="startScreen">
-        <h1>🎰 百萬富翁</h1>
+
+<div class="spotlight"></div>
+<div class="studio-floor"></div>
+<button id="muteBtn" class="mute-btn" title="開關音樂">🔊</button>
+
+<!-- 開始畫面 -->
+<section id="startScreen" class="screen active center">
+    <div class="tvb-logo">📺 TVB 港版</div>
+    <div class="title-banner">
+        <h1 class="millionaire-title">百萬富翁</h1>
+        <div class="millionaire-dollars">$ $ $ $</div>
         <p class="subtitle">Who Wants to Be a Millionaire?</p>
-        <input type="text" class="name-input" id="playerName" placeholder="輸入你的名字" maxlength="20">
-        <button class="start-btn" onclick="startGame()">開始遊戲</button>
-        <div class="category-section">
-            <h3>📚 選擇題目類別</h3>
-            <div class="categories">
-                <button class="cat-btn selected" data-cat="隨機">🎲 隨機</button>
-                <button class="cat-btn" data-cat="金融">💰 金融</button>
-                <button class="cat-btn" data-cat="卡通">🎨 卡通</button>
-                <button class="cat-btn" data-cat="新聞">📰 新聞</button>
-                <button class="cat-btn" data-cat="地理">🌍 地理</button>
-                <button class="cat-btn" data-cat="天文">🔭 天文</button>
-                <button class="cat-btn" data-cat="教育">📖 教育</button>
-                <button class="cat-btn" data-cat="音樂">🎵 音樂</button>
-                <button class="cat-btn" data-cat="電影">🎬 電影</button>
-                <button class="cat-btn" data-cat="食物">🍜 食物</button>
-                <button class="cat-btn" data-cat="國家">🏳️ 國家</button>
-            </div>
-        </div>
-        <div class="leaderboard">
-            <h3>🏆 排行榜 Top 10</h3>
-            <ul class="leaderboard-list" id="leaderboardList"><li class="leaderboard-empty">載入中...</li></ul>
+    </div>
+    <input type="text" id="playerName" class="name-input" placeholder="輸入玩家名稱" maxlength="20">
+    <button class="start-btn" id="startBtn">▶ 開始挑戰</button>
+
+    <div class="leaderboard-section">
+        <h3>🏆 玩家排行榜 (頭 10 名)</h3>
+        <ul id="leaderboardList" class="leaderboard-list"></ul>
+    </div>
+    <div class="bank-status" id="bankStatus">
+        📚 題目庫：<span id="bankTotal">--</span> 條 ｜ 已玩 <span id="bankUsed">--</span> / <span id="bankTotal2">--</span>
+    </div>
+</section>
+
+<!-- 遊戲畫面 -->
+<section id="gameScreen" class="screen">
+    <div class="game-header">
+        <div class="logo">💰 百萬富翁</div>
+        <div class="player-info">
+            <div class="player-name" id="displayName">玩家</div>
+            <div class="player-money" id="displayMoney">$0</div>
         </div>
     </div>
 
-    <!-- Game Screen -->
-    <div class="game-screen" id="gameScreen">
-        <div class="game-header">
-            <div class="logo">🎰 百萬富翁</div>
-            <div class="player-info">
-                <div class="player-name" id="displayName">玩家</div>
-                <div class="player-money" id="currentMoney">$100</div>
-            </div>
-        </div>
-        <div class="pyramid-container">
-            <div class="pyramid" id="pyramid"></div>
-        </div>
-        <div class="question-area">
-            <div class="question-number" id="questionNumber">第 1 題</div>
-            <div class="question-text" id="questionText">題目載入中...</div>
-            <div class="answers" id="answers"></div>
-        </div>
-        <div class="lifelines">
-            <button class="lifeline-btn" id="fiftyBtn" onclick="useLifeline('fifty')">💡 50/50</button>
-            <button class="lifeline-btn" id="phoneBtn" onclick="useLifeline('phone')">📞 打電話</button>
-            <button class="lifeline-btn" id="audienceBtn" onclick="useLifeline('audience')">👥 觀眾</button>
-        </div>
+    <div class="timer-text" id="timerText">⏱️ 30s</div>
+    <div class="timer-bar"><div class="timer-fill" id="timerFill"></div></div>
+
+    <div class="current-prize" id="currentPrize">
+        <div class="current-prize-label">第 1 題獎金</div>
+        <div class="current-prize-amount">$100</div>
     </div>
 
-    <!-- Result Screen -->
-    <div class="result-screen" id="resultScreen">
-        <h2 class="result-title" id="resultTitle">🎉 恭喜！</h2>
-        <p class="result-message" id="resultMessage">你贏得了 $0</p>
-        <div class="result-prize" id="resultPrize"></div>
-        <button class="back-home-btn" onclick="goHome()">🏠 返回首頁</button>
+    <div class="lifelines">
+        <button class="lifeline-btn" id="fiftyBtn">💡 50:50</button>
+        <button class="lifeline-btn" id="phoneBtn">📞 問朋友</button>
+        <button class="lifeline-btn" id="audienceBtn">👥 觀眾</button>
     </div>
 
-    <!-- Confirm Modal -->
-    <div class="confirm-modal" id="confirmModal">
-        <div class="confirm-content">
-            <h2>⚠️ 最終確認</h2>
-            <p>你確定要選擇呢個答案嗎？</p>
-            <div class="confirm-question" id="confirmQuestion">題目</div>
-            <div class="confirm-answer" id="confirmAnswer">答案</div>
-            <div class="confirm-buttons">
-                <button class="confirm-yes" onclick="confirmAnswer()">✓ 確定</button>
-                <button class="confirm-no" onclick="cancelAnswer()">✗ 取消</button>
-            </div>
+    <div class="question-area">
+        <div class="question-number" id="questionNumber">第 1 題</div>
+        <div class="question-text" id="questionText">題目載入中...</div>
+        <div class="answers" id="answers"></div>
+    </div>
+</section>
+
+<!-- 結果畫面 -->
+<section id="resultScreen" class="screen center">
+    <div class="result-content" id="resultContent">
+        <!-- 動態生成 -->
+    </div>
+</section>
+
+<!-- 確認答案 modal -->
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <h2>🔒 最終確認</h2>
+        <p>你揀嘅答案係：</p>
+        <div class="confirm-question" id="confirmQuestion"></div>
+        <div class="confirm-answer" id="confirmAnswer"></div>
+        <p style="color: var(--c-gold-light); font-size: 0.85em;">⚠️ 確認後唔可以更改</p>
+        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 16px;">
+            <button class="primary-btn" id="confirmYesBtn">✓ 確定</button>
+            <button class="secondary-btn" id="confirmNoBtn">✗ 取消</button>
         </div>
     </div>
+</div>
 
-    <!-- Audience Modal -->
-    <div class="modal" id="audienceModal">
-        <div class="modal-content">
-            <h2>👥 觀眾投票</h2>
-            <div class="audience-bar" id="audienceBar"></div>
-            <p id="audienceQuestion">問題</p>
-            <p id="audienceAdvice">觀眾建議：</p>
-            <button class="modal-close" onclick="closeModal('audienceModal')">關閉</button>
+<!-- 觀眾 modal -->
+<div id="audienceModal" class="modal">
+    <div class="modal-content">
+        <h2>👥 觀眾投票</h2>
+        <div id="audienceBar" style="margin: 16px 0;"></div>
+        <button class="modal-close" id="audienceCloseBtn">關閉</button>
+    </div>
+</div>
+
+<!-- 電話 modal -->
+<div id="phoneModal" class="modal">
+    <div class="modal-content">
+        <h2>📞 問朋友</h2>
+        <div id="phoneContent" style="margin: 16px 0;"></div>
+        <button class="modal-close" id="phoneCloseBtn">關閉</button>
+    </div>
+</div>
+
+<!-- $1M 冠軍 modal -->
+<div id="winnerModal" class="modal">
+    <div class="modal-content">
+        <h2>🏆 你係百萬富翁！</h2>
+        <div class="winner-prize">$1,000,000</div>
+        <p>🎉 恭喜晒！</p>
+        <p style="color: var(--c-gold-light); font-size: 0.9em;">請留低 email，我哋會有專人聯絡你送獎</p>
+        <form id="winnerForm" class="email-form">
+            <input type="email" id="winnerEmail" class="email-input" placeholder="your@email.com" required>
+            <button type="submit" class="primary-btn" style="width: 100%; margin-top: 8px;">📧 提交</button>
+        </form>
+        <div id="winnerThanks" style="display: none; margin-top: 16px; color: #4caf50;">
+            ✅ 已收到！我哋會盡快聯絡你。
         </div>
     </div>
+</div>
 
-    <!-- Phone Modal -->
-    <div class="modal" id="phoneModal">
-        <div class="modal-content">
-            <h2>📞 打電話俾朋友</h2>
-            <div class="phone-animation">📱</div>
-            <p id="phoneQuestion">問題</p>
-            <p id="phoneAnswer">朋友答案：</p>
-            <button class="modal-close" onclick="closeModal('phoneModal')">關閉</button>
-        </div>
-    </div>
+<div class="money-tooltip">TVB 港版百萬富翁 | HorizonTeam</div>
 
-    <script>
+<!-- BGM: WWTBAM theme music -->
+<audio id="bgm" loop preload="auto" src="millionaire_theme.mp3"></audio>
+
+<script>
+// ============================================
+// 200 題題庫 (12 類別，唔重複追蹤)
+// 優先從 questions.json load (可以隨時 update)，fetch 失敗才用 embedded
+// ============================================
+const EMBEDDED_QUESTIONS = [
+  // 金融 (17)
+  { id: 'fin-01', cat: '金融', q: '香港嘅法定貨幣係咩？', opts: ['美元','英鎊','港幣','澳門幣'], a: 2 },
+  { id: 'fin-02', cat: '金融', q: '香港交易所嘅股票代號係邊個？', opts: ['HKE','HKEX','SEHK','HKS'], a: 1 },
+  { id: 'fin-03', cat: '金融', q: '金管局全稱係咩？', opts: ['金融管理局','金融監督處','投資推廣署','貿易發展局'], a: 0 },
+  { id: 'fin-04', cat: '金融', q: '港幣兌美元聯繫匯率大約係幾多？', opts: ['7.5','7.8','8.0','7.85'], a: 1 },
+  { id: 'fin-05', cat: '金融', q: '香港最大嘅銀行係邊間？', opts: ['匯豐','渣打','恒生','東亞'], a: 0 },
+  { id: 'fin-06', cat: '金融', q: 'Bitcoin 由邊個發明？', opts: ['中本聰','Vitalik','Satoshi','未公開'], a: 0 },
+  { id: 'fin-07', cat: '金融', q: 'Bitcoin 總量上限係幾多？', opts: ['1000萬','2100萬','1億','無限'], a: 1 },
+  { id: 'fin-08', cat: '金融', q: 'NASDAQ 總部喺邊個城市？', opts: ['紐約','三藩市','芝加哥','洛杉磯'], a: 0 },
+  { id: 'fin-09', cat: '金融', q: 'Ethereum 創辦人係邊個？', opts: ['Vitalik Buterin','中本聰','CZ','Sam Bankman-Fried'], a: 0 },
+  { id: 'fin-10', cat: '金融', q: 'Apple 股票代號係咩？', opts: ['APPL','AAPL','APL','AP'], a: 1 },
+  { id: 'fin-11', cat: '金融', q: 'Tesla 股票代號係咩？', opts: ['TSL','TSLA','TS','TES'], a: 1 },
+  { id: 'fin-12', cat: '金融', q: '恒生指數由幾多隻成份股組成？', opts: ['50','82','100','200'], a: 1 },
+  { id: 'fin-13', cat: '金融', q: '黃金 1 公斤等於幾多盎司？', opts: ['32.15','35.27','28.35','40.00'], a: 0 },
+  { id: 'fin-14', cat: '金融', q: 'Bitcoin 區塊鏈平均每幾多分鐘出塊？', opts: ['1','5','10','60'], a: 2 },
+  { id: 'fin-15', cat: '金融', q: '香港最早嘅鈔票由邊間銀行發行？', opts: ['匯豐','渣打','東亞','大新'], a: 0 },
+  { id: 'fin-16', cat: '金融', q: 'IPO 全稱係咩？', opts: ['首次公開募股','股票買賣權','內部配售','私人投資'], a: 0 },
+  { id: 'fin-17', cat: '金融', q: '香港聯交所主板上市最低盈利要求？', opts: ['1000萬','2000萬','5000萬','1億'], a: 1 },
+
+  // 卡通 (17)
+  { id: 'cart-01', cat: '卡通', q: '《多啦A夢》主角大雄養嘅機械貓叫咩名？', opts: ['多啦A夢','加菲貓','Hello Kitty','Tom'], a: 0 },
+  { id: 'cart-02', cat: '卡通', q: '《海賊王》主角叫咩名？', opts: ['索隆','路飛','娜美','香吉士'], a: 1 },
+  { id: 'cart-03', cat: '卡通', q: '孫悟空變身超級撒亞人時頭髮變咩色？', opts: ['藍色','紅色','金色','白色'], a: 2 },
+  { id: 'cart-04', cat: '卡通', q: '《火影忍者》主角叫咩名？', opts: ['佐助','卡卡西','鳴人','小李'], a: 2 },
+  { id: 'cart-05', cat: '卡通', q: '邊個唔係《少年Jump》嘅代表作？', opts: ['火影忍者','死神','麵包超人','ONE PIECE'], a: 2 },
+  { id: 'cart-06', cat: '卡通', q: '《蠟筆小新》主角叫咩名？', opts: ['小新','小丸子','阿笨','大雄'], a: 0 },
+  { id: 'cart-07', cat: '卡通', q: '《IQ博士》主角叫咩名？', opts: ['多啦A夢','小丸子','阿拉蕾','小新'], a: 2 },
+  { id: 'cart-08', cat: '卡通', q: '《櫻桃小丸子》作者係邊個？', opts: ['臼井儀人','櫻桃子','鳥山明','尾田榮一郎'], a: 1 },
+  { id: 'cart-09', cat: '卡通', q: '《名偵探柯南》主角工藤新一變咗邊個？', opts: ['怪盗基德','柯南','服部平次','灰原哀'], a: 1 },
+  { id: 'cart-10', cat: '卡通', q: '《寵物小精靈》主角叫咩名？', opts: ['小智','小茂','小剛','小霞'], a: 0 },
+  { id: 'cart-11', cat: '卡通', q: 'Pikachu 係咩類型精靈？', opts: ['火','水','電','草'], a: 2 },
+  { id: 'cart-12', cat: '卡通', q: 'Hello Kitty 屬於邊個品牌？', opts: ['Disney','Sanrio','San-X','Bandai'], a: 1 },
+  { id: 'cart-13', cat: '卡通', q: '《史力加》主角係咩生物？', opts: ['恐龍','龍貓','樹人','食人魔'], a: 3 },
+  { id: 'cart-14', cat: '卡通', q: '《龍珠》悟空嘅師父叫咩名？', opts: ['比達','笛子魔童','龜仙人','克林'], a: 2 },
+  { id: 'cart-15', cat: '卡通', q: '《鬼滅之刃》主角叫咩名？', opts: ['炭治郎','善逸','伊之助','義勇'], a: 0 },
+  { id: 'cart-16', cat: '卡通', q: '《進擊嘅巨人》主角叫咩名？', opts: ['艾倫','米卡莎','阿爾敏','里維'], a: 0 },
+  { id: 'cart-17', cat: '卡通', q: '邊個係宮崎駿嘅作品？', opts: ['千與千尋','七龍珠','海賊王','火影'], a: 0 },
+
+  // 新聞 (17)
+  { id: 'news-01', cat: '新聞', q: '2024 巴黎奧運喺邊度開幕？', opts: ['塞納河','巴黎鐵塔','羅浮宮','凱旋門'], a: 0 },
+  { id: 'news-02', cat: '新聞', q: 'Tesla CEO 係邊個？', opts: ['貝佐斯','馬斯克','朱克伯格','庫克'], a: 1 },
+  { id: 'news-03', cat: '新聞', q: 'ChatGPT 公開發布年份？', opts: ['2020','2021','2022','2023'], a: 2 },
+  { id: 'news-04', cat: '新聞', q: 'TikTok 母公司係？', opts: ['Meta','字節跳動','Google','Alibaba'], a: 1 },
+  { id: 'news-05', cat: '新聞', q: 'iPhone 第一代推出年份？', opts: ['2005','2006','2007','2008'], a: 2 },
+  { id: 'news-06', cat: '新聞', q: '英女王伊利沙伯二世駕崩年份？', opts: ['2020','2021','2022','2023'], a: 2 },
+  { id: 'news-07', cat: '新聞', q: 'OpenAI 行政總裁係邊個？', opts: ['Sam Altman','Elon Musk','Mark Zuckerberg','Jeff Bezos'], a: 0 },
+  { id: 'news-08', cat: '新聞', q: '2028 夏季奧運喺邊個城市舉行？', opts: ['巴黎','洛杉磯','東京','布里斯班'], a: 1 },
+  { id: 'news-09', cat: '新聞', q: 'Bitcoin 創世區塊诞生年份？', opts: ['2007','2008','2009','2010'], a: 2 },
+  { id: 'news-10', cat: '新聞', q: '新冠疫情 WHO 宣佈 PHEIC 嘅年份？', opts: ['2019','2020','2021','2022'], a: 1 },
+  { id: 'news-11', cat: '新聞', q: 'ChatGPT 月活躍用戶突破 1 億嘅時間？', opts: ['1 個月','2 個月','3 個月','6 個月'], a: 1 },
+  { id: 'news-12', cat: '新聞', q: '英國脫歐正式生效日期？', opts: ['2019/1/31','2020/1/31','2021/1/1','2020/12/31'], a: 1 },
+  { id: 'news-13', cat: '新聞', q: 'Bitcoin 首次突破 10,000 美元年份？', opts: ['2016','2017','2018','2019'], a: 1 },
+  { id: 'news-14', cat: '新聞', q: '邊個係 2022 年世界盃冠軍？', opts: ['巴西','德國','阿根廷','法國'], a: 2 },
+  { id: 'news-15', cat: '新聞', q: '2026 世界盃喺邊度舉行？', opts: ['加拿大','墨西哥','美國','以上皆是'], a: 3 },
+  { id: 'news-16', cat: '新聞', q: '邊個喺 2024 當選美國總統？', opts: ['拜登','特朗普','賀錦麗','DeSantis'], a: 1 },
+  { id: 'news-17', cat: '新聞', q: 'Tesla 上市年份？', opts: ['2008','2010','2012','2014'], a: 1 },
+
+  // 地理 (17)
+  { id: 'geo-01', cat: '地理', q: '中國最大嘅省係邊個？', opts: ['新疆','西藏','內蒙古','青海'], a: 0 },
+  { id: 'geo-02', cat: '地理', q: '世界最長嘅河係邊條？', opts: ['尼羅河','亞馬遜河','長江','密西西比河'], a: 0 },
+  { id: 'geo-03', cat: '地理', q: '澳洲首都係邊度？', opts: ['悉尼','墨爾本','坎培拉','柏斯'], a: 2 },
+  { id: 'geo-04', cat: '地理', q: '日本最北嘅島係邊個？', opts: ['本州','北海道','九州','沖繩'], a: 1 },
+  { id: 'geo-05', cat: '地理', q: '世界最高峰係邊座？', opts: ['K2','珠穆朗瑪峰','麥金利峰','乞力馬扎羅'], a: 1 },
+  { id: 'geo-06', cat: '地理', q: '香港最高峰？', opts: ['獅子山','大帽山','鳳凰山','大東山'], a: 1 },
+  { id: 'geo-07', cat: '地理', q: '撒哈拉沙漠喺邊個洲？', opts: ['亞洲','非洲','南美洲','澳洲'], a: 1 },
+  { id: 'geo-08', cat: '地理', q: '法國首都？', opts: ['巴黎','里昂','馬賽','尼斯'], a: 0 },
+  { id: 'geo-09', cat: '地理', q: '世界最深嘅海溝？', opts: ['馬里亞納海溝','湯加海溝','日本海溝','菲律賓海溝'], a: 0 },
+  { id: 'geo-10', cat: '地理', q: '加拿大最大城市？', opts: ['多倫多','溫哥華','滿地可','卡加利'], a: 0 },
+  { id: 'geo-11', cat: '地理', q: '德國首都？', opts: ['柏林','慕尼黑','漢堡','法蘭克福'], a: 0 },
+  { id: 'geo-12', cat: '地理', q: '日本最高峰？', opts: ['富士山','阿蘇山','白山','奧穗高岳'], a: 0 },
+  { id: 'geo-13', cat: '地理', q: '台灣最高山？', opts: ['阿里山','玉山','合歡山','雪山'], a: 1 },
+  { id: 'geo-14', cat: '地理', q: '冰島首都？', opts: ['雷克雅維克','哥本哈根','奧斯陸','赫爾辛基'], a: 0 },
+  { id: 'geo-15', cat: '地理', q: '亞馬遜河喺邊個洲？', opts: ['亞洲','非洲','南美洲','北美洲'], a: 2 },
+  { id: 'geo-16', cat: '地理', q: '邊個係世界最細嘅國家？', opts: ['摩納哥','梵蒂岡','聖馬力諾','列支敦士登'], a: 1 },
+  { id: 'geo-17', cat: '地理', q: '世界最長嘅山脈？', opts: ['喜馬拉雅','安第斯','洛磯','阿爾卑斯'], a: 1 },
+
+  // 天文 (17)
+  { id: 'astro-01', cat: '天文', q: '太陽系最大嘅行星？', opts: ['地球','木星','土星','火星'], a: 1 },
+  { id: 'astro-02', cat: '天文', q: '距離太陽最近嘅行星？', opts: ['金星','地球','水星','火星'], a: 2 },
+  { id: 'astro-03', cat: '天文', q: '銀河系屬於邊種星系？', opts: ['橢圓','螺旋','不規則','透鏡'], a: 1 },
+  { id: 'astro-04', cat: '天文', q: '地球公轉太陽一圈要幾耐？', opts: ['24小時','30日','365日','1秒'], a: 2 },
+  { id: 'astro-05', cat: '天文', q: '月球距離地球幾遠？', opts: ['38萬公里','100萬','1億','10萬'], a: 0 },
+  { id: 'astro-06', cat: '天文', q: '太陽系有幾多行星？', opts: ['7','8','9','10'], a: 1 },
+  { id: 'astro-07', cat: '天文', q: '地球自轉一圈要幾耐？', opts: ['12小時','24小時','365日','1秒'], a: 1 },
+  { id: 'astro-08', cat: '天文', q: '太陽主要成分？', opts: ['氧氣','氮氣','氫氣','二氧化碳'], a: 2 },
+  { id: 'astro-09', cat: '天文', q: '金星表面溫度？', opts: ['約100°C','約200°C','約460°C','約600°C'], a: 2 },
+  { id: 'astro-10', cat: '天文', q: '火星嘅衛星有幾多個？', opts: ['0','1','2','4'], a: 2 },
+  { id: 'astro-11', cat: '天文', q: '木星有幾多衛星？', opts: ['4','12','79+','2'], a: 2 },
+  { id: 'astro-12', cat: '天文', q: '土星嘅標誌性特徵？', opts: ['大紅斑','光環','極光','黑子'], a: 1 },
+  { id: 'astro-13', cat: '天文', q: '太陽核心溫度約幾多？', opts: ['1000°C','10萬°C','150萬°C','1500萬°C'], a: 3 },
+  { id: 'astro-14', cat: '天文', q: '哈雷彗星回歸周期？', opts: ['約24年','約76年','約100年','約200年'], a: 1 },
+  { id: 'astro-15', cat: '天文', q: '黑洞由邊個預言？', opts: ['愛因斯坦','霍金','拉普拉斯','牛頓'], a: 1 },
+  { id: 'astro-16', cat: '天文', q: '太陽佔太陽系總質量幾多？', opts: ['50%','75%','99.8%','100%'], a: 2 },
+  { id: 'astro-17', cat: '天文', q: '光速大約係幾多？', opts: ['30萬 km/s','3萬 km/s','300萬 km/s','無限'], a: 0 },
+
+  // 歷史 (17)
+  { id: 'hist-01', cat: '歷史', q: '香港回歸祖國年份？', opts: ['1995','1996','1997','1998'], a: 2 },
+  { id: 'hist-02', cat: '歷史', q: '二戰結束年份？', opts: ['1943','1944','1945','1946'], a: 2 },
+  { id: 'hist-03', cat: '歷史', q: '秦始皇統一中國年份？', opts: ['前221年','前200年','前300年','前100年'], a: 0 },
+  { id: 'hist-04', cat: '歷史', q: '美國獨立年份？', opts: ['1765','1776','1783','1789'], a: 1 },
+  { id: 'hist-05', cat: '歷史', q: '法國大革命爆發年份？', opts: ['1776','1789','1804','1815'], a: 1 },
+  { id: 'hist-06', cat: '歷史', q: '香港開埠年份？', opts: ['1839','1841','1842','1860'], a: 1 },
+  { id: 'hist-07', cat: '歷史', q: '中日甲午戰爭年份？', opts: ['1894','1895','1900','1911'], a: 0 },
+  { id: 'hist-08', cat: '歷史', q: '辛亥革命年份？', opts: ['1900','1905','1911','1912'], a: 2 },
+  { id: 'hist-09', cat: '歷史', q: '蘇聯解體年份？', opts: ['1989','1990','1991','1992'], a: 2 },
+  { id: 'hist-10', cat: '歷史', q: '柏林圍牆倒塌年份？', opts: ['1987','1989','1990','1991'], a: 1 },
+  { id: 'hist-11', cat: '歷史', q: '九七回歸前港督最後一位？', opts: ['彭定康','衛奕信','尤德','麥理浩'], a: 0 },
+  { id: 'hist-12', cat: '歷史', q: '蘋果電腦創辦年份？', opts: ['1974','1976','1978','1980'], a: 1 },
+  { id: 'hist-13', cat: '歷史', q: '邊個發明電話？', opts: ['愛迪生','貝爾','特斯拉','馬可尼'], a: 1 },
+  { id: 'hist-14', cat: '歷史', q: '邊個發現美洲？', opts: ['麥哲倫','哥倫布','達伽馬','維京人'], a: 1 },
+  { id: 'hist-15', cat: '歷史', q: '日本戰敗投降日期？', opts: ['1945/8/14','1945/8/15','1945/9/2','1945/9/3'], a: 1 },
+  { id: 'hist-16', cat: '歷史', q: '香港成為英國殖民地嘅條約？', opts: ['南京條約','北京條約','展拓香港界址專條','辛丑條約'], a: 0 },
+  { id: 'hist-17', cat: '歷史', q: '邊個係日本明治維新嘅推動者？', opts: ['豐臣秀吉','德川家康','明治天皇','伊藤博文'], a: 2 },
+
+  // 音樂 (17)
+  { id: 'mus-01', cat: '音樂', q: '「海闊天空」原唱係邊個樂隊？', opts: ['達明一派','Beyond','草蜢','太極'], a: 1 },
+  { id: 'mus-02', cat: '音樂', q: '莫扎特係邊國人？', opts: ['德國','奧地利','意大利','法國'], a: 1 },
+  { id: 'mus-03', cat: '音樂', q: '結他通常有幾多條弦？', opts: ['4','5','6','7'], a: 2 },
+  { id: 'mus-04', cat: '音樂', q: 'Beatles 來自邊個國家？', opts: ['美國','英國','加拿大','澳洲'], a: 1 },
+  { id: 'mus-05', cat: '音樂', q: '鋼琴有幾多個鍵？', opts: ['76','82','88','92'], a: 2 },
+  { id: 'mus-06', cat: '音樂', q: '邊個歌手叫「歌神」？', opts: ['張學友','劉德華','陳奕迅','周杰倫'], a: 0 },
+  { id: 'mus-07', cat: '音樂', q: 'Ed Sheeran 國籍？', opts: ['美國','英國','愛爾蘭','澳洲'], a: 1 },
+  { id: 'mus-08', cat: '音樂', q: 'Taylor Swift 出生年份？', opts: ['1986','1988','1989','1990'], a: 2 },
+  { id: 'mus-09', cat: '音樂', q: 'BTS 來自邊個國家？', opts: ['日本','韓國','中國','泰國'], a: 1 },
+  { id: 'mus-10', cat: '音樂', q: '小提琴通常有幾多條弦？', opts: ['3','4','5','6'], a: 1 },
+  { id: 'mus-11', cat: '音樂', q: '邊個係 K-pop 組合 BLACKPINK 嘅成員？', opts: ['IU','Lisa','Jennie','以上皆是'], a: 3 },
+  { id: 'mus-12', cat: '音樂', q: '邊個樂隊唱咗《Bohemian Rhapsody》？', opts: ['The Beatles','Queen','Led Zeppelin','Pink Floyd'], a: 1 },
+  { id: 'mus-13', cat: '音樂', q: '鋼琴家朗朗係邊國人？', opts: ['日本','韓國','中國','俄羅斯'], a: 2 },
+  { id: 'mus-14', cat: '音樂', q: '邊個唱咗《Shape of You》？', opts: ['Justin Bieber','Ed Sheeran','Bruno Mars','Taylor Swift'], a: 1 },
+  { id: 'mus-15', cat: '音樂', q: 'CD 容量大約係幾多 MB？', opts: ['100MB','700MB','1.4GB','4.7GB'], a: 1 },
+  { id: 'mus-16', cat: '音樂', q: '邊個音樂符號代表四分音符？', opts: ['♩','♪','♫','𝅗𝅥'], a: 0 },
+  { id: 'mus-17', cat: '音樂', q: '陳奕迅嘅綽號？', opts: ['E神','歌神','歌王','E臣'], a: 0 },
+
+  // 電影 (17)
+  { id: 'mov-01', cat: '電影', q: '《阿凡達》導演係？', opts: ['史匹堡','卡梅隆','諾蘭','伊斯特伍德'], a: 1 },
+  { id: 'mov-02', cat: '電影', q: '《鐵達尼號》沉沒年份？', opts: ['1908','1912','1918','1920'], a: 1 },
+  { id: 'mov-03', cat: '電影', q: '漫威「鐵甲奇俠」演員？', opts: ['Chris Evans','RDJ','Chris Hemsworth','Mark Ruffalo'], a: 1 },
+  { id: 'mov-04', cat: '電影', q: '首部《星球大戰》上映年份？', opts: ['1975','1977','1979','1981'], a: 1 },
+  { id: 'mov-05', cat: '電影', q: '奧斯卡金像獎頒發畀邊類？', opts: ['音樂','電影','體育','新聞'], a: 1 },
+  { id: 'mov-06', cat: '電影', q: '《少年Pi的奇幻漂流》導演？', opts: ['李安','張藝謀','王家衛','陳凱歌'], a: 0 },
+  { id: 'mov-07', cat: '電影', q: 'Marvel 電影宇宙第一齣？', opts: ['鐵甲奇俠','美國隊長','雷神','變形俠醫'], a: 0 },
+  { id: 'mov-08', cat: '電影', q: '「蜘蛛俠」Peter Parker 住邊個城市？', opts: ['紐約','芝加哥','三藩市','洛杉磯'], a: 0 },
+  { id: 'mov-09', cat: '電影', q: '《哈利波特》作者？', opts: ['托爾金','J.K. Rowling','C.S. Lewis','Stephen King'], a: 1 },
+  { id: 'mov-10', cat: '電影', q: '邊個演咗《007 James Bond》系列？', opts: ['Tom Cruise','Daniel Craig','Brad Pitt','Leonardo DiCaprio'], a: 1 },
+  { id: 'mov-11', cat: '電影', q: '《無間道》港版上映年份？', opts: ['2000','2002','2004','2006'], a: 1 },
+  { id: 'mov-12', cat: '電影', q: '宮崎駿嘅《天空之城》女主角叫咩名？', opts: ['希達','娜烏西卡','千尋','波妞'], a: 0 },
+  { id: 'mov-13', cat: '電影', q: '邊個導演拍咗《Drive My Car》？', opts: ['是枝裕和','濱口�的亮','李相日','岩井俊二'], a: 1 },
+  { id: 'mov-14', cat: '電影', q: '首部《Mission: Impossible》上映年份？', opts: ['1994','1996','1998','2000'], a: 1 },
+  { id: 'mov-15', cat: '電影', q: '「Inception」導演？', opts: ['Christopher Nolan','Steven Spielberg','Denis Villeneuve','Ridley Scott'], a: 0 },
+  { id: 'mov-16', cat: '電影', q: '邊個系列電影主角叫「Jack Sparrow」？', opts: ['Harry Potter','Pirates of the Caribbean','Indiana Jones','Star Wars'], a: 1 },
+  { id: 'mov-17', cat: '電影', q: '《無間道》入面梁朝偉飾演邊個角色？', opts: ['陳永仁','劉健明','韓琛','黃Sir'], a: 1 },
+
+  // 食物 (17)
+  { id: 'food-01', cat: '食物', q: '壽司嘅日文係咩？', opts: ['鮨/寿司','天ぷら','味噌汁','刺身'], a: 0 },
+  { id: 'food-02', cat: '食物', q: 'Pizza 源自邊個國家？', opts: ['法國','意大利','美國','西班牙'], a: 1 },
+  { id: 'food-03', cat: '食物', q: '叉燒包係邊國菜？', opts: ['日本','韓國','中國','泰國'], a: 2 },
+  { id: 'food-04', cat: '食物', q: '咖啡豆原產地？', opts: ['巴西','埃塞俄比亞','哥倫比亞','越南'], a: 1 },
+  { id: 'food-05', cat: '食物', q: '魚子醬最正宗來源？', opts: ['三文魚','鱘魚','鱈魚','吞拿'], a: 1 },
+  { id: 'food-06', cat: '食物', q: '邊個係日本料理代表？', opts: ['壽司','漢堡','Pizza','北京烤鴨'], a: 0 },
+  { id: 'food-07', cat: '食物', q: '「臭豆腐」源自邊度？', opts: ['北京','上海','台灣','以上皆是'], a: 3 },
+  { id: 'food-08', cat: '食物', q: '海南雞飯源自邊個國家？', opts: ['泰國','新加坡','馬來西亞','印尼'], a: 0 },
+  { id: 'food-09', cat: '食物', q: '「珍珠奶茶」源自邊度？', opts: ['日本','台灣','韓國','中國'], a: 1 },
+  { id: 'food-10', cat: '食物', q: '邊個食材最常用嚟做 sushi？', opts: ['米','麵','麵粉','薯仔'], a: 0 },
+  { id: 'food-11', cat: '食物', q: '「忌廉」喺英文係咩？', opts: ['Cream','Cheese','Butter','Milk'], a: 0 },
+  { id: 'food-12', cat: '食物', q: '邊個係抹茶嘅原產地？', opts: ['中國','日本','韓國','台灣'], a: 1 },
+  { id: 'food-13', cat: '食物', q: '「法式長棍麵包」法文叫咩名？', opts: ['Baguette','Croissant','Brioche','Pain'], a: 0 },
+  { id: 'food-14', cat: '食物', q: '日本拉麵源自邊國？', opts: ['中國','韓國','日本','美國'], a: 0 },
+  { id: 'food-15', cat: '食物', q: '邊個係港式點心代表？', opts: ['餃子','燒賣','壽司','Pizza'], a: 1 },
+  { id: 'food-16', cat: '食物', q: '「意大利粉」源自邊國？', opts: ['法國','意大利','西班牙','希臘'], a: 1 },
+  { id: 'food-17', cat: '食物', q: '邊個係「威靈頓牛柳」嘅原產地？', opts: ['法國','英國','美國','澳洲'], a: 1 },
+
+  // 教育 (17)
+  { id: 'edu-01', cat: '教育', q: '香港大學成立年份？', opts: ['1901','1911','1921','1931'], a: 1 },
+  { id: 'edu-02', cat: '教育', q: '「三人行必有我師」出自邊位？', opts: ['孔子','孟子','老子','莊子'], a: 0 },
+  { id: 'edu-03', cat: '教育', q: 'DSE 全稱？', opts: ['香港中學文憑試','大學入學試','高考','公開試'], a: 0 },
+  { id: 'edu-04', cat: '教育', q: 'π 嘅近似值？', opts: ['3.12','3.14','3.16','3.18'], a: 1 },
+  { id: 'edu-05', cat: '教育', q: '《論語》共有幾篇？', opts: ['10','20','30','40'], a: 1 },
+  { id: 'edu-06', cat: '教育', q: '光速大約係幾多 m/s？', opts: ['3千萬','3億','300萬','300億'], a: 1 },
+  { id: 'edu-07', cat: '教育', q: '牛頓發現咩定律？', opts: ['相對論','萬有引力','進化論','熱力學'], a: 1 },
+  { id: 'edu-08', cat: '教育', q: '元素週期表發現者？', opts: ['愛因斯坦','門德列夫','牛頓','居里夫人'], a: 1 },
+  { id: 'edu-09', cat: '教育', q: '「相對論」提出者？', opts: ['牛頓','愛因斯坦','霍金','伽利略'], a: 1 },
+  { id: 'edu-10', cat: '教育', q: '「達爾文」提出咩理論？', opts: ['進化論','相對論','量子論','熱力學'], a: 0 },
+  { id: 'edu-11', cat: '教育', q: '「勾股定理」邊個國？', opts: ['古希臘','古中國','古埃及','古印度'], a: 0 },
+  { id: 'edu-12', cat: '教育', q: 'Newton 三大運動定律發表年份？', opts: ['1666','1687','1700','1736'], a: 1 },
+  { id: 'edu-13', cat: '教育', q: '邊個發現萬有引力？', opts: ['愛因斯坦','牛頓','伽利略','霍金'], a: 1 },
+  { id: 'edu-14', cat: '教育', q: 'DNA 雙螺旋結構發現者？', opts: ['達爾文','孟德爾','華生與克里克','霍金'], a: 2 },
+  { id: 'edu-15', cat: '教育', q: '元素週期表有幾多元素？', opts: ['100','118','126','150'], a: 1 },
+  { id: 'edu-16', cat: '教育', q: '「哈利波特」作者邊個國籍？', opts: ['美國','英國','澳洲','加拿大'], a: 1 },
+  { id: 'edu-17', cat: '教育', q: '「C++」主要用嚟做咩？', opts: ['繪圖','編程','文書','音樂'], a: 1 },
+
+  // 國家 (17)
+  { id: 'cn-01', cat: '國家', q: '聯合國總部喺邊？', opts: ['紐約','日內瓦','巴黎','倫敦'], a: 0 },
+  { id: 'cn-02', cat: '國家', q: 'G7 有幾多個成員國？', opts: ['5','6','7','8'], a: 2 },
+  { id: 'cn-03', cat: '國家', q: '邊個係歐盟最大經濟體？', opts: ['法國','德國','意大利','西班牙'], a: 1 },
+  { id: 'cn-04', cat: '國家', q: '人口最多嘅國家？', opts: ['美國','印尼','中國','印度'], a: 3 },
+  { id: 'cn-05', cat: '國家', q: 'G20 包括幾多國？', opts: ['15','19','20','25'], a: 2 },
+  { id: 'cn-06', cat: '國家', q: '南美洲最大國家？', opts: ['阿根廷','巴西','秘魯','智利'], a: 1 },
+  { id: 'cn-07', cat: '國家', q: '邊個係 BRICS 嘅成員？', opts: ['巴西','俄羅斯','印度','以上皆是'], a: 3 },
+  { id: 'cn-08', cat: '國家', q: '北約 NATO 創始成員有幾多？', opts: ['8','10','12','15'], a: 2 },
+  { id: 'cn-09', cat: '國家', q: '邊個係歐盟創始成員？', opts: ['法國','英國','瑞典','以上皆是'], a: 0 },
+  { id: 'cn-10', cat: '國家', q: 'APEC 創始成員有幾多？', opts: ['10','12','15','18'], a: 1 },
+  { id: 'cn-11', cat: '國家', q: '「金磚五國」邊個唔係？', opts: ['巴西','俄羅斯','日本','南非'], a: 2 },
+  { id: 'cn-12', cat: '國家', q: '邊個係世界島 (World Island) 概念？', opts: ['斯皮克曼','麥金德','布熱津斯基','以上皆是'], a: 3 },
+  { id: 'cn-13', cat: '國家', q: '「東盟」ASEAN 有幾多成員？', opts: ['8','9','10','11'], a: 2 },
+  { id: 'cn-14', cat: '國家', q: '「一帶一路」由邊個提出？', opts: ['普京','習近平','莫迪','拜登'], a: 1 },
+  { id: 'cn-15', cat: '國家', q: '「RCEP」最大經濟體？', opts: ['日本','中國','印尼','韓國'], a: 1 },
+  { id: 'cn-16', cat: '國家', q: '「上合組織」有幾多正式成員？', opts: ['6','7','8','9'], a: 3 },
+  { id: 'cn-17', cat: '國家', q: '邊個係 G7 2024 主席國？', opts: ['美國','英國','意大利','日本'], a: 2 },
+
+  // 冷知識 (13)
+  { id: 'tri-01', cat: '冷知識', q: '邊隻動物嘅心跳最快？', opts: ['貓','狗','蜂鳥','老鼠'], a: 2 },
+  { id: 'tri-02', cat: '冷知識', q: '邊隻動物冇腦？', opts: ['海星','水母','珊瑚','海綿'], a: 1 },
+  { id: 'tri-03', cat: '冷知識', q: '邊隻動物識得認鏡？', opts: ['狗','貓','海豚','以上皆是'], a: 3 },
+  { id: 'tri-04', cat: '冷知識', q: '邊個國家有「幸福國度」之稱？', opts: ['丹麥','不丹','瑞士','芬蘭'], a: 1 },
+  { id: 'tri-05', cat: '冷知識', q: '邊個係人體最大嘅器官？', opts: ['肝臟','皮膚','肺','大腦'], a: 1 },
+  { id: 'tri-06', cat: '冷知識', q: '人體有幾多塊骨頭？', opts: ['186','206','226','256'], a: 1 },
+  { id: 'tri-07', cat: '冷知識', q: '邊隻動物有藍色血液？', opts: ['章魚','馬蹄蟹','海星','水母'], a: 1 },
+  { id: 'tri-08', cat: '冷知識', q: '「OK」嘅來源係咩？', opts: ['希臘文','拉丁文','all correct 嘅縮寫','以上皆是'], a: 2 },
+  { id: 'tri-09', cat: '冷知識', q: '邊個國家嘅鈔票有「恐龍」？', opts: ['中國','蒙古','澳洲','巴西'], a: 1 },
+  { id: 'tri-10', cat: '冷知識', q: '邊隻動物唔識得跳？', opts: ['大象','河馬','犀牛','以上皆是'], a: 3 },
+  { id: 'tri-11', cat: '冷知識', q: '邊個係人體最硬嘅組織？', opts: ['骨頭','牙齒琺瑯質','指甲','頭髮'], a: 1 },
+  { id: 'tri-12', cat: '冷知識', q: '邊隻動物嘅蛋最大？', opts: ['鴕鳥','恐龍(已滅絕)','象龜','鯨鯊'], a: 1 },
+  { id: 'tri-13', cat: '冷知識', q: '邊個係世界上最細嘅鳥？', opts: ['蜂鳥','麻雀','太陽鳥','繡眼鳥'], a: 0 },
+];
+
+// 動態加載 questions.json，如果成功就用 fetch 嗰個，否則用 embedded fallback
+let QUESTION_BANK = EMBEDDED_QUESTIONS;
+async function loadQuestions() {
+    try {
+        const res = await fetch('questions.json?_=' + Date.now());
+        if (res.ok) {
+            const data = await res.json();
+            if (data.questions && Array.isArray(data.questions) && data.questions.length > 0) {
+                QUESTION_BANK = data.questions;
+                console.log('✅ Loaded', QUESTION_BANK.length, 'questions from questions.json');
+                return true;
+            }
+        }
+    } catch (e) {
+        console.log('⚠ questions.json load failed, using embedded:', e.message);
+    }
+    return false;
+}
+
+// ============================================
+// Game State
+// ============================================
 const MONEY_LEVELS = [100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000, 1000000];
-const SAFE_LEVELS = [4, 9, 14];
-const LETTERS = ['A', 'B', 'C', 'D'];
-let currentLevel = 0;
-let questions = [];
-let selectedCategory = '隨機';
-let pendingAnswer = null;
-let currentBgm = null;
-let lifelines = { fifty: true, phone: true, audience: true };
+const SAFE_LEVELS = [4, 9]; // $1,000 + $32,000
+const QUESTION_TIME = 30; // 30 seconds per question
 
-const QUESTION_BANK = {
-    '隨機': [
-        { q: "香港面積最大嘅區議會係邊個？", opts: ["西貢區", "南丫島", "大埔區", "屯門區"], a: 0 },
-        { q: "邊個係香港最長嘅河流？", opts: ["城門河", "深圳河", "東涌河", "青山公路"], a: 1 },
-        { q: "香港有幾多個行政區？", opts: ["15區", "18區", "20區", "12區"], a: 1 },
-        { q: "香港最高峰係邊座山？", opts: ["獅子山", "大帽山", "鳳凰山", "大東山"], a: 1 },
-        { q: "邊個年份係香港回歸祖國？", opts: ["1995", "1996", "1997", "1998"], a: 2 },
-    ],
-    '金融': [
-        { q: "香港嘅法定貨幣係咩？", opts: ["美元", "英鎊", "港幣", "澳門幣"], a: 2 },
-        { q: "香港交易所嘅股票代號係邊個？", opts: ["HKE", "HKEX", "SEHK", "HKS"], a: 1 },
-        { q: "金管局係邊個機構？", opts: ["警察", "金融管理局", "貿易發展局", "投資推廣署"], a: 1 },
-        { q: "港幣兌美元嘅聯繫匯率係幾多？", opts: ["7.5", "7.8", "8.0", "7.85"], a: 1 },
-        { q: "邊間係香港最大嘅銀行？", opts: ["匯豐", "渣打", "恒生", "東亞"], a: 0 },
-    ],
-    '卡通': [
-        { q: "《多啦A夢》中主角嘅名係？", opts: ["小夫", "胖虎", "大雄", "靜香"], a: 2 },
-        { q: "《海賊王》嘅主角叫咩名？", opts: ["索隆", "路飛", "娜美", "香吉士"], a: 1 },
-        { q: "《龍珠》入面孫悟空變身超級撒亞人時嘅頭髮顏色係？", opts: ["藍色", "紅色", "金色", "白色"], a: 2 },
-        { q: "《火影忍者》嘅主角叫咩名？", opts: ["佐助", "卡卡西", "鳴人", "小李"], a: 2 },
-        { q: "邊個唔係《少年Jump》嘅代表作？", opts: ["火影忍者", "死神", "麵包超人", "ONE PIECE"], a: 2 },
-    ],
-    '天文': [
-        { q: "太陽系有幾多個行星？", opts: ["7個", "8個", "9個", "10個"], a: 1 },
-        { q: "邊個係距離太陽最遠嘅行星？", opts: ["土星", "天王星", "海王星", "冥王星"], a: 2 },
-        { q: "月亮係地球嘅咩？", opts: ["行星", "衛星", "流星", "隕石"], a: 1 },
-        { q: "香港太空館位於邊區？", opts: ["中西區", "灣仔區", "油尖旺區", "屯門區"], a: 1 },
-        { q: "邊個係最大嘅星系？", opts: ["銀河系", "仙女座星系", "麥哲倫星系", " Andromeda"], a: 1 },
-    ],
-    '地理': [
-        { q: "香港係邊個國家嘅特別行政區？", opts: ["英國", "中國", "台灣", "澳門"], a: 1 },
-        { q: "邊個係亞洲最高峰？", opts: ["富士山", "珠穆朗瑪峰", "玉山", "K2"], a: 1 },
-        { q: "香港有幾多個離島？", opts: ["200多個", "150多個", "100多個", "250多個"], a: 0 },
-        { q: "維多利亞港位於香港邊個位置？", opts: ["香港島與九龍之間", "新界", "大嶼山", "南丫島"], a: 0 },
-        { q: "邊個係全球面積最大嘅國家？", opts: ["中國", "加拿大", "俄羅斯", "美國"], a: 2 },
-    ],
-    '教育': [
-        { q: "香港有多少間大學？", opts: ["5間", "8間", "10間", "12間"], a: 1 },
-        { q: "香港大學嘅創校年份係？", opts: ["1910年", "1911年", "1912年", "1913年"], a: 1 },
-        { q: "中學有多少個年級？", opts: ["3年", "5年", "6年", "7年"], a: 2 },
-        { q: "香港有多少間資助大學？", opts: ["7間", "8間", "9間", "10間"], a: 1 },
-        { q: "香港科技大學位於邊個海灣？", opts: ["清水灣", "吐露港", "大鵬灣", "淺水灣"], a: 1 },
-    ],
-    '食物': [
-        { q: "港式茶餐廳必備嘅奶茶係用咩茶葉整？", opts: ["綠茶", "普洱", "錫蘭紅茶", "龍井"], a: 2 },
-        { q: "香港地膽嘅早餐通常包括咩？", opts: ["麥當勞", "茶餐廳", "麵包店", "便利店"], a: 1 },
-        { q: "邊個唔係香港著名街頭小食？", opts: ["魚蛋", "雞蛋仔", "臭豆腐", "咖喱魚蛋"], a: 2 },
-        { q: "香港著名的蛋撻係源自邊個地區？", opts: ["英國", "葡萄牙", "日本", "泰國"], a: 1 },
-        { q: "港式雲吞麵嘅雲吞入面有咩餡料？", opts: ["牛肉", "豬肉", "蝦肉", "魚肉"], a: 2 },
-    ],
-    '國家': [
-        { q: "日本首都是邊個城市？", opts: ["大阪", "東京", "京都", "橫濱"], a: 1 },
-        { q: "台灣嘅主要語言係咩？", opts: ["英語", "普通話", "國語", "日語"], a: 2 },
-        { q: "邊個唔係聯合國安全理事會常任理事國？", opts: ["美國", "英國", "德國", "法國"], a: 2 },
-        { q: "新加坡嘅官方語言包括？", opts: ["英語", "普通話", "馬來語", "全部都是"], a: 3 },
-        { q: "邊個係全球人口最多嘅國家？", opts: ["印度", "美國", "中國", "印尼"], a: 2 },
-    ],
-    '新聞': [
-        { q: "香港最近嘅大型基建項目係？", opts: ["明日大嶼", "北部都會區", "兩項都是", "兩項都不是"], a: 2 },
-        { q: "香港房屋政策嘅主要目標係？", opts: ["增加供應", "降低價格", "滿足需求", "全部都是"], a: 3 },
-        { q: "香港有多少個口岸連接內地？", opts: ["6個", "7個", "8個", "9個"], a: 1 },
-        { q: "香港國際機場位於邊個地區？", opts: ["九龍", "新界", "大嶼山", "香港島"], a: 2 },
-        { q: "香港最近舉辦嘅大型國際活動係？", opts: ["演唱會", "展覽", "金融峰會", "體育賽事"], a: 2 },
-    ],
-    '音樂': [
-        { q: "張學友被稱為？", opts: ["歌神", "歌王", "歌聖", "歌俠"], a: 0 },
-        { q: "香港著名嘅演唱會場地係？", opts: ["紅館", "大球場", "兩者都是", "兩者都不是"], a: 2 },
-        { q: "邊個唔係香港天王級歌手？", opts: ["劉德華", "張學友", "郭富城", "林俊傑"], a: 3 },
-        { q: "香港樂壇四大天王包括？", opts: ["張劉郭黎明", "張劉郭黃", "張劉郭鄭", "張劉郭陳"], a: 0 },
-        { q: "《海闊天空》係邊個樂隊嘅作品？", opts: ["Beyond", "草蜢", "達明一派", "溫拿"], a: 0 },
-    ],
-    '電影': [
-        { q: "香港電影金像獎每年舉辦幾多次？", opts: ["每年一次", "每年兩次", "每兩年一次", "每年三次"], a: 0 },
-        { q: "邊個導演被稱為「香港電影之父」？", opts: ["徐克", "王家衛", "杜琪峯", "黎民偉"], a: 3 },
-        { q: "《無間道》嘅主演演員包括？", opts: ["劉德華、梁朝偉", "周潤發、成龍", "張學友、郭富城", "黃秋生、吳鎮宇"], a: 0 },
-        { q: "香港電影金像獎創辦於幾時？", opts: ["1980年", "1982年", "1984年", "1986年"], a: 1 },
-        { q: "周星馳嘅代表作包括？", opts: ["功夫", "少林足球", "兩者都是", "兩者都不是"], a: 2 },
-    ],
+let state = {
+    partySize: 1,
+    questions: [],
+    currentLevel: 0,
+    selectedAnswer: -1,
+    playerName: '玩家',
+    lifelines: { fifty: true, phone: true, audience: true },
+    timer: null,
+    timeLeft: QUESTION_TIME,
+    audio: { enabled: true },
+    usedIds: [],
 };
 
-// Add more questions to make 15 per category
-Object.keys(QUESTION_BANK).forEach(cat => {
-    const base = QUESTION_BANK[cat];
-    while (QUESTION_BANK[cat].length < 15) {
-        const extra = base.map(q => ({
-            q: q.q + "（變化版）",
-            opts: [...q.opts],
-            a: q.a
-        }));
-        QUESTION_BANK[cat].push(...extra.slice(0, 15 - QUESTION_BANK[cat].length));
+// ============================================
+// localStorage helpers
+// ============================================
+const STORAGE_KEYS = {
+    USED: 'millionaire_used_ids',
+    LEADERBOARD: 'millionaire_leaderboard',
+    WINNERS: 'millionaire_winners',
+};
+
+function getUsedIds() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.USED) || '[]'); }
+    catch { return []; }
+}
+function setUsedIds(ids) {
+    localStorage.setItem(STORAGE_KEYS.USED, JSON.stringify(ids));
+}
+function clearUsedIds() {
+    localStorage.removeItem(STORAGE_KEYS.USED);
+}
+
+function getLeaderboard() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.LEADERBOARD) || '[]'); }
+    catch { return []; }
+}
+function setLeaderboard(lb) {
+    localStorage.setItem(STORAGE_KEYS.LEADERBOARD, JSON.stringify(lb));
+}
+function addToLeaderboard(name, score) {
+    const lb = getLeaderboard();
+    lb.push({ name, score, ts: Date.now() });
+    lb.sort((a, b) => b.score - a.score);
+    setLeaderboard(lb.slice(0, 10));
+}
+
+function addWinner(email, name) {
+    try {
+        const w = JSON.parse(localStorage.getItem(STORAGE_KEYS.WINNERS) || '[]');
+        w.push({ email, name, ts: Date.now() });
+        localStorage.setItem(STORAGE_KEYS.WINNERS, JSON.stringify(w));
+    } catch {}
+}
+
+// ============================================
+// Audio (Web Audio API - no external files)
+// ============================================
+let audioCtx = null;
+function getAudioCtx() {
+    if (!audioCtx) {
+        try {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        } catch (e) { return null; }
     }
-});
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+}
+
+function playTone(freq, duration = 0.2, type = 'sine', volume = 0.2) {
+    if (!state.audio.enabled) return;
+    const ctx = getAudioCtx();
+    if (!ctx) return;
+    try {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(volume, ctx.currentTime + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+    } catch (e) {}
+}
+
+// BGM: WWTBAM original theme (mp3) + SFX via Web Audio
+function startBgm() {
+    try {
+        const bgm = document.getElementById('bgm');
+        if (bgm) {
+            bgm.volume = 0.35;
+            bgm.muted = !state.audio.enabled;
+            const p = bgm.play();
+            if (p && typeof p.catch === 'function') {
+                p.catch(e => console.log('BGM play failed:', e.message));
+            }
+        }
+    } catch (e) { console.log('startBgm error:', e.message); }
+}
+function stopBgm() {
+    try {
+        const bgm = document.getElementById('bgm');
+        if (bgm) bgm.pause();
+    } catch (e) { console.log('stopBgm error:', e.message); }
+}
+
+function playCorrectSound() {
+    playTone(523, 0.1);
+    setTimeout(() => playTone(659, 0.1), 100);
+    setTimeout(() => playTone(784, 0.2), 200);
+}
+function playWrongSound() {
+    playTone(330, 0.15, 'sawtooth', 0.2);
+    setTimeout(() => playTone(220, 0.3, 'sawtooth', 0.2), 150);
+}
+function playWinSound() {
+    // Victory fanfare
+    const notes = [523, 659, 784, 1047, 1319, 1047, 1319, 1568];
+    notes.forEach((freq, i) => {
+        setTimeout(() => playTone(freq, 0.25, 'sine', 0.3), i * 150);
+    });
+}
+
+function toggleMute() {
+    state.audio.enabled = !state.audio.enabled;
+    const btn = document.getElementById('muteBtn');
+    btn.textContent = state.audio.enabled ? '🔊' : '🔇';
+    btn.classList.toggle('muted', !state.audio.enabled);
+    // Apply to BGM
+    const bgm = document.getElementById('bgm');
+    if (bgm) {
+        bgm.muted = !state.audio.enabled;
+        if (state.audio.enabled && bgm.paused) {
+            const p = bgm.play();
+            if (p && typeof p.catch === 'function') p.catch(() => {});
+        }
+    }
+    if (state.audio.enabled) playTone(660, 0.1);
+}
+
+// ============================================
+// Utility
+// ============================================
+function $(id) { return document.getElementById(id); }
 
 function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
+    const a = [...array];
+    for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        [a[i], a[j]] = [a[j], a[i]];
     }
-    return array;
+    return a;
 }
 
-function loadQuestions() {
-    const bank = QUESTION_BANK[selectedCategory] || QUESTION_BANK['隨機'];
-    questions = shuffle([...bank]).slice(0, 15);
+function formatMoney(n) { return '$' + n.toLocaleString(); }
+
+// ============================================
+// Question Selection (no repeats within session)
+// ============================================
+function pickQuestions() {
+    const used = getUsedIds();
+    let available = QUESTION_BANK.filter(q => !used.includes(q.id));
+
+    // Reset if running low
+    if (available.length < 15) {
+        clearUsedIds();
+        available = [...QUESTION_BANK];
+    }
+
+    // Pick 15 random
+    const picked = shuffle(available).slice(0, 15);
+    setUsedIds([...used, ...picked.map(q => q.id)]);
+    return picked;
 }
 
-function renderPyramid() {
-    const pyramid = document.getElementById('pyramid');
-    pyramid.innerHTML = '';
-    for (let i = 14; i >= 0; i--) {
-        const reached = i < currentLevel;
-        const current = i === currentLevel;
-        const safe = SAFE_LEVELS.includes(i);
-        let cls = 'pyramid-item';
-        if (reached) cls += ' reached';
-        if (current) cls += ' current';
-        if (safe && reached) cls += ' safe';
-        const money = MONEY_LEVELS[i].toLocaleString();
-        pyramid.innerHTML += `<div class="pyramid-row"><span class="pyramid-level">${i+1}</span><div class="${cls}">$${money}</div></div>`;
+// Update bank status after each game
+function refreshBankStatus() {
+    updateBankStatus();
+}
+
+// ============================================
+// Screen Management
+// ============================================
+function switchScreen(name) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    $('startScreen').classList.toggle('active', name === 'start');
+    $('gameScreen').classList.toggle('active', name === 'game');
+    $('resultScreen').classList.toggle('active', name === 'result');
+}
+
+// ============================================
+// Start Screen
+// ============================================
+function renderLeaderboard() {
+    const lb = getLeaderboard();
+    const listEl = $('leaderboardList');
+    if (lb.length === 0) {
+        listEl.innerHTML = '<li class="leaderboard-empty">暫無排名，做第一個挑戰者吧！</li>';
+        return;
+    }
+    listEl.innerHTML = lb.slice(0, 10).map((e, i) => {
+        const rankClass = i === 0 ? 'top-1' : i === 1 ? 'top-2' : i === 2 ? 'top-3' : '';
+        return `<li class="leaderboard-item">
+            <span class="leaderboard-rank ${rankClass}">${i + 1}</span>
+            <span class="leaderboard-name">${escapeHtml(e.name)}</span>
+            <span class="leaderboard-score">$${e.score.toLocaleString()}</span>
+        </li>`;
+    }).join('');
+}
+
+function escapeHtml(s) {
+    return String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function startGame() {
+    try {
+        state.playerName = $('playerName').value.trim() || '玩家';
+        state.currentLevel = 0;
+        state.lifelines = { fifty: true, phone: true, audience: true };
+        state.questions = pickQuestions();
+        state.selectedAnswer = -1;
+
+        switchScreen('game');
+        $('displayName').textContent = state.playerName;
+        startBgm();
+        updateLifelineButtons();
+        renderQuestion();
+    } catch (e) {
+        console.error('startGame error:', e);
+        alert('開始失敗：' + e.message);
     }
 }
 
+// ============================================
+// Game Logic
+// ============================================
 function renderQuestion() {
-    const q = questions[currentLevel];
-    document.getElementById('questionNumber').textContent = `第 ${currentLevel + 1} 題`;
-    document.getElementById('questionText').textContent = q.q;
-    document.getElementById('currentMoney').textContent = '$' + MONEY_LEVELS[currentLevel].toLocaleString();
-    document.getElementById('displayName').textContent = playerName;
-    const answersDiv = document.getElementById('answers');
-    answersDiv.innerHTML = '';
-    q.opts.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.className = 'answer-btn';
-        btn.innerHTML = `<span class="answer-letter">${LETTERS[idx]}</span><span>${opt}</span>`;
-        btn.onclick = () => selectAnswer(idx);
-        answersDiv.appendChild(btn);
-    });
-    pendingAnswer = null;
-    renderPyramid();
-    updateLifelineButtons();
+    try {
+        if (state.currentLevel >= 15) {
+            showResult(true, MONEY_LEVELS[14]);
+            return;
+        }
+
+        const q = state.questions[state.currentLevel];
+        if (!q) {
+            console.error('No question at level', state.currentLevel);
+            return;
+        }
+
+        // Update question number
+        $('questionNumber').textContent = `第 ${state.currentLevel + 1} 題 / 15`;
+
+        // Update current prize (above question)
+        const money = MONEY_LEVELS[state.currentLevel];
+        const safeMark = SAFE_LEVELS.includes(state.currentLevel) ? ' safe-mark' : '';
+        $('currentPrize').innerHTML = `
+            <div class="current-prize-label">第 ${state.currentLevel + 1} 題獎金</div>
+            <div class="current-prize-amount${safeMark}">${formatMoney(money)}</div>
+        `;
+
+        // Update player money display
+        $('displayMoney').textContent = formatMoney(
+            state.currentLevel > 0 ? MONEY_LEVELS[state.currentLevel - 1] : 0
+        );
+
+        // Render question + answers
+        $('questionText').textContent = q.q;
+        const letters = ['A', 'B', 'C', 'D'];
+        $('answers').innerHTML = q.opts.map((opt, idx) => `
+            <button class="answer-btn" data-idx="${idx}">
+                <span class="answer-letter">${letters[idx]}</span>
+                <span>${escapeHtml(opt)}</span>
+            </button>
+        `).join('');
+
+        // Bind answer clicks
+        $('answers').querySelectorAll('.answer-btn').forEach(btn => {
+            btn.addEventListener('click', () => selectAnswer(parseInt(btn.dataset.idx)));
+        });
+
+        state.selectedAnswer = -1;
+        updateLifelineButtons();
+
+        // Start 30s timer
+        startTimer();
+    } catch (e) {
+        console.error('renderQuestion error:', e);
+    }
 }
 
-function updateLifelineButtons() {
-    document.getElementById('fiftyBtn').disabled = !lifelines.fifty;
-    document.getElementById('phoneBtn').disabled = !lifelines.phone;
-    document.getElementById('audienceBtn').disabled = !lifelines.audience;
+function startTimer() {
+    clearTimer();
+    state.timeLeft = QUESTION_TIME;
+    updateTimerDisplay();
+
+    state.timer = setInterval(() => {
+        state.timeLeft--;
+        updateTimerDisplay();
+        if (state.timeLeft <= 0) {
+            clearTimer();
+            timeoutWrong();
+        }
+    }, 1000);
+}
+
+function clearTimer() {
+    if (state.timer) {
+        clearInterval(state.timer);
+        state.timer = null;
+    }
+}
+
+function updateTimerDisplay() {
+    const t = state.timeLeft;
+    const fill = $('timerFill');
+    const text = $('timerText');
+    const pct = (t / QUESTION_TIME) * 100;
+    fill.style.width = pct + '%';
+    fill.classList.toggle('warn', t <= 10 && t > 5);
+    fill.classList.toggle('crit', t <= 5);
+    text.textContent = `⏱️ ${t}s`;
+    text.classList.toggle('warn', t <= 10 && t > 5);
+    text.classList.toggle('crit', t <= 5);
+}
+
+function timeoutWrong() {
+    // Treat as wrong answer
+    const q = state.questions[state.currentLevel];
+    if (q) {
+        const correct = q.a;
+        const btns = $('answers').querySelectorAll('.answer-btn');
+        btns[correct].classList.add('correct');
+        btns.forEach(b => b.disabled = true);
+        playWrongSound();
+        setTimeout(() => {
+            const safeLevel = Math.max(...SAFE_LEVELS.filter(s => s < state.currentLevel), -1);
+            const money = safeLevel >= 0 ? MONEY_LEVELS[safeLevel] : 0;
+            showResult(false, money, '時間到！');
+        }, 2000);
+    }
 }
 
 function selectAnswer(idx) {
-    if (pendingAnswer !== null) return;
-    const btns = document.querySelectorAll('.answer-btn');
-    btns.forEach(b => b.classList.remove('selected'));
+    if (state.selectedAnswer !== -1) return;
+    state.selectedAnswer = idx;
+    const btns = $('answers').querySelectorAll('.answer-btn');
     btns[idx].classList.add('selected');
-    pendingAnswer = idx;
-    showConfirmModal();
+
+    const q = state.questions[state.currentLevel];
+    const letters = ['A', 'B', 'C', 'D'];
+    $('confirmQuestion').textContent = q.q;
+    $('confirmAnswer').textContent = `${letters[idx]}. ${q.opts[idx]}`;
+    $('confirmModal').classList.add('active');
+    playTone(440, 0.1);
 }
 
-function showConfirmModal() {
-    const q = questions[currentLevel];
-    document.getElementById('confirmQuestion').textContent = q.q;
-    document.getElementById('confirmAnswer').textContent = `${LETTERS[pendingAnswer]}: ${q.opts[pendingAnswer]}`;
-    document.getElementById('confirmModal').classList.add('active');
+function closeConfirm() {
+    $('confirmModal').classList.remove('active');
+    $('answers').querySelectorAll('.answer-btn').forEach(btn => btn.classList.remove('selected'));
+    state.selectedAnswer = -1;
 }
 
-function confirmAnswer() {
-    document.getElementById('confirmModal').classList.remove('active');
-    checkAnswer(pendingAnswer);
-}
+function finalAnswer() {
+    $('confirmModal').classList.remove('active');
+    clearTimer();
+    const q = state.questions[state.currentLevel];
+    const correct = q.a;
+    const btns = $('answers').querySelectorAll('.answer-btn');
+    btns[correct].classList.add('correct');
+    btns.forEach(b => b.disabled = true);
 
-function cancelAnswer() {
-    document.getElementById('confirmModal').classList.remove('active');
-    const btns = document.querySelectorAll('.answer-btn');
-    btns.forEach(b => b.classList.remove('selected'));
-    pendingAnswer = null;
-}
-
-function checkAnswer(idx) {
-    const q = questions[currentLevel];
-    const btns = document.querySelectorAll('.answer-btn');
-    
-    if (idx === q.a) {
-        btns[idx].classList.add('correct');
-        currentLevel++;
-        if (currentLevel >= 15) {
-            showResult(true, MONEY_LEVELS[14]);
-        } else {
-            setTimeout(() => renderQuestion(), 1500);
-        }
+    if (state.selectedAnswer !== correct) {
+        btns[state.selectedAnswer].classList.add('wrong');
+        playWrongSound();
+        setTimeout(() => {
+            const safeLevel = Math.max(...SAFE_LEVELS.filter(s => s < state.currentLevel), -1);
+            const money = safeLevel >= 0 ? MONEY_LEVELS[safeLevel] : 0;
+            showResult(false, money);
+        }, 2500);
     } else {
-        btns[idx].classList.add('wrong');
-        btns[q.a].classList.add('correct');
-        const safeMoney = SAFE_LEVELS.filter(l => l < currentLevel).pop() || 0;
-        setTimeout(() => showResult(false, MONEY_LEVELS[safeMoney]), 2000);
+        playCorrectSound();
+        setTimeout(() => {
+            state.currentLevel++;
+            if (state.currentLevel >= 15) {
+                showResult(true, MONEY_LEVELS[14]);
+            } else {
+                renderQuestion();
+            }
+        }, 1500);
     }
 }
 
 function useLifeline(type) {
-    const q = questions[currentLevel];
-    if (type === 'fifty' && lifelines.fifty) {
-        lifelines.fifty = false;
-        const wrong = q.opts.map((_, i) => i).filter(i => i !== q.a);
-        shuffle(wrong);
-        const toRemove = wrong.slice(0, 2);
-        const btns = document.querySelectorAll('.answer-btn');
-        toRemove.forEach(i => btns[i].classList.add('eliminated'));
+    try {
+        if (!state.lifelines[type]) return;
+        state.lifelines[type] = false;
         updateLifelineButtons();
-    } else if (type === 'phone' && lifelines.phone) {
-        lifelines.phone = false;
-        document.getElementById('phoneQuestion').textContent = q.q;
-        document.getElementById('phoneAnswer').textContent = `朋友建議：${LETTERS[q.a]}（${q.opts[q.a]}）`;
-        document.getElementById('phoneModal').classList.add('active');
-        updateLifelineButtons();
-    } else if (type === 'audience' && lifelines.audience) {
-        lifelines.audience = false;
-        const bar = document.getElementById('audienceBar');
-        bar.innerHTML = '';
-        const percents = q.opts.map((_, i) => {
-            if (i === q.a) return 50 + Math.random() * 40;
-            return Math.random() * 20;
-        });
-        const total = percents.reduce((a, b) => a + b, 0);
-        const heights = percents.map(p => (p / total * 120) + 20);
-        const maxIdx = heights.indexOf(Math.max(...heights));
-        q.opts.forEach((opt, i) => {
-            const div = document.createElement('div');
-            div.style.height = heights[i] + 'px';
-            div.textContent = LETTERS[i];
-            if (i === maxIdx) div.style.background = 'linear-gradient(180deg, #4caf50, #2e7d32)';
-            bar.appendChild(div);
-        });
-        document.getElementById('audienceQuestion').textContent = q.q;
-        document.getElementById('audienceAdvice').textContent = `觀眾建議：${LETTERS[maxIdx]}`;
-        document.getElementById('audienceModal').classList.add('active');
-        updateLifelineButtons();
+        const q = state.questions[state.currentLevel];
+        if (!q) return;
+
+        if (type === 'fifty') {
+            const wrong = [0, 1, 2, 3].filter(i => i !== q.a);
+            shuffle(wrong).slice(0, 2).forEach(idx => {
+                const btn = document.querySelector(`.answer-btn[data-idx="${idx}"]`);
+                if (btn) btn.classList.add('eliminated');
+            });
+            playTone(800, 0.1);
+        } else if (type === 'phone') {
+            const letters = ['A', 'B', 'C', 'D'];
+            const correct = Math.random() < 0.7;
+            const idx = correct ? q.a : shuffle([0, 1, 2, 3].filter(i => i !== q.a))[0];
+            $('phoneContent').innerHTML = `
+                <p style="font-size: 1.1em; color: var(--c-gold-light);">
+                    🤔 朋友話：「我覺得係 ${letters[idx]}. ${q.opts[idx]}」<br>
+                    <span style="font-size: 0.85em; opacity: 0.7;">(${correct ? '佢有 70% 信心' : '佢都唔太肯定'})</span>
+                </p>`;
+            $('phoneModal').classList.add('active');
+            playTone(800, 0.1);
+        } else if (type === 'audience') {
+            const correctPct = 50 + Math.floor(Math.random() * 35);
+            const remain = 100 - correctPct;
+            const wrongs = [0, 1, 2, 3].filter(i => i !== q.a);
+            const w1 = wrongs[0], w2 = wrongs[1];
+            const w1Pct = Math.floor(remain * 0.7);
+            const w2Pct = remain - w1Pct;
+            const letters = ['A', 'B', 'C', 'D'];
+            $('audienceBar').innerHTML = letters.map((l, i) => {
+                let pct = 0;
+                if (i === q.a) pct = correctPct;
+                else if (i === w1) pct = w1Pct;
+                else if (i === w2) pct = w2Pct;
+                return `<div style="display:flex;align-items:center;gap:8px;margin:6px 0;">
+                    <span style="width:24px;font-weight:800;color:var(--c-gold);">${l}</span>
+                    <div style="flex:1;background:rgba(0,0,0,0.5);border-radius:4px;overflow:hidden;height:24px;">
+                        <div style="width:${pct}%;background:${i===q.a?'linear-gradient(90deg,#4caf50,#2e7d32)':'linear-gradient(90deg,#1976d2,#0d47a1)'};height:100%;"></div>
+                    </div>
+                    <span style="width:45px;text-align:right;font-weight:700;">${pct}%</span>
+                </div>`;
+            }).join('');
+            $('audienceModal').classList.add('active');
+            playTone(800, 0.1);
+        }
+    } catch (e) {
+        console.error('useLifeline error:', e);
     }
+}
+
+function updateLifelineButtons() {
+    $('fiftyBtn').disabled = !state.lifelines.fifty;
+    $('phoneBtn').disabled = !state.lifelines.phone;
+    $('audienceBtn').disabled = !state.lifelines.audience;
 }
 
 function closeModal(id) {
-    document.getElementById(id).classList.remove('active');
+    $(id).classList.remove('active');
 }
 
-let playerName = '玩家';
+function showResult(won, money, reason) {
+    clearTimer();
+    stopBgm();
+    switchScreen('result');
 
-function startGame() { playBgm(); {
-    playerName = document.getElementById('playerName').value || '玩家';
-    const selected = document.querySelector('.cat-btn.selected');
-    selectedCategory = selected ? selected.dataset.cat : '隨機';
-    document.getElementById('startScreen').classList.remove('active');
-    document.getElementById('gameScreen').classList.add('active');
-    currentLevel = 0;
-    lifelines = { fifty: true, phone: true, audience: true };
-    loadQuestions();
-    renderQuestion();
-}
-
-function showResult(won, money) {
-    document.getElementById('gameScreen').classList.remove('active');
-    document.getElementById('resultScreen').classList.add('active');
-    const title = document.getElementById('resultTitle');
-    const msg = document.getElementById('resultMessage');
-    const prize = document.getElementById('resultPrize');
-    if (won) {
-        title.textContent = '🎉 恭喜！你成為百萬富翁！';
-        title.className = 'result-title';
-        msg.textContent = '你贏得了';
-        prize.textContent = '$' + money.toLocaleString();
+    if (won && money === 1000000) {
+        // $1M winner special flow
+        playWinSound();
+        $('resultContent').innerHTML = `
+            <h1>🏆 百萬富翁！</h1>
+            <div class="winner-prize">${formatMoney(money)}</div>
+            <p>🎉 恭喜晒！</p>
+            <p style="color: var(--c-gold-light); font-size: 0.9em;">請留低 email，我哋會有專人聯絡你送獎</p>
+            <form id="winnerForm" class="email-form">
+                <input type="email" id="winnerEmail" class="email-input" placeholder="your@email.com" required>
+                <button type="submit" class="primary-btn" style="width:100%;margin-top:8px;">📧 提交</button>
+            </form>
+            <div id="winnerThanks" style="display:none;margin-top:16px;color:#4caf50;">
+                ✅ 已收到！我哋會盡快聯絡你。
+            </div>
+            <button class="back-home-btn" id="backHomeBtn">🏠 返回首頁</button>
+        `;
+        $('winnerForm').addEventListener('submit', handleWinnerSubmit);
+        $('backHomeBtn').addEventListener('click', goHome);
+        addToLeaderboard(state.playerName, money);
+        renderLeaderboard();
     } else {
-        title.textContent = '😢 遊戲結束';
-        title.className = 'result-title lose';
-        msg.textContent = '你贏得了';
-        prize.textContent = '$' + money.toLocaleString();
-    }
-    saveScore(money);
-}
-
-function goHome() { stopBgm(); {
-    document.getElementById('resultScreen').classList.remove('active');
-    document.getElementById('startScreen').classList.add('active');
-    
-// Audio
-let bgmPlaying = false;
-function playBgm() {
-    const bgm = document.getElementById('bgm');
-    if (bgm && !bgmPlaying) {
-        bgm.volume = 0.3;
-        bgm.play().catch(e => console.log('Audio play failed:', e));
-        bgmPlaying = true;
-    }
-}
-function stopBgm() {
-    const bgm = document.getElementById('bgm');
-    if (bgm) {
-        bgm.pause();
-        bgmPlaying = false;
+        // Normal result
+        $('resultContent').innerHTML = `
+            <h1 class="${won ? '' : 'lose'}">${won ? '🎉 恭喜！' : '💔 ' + (reason || '差少少...')}</h1>
+            <p class="result-msg">${won ? '你贏得了' : '你帶走安全線獎金：'}</p>
+            <div class="result-prize">${formatMoney(money)}</div>
+            <button class="back-home-btn" id="backHomeBtn">🏠 返回首頁</button>
+        `;
+        $('backHomeBtn').addEventListener('click', goHome);
+        if (money > 0) addToLeaderboard(state.playerName, money);
+        renderLeaderboard();
     }
 }
 
-loadLeaderboard();
+function handleWinnerSubmit(e) {
+    e.preventDefault();
+    const email = $('winnerEmail').value.trim();
+    if (!email || !email.includes('@')) {
+        alert('請輸入有效嘅 email');
+        return;
+    }
+    addWinner(email, state.playerName);
+    $('winnerForm').style.display = 'none';
+    $('winnerThanks').style.display = 'block';
+    playTone(784, 0.2);
+    setTimeout(() => playTone(988, 0.3), 200);
 }
 
-async function saveScore(score) {
-    try {
-        await fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
-            method: 'POST',
-            mode: 'no-cors',
-            body: JSON.stringify({ name: playerName, score: score })
-        });
-    } catch (e) { console.log('Score save skipped'); }
+function goHome() {
+    clearTimer();
+    stopBgm();
+    switchScreen('start');
+    renderLeaderboard();
+    updateBankStatus();
 }
 
-function loadLeaderboard() {
-    document.getElementById('leaderboardList').innerHTML = '<li class="leaderboard-empty">暫無排名</li>';
-}
-
-// Category selection
-document.querySelectorAll('.cat-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-    });
+// ============================================
+// Global error handler
+// ============================================
+window.addEventListener('error', (e) => {
+    console.error('🚨 Unhandled:', e.message, '@', e.filename + ':' + e.lineno);
 });
 
-loadLeaderboard();
-    </script>
+// ============================================
+// Event Listeners
+// ============================================
+$('startBtn').addEventListener('click', startGame);
+$('muteBtn').addEventListener('click', toggleMute);
+$('fiftyBtn').addEventListener('click', () => useLifeline('fifty'));
+$('phoneBtn').addEventListener('click', () => useLifeline('phone'));
+$('audienceBtn').addEventListener('click', () => useLifeline('audience'));
+$('confirmYesBtn').addEventListener('click', finalAnswer);
+$('confirmNoBtn').addEventListener('click', closeConfirm);
+$('audienceCloseBtn').addEventListener('click', () => closeModal('audienceModal'));
+$('phoneCloseBtn').addEventListener('click', () => closeModal('phoneModal'));
+
+// Init
+async function init() {
+    await loadQuestions();
+    updateBankStatus();
+    renderLeaderboard();
+}
+
+function updateBankStatus() {
+    const total = QUESTION_BANK.length;
+    const used = getUsedIds();
+    const usedCount = used.length;
+    const totalEl = document.getElementById('bankTotal');
+    const total2El = document.getElementById('bankTotal2');
+    const usedEl = document.getElementById('bankUsed');
+    if (totalEl) totalEl.textContent = total;
+    if (total2El) total2El.textContent = total;
+    if (usedEl) usedEl.textContent = usedCount;
+}
+
+init();
+</script>
 </body>
 </html>
