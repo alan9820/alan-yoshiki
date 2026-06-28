@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "description": "已使用 / 已淘汰嘅題目 ID 列表。Game 啟動時會 load 呢個 file 嘅 IDs 同 localStorage 嘅 IDs 合併，做去重 blocklist。",
+  "last_updated": "2026-06-26",
+  "archived_ids": []
+}
