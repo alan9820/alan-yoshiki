@@ -42,15 +42,12 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: "Microsoft JhengHei", "PingFang TC", sans-serif; background: #0a0a1a; color: #e0e0f0; line-height: 1.8; }
-        .hero { position: relative; width: 100%; min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a2e 100%); }
+        .hero { position: relative; width: 100%; min-height: 100vh; }
 
         .hero-title { font-size: clamp(2em, 5vw, 3.5em); color: #ffd700; text-shadow: 0 0 30px rgba(255,215,0,0.5); margin-top: 20px; line-height: 1.3; text-align: center; }
 
-        .hero img { width: 100%; max-width: 800px; height: auto; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); margin: 40px 20px; }
+        .hero img { width: 90%; max-width: 1200px; border-radius: 16px; margin-top: 60px; }
         .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px); pointer-events: none; }
-        .nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,26,0.95); backdrop-filter: blur(10px); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; z-index: 100; border-bottom: 1px solid rgba(255,215,0,0.2); }
-        .nav-brand { font-size: 1.2em; font-weight: bold; color: #ffd700; text-decoration: none; }
-        .nav-links a { color: #aaa; text-decoration: none; margin-left: 25px; font-size: 0.95em; transition: color 0.3s; }
         .nav-links a:hover { color: #ffd700; }
         .container { max-width: 800px; margin: 0 auto; padding: 60px 25px 100px; }
         h1 { font-size: clamp(2em, 5vw, 3em); color: #ffd700; text-shadow: 0 0 30px rgba(255,215,0,0.5); margin-bottom: 20px; line-height: 1.3; }
@@ -73,19 +70,10 @@
         .footer { text-align: center; padding: 40px 20px; color: #666; font-size: 0.9em; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; }
         .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: rgba(255,215,0,0.2); border: 1px solid rgba(255,215,0,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffd700; font-size: 1.5em; text-decoration: none; transition: all 0.3s; }
         .back-to-top:hover { background: rgba(255,215,0,0.3); transform: translateY(-3px); }
-        @media (max-width: 768px) { .nav { padding: 12px 20px; } .nav-links { display: none; } h1 { font-size: 1.8em; } .container { padding: 40px 20px 80px; } }
+        @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 1.8em; } .container { padding: 40px 20px 80px; } }
     </style>
 </head>
 <body>
-    <nav class="nav">
-        <a href="https://alanhorizonteam.org/" class="nav-brand">🏠 HorizonTeam</a>
-        <div class="nav-links">
-            <a href="https://alanhorizonteam.org/">首頁</a>
-            <a href="https://alanhorizonteam.org/articles">文章</a>
-            <a href="https://alanhorizonteam.org/millionaire.html">🎮 百萬富翁</a>
-        </div>
-    </nav>
-
     <header class="hero">
         <img src="cuo-ren-lei-zui-nan-tun-xia-yi-li-yao_cover.jpg" alt="錯：人類最難吞下的一粒藥">
         <h1 class="hero-title">錯：人類最難吞下的一粒藥</h1>
@@ -181,8 +169,8 @@
     </main>
 
     <footer class="footer">
-        <p>📝 作者：Alan · HorizonTeam</p>
-        <p>AI 協作文章 · 2026</p>
+        <p>本文章純屬個人與AI創作</p>
+        <p>AI Alan · HorizonTeam</p>
     </footer>
 
     <a href="#" class="back-to-top">↑</a>
