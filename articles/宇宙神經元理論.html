@@ -400,11 +400,16 @@
         }
         </style>
 
-        <div class="share-section">
-            <button class="share-btn-single" onclick="shareArticle()">
-                🔗 分享文章
-            </button>
+            <div class="share-section">
+        <p class="share-title">📲 分享呢篇文章</p>
+        <div class="share-buttons">
+            <a class="share-btn whatsapp" href="https://api.whatsapp.com/send?text=%E5%AE%87%E5%AE%99%E7%A5%9E%E7%B6%93%E5%85%83%EF%BC%9A%E6%84%8F%E8%AD%98%E4%BD%9C%E7%82%BA%E5%AE%87%E5%AE%99%E6%A0%B9%E6%9C%AC%E7%B5%90%E6%A7%8B%E7%9A%84%E7%90%86%E8%AB%96%E6%A1%86%E6%9E%B6%20https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E5%AE%87%E5%AE%99%E7%A5%9E%E7%B6%93%E5%85%83%E7%90%86%E8%AB%96.html" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a class="share-btn telegram" href="https://t.me/share/url?url=https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E5%AE%87%E5%AE%99%E7%A5%9E%E7%B6%93%E5%85%83%E7%90%86%E8%AB%96.html&text=%E5%AE%87%E5%AE%99%E7%A5%9E%E7%B6%93%E5%85%83%EF%BC%9A%E6%84%8F%E8%AD%98%E4%BD%9C%E7%82%BA%E5%AE%87%E5%AE%99%E6%A0%B9%E6%9C%AC%E7%B5%90%E6%A7%8B%E7%9A%84%E7%90%86%E8%AB%96%E6%A1%86%E6%9E%B6" target="_blank" rel="noopener">✈️ Telegram</a>
+            <a class="share-btn facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E5%AE%87%E5%AE%99%E7%A5%9E%E7%B6%93%E5%85%83%E7%90%86%E8%AB%96.html" target="_blank" rel="noopener">📘 Facebook</a>
+            <a class="share-btn twitter" href="https://twitter.com/intent/tweet?text=%E5%AE%87%E5%AE%99%E7%A5%9E%E7%B6%93%E5%85%83%EF%BC%9A%E6%84%8F%E8%AD%98%E4%BD%9C%E7%82%BA%E5%AE%87%E5%AE%99%E6%A0%B9%E6%9C%AC%E7%B5%90%E6%A7%8B%E7%9A%84%E7%90%86%E8%AB%96%E6%A1%86%E6%9E%B6&url=https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E5%AE%87%E5%AE%99%E7%A5%9E%E7%B6%93%E5%85%83%E7%90%86%E8%AB%96.html" target="_blank" rel="noopener">🐦 Twitter</a>
+            <a class="share-btn copy" href="#" onclick="copyLink(event)" style="background:#666;">🔗 複製連結</a>
         </div>
+    </div>
 
         <script>
         async function shareArticle() {

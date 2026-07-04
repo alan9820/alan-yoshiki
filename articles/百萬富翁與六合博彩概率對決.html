@@ -769,11 +769,16 @@
         }
         </style>
 
-        <div class="share-section">
-            <button class="share-btn-single" onclick="shareArticle()">
-                🔗 分享文章
-            </button>
+            <div class="share-section">
+        <p class="share-title">📲 分享呢篇文章</p>
+        <div class="share-buttons">
+            <a class="share-btn whatsapp" href="https://api.whatsapp.com/send?text=%E7%9F%A5%E8%AD%98%E8%88%87%E5%B9%B8%E9%81%8B%E7%9A%84%E7%B5%82%E6%A5%B5%E5%B0%8D%E6%B1%BA%EF%BC%9A%E7%99%BE%E8%90%AC%E5%AF%8C%E7%BF%81%E8%88%87%E5%85%AD%E5%90%88%20https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E7%99%BE%E8%90%AC%E5%AF%8C%E7%BF%81%E8%88%87%E5%85%AD%E5%90%88%E5%8D%9A%E5%BD%A9%E6%A6%82%E7%8E%87%E5%B0%8D%E6%B1%BA.html" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a class="share-btn telegram" href="https://t.me/share/url?url=https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E7%99%BE%E8%90%AC%E5%AF%8C%E7%BF%81%E8%88%87%E5%85%AD%E5%90%88%E5%8D%9A%E5%BD%A9%E6%A6%82%E7%8E%87%E5%B0%8D%E6%B1%BA.html&text=%E7%9F%A5%E8%AD%98%E8%88%87%E5%B9%B8%E9%81%8B%E7%9A%84%E7%B5%82%E6%A5%B5%E5%B0%8D%E6%B1%BA%EF%BC%9A%E7%99%BE%E8%90%AC%E5%AF%8C%E7%BF%81%E8%88%87%E5%85%AD%E5%90%88" target="_blank" rel="noopener">✈️ Telegram</a>
+            <a class="share-btn facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E7%99%BE%E8%90%AC%E5%AF%8C%E7%BF%81%E8%88%87%E5%85%AD%E5%90%88%E5%8D%9A%E5%BD%A9%E6%A6%82%E7%8E%87%E5%B0%8D%E6%B1%BA.html" target="_blank" rel="noopener">📘 Facebook</a>
+            <a class="share-btn twitter" href="https://twitter.com/intent/tweet?text=%E7%9F%A5%E8%AD%98%E8%88%87%E5%B9%B8%E9%81%8B%E7%9A%84%E7%B5%82%E6%A5%B5%E5%B0%8D%E6%B1%BA%EF%BC%9A%E7%99%BE%E8%90%AC%E5%AF%8C%E7%BF%81%E8%88%87%E5%85%AD%E5%90%88&url=https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E7%99%BE%E8%90%AC%E5%AF%8C%E7%BF%81%E8%88%87%E5%85%AD%E5%90%88%E5%8D%9A%E5%BD%A9%E6%A6%82%E7%8E%87%E5%B0%8D%E6%B1%BA.html" target="_blank" rel="noopener">🐦 Twitter</a>
+            <a class="share-btn copy" href="#" onclick="copyLink(event)" style="background:#666;">🔗 複製連結</a>
         </div>
+    </div>
 
         <script>
         async function shareArticle() {

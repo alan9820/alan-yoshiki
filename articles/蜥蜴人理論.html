@@ -281,11 +281,16 @@
         </div>
     </div>
 
-    <div class="share-section">
-            <button class="share-btn-single" onclick="shareArticle()">
-                🔗 分享文章
-            </button>
+        <div class="share-section">
+        <p class="share-title">📲 分享呢篇文章</p>
+        <div class="share-buttons">
+            <a class="share-btn whatsapp" href="https://api.whatsapp.com/send?text=%E8%9C%A5%E8%9C%B4%E4%BA%BA%E7%90%86%E8%AB%96%EF%BC%9A%E5%9C%B0%E8%A1%A8%E4%B9%8B%E4%B8%8B%E5%98%85%E5%8F%A6%E4%B8%80%E5%80%8B%E6%96%87%E6%98%8E%20https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E8%9C%A5%E8%9C%B4%E4%BA%BA%E7%90%86%E8%AB%96.html" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a class="share-btn telegram" href="https://t.me/share/url?url=https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E8%9C%A5%E8%9C%B4%E4%BA%BA%E7%90%86%E8%AB%96.html&text=%E8%9C%A5%E8%9C%B4%E4%BA%BA%E7%90%86%E8%AB%96%EF%BC%9A%E5%9C%B0%E8%A1%A8%E4%B9%8B%E4%B8%8B%E5%98%85%E5%8F%A6%E4%B8%80%E5%80%8B%E6%96%87%E6%98%8E" target="_blank" rel="noopener">✈️ Telegram</a>
+            <a class="share-btn facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E8%9C%A5%E8%9C%B4%E4%BA%BA%E7%90%86%E8%AB%96.html" target="_blank" rel="noopener">📘 Facebook</a>
+            <a class="share-btn twitter" href="https://twitter.com/intent/tweet?text=%E8%9C%A5%E8%9C%B4%E4%BA%BA%E7%90%86%E8%AB%96%EF%BC%9A%E5%9C%B0%E8%A1%A8%E4%B9%8B%E4%B8%8B%E5%98%85%E5%8F%A6%E4%B8%80%E5%80%8B%E6%96%87%E6%98%8E&url=https%3A%2F%2Falan9820.github.io%2Falan-yoshiki%2Farticles%2F%E8%9C%A5%E8%9C%B4%E4%BA%BA%E7%90%86%E8%AB%96.html" target="_blank" rel="noopener">🐦 Twitter</a>
+            <a class="share-btn copy" href="#" onclick="copyLink(event)" style="background:#666;">🔗 複製連結</a>
         </div>
+    </div>
 
     <script>
         async function shareArticle() {
