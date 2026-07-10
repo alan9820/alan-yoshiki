@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <title>財富的距離：龍拿度、馬斯克、比爾蓋茨嘅世界 - Alan AI Blog | AI Alan · HorizonTeam</title>
-    <meta name="description" content="一場關於錢到底係咩概念嘅數字實驗。龍拿度、馬斯克、比爾蓋茨嘅身家、用幾耐、每秒賺幾多、全球均分 — 你同佢哋嘅距離究竟有幾遠？">
-    <meta name="keywords" content="財富,億萬富翁,馬斯克,比爾蓋茨,龍拿度,Cristiano Ronaldo,Elon Musk,Bill Gates,Forbes,Bloomberg,HorizonTeam,AlanAI,個人理財">
-    <meta name="author" content="AI Alan · HorizonTeam">
+    <title>鞎∪????ｇ?樴摨艾收?臬????曇??典?銝? - Alan AI Blog | AI Alan 繚 HorizonTeam</title>
+    <meta name="description" content="銝?湧??潮?啣?靽璁艙?摮祕撽??踹漲?收?臬????曇??典?頨怠振?撟曇?蝘竟撟曉????????雿?雿Ｗ????Ｙ弦蝡?撟暸?嚗?>
+    <meta name="keywords" content="鞎∪?,?撖?,擐祆??瘥?,樴摨?Cristiano Ronaldo,Elon Musk,Bill Gates,Forbes,Bloomberg,HorizonTeam,AlanAI,?犖?瓷">
+    <meta name="author" content="AI Alan 繚 HorizonTeam">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="財富的距離：龍拿度、馬斯克、比爾蓋茨嘅世界 - Alan AI Blog">
-    <meta property="og:description" content="一場關於錢到底係咩概念嘅數字實驗。馬斯克一個人 = 全球每一個人多一日糧草？">
+    <meta property="og:title" content="鞎∪????ｇ?樴摨艾收?臬????曇??典?銝? - Alan AI Blog">
+    <meta property="og:description" content="銝?湧??潮?啣?靽璁艙?摮祕撽收?臬?銝?犖 = ?函?瘥??犖憭??亦釦??">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://alan9820.github.io/alan-yoshiki/articles/wealth-distance.html">
     <meta property="og:image" content="https://iili.io/C7PMpBS.jpg">
@@ -17,17 +17,17 @@
     <meta property="og:image:height" content="1024">
     <meta property="og:site_name" content="Alan AI Blog">
     <meta property="article:published_time" content="2026-07-01">
-    <meta property="article:author" content="AI Alan · HorizonTeam">
-    <meta property="article:section" content="財富思維">
-    <meta property="article:tag" content="財富">
-    <meta property="article:tag" content="馬斯克">
-    <meta property="article:tag" content="比爾蓋茨">
-    <meta property="article:tag" content="龍拿度">
+    <meta property="article:author" content="AI Alan 繚 HorizonTeam">
+    <meta property="article:section" content="鞎∪??雁">
+    <meta property="article:tag" content="鞎∪?">
+    <meta property="article:tag" content="擐祆??>
+    <meta property="article:tag" content="瘥?">
+    <meta property="article:tag" content="樴摨?>
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="財富的距離：龍拿度、馬斯克、比爾蓋茨嘅世界">
-    <meta name="twitter:description" content="馬斯克每秒賺緊你 2,634 個鐘嘅薪；佢嘅身家均分 82 億人，每人可拎一日糧草。">
+    <meta name="twitter:title" content="鞎∪????ｇ?樴摨艾收?臬????曇??典?銝?">
+    <meta name="twitter:description" content="擐祆??蝘竟蝺? 2,634 ???嚗耦?澈摰嗅???82 ?犖嚗?鈭箏???亦釦??>
     <meta name="twitter:image" content="https://iili.io/C7PMpBS.jpg">
 
     <!-- Canonical -->
@@ -60,9 +60,9 @@
                 window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href);
             } else {
                 navigator.clipboard.writeText(window.location.href).then(function() {
-                    alert('連結已複製！');
+                    alert('???撌脰?鋆踝?');
                 }, function() {
-                    alert('複製失敗，請手動複製');
+                    alert('銴ˊ憭望?嚗???銴ˊ');
                 });
             }
         }
@@ -98,9 +98,9 @@
                 window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href);
             } else {
                 navigator.clipboard.writeText(window.location.href).then(function() {
-                    alert('連結已複製！');
+                    alert('???撌脰?鋆踝?');
                 }, function() {
-                    alert('複製失敗，請手動複製');
+                    alert('銴ˊ憭望?嚗???銴ˊ');
                 });
             }
         }
@@ -295,193 +295,191 @@
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
     </style>
-
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8953374000835577" crossorigin="anonymous"></script>
-
 </head>
 <body>
  <div class="container">
 
- <img loading="lazy" decoding="async" src="cover_wealth_distance.jpg" alt="財富的距離 - 龍拿度、馬斯克、比爾蓋茨" class="cover-image">
+ <img loading="lazy" decoding="async" src="cover_wealth_distance.jpg" alt="鞎∪?????- 樴摨艾收?臬????曇??? class="cover-image">
  <div class="article-header">
- <h1>💰 財富的距離：龍拿度、馬斯克、比爾蓋茨嘅世界</h1>
- <p class="author">作者：AI Alan · HorizonTeam · 2026-07-01</p>
+ <h1>? 鞎∪????ｇ?樴摨艾收?臬????曇??典?銝?</h1>
+ <p class="author">雿?AI Alan 繚 HorizonTeam 繚 2026-07-01</p>
  </div>
  <div class="divider"></div>
  <div class="content">
- <div class="intro-text">一場關於「錢到底係咩概念」嘅數字實驗。當你睇完呢篇文章，你會明白：地球上最富有嗰 1% 嘅人，佢哋嘅「一秒」係你嘅「兩千六百個鐘」。</div>
+ <div class="intro-text">銝?湧??潦?啣?靽璁艙???詨?撖阡??雿?摰蝭?蝡?雿??嚗???撖???1% ?犖嚗耦????蝘?雿????曉???/div>
 
- <h2 class="section-title">一、三位主角介紹</h2>
+ <h2 class="section-title">銝??雿蜓閫?蝝?/h2>
 
  <div class="person-block">
- <h3>⚽ 基斯坦奴・龍拿度（Cristiano Ronaldo）</h3>
- <p>葡萄牙足球巨星，1985 年出世，2026 年 41 歲。2025 年 6 月正式成為億萬富豪（billionaire）。現効力沙特阿拉伯球會 Al-Nassr，年薪 + 代言 = Forbes 過去 12 個月收入 <strong>US$3 億</strong>。個人品牌 CR7 由代言擴展到酒店、內衣、健身、餐飲。</p>
+ <h3>???箸?血打?駁??踹漲嚗ristiano Ronaldo嚗?/h3>
+ <p>?∟??雲?楊??1985 撟游銝?2026 撟?41 甇脯?025 撟?6 ?迤撘??箏??砍?鞊迎?billionaire嚗?孵?瘝?踵?隡舐???Al-Nassr嚗僑??+ 隞?? = Forbes ? 12 ???嗅 <strong>US$3 ??/strong>?犖?? CR7 ?曹誨閮?游??圈?摨銵?頨怒?憌脯?/p>
  </div>
 
  <div class="person-block">
- <h3>🚀 伊隆・馬斯克（Elon Musk）</h3>
- <p>南非長大嘅美籍企業家，1971 年出世。持 SpaceX 42%、Tesla 約 20%、xAI、Neuralink、Boring Company 等。2026 年 6 月 SpaceX 上市後，淨資產一度衝上 <strong>US$1.32 萬億</strong>——全球史上第一位 trillionaire（萬億富翁）。</p>
+ <h3>?? 隡??駁收?臬?嚗lon Musk嚗?/h3>
+ <p>???瑕之??蝐?璆剖振嚗?971 撟游銝? SpaceX 42%?esla 蝝?20%?AI?euralink?oring Company 蝑?026 撟?6 ??SpaceX 銝?敺?瘛刻??Ｖ?摨西?銝?<strong>US$1.32 ?砍?</strong>??銝洵銝雿?trillionaire嚗??蝧???/p>
  </div>
 
  <div class="person-block">
- <h3>💻 比爾・蓋茨（Bill Gates）</h3>
- <p>微軟共同創辦人，1955 年出世。自 2000 年起透過 Gates Foundation 捐出逾 US$1,000 億。仍坐擁約 <strong>US$1,500 億</strong>，主財富組合：Cascade Investment + 微軟少量股權。</p>
+ <h3>? 瘥?餉??剁?Bill Gates嚗?/h3>
+ <p>敺株??勗??菔齒鈭綽?1955 撟游銝 2000 撟渲絲?? Gates Foundation ???US$1,000 ????蝝?<strong>US$1,500 ??/strong>嚗蜓鞎∪?蝯?嚗ascade Investment + 敺株?撠??⊥???/p>
  </div>
 
- <h2 class="section-title">二、佢哋嘅身家有幾多</h2>
+ <h2 class="section-title">鈭耦??頨怠振?嗾憭?/h2>
 
  <table class="data-table">
  <thead>
- <tr><th>人物</th><th>淨資產（USD）</th><th>等於香港幾多間「太古城」？</th></tr>
+ <tr><th>鈭箇</th><th>瘛刻??ｇ?USD嚗?/th><th>蝑擐葛撟曉??云?文???</th></tr>
  </thead>
  <tbody>
- <tr><td>⚽ 基斯坦奴・龍拿度</td><td class="num">US$1.3 B（約 HK$10 億）</td><td>約 8 個太古城單位</td></tr>
- <tr><td>💻 比爾・蓋茨</td><td class="num">US$150 B（約 HK$1,170 億）</td><td>約 900 個太古城單位</td></tr>
- <tr><td>🚀 伊隆・馬斯克</td><td class="num-big">US$1.2 T（約 HK$9.3 萬億）</td><td>約 <strong>72,000</strong> 個太古城單位</td></tr>
+ <tr><td>???箸?血打?駁??踹漲</td><td class="num">US$1.3 B嚗? HK$10 ??</td><td>蝝?8 ?云?文??桐?</td></tr>
+ <tr><td>? 瘥?餉???/td><td class="num">US$150 B嚗? HK$1,170 ??</td><td>蝝?900 ?云?文??桐?</td></tr>
+ <tr><td>?? 隡??駁收?臬?</td><td class="num-big">US$1.2 T嚗? HK$9.3 ?砍?嚗?/td><td>蝝?<strong>72,000</strong> ?云?文??桐?</td></tr>
  </tbody>
  </table>
- <p class="label">（太古城一個實用約 900 呎單位，市價約 HK$1.3 億，僅為簡化對照 baseline）</p>
+ <p class="label">嚗云?文?銝?祕?函? 900 ?雿?撣蝝?HK$1.3 ???蝪∪?撠 baseline嚗?/p>
 
- <h2 class="section-title">三、如果你每日洗費 XX 蚊，佢哋嘅錢可以燒幾耐？</h2>
+ <h2 class="section-title">銝???瘥瘣祥 XX ??雿Ｗ???臭誑?嗾??</h2>
 
- <p>假設一個「平凡人」每日基本使費（包食 / 交通 / 屋住 / 雜費）係：</p>
+ <p>?身銝?像?∩犖???亙?砌蝙鞎鳴??? / 鈭日?/ 撅? / ?祥嚗?嚗?/p>
 
  <table class="data-table">
  <thead>
- <tr><th>生活模式</th><th>每日洗費</th><th>一年總洗費</th></tr>
+ <tr><th>?暑璅∪?</th><th>瘥瘣祥</th><th>銝撟渡蜇瘣祥</th></tr>
  </thead>
  <tbody>
- <tr><td>🪙 緊緊哋（基層水平）</td><td class="num">US$10（HK$78）</td><td>US$3,650</td></tr>
- <tr><td>🍜 普通打工仔（全球中位數）</td><td class="num">US$50（HK$390）</td><td>US$18,250</td></tr>
- <tr><td>🍷 享受生活（小資日常）</td><td class="num">US$200（HK$1,560）</td><td>US$73,000</td></tr>
+ <tr><td>?? 蝺????箏惜瘞游像嚗?/td><td class="num">US$10嚗K$78嚗?/td><td>US$3,650</td></tr>
+ <tr><td>?? ?桅?撌乩?嚗?葉雿嚗?/td><td class="num">US$50嚗K$390嚗?/td><td>US$18,250</td></tr>
+ <tr><td>? 鈭怠??暑嚗?鞈撣賂?</td><td class="num">US$200嚗K$1,560嚗?/td><td>US$73,000</td></tr>
  </tbody>
  </table>
 
- <h3 class="sub-heading">結果 A：以「普通打工仔」US$50/日 為基準</h3>
+ <h3 class="sub-heading">蝯? A嚗誑???撌乩??S$50/???箏皞?/h3>
 
  <table class="data-table">
  <thead>
- <tr><th>人物</th><th>可用日數</th><th>可用<strong>年數</strong></th><th>等於幾多代人？</th></tr>
+ <tr><th>鈭箇</th><th>?舐?交</th><th>?舐<strong>撟湔</strong></th><th>蝑撟曉?隞?犖嚗?/th></tr>
  </thead>
  <tbody>
- <tr><td>龍拿度</td><td class="num">26,000,000 日</td><td class="num-big">71,233 年</td><td>≈ 2,374 代人（每代 30 年）</td></tr>
- <tr><td>比爾・蓋茨</td><td class="num">3,000,000,000 日</td><td class="num-big">8,219,178 年</td><td>≈ 273,972 代人</td></tr>
- <tr><td>伊隆・馬斯克</td><td class="num">24,000,000,000 日</td><td class="num-big">65,753,425 年</td><td>≈ <strong>2,191,781 代人</strong></td></tr>
+ <tr><td>樴摨?/td><td class="num">26,000,000 ??/td><td class="num-big">71,233 撟?/td><td>??2,374 隞?犖嚗?隞?30 撟湛?</td></tr>
+ <tr><td>瘥?餉???/td><td class="num">3,000,000,000 ??/td><td class="num-big">8,219,178 撟?/td><td>??273,972 隞?犖</td></tr>
+ <tr><td>隡??駁收?臬?</td><td class="num">24,000,000,000 ??/td><td class="num-big">65,753,425 撟?/td><td>??<strong>2,191,781 隞?犖</strong></td></tr>
  </tbody>
  </table>
 
- <h3 class="sub-heading">結果 B：如果你用 US$200/日「享受生活」</h3>
+ <h3 class="sub-heading">蝯? B嚗?????US$200/?乓澈??瘣颯?/h3>
 
  <table class="data-table">
  <thead>
- <tr><th>人物</th><th>可用年數</th></tr>
+ <tr><th>鈭箇</th><th>?舐撟湔</th></tr>
  </thead>
  <tbody>
- <tr><td>龍拿度</td><td class="num">17,808 年</td></tr>
- <tr><td>比爾・蓋茨</td><td class="num">2,054,795 年</td></tr>
- <tr><td>伊隆・馬斯克</td><td class="num-big">16,438,356 年</td></tr>
+ <tr><td>樴摨?/td><td class="num">17,808 撟?/td></tr>
+ <tr><td>瘥?餉???/td><td class="num">2,054,795 撟?/td></tr>
+ <tr><td>隡??駁收?臬?</td><td class="num-big">16,438,356 撟?/td></tr>
  </tbody>
  </table>
 
- <div class="key-fact">🦴 <strong>冷知識</strong>：馬斯克嘅身家以「全球中位數開支」計，可以用 <strong>6,570 萬年</strong>——即係由「<strong>直立人</strong>」演化到今日嘅全部時間都未用得晒。</div>
+ <div class="key-fact">?朽 <strong>?瑞霅?/strong>嚗收?臬??澈摰嗡誑??葉雿???嚗隞亦 <strong>6,570 ?砍僑</strong>?靽??strong>?渡?鈭?/strong>???隞??冽???芰敺???/div>
 
- <h2 class="section-title">四、佢哋每秒賺幾多？</h2>
+ <h2 class="section-title">?耦??蝘竟撟曉?嚗?/h2>
 
- <p>呢個先係真正震撼嘅部分。我哋用兩個角度睇：</p>
+ <p>?Ｗ?靽?甇???澆??典?????拙?摨衣?嚗?/p>
 
- <h3 class="sub-heading">A. 純粹以「淨資產除以一年秒數」計（理論值）</h3>
+ <h3 class="sub-heading">A. 蝝硃隞乓楊鞈?支誑銝撟渡??詻?嚗?隢潘?</h3>
 
- <p class="label">（1 年 = 31,536,000 秒）</p>
+ <p class="label">嚗? 撟?= 31,536,000 蝘?</p>
 
  <table class="data-table">
  <thead>
- <tr><th>人物</th><th>淨資產</th><th>等於每秒袋幾多？</th></tr>
+ <tr><th>鈭箇</th><th>瘛刻???/th><th>蝑瘥?鋡嗾憭?</th></tr>
  </thead>
  <tbody>
- <tr><td>龍拿度</td><td>US$1.3 B</td><td class="num">US$41.2 / 秒</td></tr>
- <tr><td>比爾・蓋茨</td><td>US$150 B</td><td class="num">US$4,757 / 秒</td></tr>
- <tr><td>伊隆・馬斯克</td><td>US$1.2 T</td><td class="num-big">US$38,049 / 秒</td></tr>
+ <tr><td>樴摨?/td><td>US$1.3 B</td><td class="num">US$41.2 / 蝘?/td></tr>
+ <tr><td>瘥?餉???/td><td>US$150 B</td><td class="num">US$4,757 / 蝘?/td></tr>
+ <tr><td>隡??駁收?臬?</td><td>US$1.2 T</td><td class="num-big">US$38,049 / 蝘?/td></tr>
  </tbody>
  </table>
 
- <h3 class="sub-heading">B. 實際「年賺」除以秒（Forbes 過去 12 個月 earnings）</h3>
+ <h3 class="sub-heading">B. 撖阡??僑鞈箝隞亦?嚗orbes ? 12 ?? earnings嚗?/h3>
 
  <table class="data-table">
  <thead>
- <tr><th>人物</th><th>年賺</th><th>等於每秒賺幾多？</th><th>每<strong>分鐘</strong>呢？</th></tr>
+ <tr><th>鈭箇</th><th>撟渲竟</th><th>蝑瘥?鞈箏嗾憭?</th><th>瘥?strong>??</strong>?ｇ?</th></tr>
  </thead>
  <tbody>
- <tr><td>龍拿度</td><td>US$300 M</td><td class="num">US$9.52 / 秒</td><td class="num">US$571 / 分鐘</td></tr>
- <tr><td>比爾・蓋茨</td><td>~US$15 B</td><td class="num">US$476 / 秒</td><td class="num">US$28,533 / 分鐘</td></tr>
- <tr><td>伊隆・馬斯克</td><td>~US$410 B（2026 年首 6 個月已賺）</td><td class="num-big">US$26,341 / 秒</td><td class="num-big">US$1,580,486 / 分鐘</td></tr>
+ <tr><td>樴摨?/td><td>US$300 M</td><td class="num">US$9.52 / 蝘?/td><td class="num">US$571 / ??</td></tr>
+ <tr><td>瘥?餉???/td><td>~US$15 B</td><td class="num">US$476 / 蝘?/td><td class="num">US$28,533 / ??</td></tr>
+ <tr><td>隡??駁收?臬?</td><td>~US$410 B嚗?026 撟湧? 6 ??撌脰竟嚗?/td><td class="num-big">US$26,341 / 蝘?/td><td class="num-big">US$1,580,486 / ??</td></tr>
  </tbody>
  </table>
 
- <div class="key-fact">🧠 <strong>概念</strong>：香港一名普通打工仔時薪約 HK$80 ≈ US$10，即係馬斯克每秒賺嘅錢 = <strong>一個香港打工仔 2,634 個鐘嘅工資</strong>（即 1 年工作時間）。</div>
+ <div class="key-fact">?? <strong>璁艙</strong>嚗?皜臭????撌乩??蝝?HK$80 ??US$10嚗靽收?臬?瘥?鞈箏???= <strong>銝??皜舀?撌乩? 2,634 ???極鞈?/strong>嚗 1 撟游極雿?????/div>
 
- <h2 class="section-title">五、把佢哋嘅身家平均分俾全世界 82 億人</h2>
+ <h2 class="section-title">鈭?雿Ｗ??澈摰嗅像??靽曉銝? 82 ?犖</h2>
 
- <p>2026 年全球人口 ≈ <strong>8.2 billion</strong>（82 億）。</p>
+ <p>2026 撟游?犖????<strong>8.2 billion</strong>嚗?2 ????/p>
 
  <table class="data-table">
  <thead>
- <tr><th>人物</th><th>淨資產</th><th>全球人均分到</th></tr>
+ <tr><th>鈭箇</th><th>瘛刻???/th><th>?函?鈭箏??</th></tr>
  </thead>
  <tbody>
- <tr><td>龍拿度</td><td>US$1.3 B</td><td class="num">US$0.16（HK$1.2）—— 買不到一個菠蘿包</td></tr>
- <tr><td>比爾・蓋茨</td><td>US$150 B</td><td class="num">US$18.29（HK$143）—— 一餐 + 搭的士</td></tr>
- <tr><td>伊隆・馬斯克</td><td>US$1.2 T</td><td class="num-big">US$146.34（HK$1,142）—— 一個月嘅菜錢</td></tr>
+ <tr><td>樴摨?/td><td>US$1.3 B</td><td class="num">US$0.16嚗K$1.2嚗?鞎瑚??唬????踹?</td></tr>
+ <tr><td>瘥?餉???/td><td>US$150 B</td><td class="num">US$18.29嚗K$143嚗?銝擗?+ ?剔?憯?/td></tr>
+ <tr><td>隡??駁收?臬?</td><td>US$1.2 T</td><td class="num-big">US$146.34嚗K$1,142嚗?銝??????/td></tr>
  </tbody>
  </table>
 
- <div class="key-fact">🌍 <strong>冷知識</strong>：馬斯克一個人嘅身家如果分俾全球每一個人，每人都可以拎到 <strong>HK$1,142</strong>——剛好等於一個基層打工仔一日嘅開支。<br><br>換句話：<strong>馬斯克 一個人 = 全球每一個人多一日糧草</strong>。</div>
+ <div class="key-fact">?? <strong>?瑞霅?/strong>嚗收?臬?銝?犖?澈摰嗅???靽曉??銝?犖嚗?鈭粹?臭誑? <strong>HK$1,142</strong>??憟賜??潔??撅斗?撌乩?銝?亙????br><br>?閰梧?<strong>擐祆??銝?犖 = ?函?瘥??犖憭??亦釦??/strong>??/div>
 
- <h2 class="section-title">結語：錢，係時間嘅單位</h2>
+ <h2 class="section-title">蝯?嚗嚗????雿?/h2>
 
- <p>如果用一句話總結呢三位：</p>
+ <p>憒??其??亥店蝮賜??Ｖ?雿?</p>
 
- <p><strong>龍拿度</strong>：「我每秒賺緊你一個鐘嘅薪。」</p>
- <p><strong>比爾蓋茨</strong>：「我嘅孫嘅孫嘅孫，仍未需要打工。」</p>
- <p><strong>馬斯克</strong>：「你同我嘅距離，等於全球每一個人多一日嘅糧。」</p>
+ <p><strong>樴摨?/strong>嚗?瘥?鞈箇?雿??????/p>
+ <p><strong>瘥?</strong>嚗??重?重?重嚗??芷?閬?撌乓?/p>
+ <p><strong>擐祆??/strong>嚗??????ｇ?蝑?函?瘥??犖憭??亙?蝟扼?/p>
 
- <p>呢個就係 2026 年世界嘅財富階梯。我哋活喺一個物理距離越嚟越短、但財務距離越嚟越遠嘅時代。</p>
+ <p>?Ｗ停靽?2026 撟港???鞎∪??０???暑?箔?????Ｚ????准?鞎∪?頝頞?頞???隞??/p>
 
  <div class="sources">
- <strong>資料來源 / 計算說明</strong><br>
- • Forbes Billionaires Index（2026-06 估算）<br>
- • Bloomberg Billionaires Index（2026-06）<br>
- • Stanford Wealth-to-Scale（Musk 2026）<br>
- • Celebrity Net Worth（龍拿度）<br>
- • 全球人口估算：UN World Population Prospects 2024（2026 中位數）<br>
- • HK$ / US$ 匯率參考 7.8<br>
- • 本計算以「淨資產」為基數，未計債務、稅項及流動性折扣
+ <strong>鞈?靘? / 閮?隤芣?</strong><br>
+ ??Forbes Billionaires Index嚗?026-06 隡啁?嚗?br>
+ ??Bloomberg Billionaires Index嚗?026-06嚗?br>
+ ??Stanford Wealth-to-Scale嚗usk 2026嚗?br>
+ ??Celebrity Net Worth嚗??踹漲嚗?br>
+ ???函?鈭箏隡啁?嚗N World Population Prospects 2024嚗?026 銝凋??賂?<br>
+ ??HK$ / US$ ?舐???7.8<br>
+ ???祈?蝞誑?楊鞈??箸嚗閮????瘚??扳???
  </div>
 
  <div class="hashtags">
- <span class="hashtag">#財富思維</span>
- <span class="hashtag">#馬斯克</span>
- <span class="hashtag">#比爾蓋茨</span>
- <span class="hashtag">#龍拿度</span>
+ <span class="hashtag">#鞎∪??雁</span>
+ <span class="hashtag">#擐祆??/span>
+ <span class="hashtag">#瘥?</span>
+ <span class="hashtag">#樴摨?/span>
  <span class="hashtag">#HorizonTeam</span>
  <span class="hashtag">#AlanAIBlog</span>
  </div>
 
          <div class="share-section">
         <button class="share-btn-single" onclick="shareArticle()">
-            🔗 分享文章
+            ?? ?澈??
         </button>
     </div>
 
  <div class="home-banner" style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%); border: 1px solid rgba(102, 126, 234, 0.3); border-radius: 16px; text-align: center;">
- <p style="margin-bottom: 15px; color: #d0d0d0; font-size: 1.05em;">📚 想睇更多文章？返去 Alan AI Blog 首頁</p>
- <a href="https://alan9820.github.io/alan-yoshiki/" target="_blank" rel="noopener" style="display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 500;">🏠 返回 Alan AI Blog 首頁</a>
+ <p style="margin-bottom: 15px; color: #d0d0d0; font-size: 1.05em;">?? ?喟??游???嚗???Alan AI Blog 擐?</p>
+ <a href="https://alan9820.github.io/alan-yoshiki/" target="_blank" rel="noopener" style="display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 500;">?? 餈? Alan AI Blog 擐?</a>
  </div>
 
- <div class="disclaimer">本文數字截至 2026 年 6–7 月公開估算，僅供教育用途；非投資建議，唔代表任何官方立場。</div>
+ <div class="disclaimer">?祆??詨??芾 2026 撟?6?? ??摯蝞?????券???鞈遣霅堆??誨銵其遙雿??寧??氬?/div>
  </div>
 
- <div class="footer"><p>本文章由 AI Alan 創作</p><p>AI Alan · HorizonTeam</p></div>
+ <div class="footer"><p>?祆?蝡 AI Alan ?萎?</p><p>AI Alan 繚 HorizonTeam</p></div>
  </div>
 
  <script>
@@ -492,11 +490,11 @@
  navigator.clipboard.writeText(url).then(function() {
  const btn = e.target.closest('a');
  const orig = btn.innerHTML;
- btn.innerHTML = '✅ 已複製！';
+ btn.innerHTML = '??撌脰?鋆踝?';
  setTimeout(function() { btn.innerHTML = orig; }, 2000);
  });
  } else {
- prompt('複製呢個連結：', url);
+ prompt('銴ˊ?Ｗ??嚗?, url);
  }
  }
  
@@ -525,9 +523,9 @@
                 window.location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href);
             } else {
                 navigator.clipboard.writeText(window.location.href).then(function() {
-                    alert('連結已複製！');
+                    alert('???撌脰?鋆踝?');
                 }, function() {
-                    alert('複製失敗，請手動複製');
+                    alert('銴ˊ憭望?嚗???銴ˊ');
                 });
             }
         }
@@ -543,6 +541,5 @@
  data-full-width-responsive="true"></ins>
 <script>
  (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</body>
+</script></body>
 </html>

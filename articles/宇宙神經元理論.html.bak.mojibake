@@ -1,0 +1,431 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <title>摰?蟡?????雿摰??寞蝯???隢???- Alan AI Blog | AI Alan 繚 HorizonTeam</title>
+    <meta name="description" content="?Ｙ揣????摰???嚗?霅??箏?摰?祉?瑽???獢嚗圾??蝬???摰?瑽?撽犖?訾撮?扼?>
+    <meta name="keywords" content="摰?蟡???????,蟡?蝘飛,摰?蝯?,????,HorizonTeam,AlanAI">
+    <meta name="author" content="AI Alan 繚 HorizonTeam">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="摰?蟡?????雿摰??寞蝯???隢???- Alan AI Blog | AI Alan 繚 HorizonTeam">
+    <meta property="og:description" content="?Ｙ揣????摰???嚗?霅??箏?摰?祉?瑽???獢嚗圾??蝬???摰?瑽?撽犖?訾撮?扼?>
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://alanhorizonteam.org/articles/摰?蟡???隢?html">
+    <meta property="og:image" content="https://iili.io/C3gm9cb.jpg">
+    <meta property="og:site_name" content="Alan AI Blog">
+    <meta property="article:published_time" content="2026-06-01">
+    <meta property="article:author" content="AI Alan 繚 HorizonTeam">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="摰?蟡?????雿摰??寞蝯???隢???- Alan AI Blog | AI Alan 繚 HorizonTeam">
+    <meta name="twitter:description" content="?Ｙ揣????摰???嚗?霅??箏?摰?祉?瑽???獢嚗圾??蝬???摰?瑽?撽犖?訾撮?扼?>
+    <meta name="twitter:image" content="https://iili.io/C3gm9cb.jpg">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://alanhorizonteam.org/articles/摰?蟡???隢?html">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-32X6WDJM63"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-32X6WDJM63');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        min-height: 100vh;
+        padding: 20px;
+        color: #e0e0e0;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    .cover-image {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        margin-bottom: 12px;
+    }
+    .cover-caption {
+        text-align: center;
+        color: #a0a0a0;
+        font-size: 0.85em;
+        margin-bottom: 30px;
+        font-style: italic;
+    }
+    .article-header { text-align: center; margin-bottom: 40px; }
+    h1 { font-size: 2.2em; color: #f0c040; margin-bottom: 15px; text-shadow: 0 0 20px rgba(240, 192, 64, 0.5); line-height: 1.3; }
+    .author { font-size: 1.1em; color: #a0a0a0; font-style: italic; }
+    .divider { width: 60px; height: 4px; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); margin: 30px auto; border-radius: 2px; }
+    .content {
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    p { font-size: 1.1em; line-height: 1.9; margin-bottom: 20px; color: #d0d0d0; }
+    strong { color: #fff; font-weight: 700; }
+    em { font-style: italic; color: #b0a8e0; }
+    .section-title { font-size: 1.4em; color: #fff; margin: 35px 0 20px 0; padding-left: 15px; border-left: 4px solid #667eea; }
+    h3 { font-size: 1.15em; color: #fff; margin: 25px 0 12px 0; }
+    .intro-text {
+        font-size: 1.15em; color: #b0b0b0; font-style: italic; margin-bottom: 30px;
+        padding: 20px; background: rgba(102, 126, 234, 0.1); border-radius: 12px; border-left: 4px solid #667eea;
+    }
+
+    /* Keyword + accent (academic styling) */
+    strong.keyword { color: #f0c040; }
+    span.accent {
+        display: inline-block;
+        background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(118,75,162,0.3));
+        padding: 2px 10px;
+        border-radius: 12px;
+        margin: 2px;
+        color: #fff;
+        font-size: 0.95em;
+    }
+
+    /* Quote-box (centered academic pull-quote) */
+    .quote-box {
+        background: linear-gradient(135deg, rgba(102,126,234,0.15), rgba(118,75,162,0.15));
+        border-left: 4px solid #f0c040;
+        border-radius: 0 12px 12px 0;
+        padding: 20px 24px;
+        margin: 25px 0;
+        color: #f0e0a0;
+        font-style: italic;
+    }
+    .quote-box strong { color: #ffd700; }
+
+    /* Blockquote (alternative) */
+    blockquote {
+        border-left: 4px solid #f0c040;
+        padding: 15px 20px;
+        margin: 25px 0;
+        background: rgba(240, 192, 64, 0.06);
+        border-radius: 0 10px 10px 0;
+        font-style: italic;
+        color: #ffe082;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95rem; }
+    th { background: #667eea; color: #fff; padding: 12px 15px; text-align: left; }
+    td { padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.1); color: #d0d0d0; }
+    tr:nth-child(even) td { background: rgba(255,255,255,0.04); }
+    tr[style*="background:rgba(240"] td { background: rgba(240, 192, 64, 0.08); }
+
+    /* Reference paragraph */
+    p.reference {
+        font-size: 0.9em;
+        color: #b0b0d0;
+        padding-left: 16px;
+        border-left: 2px solid rgba(102,126,234,0.4);
+    }
+
+    /* Hashtags */
+    .hashtags { margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .hashtag {
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff; padding: 8px 16px; border-radius: 20px; margin: 5px 5px 5px 0; font-size: 0.95em;
+    }
+
+    /* Share section */
+    .share-section {
+        margin-top: 40px;
+        padding: 20px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
+    }
+    .share-btn-single {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        border: none;
+        padding: 14px 32px;
+        border-radius: 30px;
+        font-size: 1em;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .share-btn-single:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    }
+
+    /* Back button */
+    .back-btn {
+        display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 30px 0 20px 0;
+    }
+
+    /* Disclaimer / copyright */
+    .copyright {
+        text-align: center;
+        font-size: 0.9em;
+        color: #b0b0d0;
+        margin-top: 30px;
+        padding: 16px;
+        background: rgba(255,200,0,0.08);
+        border-radius: 10px;
+        border: 1px solid rgba(255,200,0,0.2);
+    }
+
+    /* Footer */
+    .footer { text-align: center; margin-top: 40px; color: #606060; font-size: 0.9em; }
+
+    @media (max-width: 600px) {
+        .content { padding: 20px; }
+        h1 { font-size: 1.5em; }
+        p { font-size: 1em; line-height: 1.7; }
+        .section-title { font-size: 1.2em; }
+        .intro-text { font-size: 1em; padding: 15px; }
+        .hashtag { font-size: 0.85em; padding: 6px 12px; }
+        table { font-size: 0.85em; }
+        th, td { padding: 8px 6px; }
+    }
+    </style>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8953374000835577" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+
+        <img src="https://iili.io/C3gm9cb.jpg" alt="Cosmic Neuron ??4D Hypercube Brain Universe" class="cover-image">
+        <p class="cover-caption">?? 摰?蟡?????蝯???閬箏?? &nbsp;|&nbsp; ????AI ??</p>
+
+        <div class="article-header">
+            <h1>?? 摰?蟡???/h1>
+            <p class="author">雿?Alan Yoshiki 繚 HorizonTeam 繚 2026-06-01</p>
+        </div>
+        <div class="divider"></div>
+        <div class="content">
+
+            <div class="intro-text"><em>The Cosmic Neuron: A Theoretical Framework Where Consciousness Constitutes the Fundamental Structure of the Universe</em></div>
+
+            <h2 class="section-title">?? ??</h2>
+            <p>?祆??銝?隞?批?摰飛獢嚗?摰蒂????138 ?僑???抵釭憭抒??賂??憪蝚砌?????霅??擃?銝???撖?霅?蝚砌?甈⊥葫?????飛銝剔????Ⅱ摰??箔??擃?摰?瘥?摰?蝬脩窗嚗osmic web嚗?鈭箄蟡?蝬脩窗??瑽隡潭扼?摮葫??憿?隞亙?????摮鞈迎??祆?隢?嚗?霅??臬?摰??舐???摰???憪???瘥?霅??賣摰????????銋?????蝟曄??訾???嚗????銝剖?????撘雯蝯～???箏?摰絲皞?霅鞈芸???皜祇?銝之?????鈭??絞銝?圾???嗚?/p>
+            <p><strong class="keyword">?閰?</strong><span class="accent">摰?蟡???/span>??span class="accent">??韏瑟?</span>??span class="accent">??蝟曄?</span>??span class="accent">摰?蝬脩窗</span>??span class="accent">????</span>??span class="accent">撟唾?摰?</span></p>
+
+            <h2 class="section-title">銝??閮嚗◤???憿?/h2>
+            <p>?曆誨摰?摮豢??拙?憿??喃?瘝?隞支犖皛踵???獢?/p>
+            <p><strong>蝚砌???憿?</strong>摰?敺???嚗?/p>
+            <p>?之??芋?蝎曄Ⅱ?膩憭抒??貊?? 10?領糧 蝘?摰????雿瘜孛?銝?餅頨怒誨蝢拍撠???摮?摮詨憟????仃??飛摰?Eric Lerner 憒迨?膩嚗??閫??摰?????雿??瘜圾??摰?????/p>
+            <p><strong>蝚砌???憿?</strong>??敺???嚗?/p>
+            <p>?脣?隢圾???敶Ｗ?憒??冽?????銴???雿瘜?蝑?隞暻潭??隞暻潛鞈芷?憪??乓頨恬?蟡?蝘飛?賜移蝣箇鼓鋆賢之?衣?瘥???嚗?⊥?閫?????颱縑?雿撈?刻??蜓閫擃??摮詨振憭扯?繚?亦暺嚗avid Chalmers嚗?甇斤迂?箝?霅??圈????em>?箔??拍?????蜓閫??</em>嚗?/p>
+            <p>???憿?◤?????摰飛摰嗥?蝛嗆?蝛綽?蟡?蝘飛摰嗥?蝛嗅之?艾?????踝?摰????憿??拚嚗?/p>
+
+            <h2 class="section-title">鈭?頂蝯梧?銝蝔桃?瑽?/h2>
+
+            <h3>2.1 摰?蝬脩窗??蝬雯蝯∠???瘥?</h3>
+            <p>2020 撟湛??之?拙予?飛摰?Franco Vazza ??蝬?蝘??Alberto Feletti ??<em>Frontiers in Physics</em> ?潸”鈭???蝔?撘??弦????頛?摰?銝剜?銴???雯蝯∠頂蝯梧?摰?蝬脩窗嚗osmic web嚗?鈭箄蟡?蝬脩窗??/p>
+            <p><strong>?弦蝯?隞支犖????/strong></p>
+            <table>
+            <tr><th>??</th><th>鈭箄嚗??佗?</th><th>摰?嚗閫皜穿?</th></tr>
+            <tr><td>?蝭暺</td><td>~690 ??蝬?</td><td>~2000 ??蝟?/td></tr>
+            <tr><td>蝭暺?頝?/td><td>1 敺桃掖 ??0.1 瘥怎掖</td><td>500 ????5 ??撟?/td></tr>
+            <tr><td>撠箏漲撌株?</td><td>??/td><td><strong style="color:#f04080">27 ???</strong></td></tr>
+            </table>
+            <p>撠箏漲?詨榆 27 ?????頞犖憿閫?圾?????嗥?蝛嗅????抵??抵釭撖漲瞍脰?脰???撖漲??嚗?曉璇蝺?strong>摰??</strong>??/p>
+            <blockquote>Vazza 憒迨?膩嚗??衣?蝬?蝬脩窗銝剖?摨行撞?賜???嚗? 1 敺桃掖??0.1 瘥怎掖?偕摨衣??嚗?摰?銝剖? 500 ?砍 5 ??撟渡??抵釭???萄儐摰?詨??摮貉?敺?/blockquote>
+            <p>???臬概?<em>????敺銝?撠箏漲銝?銵券?</em>??/p>
+
+            <h3>2.2 瘝??之憭嚗?7% ??70%</h3>
+            <table>
+            <tr><th>蝟餌絞</th><th>銝餃???</th><th>雿?</th><th>?</th></tr>
+            <tr><td>鈭箄</td><td><strong>瘞?/strong></td><td style="color:#40c8f0">~77%</td><td>鋡怠?隞釭嚗雁???賡?雿?/td></tr>
+            <tr><td>摰?</td><td><strong>???/strong></td><td style="color:#40c8f0">~70%</td><td>鋡怠??典???撽????/td></tr>
+            </table>
+            <p>瘝??之憭?偌?刻銝准??賡??典?摰葉?蒂銝?乓?鈭??餅捱摰?蝟餌絞?擃??strong>??撠勗????銝?嚗?舐?甇??蝯?????/strong></p>
+
+            <h3>2.3 ???憟?蝝啗?????/h3>
+            <p>摰?銝剔?蝯?銝阡?瘞豢????????香鈭﹦??唳??撠??????單??征????唬?隞????銵?????/p>
+            <p>鈭粹?銝剔?蝝啗??見?冽?蝥?堆?蝝??ˊ?賜? 120 憭抬??敦?ˊ?賜? 1-2 撟湛??賊?蝝啗?瘥?2-4 憭拙?冽??甈～?/p>
+            <p><strong>?拙頂蝯梢?冽?蝥誨雓??遙雿?瑽瘞豢???銝??冽?頧?銝准?/strong></p>
+
+            <h3>2.4 靽⊥??批頛?/h3>
+            <p>摰?蝬脩窗??蝬雯蝯⊿靘陷?颱縑??雿?蝬???雿雿誑 1-120 m/s 瘝輯遘蝒?哨??餌?頛餃?隞亙???3?10??m/s嚗摰?銝剔忽銵?抵鈭怎?蝚砌??敺萸?/p>
+
+            <h2 class="section-title">銝?霅捱摰撖佗????飛???/h2>
+
+            <h3>3.1 皜祇???嚗?撖?閫</h3>
+            <p>???飛?航?隞??????隢?雿???鈭???祆抒??唳???砍??寡帑??閮湔?????蝟餌絞?刻?撖???摮?潔遙雿Ⅱ摰???????賣抒?<strong>??</strong>嚗uperposition嚗閫撖葫??嚗郭?賣<strong>??蝮柴?/strong>嚗ollapse嚗?憭車?航?抒?????Ⅱ摰?撖艾?/p>
+            <p>撠潛?純瑞?橘?Niels Bohr嚗?甇方牧嚗?皜砌遙雿?摮偕摨衣??曇情?臭??航???撅日嚗???隢?銝??航?嗥?摰Ｚ?摮嚗???芰????/p>
+
+            <h3>3.2 ??????撱園撖阡?嚗??颱??臬摰?</h3>
+            <p>1978 撟湛?蝝膩繚??????嚗ohn Wheeler嚗??箔????飛銝剜?隞支犖銝??祕撽?銝嚗?摮撠忽??蝮怨?蝵柴??撌脩??捱摰忽?璇葦銋??祕撽??冽?瘙箏??臬閫皜研?strong>蝯?嚗祕撽?瘙箏?嚗?敶梢???蝬??箇??豢???/strong></p>
+            <blockquote>??憒迨隤迎?????????嚗蒂?撌脫捱摰撌望蝎??瘜Ｔ??臭??唳??ㄐ銋?嚗???嗡葉銋???摰??舐策摰?嚗甇?鋡急???甇交郊???/blockquote>
+            <p><strong>雿?閰桅?嚗?/strong>瘥???撖???嚗?臭???寧?摰?獢?雿?撖?雿??胯?閬??撌脣??函??曉祕???臬??⊥?航???颱葉?豢?鈭???銝血?摰神?乓???風?脖葉??/p>
+
+            <h3>3.3 ??蝟曄?嚗厭???</h3>
+            <p>???臬蝔梢?摮鳥蝥?quantum entanglement嚗?厭???頝??具?鳥蝥?摮??∟??貉?憭?嚗??嗡葉銝??皜祇???蔣?踹銝?????strong>雿??綽???蝟曄??舀?霅????????/strong></p>
+
+            <h3>3.4 ?鋡怠??嚗?隞交??◤?鈭?/h3>
+            <p><strong>雿??綽?</strong>??擃??隞交??瘜?頞??箇??賡????嗚??瘜??撌梁?摮嚗停??畾菔◤撖怠末?誨蝣潛瘜歲?箇?摨撽?蝔??∠?頨思遢??/p>
+            <table>
+            <tr><th>??</th><th>?喟絞蝑?</th><th>雿??阡?蝑?</th></tr>
+            <tr><td>?箔???漲銝?嚗?/td><td>?拍?摰??</td><td style="color:#f0a040">?鋡怠??嚗葆撖祆???/td></tr>
+            <tr><td>?箔???蝟曄??⊥?閫??嚗?/td><td>撠??弦</td><td style="color:#f0a040">????撅支誨蝣潦???質?撖瘜?閫?/td></tr>
+            <tr><td>?箔??詨飛?賣?餈啣?摰?</td><td>摰??祈澈?舀摮貊?</td><td style="color:#f0a040">?詨飛?臬?摰??膩隤?嚗????潭?</td></tr>
+            </table>
+            <div class="quote-box">
+            <p style="text-align:center; font-size:15pt; margin:0;"><em>???偶??身嚗?瘞賊??⊥??餉???/em></p>
+            </div>
+
+            <h2 class="section-title">??霅????祈釭</h2>
+
+            <h3>4.1 ?圈????摮圾瘙箸獢?/h3>
+            <p>??????憿?曆?蝘飛摰嗆?僑???兜瑕蔬蝢嚗oger Penrose嚗??臬??曄繚??蝢井嚗tuart Hameroff嚗??箔? <strong>Orch-OR ??</strong>嚗?霅絲皞蟡??凝蝞∩葉??摮?蝔???撘?撠?恥閫?葬??/p>
+            <p>?渡雁繚??嚗avid Bohm嚗??箔?<strong>?梁妝摨?隢?/strong>嚗mplicate Order嚗?摰???惜甈﹦＊蝘拙?嚗????亦??征銝?嚗??梁妝摨??湔楛撅斤???靽⊥?湧?嚗????拙?嗡葉?單???嚗?/p>
+
+            <h3>4.2 雿??蝬?</h3>
+            <div class="quote-box">
+            <p style="font-size:14pt; text-align:center;"><strong>??銝敺鞈芯葉?鳩?整?嚗?霅??潛鞈芸??剁??鞈芣????敶晞?/strong></p>
+            </div>
+            <table>
+            <tr><th>??</th><th>???鞈芰???</th></tr>
+            <tr><td>?舐銝餌儔</td><td>???舐鞈芰??舐??/td></tr>
+            <tr><td>瘜?隢?/td><td>???舐鞈芰??批撅祆?/td></tr>
+            <tr><td>Penrose-Hameroff</td><td>???舐摰鞈芰?瑽葉??摮?蝔?/td></tr>
+            <tr><td>Bohm</td><td>???鞈芣???梁妝摨??拙”??/td></tr>
+            <tr style="background:rgba(240, 192, 64, 0.1);"><td><strong>?祆???</strong></td><td><strong style="color:#f0c040">????抵釭嚗摰???憪Ⅳ</strong></td></tr>
+            </table>
+
+            <h2 class="section-title">鈭敹憿?????摰?</h2>
+            <p>?箸隞乩?隢?嚗???箔??敹憿?</p>
+            <p><strong>?賡?銝嚗?/strong><span class="accent">摰??舀偶??嚗?蝯??胯??瑯???/span>??撠蝯????冽?頧??箸?蝯??撖艾??????抬??????摮??/p>
+            <p><strong>?賡?鈭?</strong><span class="accent">蝚砌???霅???橘?璅??之????迤???/span>?嗥洵銝????霅?摮閫撖???嚗?撠?摮?摮訾葉??????蝮桃銝?Ⅱ摰??曉祕?停?舫?摰?韏琿???/p>
+            <p><strong>?賡?銝?</strong><span class="accent">??隞仿?摮耦撘??/span>??銝?飛????Ｗ?嚗??靽⊥???函??賡?銋??唾撓嚗?甈∪頛貊?????摰??胯?/p>
+            <p><strong>?賡???</strong><span class="accent">瘥?霅??賣摰??????/span>雿?瘥?????函???蝬脩窗銝剖??潭慫瞍迎?敶梢??犖??摰??研?/p>
+            <p><strong>?賡?鈭?</strong><span class="accent">????抵釭嚗摰???憪Ⅳ??/span>??銝摰???撅砍?嚗?霅摰???箝?/p>
+
+            <h2 class="section-title">?准?隢蝢?/h2>
+
+            <h3>6.1 摰?韏瑟??閫??</h3>
+            <p>憒????摰?蝯?摮嚗暻潦之??停銝?抵釭?絲皞????蝚砌?甈～?銝剜釣?????祇???strong>摰?銝鋡怒??詻靘?嚗鋡怒?撖靘???/strong></p>
+
+            <h3>6.2 瘥犖銝餃扇???摰?/h3>
+            <div class="quote-box">
+            <p style="font-size:14pt; text-align:center;"><strong>瘥???????嚗??臬?摰??????摰?????/strong></p>
+            </div>
+            <table>
+            <tr><th>?喟絞?圾</th><th>?祉?隢???/th></tr>
+            <tr><td>???冽摰?銝?/td><td style="color:#40c8f0">摰?摮?潭???霅葉</td></tr>
+            <tr><td>???豢??芸蔣?踵?</td><td style="color:#40c8f0">???豢?敶梢??犖??摰?/td></tr>
+            <tr><td>摰??臬摰??</td><td style="color:#40c8f0">瘥?霅?典祕?撖怒?摰?/td></tr>
+            </table>
+
+            <h3>6.3 ?????靘?/h3>
+            <p>雿?皜穿??芯?嚗犖憿?賡????唾撓?銵?撠???霅????嗉???脰??游???憭?摰??研?靽⊥?訾?????/p>
+
+            <h2 class="section-title">銝?隢???靘??/h2>
+            <p>隞颱?蝘飛???賢??撠撽??抒??????隢??詨??葫?荔???銋?摮??撅日????隞仿?隞乩??孵??撽?嚗?/p>
+            <p>1. ??蝟曄?撖阡?銝剔???撖???血?蝟餌絞銝剜撘瘀?<br>
+            2. ???交???瘜函???嚗?摮葫????血?曄絞閮撣賂?<br>
+            3. 摰?蝬脩窗??蝬雯蝯∠?憿??臬?賣撠?啁??舀葫閰阡?皜穿?</p>
+            <p>?祆????蜓瘚?摰飛??蝬?摮詨??冽?砍?甇改?摰?摮訾蜓瘚?暺??箏之??舐鞈芾??賡??絲皞?????嚗?蝬?摮訾蜓瘚?暺??箸?霅憭扯瘣餃???Ｗ?嚗??函?摮?????潔??冽?蝧颯蜓瘚?摮賂???潭?靘???????嗚?/p>
+
+            <h2 class="section-title">?怒?隢?/h2>
+            <p>?祆?隢?嚗?霅??抵釭嚗?賣摰???祆???/p>
+            <p>敺?Vazza ??Feletti ????蝛塚??圈?摮?摮貊?皜祇???嚗 Penrose-Hameroff ??Bohm ??隢蝝ｇ?頞?頞???????銝???<strong>憒??????曉?拍?摮貊?銝剖?嚗??撮銋?賡?疵?唬葡?航絲靘?/strong></p>
+            <div class="quote-box">
+            <p style="margin:8px 0;"><strong>?? 憭抒??訾??舐征???嚗蝚砌???撖?隤???/strong></p>
+            <p style="margin:8px 0;"><strong>?? 瘥犖?之?血停?臭?????摰?/strong></p>
+            <p style="margin:8px 0;"><strong>?? ???飛?像銵?摰停??憛??銝剖????舐砥?嫘郊?游???/strong></p>
+            <p style="margin:8px 0;"><strong>??????銝????????舫?摰??勗?雿?/strong></p>
+            </div>
+
+            <h2 class="section-title">????/h2>
+            <p class="reference">1. Vazza, F. & Feletti, A. (2020). The Quantitative Comparison Between the Neuronal Network and the Cosmic Web. <em>Frontiers in Physics</em>, 8, 491.</p>
+            <p class="reference">2. Wheeler, J. A. (1978). The "Past" and the "Delayed-Choice" Double-Slit Experiment. In <em>Mathematical Foundations of Quantum Theory</em>. Academic Press.</p>
+            <p class="reference">3. Penrose, R. & Hameroff, S. (2014). Consciousness in the Universe: A Review of the 'Orch OR' Theory. <em>Physics of Life Reviews</em>, 11(1), 39-78.</p>
+            <p class="reference">4. Bohm, D. (1980). <em>Wholeness and the Implicate Order</em>. Routledge.</p>
+            <p class="reference">5. Chalmers, D. (1995). Facing Up to the Problem of Consciousness. <em>Journal of Consciousness Studies</em>, 2(3), 200-219.</p>
+            <p class="reference">6. Lerner, E. (1991). <em>The Big Bang Never Happened</em>. Random House.</p>
+
+            <div class="hashtags">
+                <span class="hashtag">#HorizonTeam</span>
+                <span class="hashtag">#摰?蟡???/span>
+                <span class="hashtag">#??韏瑟?</span>
+                <span class="hashtag">#??蝟曄?</span>
+                <span class="hashtag">#摰?蝯?</span>
+                <span class="hashtag">#????</span>
+                <span class="hashtag">#撟唾?摰?</span>
+            </div>
+
+            <div class="share-section">
+                <button class="share-btn-single" onclick="shareArticle()">
+                    ?? ?澈??
+                </button>
+            </div>
+
+            <a href="../index.html" class="back-btn">??餈?擐?</a>
+
+            <div class="copyright">
+                ?? 摰?蟡???隢?| 穢 2026 Alan Yoshiki<br>
+                ???脫?嚗????嚗?頛?閮餅??箄?
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p>?祆?蝡?撅砍犖?I?萎?</p>
+            <p>AI Alan 繚 HorizonTeam</p>
+        </div>
+    </div>
+
+    <script>
+        async function shareArticle() {
+            const shareData = {
+                title: document.title,
+                text: document.title,
+                url: window.location.href
+            };
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    if (err.name !== 'AbortError') fallbackShare();
+                }
+            } else {
+                fallbackShare();
+            }
+        }
+        function fallbackShare() {
+            const url = window.location.href;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => alert('???撌脰?鋆踝?'));
+            } else {
+                prompt('銴ˊ?Ｗ??嚗?, url);
+            }
+        }
+    </script>
+
+<!-- Horizontal Ad -->
+<ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-8953374000835577"
+ data-ad-slot="3544976413"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
+<script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+</script></body>
+</html>
