@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alan9820.github.io/alan-yoshiki/sitemap.xml
+Sitemap: https://alanhorizonteam.org/sitemap.xml
