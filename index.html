@@ -15,34 +15,32 @@
     <meta name="theme-color" content="#0f3460">
 
     <!-- Primary Meta Tags -->
-    <title>Alan 的網站 | HorizonTeam</title>
-    <meta name="title" content="Alan 的網站 | HorizonTeam">
-    <meta name="description" content="Alan 嘅個人網站，集合咗原創文章、深度研究、創意遊戲 - 由 HorizonTeam 製作。內容涵蓋科學、財富思維、宇宙理論等多元主題。">
-    <meta name="keywords" content="Alan, HorizonTeam, 個人網站, 文章, 創意, AI, 知識, 蜥蜴人, 六合, 宇宙, 百萬富翁">
+    <title>Alan AI Lab · Horizon Team</title>
+    <meta name="title" content="Alan AI Lab · Horizon Team">
+    <meta name="description" content="Alan 嘅 AI Lab — 智能助理 (IG 新聞、Morning Briefing、Diet Health) + 金融專業服務 (身份、稅務、信託、家辦、保險、MPF) + 原創研究文章。">
+    <meta name="keywords" content="Alan, HorizonTeam, AI Lab, 智能助理, AI 新聞, AI 飲食, 金融, 信託, 家辦, MPF, 香港">
     <meta name="author" content="Alan">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://alan9820.github.io/alan-yoshiki/">
-    <meta property="og:title" content="Alan 的網站 | HorizonTeam">
-    <meta property="og:description" content="Alan 嘅個人網站，集合咗原創文章、深度研究、創意遊戲。內容涵蓋科學、財富思維、宇宙理論等多元主題。">
-    <meta property="og:image" content="https://alan9820.github.io/alan-yoshiki/articles/og_cover.webp">
+    <meta property="og:url" content="https://alanhorizonteam.org/">
+    <meta property="og:title" content="Alan AI Lab · Horizon Team">
+    <meta property="og:description" content="Alan 嘅 AI Lab — 智能助理 + 金融專業 + 原創研究。">
+    <meta property="og:image" content="https://alanhorizonteam.org/og_cover.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Alan 的網站 - HorizonTeam">
-    <meta property="og:site_name" content="Alan 的網站">
+    <meta property="og:image:alt" content="Alan AI Lab - Horizon Team">
+    <meta property="og:site_name" content="Alan AI Lab">
     <meta property="og:locale" content="zh_HK">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://alan9820.github.io/alan-yoshiki/">
-    <meta property="twitter:title" content="Alan 的網站 | HorizonTeam">
-    <meta property="twitter:description" content="Alan 嘅個人網站，集合咗原創文章、深度研究、創意遊戲。">
-    <meta property="twitter:image" content="https://alan9820.github.io/alan-yoshiki/articles/og_cover.png">
-    <meta property="twitter:image:alt" content="Alan 的網站 - HorizonTeam">
+    <meta property="twitter:title" content="Alan AI Lab · Horizon Team">
+    <meta property="twitter:description" content="Alan 嘅 AI Lab — 智能助理 + 金融專業 + 原創研究。">
+    <meta property="twitter:image" content="https://alanhorizonteam.org/og_cover.png">
 
-    <!-- Favicon -->
+    <!-- Favicon (reuse existing) -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -52,43 +50,211 @@
     <meta name="msapplication-TileColor" content="#0f3460">
 
     <!-- Canonical -->
+    <link rel="canonical" href="https://alanhorizonteam.org/">
     
-    <!-- TODO: Google Search Console Verification (uncomment & replace content) -->
+    <!-- TODO: Google Search Console Verification -->
     <!-- <meta name="google-site-verification" content="YOUR_CODE_HERE" /> -->
-
-    <link rel="canonical" href="https://alan9820.github.io/alan-yoshiki/">
+    
+    <!-- TODO: Google AdSense — add publisher ID when ready -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXX" crossorigin="anonymous"></script> -->
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Microsoft JhengHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); min-height: 100vh; color: #fff; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
-        .skip-link { position: absolute; top: -40px; left: 0; background: #ffd700; color: #0f3460; padding: 8px; text-decoration: none; border-radius: 0 0 4px 0; z-index: 100; }
+        body {
+            font-family: 'Microsoft JhengHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background-attachment: fixed;
+            min-height: 100vh; color: #fff;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+        .skip-link { position: absolute; top: -40px; left: 0; background: #ffd700; color: #0f3460; padding: 8px 16px; text-decoration: none; border-radius: 0 0 4px 0; z-index: 100; font-weight: bold; }
         .skip-link:focus { top: 0; }
-        .container { max-width: 900px; margin: 0 auto; }
-        h1 { text-align: center; color: #ffd700; font-size: 2.5em; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255,215,0,0.5); }
-        .subtitle { text-align: center; color: #aaa; margin-bottom: 40px; font-size: 1em; }
-        .articles { display: grid; gap: 20px; }
-        .article-card { background: rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; border: 1px solid rgba(255,255,255,0.2); transition: transform 0.3s, box-shadow 0.3s; }
-        .article-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .article-card:focus-within { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255,215,0,0.3); }
-        .article-card h2 { color: #ffd700; margin-bottom: 10px; font-size: 1.4em; }
-        .article-card p { color: #d0d0d0; line-height: 1.6; margin-bottom: 10px; }
-        .article-card .date { color: #999; font-size: 0.9em; margin-top: 10px; }
-        .article-card a { display: inline-block; margin-top: 15px; color: #667eea; text-decoration: none; font-weight: bold; padding: 8px 16px; border: 1px solid #667eea; border-radius: 6px; transition: all 0.3s; }
-        .article-card a:hover, .article-card a:focus { color: #ffd700; border-color: #ffd700; background: rgba(255,215,0,0.1); }
-        .game-card { background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,143,0,0.2)); border: 2px solid #ffd700; }
-        .game-card h2 { color: #ffd700; }
-        .game-card a { color: #ffd700; border-color: #ffd700; }
-        .game-card a:hover, .game-card a:focus { background: rgba(255,215,0,0.2); }
-        .footer { text-align: center; margin-top: 50px; color: #888; font-size: 0.9em; }
-        .footer a { color: #667eea; text-decoration: none; }
-        .footer a:hover { color: #ffd700; }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 100px 24px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            background: rgba(255, 215, 0, 0.12);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 100px;
+            color: #ffd700;
+            font-size: 0.85em;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            margin-bottom: 28px;
+        }
+        .hero h1 {
+            color: #ffd700;
+            font-size: 3.4em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.35);
+            line-height: 1.1;
+            font-weight: bold;
+        }
+        .hero .subtitle {
+            color: #d0d0d0;
+            font-size: 1.15em;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        .hero .tagline {
+            color: #ffd700;
+            font-size: 0.9em;
+            letter-spacing: 0.25em;
+            font-weight: bold;
+            opacity: 0.85;
+        }
+
+        /* Sections */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        .section-title {
+            color: #ffd700;
+            font-size: 2em;
+            margin-bottom: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .section-desc {
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 44px;
+            font-size: 1.05em;
+        }
+
+        /* Cards grid — single column vertical */
+        .grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .grid-2 {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: 1fr;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 215, 0, 0.18);
+            border-radius: 16px;
+            padding: 28px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover, .card:focus-within {
+            transform: translateY(-4px);
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+        }
+        .card-icon {
+            font-size: 2.4em;
+            margin-bottom: 14px;
+            line-height: 1;
+        }
+        .card h3 {
+            color: #ffd700;
+            font-size: 1.25em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .card p {
+            color: #c8c8c8;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-size: 0.95em;
+        }
+        .card a.more {
+            display: inline-block;
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95em;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+            transition: border-color 0.3s;
+        }
+        .card a.more:hover { border-bottom-color: #ffd700; }
+
+        /* Status badges */
+        .status {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 100px;
+            font-size: 0.72em;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+        }
+        .status-live { background: rgba(76, 175, 80, 0.18); color: #66bb6a; border: 1px solid rgba(76, 175, 80, 0.4); }
+        .status-here { background: rgba(255, 215, 0, 0.18); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.4); }
+
+        /* Featured (game card) */
+        .card.featured {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.18), rgba(255, 143, 0, 0.1));
+            border: 2px solid #ffd700;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .card.featured .card-icon { font-size: 3em; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 24px 40px;
+            color: #888;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 40px;
+        }
+        footer .brand {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        footer a { color: #667eea; text-decoration: none; margin: 0 8px; }
+        footer a:hover { color: #ffd700; }
+
+        .section-cta {
+            text-align: center;
+            margin-top: 32px;
+        }
+        .section-cta a {
+            display: inline-block;
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 24px;
+            border: 1px solid #ffd700;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .section-cta a:hover {
+            background: rgba(255, 215, 0, 0.12);
+            transform: translateY(-2px);
+        }
 
         @media (max-width: 600px) {
-            h1 { font-size: 1.8em; }
-            .container { padding: 0 10px; }
-            .article-card { padding: 20px; }
-            .article-card h2 { font-size: 1.2em; }
+            .hero { padding: 60px 16px 40px; }
+            .hero h1 { font-size: 2.4em; }
+            .hero .subtitle { font-size: 1em; }
+            .section { padding: 40px 16px; }
+            .section-title { font-size: 1.6em; }
+            .card { padding: 22px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -98,80 +264,152 @@
 </head>
 <body>
     <a href="#main" class="skip-link">跳到主要內容</a>
-    <div class="container" id="main">
-        <h1>📚 Alan 的文章</h1>
-        <p class="subtitle">原創文章 · 深度研究 · 創意遊戲</p>
-        <div class="articles" role="list">
-            <article class="article-card" role="listitem">
-                <h2>💊 錯：人類最難吞下的一粒藥</h2>
-                <p>守時、承諾、責任——呢三樣嘢，幾時開始變成咁嘥氣？當所有人都用同一套藉口，社會嘅底層邏輯就開始腐蝕。</p>
-                <div class="date">2026-07-04</div>
-                <a href="articles/cuo-ren-lei-zui-nan-tun-xia-yi-li-yao.html" aria-label="閱讀錯：人類最難吞下的一粒藥文章全文">閱讀全文 →</a>
-            </article>
-            <article class="article-card" role="listitem">
-                <h2>💰 財富的距離：龍拿度、馬斯克、比爾蓋茨嘅世界</h2>
-                <p>馬斯克每秒賺緊你 2,634 個鐘嘅薪；佢嘅身家均分 82 億人，每人可拎一日糧草。一場關於錢到底係咩概念嘅數字實驗</p>
-                <div class="date">2026-07-01</div>
-                <a href="articles/wealth-distance.html" aria-label="閱讀財富的距離文章全文">閱讀全文 →</a>
-            </article>
-            <article class="article-card" role="listitem">
-                <h2>☄️ 流星許願會實現嗎？</h2>
-                <p>一場關於信念、宇宙與心理學的哲學實驗 - 從神經科學到概率論，拆解流傳幾千年的神話</p>
-                <div class="date">2026-06-14</div>
-                <a href="articles/流星許願哲學研究.html" aria-label="閱讀流星許願哲學研究文章全文">閱讀全文 →</a>
-            </article>
-            <article class="article-card" role="listitem">
-                <h2>💉 冇人捽就唔郁</h2>
-                <p>點解大部分人需要打雞血先有執行力？拆解自我監控、Incentive驅動與人性的真相</p>
-                <div class="date">2026-06-11</div>
-                <a href="articles/no-push-no-move.html" aria-label="閱讀冇人捽就唔郁文章全文">閱讀全文 →</a>
-            </article>
-            <article class="article-card" role="listitem">
-                <h2>🌀 爆旋陀螺復興</h2>
-                <p>我哋放低咗部手機，拾起咗一粒會旋轉嘅金屬——當演算法餵到你嘔，你終於想起操場上嗰一聲「3、2、1——Go Shoot」</p>
-                <div class="date">2026-06-09</div>
-                <a href="articles/beyblade-revival.html" aria-label="閱讀爆旋陀螺復興文章全文">閱讀全文 →</a>
-            </article>
-            <article class="article-card" role="listitem">
-                <h2>💰 知識與幸運的終極對決</h2>
-                <p>百萬富翁遊戲與六合博彩二獎的概率分析——知識永遠大於幸運</p>
-                <div class="date">2026-06-08</div>
-                <a href="articles/百萬富翁與六合博彩概率對決.html" aria-label="閱讀百萬富翁與六合博彩概率對決文章全文">閱讀全文 →</a>
-            </article>
-            <article class="article-card" role="listitem">
-                <h2>🤝 依賴他人的代價</h2>
-                <p>點解你唔可以總係靠人？依賴他人會如何影響你的人生</p>
-                <div class="date">2026-06-06</div>
-                <a href="articles/依賴他人.html" aria-label="閱讀依賴他人文章全文">閱讀全文 →</a>
-            </article>
-            <article class="article-card" role="listitem">
-                <h2>🦎 蜥蜴人理論</h2>
-                <p>探索地球內部文明與蜥蜴人統治的陰謀論</p>
-                <div class="date">2026-06-03</div>
-                <a href="articles/蜥蜴人理論.html" aria-label="閱讀蜥蜴人理論文章全文">閱讀全文 →</a>
-            </article>
-            <article class="article-card" role="listitem">
-                <h2>🧠 宇宙神經元理論</h2>
-                <p>宇宙可能是一個巨大的神經網絡，星系是神經元，暗物質是信息載體</p>
-                <div class="date">2026-06-01</div>
-                <a href="articles/宇宙神經元理論.html" aria-label="閱讀宇宙神經元理論文章全文">閱讀全文 →</a>
-            </article>
-            <article class="article-card" role="listitem">
-                <h2>💼 GenZ 求職態度</h2>
-                <p>探討新生代工作價值觀與職場期望的變遷</p>
-                <div class="date">2026-05-20</div>
-                <a href="articles/GenZ文章.html" aria-label="閱讀 GenZ 求職態度文章全文">閱讀全文 →</a>
-            </article>
-            <article class="article-card game-card" role="listitem">
-                <h2>🎮 百萬富翁遊戲</h2>
-                <p>知識就是力量！挑戰 $1,000,000 獎金</p>
-                <div class="date">2026-06-08</div>
-                <a href="millionaire.html" aria-label="開始百萬富翁遊戲">開始遊戲 →</a>
-            </article>
-        </div>
-        <footer class="footer">
-            <p>#HorizonTeam · 最後更新 2026-07-01</p>
-        </footer>
-    </div>
+
+    <main id="main">
+        <!-- Hero -->
+        <section class="hero">
+            <span class="hero-badge">🤖 AI LAB · HORIZON TEAM</span>
+            <h1>Alan AI Lab</h1>
+            <p class="subtitle">
+                將 AI 融入金融、新聞、健康同日常生活<br>
+                每一個 project 都係一個真實可行嘅智能助理
+            </p>
+            <p class="tagline">SMART TOOLS FOR FINANCE · TECH · LIFE</p>
+        </section>
+
+        <!-- AI Projects -->
+        <section class="section" id="projects">
+            <h2 class="section-title">🛠️ AI Projects</h2>
+            <p class="section-desc">由小花同 Alan 嘅智能助手網絡 · 每日自動運作</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">📰</div>
+                    <span class="status status-live">● LIVE</span>
+                    <h3>IG 新聞速覽</h3>
+                    <p>每日 5 個時段自動生成繁中新聞 post — 國際、金融、本港、娛樂、科技。審批制確保質素。</p>
+                    <a href="https://www.instagram.com/ig.news.hk/" class="more" target="_blank" rel="noopener">追蹤 @ig.news.hk →</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌅</div>
+                    <span class="status status-live">● LIVE</span>
+                    <h3>Morning Briefing</h3>
+                    <p>每朝 09:30 自動出今日 Google Calendar、待辦事項、金牛座運程。起身就知道今日做咩。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🥗</div>
+                    <span class="status status-live">● LIVE</span>
+                    <h3>Diet Health</h3>
+                    <p>影相 → AI 辨認食物 → 自動記低卡路里同營養。專為克隆氏症 / IBS 飲食追蹤設計。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤖</div>
+                    <span class="status status-here">● YOU ARE HERE</span>
+                    <h3>Alan AI Lab 網站</h3>
+                    <p>呢個網站本身就係一個 project — 由 AI 助理小花 🌸 設計 + 維護嘅個人品牌網站。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Finance & Advisory -->
+        <section class="section" id="finance">
+            <h2 class="section-title">💼 Finance &amp; Advisory</h2>
+            <p class="section-desc">超過十年嘅金融專業 — 跨境、身份、信託、家辦</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3>身份配置</h3>
+                    <p>香港、中國、新加坡、美國、葡萄牙 — 多重身份嘅結構性規劃同稅務優化。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>稅務規劃</h3>
+                    <p>個人同企業嘅跨境稅務、合規安排、合法節稅空間分析。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏛️</div>
+                    <h3>信託 &amp; 家辦</h3>
+                    <p>家族信託架構、跨境資產配置、家辦設立諮詢。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>保險 &amp; MPF</h3>
+                    <p>跨境保險配置、強積金整合、退休規劃方案。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Articles -->
+        <section class="section" id="articles">
+            <h2 class="section-title">📚 最新文章</h2>
+            <p class="section-desc">原創研究 · 深度思考 · 創意遊戲</p>
+            <div class="grid-2">
+                <article class="card">
+                    <div class="card-icon">💊</div>
+                    <h3>錯：人類最難吞下的一粒藥</h3>
+                    <p>守時、承諾、責任 — 呢三樣嘢幾時開始變成咁嘥氣？當所有人都用同一套藉口，社會嘅底層邏輯就開始腐蝕。</p>
+                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-07-04</div>
+                    <a href="articles/cuo-ren-lei-zui-nan-tun-xia-yi-li-yao.html" class="more">閱讀全文 →</a>
+                </article>
+                <article class="card">
+                    <div class="card-icon">💰</div>
+                    <h3>財富的距離：龍拿度、馬斯克、比爾蓋茨嘅世界</h3>
+                    <p>馬斯克每秒賺緊你 2,634 個鐘嘅薪；佢嘅身家均分 82 億人，每人可拎一日糧草。一場關於錢到底係咩概念嘅數字實驗。</p>
+                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-07-01</div>
+                    <a href="articles/wealth-distance.html" class="more">閱讀全文 →</a>
+                </article>
+                <article class="card">
+                    <div class="card-icon">🎫</div>
+                    <h3>演算法守門人：2026 世界盃門票背後嘅階級裂縫</h3>
+                    <p>當 AI 揸咗門票分配嘅控制權，球迷同金錢之間嘅階級裂縫會點樣演化？一場關於算法治理嘅 deep dive。</p>
+                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-06-19</div>
+                    <a href="articles/演算法守門人-2026世界盃門票背後的階級裂縫.html" class="more">閱讀全文 →</a>
+                </article>
+                <article class="card">
+                    <div class="card-icon">🏛️</div>
+                    <h3>政府印鈔 = 貧窮嘅起點？</h3>
+                    <p>政府印鈔背後嘅貨幣供應、通貨膨脹同貧富差距 — 一場從宏觀經濟到民生嘅深度拆解。</p>
+                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-06-15</div>
+                    <a href="articles/政府印鈔與貧窮真相.html" class="more">閱讀全文 →</a>
+                </article>
+                <article class="card">
+                    <div class="card-icon">☄️</div>
+                    <h3>流星許願會實現嗎？</h3>
+                    <p>一場關於信念、宇宙與心理學嘅哲學實驗 — 從神經科學到概率論，拆解流傳幾千年嘅神話。</p>
+                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-06-14</div>
+                    <a href="articles/流星許願哲學研究.html" class="more">閱讀全文 →</a>
+                </article>
+                <article class="card">
+                    <div class="card-icon">🌀</div>
+                    <h3>爆旋陀螺復興</h3>
+                    <p>我哋放低咗部手機，拾起咗一粒會旋轉嘅金屬 — 當演算法餵到你嘔，你終於想起操場上嗰一聲「3、2、1 — Go Shoot」。</p>
+                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-06-09</div>
+                    <a href="articles/爆旋陀螺復興.html" class="more">閱讀全文 →</a>
+                </article>
+            </div>
+            <div class="section-cta">
+                <a href="articles/">查看所有文章 →</a>
+            </div>
+        </section>
+
+        <!-- Game (featured) -->
+        <section class="section" id="game">
+            <div class="card featured">
+                <div class="card-icon">🎮</div>
+                <h3>百萬富翁遊戲</h3>
+                <p>知識就是力量！挑戰 $1,000,000 獎金。比較你同六合博彩嘅勝率 — 知識永遠大於幸運。</p>
+                <a href="millionaire.html" class="more">開始遊戲 →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="brand">Horizon Team · Alan AI Lab</div>
+        <p>© 2026 Alan · 由 AI 助理小花 🌸 設計同維護</p>
+        <p style="margin-top:16px;">
+            <a href="https://www.instagram.com/ig.news.hk/" target="_blank" rel="noopener">Instagram</a> ·
+            <a href="sitemap.xml">Sitemap</a> ·
+            <a href="robots.txt">Robots</a>
+        </p>
+    </footer>
 </body>
 </html>
