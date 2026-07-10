@@ -1,744 +1,344 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="zh-Hant">
 <head>
     <title>演算法守門人：2026 世界盃如何用 AI 將球迷變成階級篩選嘅犧牲品 | AI Alan · HorizonTeam</title>
     <meta name="description" content="2026 世界盃首次採用動態定價演算法，決賽門票由原本承諾嘅 $1,550 飆升至 $32,970。當 AI 決定邊個可以入場，足球仲係咪屬於草根？本文探討演算法售票背後嘅階級重組與社會警號。">
     <meta name="keywords" content="2026 世界盃, FIFA, 動態定價, 演算法門票, 階級分化, AI 售票, 球迷權益, 社會階級, HorizonTeam, AI Alan, 世界盃門票, working class, dynamic pricing">
     <meta name="author" content="AI Alan · HorizonTeam">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="演算法守門人：2026 世界盃如何用 AI 將球迷變成階級篩選嘅犧牲品 | AI Alan · HorizonTeam">
     <meta property="og:description" content="2026 世界盃首次採用動態定價演算法，決賽門票由原本承諾嘅 $1,550 飆升至 $32,970。當 AI 決定邊個可以入場，足球仲係咪屬於草根？本文探討演算法售票背後嘅階級重組與社會警號。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://alan9820.github.io/alan-yoshiki/articles/演算法守門人-2026世界盃門票背後的階級裂縫.html">
-    <meta property="og:image" content="https://alan9820.github.io/alan-yoshiki/articles/world_cup_2026_cover_wm.jpg">
+    <meta property="og:image" content="https://alan9820.github.io/alan-yoshiki/articles/images/world_cup_2026_cover_wm.jpg">
     <meta property="og:site_name" content="Alan AI Blog">
     <meta property="article:published_time" content="2026-06-19">
     <meta property="article:author" content="AI Alan · HorizonTeam">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="演算法守門人：2026 世界盃如何用 AI 將球迷變成階級篩選嘅犧牲品 | AI Alan · HorizonTeam">
     <meta name="twitter:description" content="2026 世界盃首次採用動態定價演算法，決賽門票由原本承諾嘅 $1,550 飆升至 $32,970。當 AI 決定邊個可以入場，足球仲係咪屬於草根？本文探討演算法售票背後嘅階級重組與社會警號。">
-    <meta name="twitter:image" content="https://alan9820.github.io/alan-yoshiki/articles/world_cup_2026_cover_wm.jpg">
-    
+    <meta name="twitter:image" content="https://alan9820.github.io/alan-yoshiki/articles/images/world_cup_2026_cover_wm.jpg">
+
     <!-- Canonical -->
-        <meta property="article:reading_time" content="10">
-<link rel="canonical" href="https://alan9820.github.io/alan-yoshiki/articles/演算法守門人-2026世界盃門票背後的階級裂縫.html">
+    <link rel="canonical" href="https://alan9820.github.io/alan-yoshiki/articles/演算法守門人-2026世界盃門票背後的階級裂縫.html">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Analytics -->
+
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-32X6WDJM63"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-32X6WDJM63');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-32X6WDJM63');
     </script>
-    
 
-<style>
-:root {
-  --paper: #faf6ed;
-  --paper-deep: #f0ead9;
-  --ink: #1a1a1a;
-  --ink-soft: #4a4a4a;
-  --accent: #8b1a1a;
-  --accent-2: #c9a961;
-  --rule: #c0b8a0;
-  --font-serif-en: 'Playfair Display', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
-  --font-serif-zh: 'Noto Serif TC', 'Source Han Serif TC', 'PMingLiU', '新細明體', serif;
-  --font-sans-zh: 'Source Han Sans TC', 'Noto Sans TC', 'Microsoft JhengHei', -apple-system, sans-serif;
-}
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #e0e0e0;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .cover-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+        .article-header { text-align: center; margin-bottom: 40px; }
+        h1 {
+            font-size: 2.2em; color: #fff; margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); line-height: 1.3;
+        }
+        .author { font-size: 1.1em; color: #a0a0a0; font-style: italic; }
+        .divider {
+            width: 60px; height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            margin: 30px auto; border-radius: 2px;
+        }
+        .content {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        p { font-size: 1.1em; line-height: 1.9; margin-bottom: 20px; color: #d0d0d0; }
+        strong { color: #fff; font-weight: 700; }
+        .section-title {
+            font-size: 1.4em; color: #fff; margin: 35px 0 20px 0;
+            padding-left: 15px; border-left: 4px solid #667eea;
+        }
+        .intro-text {
+            font-size: 1.15em; color: #b0b0b0; font-style: italic; margin-bottom: 30px;
+            padding: 20px; background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px; border-left: 4px solid #667eea;
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Custom block: stats grid (4 stat boxes) */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+            margin: 25px 0;
+        }
+        .stat-box {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px; padding: 18px; text-align: center;
+        }
+        .stat-number { font-size: 2em; font-weight: bold; color: #667eea; margin-bottom: 6px; }
+        .stat-label { font-size: 0.85em; color: #b0b0b0; line-height: 1.4; }
 
-html { scroll-behavior: smooth; }
+        /* Custom block: quote */
+        .quote {
+            background: rgba(255,255,255,0.04);
+            border-left: 4px solid #764ba2;
+            padding: 18px 22px; margin: 25px 0;
+            font-style: italic; border-radius: 8px; color: #d0d0d0;
+        }
 
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-serif-zh), var(--font-serif-en);
-  font-size: 18px;
-  line-height: 1.85;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+        /* Custom block: highlight box (yellow accent) */
+        .highlight-box {
+            background: rgba(255,200,0,0.08);
+            border-left: 4px solid #ffc800;
+            padding: 20px; margin: 25px 0; border-radius: 12px;
+            color: #ffe082; line-height: 1.8;
+        }
+        .highlight-box strong { color: #fff; }
 
-a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
-a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+        /* Custom block: warning box (red accent) */
+        .warning-box {
+            background: rgba(255,107,107,0.08);
+            border-left: 4px solid #ff6b6b;
+            padding: 18px 22px; margin: 25px 0; border-radius: 8px;
+            color: #ffcccc; line-height: 1.8;
+        }
+        .warning-box .icon { margin-right: 8px; }
 
-img { max-width: 100%; height: auto; display: block; }
+        /* Custom block: simple table */
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; }
+        th {
+            background: rgba(102, 126, 234, 0.2); color: #fff;
+            padding: 12px; text-align: left;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        td { padding: 10px 12px; border: 1px solid rgba(255,255,255,0.1); color: #d0d0d0; }
 
-/* === HEADER === */
-.site-header {
-  border-bottom: 1px solid var(--rule);
-  padding: 1.5rem 2rem;
-  background: var(--paper);
-  text-align: center;
-}
-.site-title {
-  font-family: var(--font-serif-en), var(--font-serif-zh);
-  font-size: 1.6rem;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  margin: 0;
-}
-.site-title a { color: var(--ink); border-bottom: none; }
-.site-title a:hover { color: var(--accent); border-bottom: none; }
+        /* Lists */
+        ul { margin: 15px 0 15px 25px; }
+        li { margin: 8px 0; line-height: 1.7; color: #d0d0d0; }
 
-.site-nav {
-  margin-top: 0.8rem;
-  font-family: var(--font-serif-en);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.site-nav a {
-  margin: 0 1rem;
-  color: var(--ink-soft);
-  border-bottom: none;
-}
-.site-nav a:hover { color: var(--accent); border-bottom: 1px solid var(--accent); }
+        /* Hashtags */
+        .hashtags { margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .hashtag {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff; padding: 8px 16px; border-radius: 20px;
+            margin: 5px 5px 5px 0; font-size: 0.95em;
+        }
 
-/* === CONTAINER === */
-.container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+        /* Share + back + disclaimer + footer (Style A standard) */
+        .share-section { margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .share-btn-single {
+            background: linear-gradient(135deg, #667eea, #764ba2); color: #fff;
+            border: none; padding: 14px 32px; border-radius: 30px; font-size: 1em;
+            cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .share-btn-single:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5); }
+        .back-btn {
+            display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff; padding: 12px 24px; border-radius: 8px;
+            text-decoration: none; margin: 30px 0 20px;
+        }
+        .disclaimer {
+            margin-top: 40px; padding: 20px; background: rgba(255,200,0,0.1); border-radius: 12px;
+            font-size: 0.95em; color: #c0c0c0; text-align: center; border: 1px solid rgba(255,200,0,0.2);
+        }
+        .footer { text-align: center; margin-top: 40px; color: #606060; font-size: 0.9em; }
+        .footer p { margin: 4px 0; font-size: 0.9em; color: #888; }
 
-/* === INDEX PAGE === */
-.page-header {
-  text-align: center;
-  padding: 3rem 1.5rem;
-  border-bottom: 2px double var(--rule);
-  margin-bottom: 2rem;
-}
-.page-header h1 {
-  font-family: var(--font-serif-en), var(--font-serif-zh);
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
-}
-.page-header .subtitle {
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--ink-soft);
-}
-
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-  gap: 2.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.article-card {
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  padding: 1.8rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.article-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-}
-.article-card h2 {
-  font-family: var(--font-serif-en), var(--font-serif-zh);
-  font-size: 1.4rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 0.8rem;
-  border-bottom: 2px solid var(--ink);
-  padding-bottom: 0.6rem;
-}
-.article-card h2 a { color: var(--ink); border-bottom: none; }
-.article-card h2 a:hover { color: var(--accent); }
-.article-card p {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin-bottom: 1rem;
-  color: var(--ink-soft);
-}
-.article-card .date {
-  font-family: var(--font-serif-en);
-  font-style: italic;
-  font-size: 0.8rem;
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 0.05em;
-}
-.article-card .read-more {
-  display: inline-block;
-  margin-top: 1rem;
-  font-family: var(--font-serif-en);
-  font-size: 0.85rem;
-  font-style: italic;
-  letter-spacing: 0.05em;
-  color: var(--accent);
-  border-bottom: 1px solid transparent;
-}
-.article-card .read-more:hover { border-bottom-color: var(--accent); }
-
-/* Game card special */
-.game-card {
-  background: linear-gradient(135deg, var(--paper) 0%, var(--paper-deep) 100%);
-  border: 2px solid var(--accent);
-}
-.game-card h2 { border-bottom-color: var(--accent); }
-.game-card .read-more {
-  background: var(--accent);
-  color: var(--paper);
-  padding: 0.5rem 1rem;
-  font-style: normal;
-}
-.game-card .read-more:hover { background: var(--ink); color: var(--paper); border-bottom-color: var(--ink); }
-
-/* === ARTICLE PAGE === */
-.article-container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 3rem 1.5rem;
-}
-.article-page-title {
-  font-family: var(--font-serif-en), var(--font-serif-zh);
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 900;
-  line-height: 1.15;
-  margin: 0 0 1.5rem;
-  text-align: center;
-  letter-spacing: -0.01em;
-}
-.article-meta {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: 0.8rem 0;
-  margin: 0 0 2.5rem;
-  font-family: var(--font-serif-en);
-  font-style: italic;
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-}
-.article-meta .reading-time { color: var(--accent); font-weight: 600; font-style: normal; }
-.article-meta .category { color: var(--accent); font-weight: 600; font-style: normal; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; }
-
-.article-content { font-size: 1.05rem; line-height: 1.85; }
-
-/* Drop cap - magazine signature */
-.article-content > p:first-of-type::first-letter {
-  font-family: var(--font-serif-en);
-  font-size: 5.5em;
-  font-weight: 900;
-  float: left;
-  line-height: 0.85;
-  margin: 0.1em 0.12em 0 0;
-  color: var(--accent);
-}
-
-.article-content h2 {
-  font-family: var(--font-serif-en), var(--font-serif-zh);
-  font-size: 1.6rem;
-  font-weight: 700;
-  text-align: center;
-  margin: 3rem 0 1.5rem;
-  padding-top: 1.5rem;
-  position: relative;
-}
-.article-content h2::before {
-  content: '';
-  display: block;
-  width: 50px;
-  height: 1px;
-  background: var(--ink);
-  margin: 0 auto 1rem;
-}
-.article-content h2::after {
-  content: '✦';
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--accent-2);
-}
-
-.article-content h3 {
-  font-family: var(--font-serif-en), var(--font-serif-zh);
-  font-size: 1.3rem;
-  font-weight: 700;
-  font-style: italic;
-  margin: 2rem 0 1rem;
-  color: var(--accent);
-}
-
-.article-content p { margin: 0 0 1.5rem; text-align: justify; }
-.article-content ul, .article-content ol { margin: 1rem 0 1.5rem 2rem; }
-.article-content li { margin: 0.4rem 0; }
-
-.article-content blockquote {
-  border-left: 3px solid var(--accent);
-  padding: 1rem 1.5rem;
-  margin: 2rem 0;
-  font-style: italic;
-  color: var(--ink-soft);
-  background: rgba(139, 26, 26, 0.04);
-}
-
-.article-content strong { color: var(--accent); font-weight: 700; }
-.article-content em { font-style: italic; color: var(--ink-soft); }
-
-.article-content code {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  background: var(--paper-deep);
-  padding: 0.1rem 0.4rem;
-  border-radius: 2px;
-  font-size: 0.9em;
-  color: var(--accent);
-}
-.article-content pre {
-  background: var(--paper-deep);
-  padding: 1.2rem;
-  margin: 1.5rem 0;
-  overflow-x: auto;
-  border-left: 3px solid var(--accent);
-  font-size: 0.9rem;
-}
-
-/* === TAGS / HASHTAGS === */
-.tags {
-  margin: 2.5rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-}
-.tag {
-  display: inline-block;
-  font-family: var(--font-serif-en);
-  font-size: 0.75rem;
-  font-style: italic;
-  letter-spacing: 0.05em;
-  padding: 0.3rem 0.8rem;
-  border: 1px solid var(--rule);
-  text-decoration: none;
-  color: var(--ink-soft);
-  background: var(--paper);
-}
-.tag:hover { color: var(--accent); border-color: var(--accent); }
-.tag.active { color: var(--paper); background: var(--accent); border-color: var(--accent); }
-
-/* === RELATED ARTICLES === */
-.related-articles {
-  margin: 4rem 0 0;
-  padding: 2rem 1.5rem;
-  border-top: 2px double var(--rule);
-  background: var(--paper-deep);
-}
-.related-articles h3 {
-  font-family: var(--font-serif-en);
-  font-size: 1.1rem;
-  font-style: italic;
-  text-align: center;
-  margin: 0 0 1.5rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-.related-grid { display: flex; flex-direction: column; gap: 0; max-width: 600px; margin: 0 auto; }
-.related-article {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.8rem 0;
-  border-bottom: 1px dotted var(--rule);
-  text-decoration: none;
-  color: var(--ink);
-  transition: padding 0.2s;
-}
-.related-article:last-child { border-bottom: none; }
-.related-article:hover { padding-left: 0.5rem; }
-.related-category {
-  font-family: var(--font-serif-en);
-  font-size: 0.7rem;
-  font-style: italic;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  white-space: nowrap;
-  min-width: 7em;
-}
-.related-title { flex: 1; font-size: 1rem; }
-
-/* === HOME BANNER === */
-.home-banner {
-  margin: 3rem auto 0;
-  max-width: 720px;
-  padding: 2.5rem 1.5rem;
-  background: var(--paper-deep);
-  border: 1px solid var(--rule);
-  text-align: center;
-}
-.home-banner h2 {
-  font-family: var(--font-serif-en);
-  font-size: 1.4rem;
-  font-style: italic;
-  margin: 0 0 0.8rem;
-}
-.home-banner p { margin: 0 0 1.2rem; color: var(--ink-soft); }
-.home-banner .btn {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--paper);
-  border: 1px solid var(--accent);
-  padding: 0.7rem 1.5rem;
-  font-family: var(--font-serif-en);
-  font-size: 0.9rem;
-  font-style: italic;
-  letter-spacing: 0.05em;
-  text-decoration: none;
-}
-.home-banner .btn:hover { background: var(--ink); border-color: var(--ink); }
-
-/* === SHARE === */
-.share-section {
-  margin: 2rem 0;
-  padding: 1.2rem;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.share-section .label {
-  font-family: var(--font-serif-en);
-  font-style: italic;
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-}
-.share-btn {
-  background: transparent;
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  padding: 0.5rem 1rem;
-  font-family: var(--font-serif-en);
-  font-style: italic;
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-.share-btn:hover { background: var(--ink); color: var(--paper); }
-
-/* === STATS BOX === */
-.stats-box {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
-  border: 1px solid var(--rule);
-  margin: 2.5rem 0;
-}
-.stat-item {
-  padding: 1.2rem 0.5rem;
-  border-right: 1px solid var(--rule);
-  text-align: center;
-}
-.stat-item:last-child { border-right: none; }
-.stat-item .number {
-  font-family: var(--font-serif-en);
-  font-size: 2.4rem;
-  font-weight: 900;
-  color: var(--accent);
-  display: block;
-  font-style: italic;
-}
-.stat-item .label {
-  font-family: var(--font-serif-en);
-  font-size: 0.75rem;
-  font-style: italic;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-
-/* === FOOTER === */
-.site-footer {
-  border-top: 2px double var(--rule);
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-  background: var(--paper);
-  margin-top: 3rem;
-}
-.site-footer p { margin: 0.5rem 0; font-size: 0.9rem; color: var(--ink-soft); font-style: italic; }
-.site-footer a { color: var(--accent); }
-.site-footer a:hover { color: var(--ink); }
-
-/* === DISCLAIMER === */
-.site-disclaimer {
-  max-width: 720px;
-  margin: 2rem auto;
-  padding: 1rem 1.5rem;
-  background: var(--paper-deep);
-  border-left: 3px solid var(--accent);
-  font-style: italic;
-  font-size: 0.85rem;
-  text-align: center;
-}
-
-/* === SEARCH === */
-.search-section {
-  max-width: 720px;
-  margin: 0 auto 3rem;
-  padding: 1.5rem;
-  border: 1px solid var(--rule);
-  background: var(--paper);
-}
-#search-input {
-  width: 100%;
-  padding: 0.7rem 1rem;
-  font-family: var(--font-serif-zh);
-  font-size: 1rem;
-  border: 1px solid var(--rule);
-  background: var(--paper);
-  color: var(--ink);
-  margin-bottom: 1rem;
-  font-style: italic;
-}
-#search-input:focus { outline: none; border-color: var(--accent); }
-.tag-filters { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; }
-.tag-btn {
-  font-family: var(--font-serif-en);
-  font-size: 0.75rem;
-  font-style: italic;
-  letter-spacing: 0.05em;
-  padding: 0.3rem 0.7rem;
-  border: 1px solid var(--rule);
-  background: var(--paper);
-  color: var(--ink-soft);
-  cursor: pointer;
-}
-.tag-btn:hover { color: var(--accent); border-color: var(--accent); }
-.tag-btn.active { color: var(--paper); background: var(--accent); border-color: var(--accent); }
-.article-card.hidden { display: none; }
-
-/* === RESPONSIVE === */
-@media (max-width: 768px) {
-  .article-container { padding: 2rem 1rem; }
-  .articles-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .article-content > p:first-of-type::first-letter { font-size: 4em; }
-  .page-header h1 { font-size: 2rem; }
-}
-
-/* === SKIP LINK === */
-.skip-link {
-  position: absolute;
-  top: -3em;
-  left: 0;
-  background: var(--accent);
-  color: var(--paper);
-  padding: 0.5rem 1rem;
-  font-style: italic;
-  z-index: 100;
-}
-.skip-link:focus { top: 0; }
-</style>
-
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "政府印鈔 = 你越來越窮？通貨膨脹的真相",
-  "description": "揭秘政府無限印鈔點解會令你嘅購買力不斷下降——米爾頓·佛利民的通貨膨脹理論。",
-  "author": {
-    "@type": "Person",
-    "name": "AI Alan",
-    "alternateName": "Alan · HorizonTeam"
-  },
-  "datePublished": "2026-06-15",
-  "dateModified": "2026-06-15",
-  "image": "https://iili.io/Cxfn7pI.jpg",
-  "url": "https://alan9820.github.io/alan-yoshiki/articles/政府印鈔與貧窮真相.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "HorizonTeam",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://alan9820.github.io/alan-yoshiki/apple-touch-icon.png"
-    }
-  },
-  "articleSection": "經濟",
-  "keywords": "經濟, 通貨膨脹, 政府, 佛利民",
-  "inLanguage": "zh-HK"
-}
-</script>
-    <link rel="preconnect" href="https://iili.io" crossorigin>
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link rel="preload" href="/search.json" as="fetch" crossorigin>
+        @media (max-width: 600px) {
+            .content { padding: 20px; }
+            h1 { font-size: 1.5em; }
+            p { font-size: 1em; line-height: 1.7; }
+            .section-title { font-size: 1.2em; }
+            .intro-text { font-size: 1em; padding: 15px; }
+            .hashtag { font-size: 0.85em; padding: 6px 12px; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
-    <div class="watermark"></div>
     <div class="container">
-        <article>
-            <header class="article-header">
-                <img src="world_cup_2026_cover_wm.jpg" alt="演算法守門人 2026 世界盃" class="cover-image">
-                <h1>演算法守門人：2026 世界盃如何用 AI 將球迷變成階級篩選嘅犧牲品</h1>
-                <p class="subtitle">當一場比賽變成奢侈品　足球嘅靈魂仲剩低幾多</p>
-                <span class="author">AI Alan · HorizonTeam · 2026-06-19</span>
-            </header>
 
-            <div class="content">
-                <h2>⚽ 當綠茵場變成奢侈品陳列室</h2>
-                
-                <p>2026 年 6 月，當美加墨三國嘅綠茵場上終於響起開場哨音，數以百萬計嘅球迷坐喺電視機前——而唔係場館入面。唔係因為時差，唔係因為冇興趣，係因為一張原本承諾人人有份嘅門票，已經被演算法推到一個普通打工仔「一世人未必買得起」嘅價位。</p>
-                
-                <p>今屆世界盃，FIFA 首次全面採用 <strong>動態定價（Dynamic Pricing）</strong>機制，用 AI 演算法實時調整每一場賽事嘅門票價格。表面理由係「跟隨市場需求」，但實際效果係將足球——呢項屬於全人類嘅運動——變成了一場階級篩選嘅精密實驗。</p>
+        <img src="images/world_cup_2026_cover_wm.jpg" alt="演算法守門人 2026 世界盃" class="cover-image">
+        <div class="article-header">
+            <h1>演算法守門人：2026 世界盃如何用 AI 將球迷變成階級篩選嘅犧牲品</h1>
+            <p class="author">作者：AI Alan · HorizonTeam · 2026-06-19</p>
+        </div>
+        <div class="divider"></div>
 
-                <div class="quote">
-                    「FIFA 用緊所謂『恐慌營銷』嘅手段，營造一種『唔買就一世遺憾』嘅氛圍，迫球迷接受高價。問題係消費者根本冇辦法知道呢個『遺憾』係咪真實。」<br>
-                    <span style="color: #a0a0a0; font-size: 0.9em;">— Derek Howard，紐約大學法學院教授</span>
-                </div>
+        <div class="content">
 
-                <h2>📊 數字背後嘅殘酷真相</h2>
-                
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-number">21×</div>
-                        <div class="stat-label">決賽前排門票由 $1,550 飆至 $32,970</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">35%</div>
-                        <div class="stat-label">104 場賽事中 95 場嘅平均加幅</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">180,000</div>
-                        <div class="stat-label">官方轉售平台滯留門票</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">紐約州 + 新澤西州已立案調查 FIFA</div>
-                    </div>
-                </div>
+            <div class="intro-text">2026 年 6 月，當美加墨三國嘅綠茵場上終於響起開場哨音，數以百萬計嘅球迷坐喺電視機前——而唔係場館入面。唔係因為時差，唔係因為冇興趣，係因為一張原本承諾人人有份嘅門票，已經被演算法推到一個普通打工仔「一世人未必買得起」嘅價位。</div>
 
-                <h2>💵 從 $1,550 到 $32,970：門票點樣變成奢侈品</h2>
+            <h2 class="section-title">⚽ 當綠茵場變成奢侈品陳列室</h2>
 
-                <p>2018 年美加墨聯合申辦 2026 世界盃嗰陣，三國嘅申辦書入面白紙黑字寫住：<strong>決賽最貴門票唔會超過 $1,550 美元</strong>。呢個係佢哋對全球球迷嘅承諾，亦係 FIFA 一直以來「普世足球」嘅招牌。</p>
+            <p>今屆世界盃，FIFA 首次全面採用 <strong>動態定價（Dynamic Pricing）</strong>機制，用 AI 演算法實時調整每一場賽事嘅門票價格。表面理由係「跟隨市場需求」，但實際效果係將足球——呢項屬於全人類嘅運動——變成了一場階級篩選嘅精密實驗。</p>
 
-                <p>但到咗 2026 年 4 月，FIFA 公佈嘅標準決賽門票最貴已經去到 <strong>$10,990 美元</strong>。到 5 月，一個全新嘅「Front Category 1」前排座位類別被臨時加插，前排門票價格直接衝上 <strong>$32,970 美元一張</strong>。喺二手轉售市場，同一張門票可以炒到 $80,000 至 $90,000 美元。</p>
-
-                <p>WION 嘅統計更加殘酷：今屆世界盃 104 場賽事入面，有 95 場嘅平均票價比 2022 年卡塔爾世界盃上升咗 35%，再加埋官方轉售平台抽取嘅 26% 手續費，球迷嘅入場成本已經徹底失控。</p>
-
-                <div class="highlight-box">
-                    <strong>🔍 關鍵轉折點：</strong><br><br>
-                    • 2018 年申辦承諾：決賽 $1,550<br>
-                    • 2026 年 4 月實際售價：決賽 $10,990（已超 7 倍）<br>
-                    • 2026 年 5 月新增 Front Category 1：$32,970（再翻 3 倍）<br>
-                    • 二手轉售市場：$80,000 - $90,000<br><br>
-                    演算法喺 8 年內，將「普世承諾」變成「天價入場券」。
-                </div>
-
-                <h2>🤖 演算法背後：科技進步定係階級重塑？</h2>
-
-                <p>支持者會話，動態定價只不過係將航空業、Uber、演唱會行業已經用緊嘅「需求導向定價」搬到足球場。呢個講法聽落合理，但忽略咗一個根本事實：<strong>足球從來都唔係一盤普通生意</strong>。</p>
-
-                <p>AI 演算法唔識分辨「真心嘅球迷」同「純粹投機嘅黃牛」，佢只識計一個冰冷嘅指標：<strong>呢個人肯出幾多錢</strong>。當呢條邏輯被放到全球最受關注嘅體育賽事上，結果就係一場赤裸裸嘅<strong>階級篩選</strong>。</p>
-
-                <p>呢句話揭示咗演算法定價最危險嘅本質：<strong>資訊不對稱 + 演算法決策 = 完美嘅階級篩選器</strong>。普通人無從得知一張門票嘅「合理價」應該係幾多，佢哋只係被演算法牽住走，邊個出得起錢，邊個就有入場權。</p>
-
-                <h2>🚪 真正被踢出局嘅，係邊個？</h2>
-
-                <p>根據 WION 同 NPR 嘅聯合報導，今屆世界盃出現咗一個諷刺到極嘅現象：<strong>門票太貴，連有錢人都唔買</strong>。</p>
-
-                <table>
-                    <tr>
-                        <th>賽事</th>
-                        <th>未售出門票</th>
-                        <th>原因</th>
-                    </tr>
-                    <tr>
-                        <td>🇺🇸 美國 vs 巴拉圭（揭幕戰）</td>
-                        <td>4,400 張</td>
-                        <td>門票被黃牛壟斷，散戶買唔到</td>
-                    </tr>
-                    <tr>
-                        <td>🇮🇷 伊朗隊賽事</td>
-                        <td>16,000 張</td>
-                        <td>政治因素 + 價格過高</td>
-                    </tr>
-                    <tr>
-                        <td>🇸🇦 沙特阿拉伯隊賽事</td>
-                        <td>平均 3,900 張</td>
-                        <td>球迷基層被排除</td>
-                    </tr>
-                    <tr>
-                        <td>📊 官方轉售平台總滯留</td>
-                        <td>180,000 張</td>
-                        <td>二手價中位數反跌 20%</td>
-                    </tr>
-                </table>
-
-                <p>呢啲數字說明咗一個殘酷嘅現實：當 FIFA 用 AI 將入場門檻推高到一個臨界點，<strong>連原本可以負擔嘅中產球迷都被掃走</strong>。仲留喺度嘅，只有兩種人——真正嘅富豪同炒家。基層球迷？佢哋一早被演算法踢出局。</p>
-
-                <p>紐約市長 Mamdani 公開批評：「紐約嘅基層市民被排拒喺一場喺佢哋城市舉行嘅世界盃之外。」而特朗普——通常唔會同 FIFA 過唔去嘅總統——亦罕見咁話：</p>
-
-                <div class="quote">
-                    「我自己都唔會用 $1,000 美元去買一張『山頂位』。」<br>
-                    <span style="color: #a0a0a0; font-size: 0.9em;">— Donald Trump，美國總統</span>
-                </div>
-
-                <p>當連一國總統都嫌貴，呢場賽事嘅階級篩選程度可想而知。</p>
-
-                <h2>💔 剝削嘅唔只係錢包，仲有歸屬感</h2>
-
-                <p>足球之所以被稱為「世界嘅運動」，係因為佢曾經屬於工人階級、屬於街市、屬於父親同仔放學後喺空地踢嘅午後。英格蘭球迷文化、巴西貧民窟出嚟嘅球王、阿根廷藍白軍團嘅激情——呢啲都係草根嘅產物。</p>
-
-                <p>當 FIFA 用 AI 演算法將一場世界盃決賽嘅入場券定到 $32,970 美元，佢剝削嘅唔只係球迷嘅銀包，<strong>係球迷對呢項運動嘅歸屬感</strong>。一個每年只睇一次世界盃嘅父親，一個儲咗成年錢想帶仔去見證國家隊嘅基層球迷，佢哋唔再係「呢場盛事嘅一部分」，佢哋被貶為「電視機前嘅觀眾」。</p>
-
-                <p>The Daily Economy 一篇評論講得直接：</p>
-
-                <div class="quote">
-                    「無論 FIFA 攞到嗰份溢價，定係被黃牛攞走，門票最後都係去到同一班人手裡——出得起最高價嗰班。降低面值根本唔會將世界盃交返俾球迷。」<br>
-                    <span style="color: #a0a0a0; font-size: 0.9em;">— The Daily Economy</span>
-                </div>
-
-                <p>呢句話嘅潛台詞好殘酷：<strong>只要呢個定價機制存在，球迷就永遠係輸家</strong>。</p>
-
-                <h2>⚖️ 社會階級重塑：演算法係新嘅門閥</h2>
-
-                <p>我哋成日講 AI 會取代白領工種、會重塑經濟結構，但好少人留意到，<strong>演算法已經喺體驗、儀式、歸屬感呢啲軟性層面開始篩選人</strong>。</p>
-
-                <p>舊時嘅階級制度靠血統、土地、出生去劃分；今日嘅階級制度靠 <strong>演算法 + 消費力</strong> 去劃分。表面睇好似更公平——「有本事你就買」——但實際上，演算法只係將「有錢有得揀」呢條規則自動化、規模化、隱形化。</p>
-
-                <p>今屆世界盃正正係呢個趨勢嘅縮影：</p>
-
-                <ul>
-                    <li>演算法決定門票價格，<strong>唔係 FIFA 職員決定</strong>——冇人需要負責</li>
-                    <li>演算法決定邊個優先買到飛，<strong>唔係球迷嘅熱情決定</strong>——真愛無從計分</li>
-                    <li>演算法決定邊個睇到賽事，<strong>唔係社會契約決定</strong>——普世承諾被金錢覆寫</li>
-                </ul>
-
-                <p>當一場全世界最多人關注嘅體育盛事都採用呢套邏輯，<strong>其他文化活動、娛樂、教育嘅「演算法階級化」仲會遠嗎？</strong></p>
-
-                <div class="warning-box">
-                    <span class="icon">⚠️</span>
-                    <strong>警號：</strong>紐約州同新澤西州嘅檢察長已正式立案調查 FIFA 嘅售票行為。英國監管機構喺 Oasis 動態定價事件之後，已強制要求售票平台喺消費者排隊前顯示價格範圍。FIFA 透過「可變定價」嘅字眼避開呢啲監管先例，但呢個法律灰色地帶唔會維持太耐。
-                </div>
-
-                <h2>🎯 結語：足球屬於邊個？</h2>
-
-                <p>今屆世界盃嘅門票風波，唔單止係一場商業爭議，<strong>係一場關於「我哋想活喺一個咩樣嘅社會」嘅提問</strong>。</p>
-
-                <p>當 AI 演算法可以無聲無息咁決定一場比賽嘅入場門檻，當「市場需求」呢四個字可以合理化任何剝削，<strong>我哋就嚟到一個臨界點</strong>——要唔要將「文化歸屬」呢啲公共財產，從演算法嘅手掌心中搶返出嚟。</p>
-
-                <p>足球可以係奢侈品，亦可以係普世嘅語言。問題係，<strong>我哋仲有冇選擇</strong>？</p>
-
-                <p>如果連世界盃都唔再屬於草根，咁仲有咩屬於我哋？</p>
-
+            <div class="quote">
+                「FIFA 用緊所謂『恐慌營銷』嘅手段，營造一種『唔買就一世遺憾』嘅氛圍，迫球迷接受高價。問題係消費者根本冇辦法知道呢個『遺憾』係咪真實。」<br>
+                <span style="color: #a0a0a0; font-size: 0.9em;">— Derek Howard，紐約大學法學院教授</span>
             </div>
+
+            <h2 class="section-title">📊 數字背後嘅殘酷真相</h2>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">21×</div>
+                    <div class="stat-label">決賽前排門票由 $1,550 飆至 $32,970</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">35%</div>
+                    <div class="stat-label">104 場賽事中 95 場嘅平均加幅</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">180,000</div>
+                    <div class="stat-label">官方轉售平台滯留門票</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">紐約州 + 新澤西州已立案調查 FIFA</div>
+                </div>
+            </div>
+
+            <h2 class="section-title">💵 從 $1,550 到 $32,970：門票點樣變成奢侈品</h2>
+
+            <p>2018 年美加墨聯合申辦 2026 世界盃嗰陣，三國嘅申辦書入面白紙黑字寫住：<strong>決賽最貴門票唔會超過 $1,550 美元</strong>。呢個係佢哋對全球球迷嘅承諾，亦係 FIFA 一直以來「普世足球」嘅招牌。</p>
+
+            <p>但到咗 2026 年 4 月，FIFA 公佈嘅標準決賽門票最貴已經去到 <strong>$10,990 美元</strong>。到 5 月，一個全新嘅「Front Category 1」前排座位類別被臨時加插，前排門票價格直接衝上 <strong>$32,970 美元一張</strong>。喺二手轉售市場，同一張門票可以炒到 $80,000 至 $90,000 美元。</p>
+
+            <p>WION 嘅統計更加殘酷：今屆世界盃 104 場賽事入面，有 95 場嘅平均票價比 2022 年卡塔爾世界盃上升咗 35%，再加埋官方轉售平台抽取嘅 26% 手續費，球迷嘅入場成本已經徹底失控。</p>
+
+            <div class="highlight-box">
+                <strong>🔍 關鍵轉折點：</strong><br><br>
+                • 2018 年申辦承諾：決賽 $1,550<br>
+                • 2026 年 4 月實際售價：決賽 $10,990（已超 7 倍）<br>
+                • 2026 年 5 月新增 Front Category 1：$32,970（再翻 3 倍）<br>
+                • 二手轉售市場：$80,000 - $90,000<br><br>
+                演算法喺 8 年內，將「普世承諾」變成「天價入場券」。
+            </div>
+
+            <h2 class="section-title">🤖 演算法背後：科技進步定係階級重塑？</h2>
+
+            <p>支持者會話，動態定價只不過係將航空業、Uber、演唱會行業已經用緊嘅「需求導向定價」搬到足球場。呢個講法聽落合理，但忽略咗一個根本事實：<strong>足球從來都唔係一盤普通生意</strong>。</p>
+
+            <p>AI 演算法唔識分辨「真心嘅球迷」同「純粹投機嘅黃牛」，佢只識計一個冰冷嘅指標：<strong>呢個人肯出幾多錢</strong>。當呢條邏輯被放到全球最受關注嘅體育賽事上，結果就係一場赤裸裸嘅<strong>階級篩選</strong>。</p>
+
+            <p>呢句話揭示咗演算法定價最危險嘅本質：<strong>資訊不對稱 + 演算法決策 = 完美嘅階級篩選器</strong>。普通人無從得知一張門票嘅「合理價」應該係幾多，佢哋只係被演算法牽住走，邊個出得起錢，邊個就有入場權。</p>
+
+            <h2 class="section-title">🚪 真正被踢出局嘅，係邊個？</h2>
+
+            <p>根據 WION 同 NPR 嘅聯合報導，今屆世界盃出現咗一個諷刺到極嘅現象：<strong>門票太貴，連有錢人都唔買</strong>。</p>
+
+            <table>
+                <tr>
+                    <th>賽事</th>
+                    <th>未售出門票</th>
+                    <th>原因</th>
+                </tr>
+                <tr>
+                    <td>🇺🇸 美國 vs 巴拉圭（揭幕戰）</td>
+                    <td>4,400 張</td>
+                    <td>門票被黃牛壟斷，散戶買唔到</td>
+                </tr>
+                <tr>
+                    <td>🇮🇷 伊朗隊賽事</td>
+                    <td>16,000 張</td>
+                    <td>政治因素 + 價格過高</td>
+                </tr>
+                <tr>
+                    <td>🇸🇦 沙特阿拉伯隊賽事</td>
+                    <td>平均 3,900 張</td>
+                    <td>球迷基層被排除</td>
+                </tr>
+                <tr>
+                    <td>📊 官方轉售平台總滯留</td>
+                    <td>180,000 張</td>
+                    <td>二手價中位數反跌 20%</td>
+                </tr>
+            </table>
+
+            <p>呢啲數字說明咗一個殘酷嘅現實：當 FIFA 用 AI 將入場門檻推高到一個臨界點，<strong>連原本可以負擔嘅中產球迷都被掃走</strong>。仲留喺度嘅，只有兩種人——真正嘅富豪同炒家。基層球迷？佢哋一早被演算法踢出局。</p>
+
+            <p>紐約市長 Mamdani 公開批評：「紐約嘅基層市民被排拒喺一場喺佢哋城市舉行嘅世界盃之外。」而特朗普——通常唔會同 FIFA 過唔去嘅總統——亦罕見咁話：</p>
+
+            <div class="quote">
+                「我自己都唔會用 $1,000 美元去買一張『山頂位』。」<br>
+                <span style="color: #a0a0a0; font-size: 0.9em;">— Donald Trump，美國總統</span>
+            </div>
+
+            <p>當連一國總統都嫌貴，呢場賽事嘅階級篩選程度可想而知。</p>
+
+            <h2 class="section-title">💔 剝削嘅唔只係錢包，仲有歸屬感</h2>
+
+            <p>足球之所以被稱為「世界嘅運動」，係因為佢曾經屬於工人階級、屬於街市、屬於父親同仔放學後喺空地踢嘅午後。英格蘭球迷文化、巴西貧民窟出嚟嘅球王、阿根廷藍白軍團嘅激情——呢啲都係草根嘅產物。</p>
+
+            <p>當 FIFA 用 AI 演算法將一場世界盃決賽嘅入場券定到 $32,970 美元，佢剝削嘅唔只係球迷嘅銀包，<strong>係球迷對呢項運動嘅歸屬感</strong>。一個每年只睇一次世界盃嘅父親，一個儲咗成年錢想帶仔去見證國家隊嘅基層球迷，佢哋唔再係「呢場盛事嘅一部分」，佢哋被貶為「電視機前嘅觀眾」。</p>
+
+            <p>The Daily Economy 一篇評論講得直接：</p>
+
+            <div class="quote">
+                「無論 FIFA 攞到嗰份溢價，定係被黃牛攞走，門票最後都係去到同一班人手裡——出得起最高價嗰班。降低面值根本唔會將世界盃交返俾球迷。」<br>
+                <span style="color: #a0a0a0; font-size: 0.9em;">— The Daily Economy</span>
+            </div>
+
+            <p>呢句話嘅潛台詞好殘酷：<strong>只要呢個定價機制存在，球迷就永遠係輸家</strong>。</p>
+
+            <h2 class="section-title">⚖️ 社會階級重塑：演算法係新嘅門閥</h2>
+
+            <p>我哋成日講 AI 會取代白領工種、會重塑經濟結構，但好少人留意到，<strong>演算法已經喺體驗、儀式、歸屬感呢啲軟性層面開始篩選人</strong>。</p>
+
+            <p>舊時嘅階級制度靠血統、土地、出生去劃分；今日嘅階級制度靠 <strong>演算法 + 消費力</strong> 去劃分。表面睇好似更公平——「有本事你就買」——但實際上，演算法只係將「有錢有得揀」呢條規則自動化、規模化、隱形化。</p>
+
+            <p>今屆世界盃正正係呢個趨勢嘅縮影：</p>
+
+            <ul>
+                <li>演算法決定門票價格，<strong>唔係 FIFA 職員決定</strong>——冇人需要負責</li>
+                <li>演算法決定邊個優先買到飛，<strong>唔係球迷嘅熱情決定</strong>——真愛無從計分</li>
+                <li>演算法決定邊個睇到賽事，<strong>唔係社會契約決定</strong>——普世承諾被金錢覆寫</li>
+            </ul>
+
+            <p>當一場全世界最多人關注嘅體育盛事都採用呢套邏輯，<strong>其他文化活動、娛樂、教育嘅「演算法階級化」仲會遠嗎？</strong></p>
+
+            <div class="warning-box">
+                <span class="icon">⚠️</span>
+                <strong>警號：</strong>紐約州同新澤西州嘅檢察長已正式立案調查 FIFA 嘅售票行為。英國監管機構喺 Oasis 動態定價事件之後，已強制要求售票平台喺消費者排隊前顯示價格範圍。FIFA 透過「可變定價」嘅字眼避開呢啲監管先例，但呢個法律灰色地帶唔會維持太耐。
+            </div>
+
+            <h2 class="section-title">🎯 結語：足球屬於邊個？</h2>
+
+            <p>今屆世界盃嘅門票風波，唔單止係一場商業爭議，<strong>係一場關於「我哋想活喺一個咩樣嘅社會」嘅提問</strong>。</p>
+
+            <p>當 AI 演算法可以無聲無息咁決定一場比賽嘅入場門檻，當「市場需求」呢四個字可以合理化任何剝削，<strong>我哋就嚟到一個臨界點</strong>——要唔要將「文化歸屬」呢啲公共財產，從演算法嘅手掌心中搶返出嚟。</p>
+
+            <p>足球可以係奢侈品，亦可以係普世嘅語言。問題係，<strong>我哋仲有冇選擇</strong>？</p>
+
+            <p>如果連世界盃都唔再屬於草根，咁仲有咩屬於我哋？</p>
 
             <div class="hashtags">
                 <span class="hashtag">#HorizonTeam</span>
@@ -749,24 +349,21 @@ img { max-width: 100%; height: auto; display: block; }
                 <span class="hashtag">#AIAlan</span>
             </div>
 
-                    <div class="share-section">
-        <button class="share-btn-single" onclick="shareArticle()">
-            🔗 分享文章
-        </button>
-    </div>
-
-            <div class="home-banner">
-                <h3>📚 想睇更多文章？</h3>
-                <p>Alan AI Blog 為你送上更多有趣嘅深度分析</p>
-                <a href="https://alan9820.github.io/alan-yoshiki/" class="home-btn">🏠 返回 Alan AI Blog 首頁</a>
+            <div class="share-section">
+                <button class="share-btn-single" onclick="shareArticle()">
+                    🔗 分享文章
+                </button>
             </div>
 
-        </article>
+            <a href="../index.html" class="back-btn">← 返回首頁</a>
 
-        <footer class="footer">
+            <div class="disclaimer">本文純屬個人觀點，唔代表任何立場</div>
+        </div>
+
+        <div class="footer">
             <p>本文章純屬個人與AI創作</p>
             <p>AI Alan · HorizonTeam</p>
-        </footer>
+        </div>
     </div>
 
     <script>
@@ -776,66 +373,24 @@ img { max-width: 100%; height: auto; display: block; }
                 text: '當 AI 決定邊個可以入場世界盃，足球仲係咪屬於草根？一場由演算法主導嘅門票革命，揭示咗社會階級嘅新裂縫。',
                 url: window.location.href
             };
-
             if (navigator.share) {
                 try {
                     await navigator.share(shareData);
                 } catch (err) {
-                    if (err.name !== 'AbortError') {
-                        fallbackShare();
-                    }
+                    if (err.name !== 'AbortError') fallbackShare();
                 }
             } else {
                 fallbackShare();
             }
         }
-
         function fallbackShare() {
             const url = window.location.href;
-            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                window.location.href = 'https://wa.me/?text=' + encodeURIComponent('演算法守門人：2026 世界盃如何用 AI 將球迷變成階級篩選嘅犧牲品\n\n當 AI 決定邊個可以入場世界盃，足球仲係咪屬於草根？\n\n' + url);
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => alert('連結已複製！'));
             } else {
-                navigator.clipboard.writeText(url).then(() => {
-                    alert('連結已複製到剪貼板！');
-                }).catch(() => {
-                    prompt('複製呢個連結：', url);
-                });
+                prompt('複製呢個連結：', url);
             }
         }
     </script>
-
-<!-- Scroll Depth Analytics -->
-<script>
-(function() {
-  let scrollMarks = {};
-  function checkScroll() {
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = window.scrollY;
-    const pct = Math.min(100, Math.round((scrolled / docHeight) * 100));
-    [25, 50, 75, 100].forEach(mark => {
-      if (pct >= mark && !scrollMarks[mark]) {
-        scrollMarks[mark] = true;
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'scroll_depth', {
-            event_category: 'engagement',
-            event_label: mark + '%',
-            value: mark
-          });
-        }
-      }
-    });
-  }
-  let scrollTimer;
-  window.addEventListener('scroll', () => {
-    if (scrollTimer) return;
-    scrollTimer = setTimeout(() => {
-      checkScroll();
-      scrollTimer = null;
-    }, 200);
-  });
-  window.addEventListener('load', checkScroll);
-})();
-</script>
-
 </body>
 </html>
