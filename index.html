@@ -292,6 +292,7 @@
                     <p>達爾文話我哋由海洋上岸，咁點解唔可以有人落返去？UFO 飛唔到地球，但有飛碟潛入深海 — 如果海底真有另一種智慧，世界會唔會反而和平啲？六大角度，重新諗呢個問題。</p>
                     <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-07-12</div>
                     <a href="articles/海底人為什麼不能存在.html" class="more">閱讀全文 →</a>
+                    <img src="https://counter.alanhorizonteam.org/counter.svg?path=%2Farticles%2F%E6%B5%B7%E5%BA%95%E4%BA%BA%E7%82%BA%E4%BB%80%E9%BA%BC%E4%B8%8D%E8%83%BD%E5%AD%98%E5%9C%A8.html&amp;mode=peek" alt="views" class="view-counter" style="height:20px;vertical-align:middle;margin-left:8px;">
                 </article>
                 <article class="card">
                     <div class="card-icon">💊</div>
@@ -389,6 +390,47 @@
                     <a href="articles/GenZ文章.html" class="more">閱讀全文 →</a>
                     <img src="https://counter.alanhorizonteam.org/counter.svg?path=%2Farticles%2FGenZ%E6%96%87%E7%AB%A0.html&amp;mode=peek" alt="views" class="view-counter" style="height:20px;vertical-align:middle;margin-left:8px;">
                 </article>
+            </div>
+        </section>
+
+        <!-- 📊 數據儀表板 (Dashboard) — per Alan 2026-07-12 "standardize + track for AdSense" mandate -->
+        <section class="section" id="dashboard">
+            <h2 class="section-title">📊 數據儀表板</h2>
+            <p class="section-desc">Track · Optimize · Earn · 2026-07-12 起 live</p>
+            <div class="grid-2" style="margin-bottom:32px;">
+                <div class="card" style="text-align:center;">
+                    <div class="card-icon">💰</div>
+                    <h3>AdSense 累計收益</h3>
+                    <div style="font-size:2em; color:#ffd700; font-weight:bold; margin:8px 0;" id="metric-adsense">$—</div>
+                    <div style="color:#888; font-size:0.85em;">累計 (since 2026-07-11 AdSense live)</div>
+                    <!-- TODO: 從 AdSense Management API pull. 需 OAuth credentials. -->
+                </div>
+                <div class="card" style="text-align:center;">
+                    <div class="card-icon">👥</div>
+                    <h3>IG 追蹤者</h3>
+                    <div style="font-size:2em; color:#ffd700; font-weight:bold; margin:8px 0;" id="metric-followers">—</div>
+                    <div style="color:#888; font-size:0.85em;">@alan.horizon.team</div>
+                    <!-- TODO: 從 Buffer profile API (/profiles/<id>) pull. BUFFER_API_KEY 已有. -->
+                </div>
+                <div class="card" style="text-align:center;">
+                    <div class="card-icon">🌐</div>
+                    <h3>總瀏覽者 (30 日)</h3>
+                    <div style="font-size:2em; color:#ffd700; font-weight:bold; margin:8px 0;" id="metric-visitors">—</div>
+                    <div style="color:#888; font-size:0.85em;">GA4 unique visitors</div>
+                    <!-- TODO: 從 GA4 Reporting API pull. 需 service account JSON. -->
+                </div>
+                <div class="card" style="text-align:center;">
+                    <div class="card-icon">📖</div>
+                    <h3>總文章 View (累計)</h3>
+                    <div style="font-size:2em; color:#ffd700; font-weight:bold; margin:8px 0;" id="metric-views">—</div>
+                    <div style="color:#888; font-size:0.85em;">13 篇 · CF Counter Worker</div>
+                    <!-- TODO: 從 counter.alanhorizonteam.org aggregate. Public endpoint, 可即做. -->
+                </div>
+            </div>
+            <div style="text-align:center; margin-top:12px;">
+                <a href="tracking/articles_tracking.csv" class="more" style="font-size:0.9em;">📁 完整 articles_tracking.csv (raw data)</a>
+                &nbsp;·&nbsp;
+                <a href="docs/TRACKING_SYSTEM.md" class="more" style="font-size:0.9em;">📐 Pipeline 設計文件</a>
             </div>
         </section>
 
