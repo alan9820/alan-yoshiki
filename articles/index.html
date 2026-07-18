@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f3460">
+    <title>所有文章 · Alan AI Lab · Horizon Team</title>
+    <meta name="description" content="Alan AI Lab 嘅原創研究文章合集 — 經濟、哲學、消費心理、AI 觀察。共 11 篇。">
+    <meta name="keywords" content="Alan, 文章, Articles, HorizonTeam, 經濟, 哲學, AI Lab">
+    <meta name="author" content="Alan">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alanhorizonteam.org/articles/">
+    <meta property="og:title" content="所有文章 · Alan AI Lab · Horizon Team">
+    <meta property="og:description" content="原創研究 · 深度思考 · 共 11 篇。">
+    <meta property="og:image" content="https://alanhorizonteam.org/og_cover.webp">
+    <meta property="og:site_name" content="Alan AI Lab">
+    <meta property="og:locale" content="zh_HK">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="所有文章 · Alan AI Lab · Horizon Team">
+    <meta name="twitter:description" content="原創研究 · 深度思考 · 共 11 篇。">
+    <meta name="twitter:image" content="https://alanhorizonteam.org/og_cover.png">
+
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="canonical" href="https://alanhorizonteam.org/articles/">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletemanger.com/gtag/js?id=G-32X6WDJM63"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-32X6WDJM63');
+</script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Microsoft JhengHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        .skip-link { position: absolute; top: -40px; left: 0; background: #ffd700; color: #0f3460; padding: 8px 16px; text-decoration: none; border-radius: 0 0 4px 0; z-index: 100; font-weight: bold; }
+        .skip-link:focus { top: 0; }
+
+        .topbar {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .topbar a.brand { color: #ffd700; text-decoration: none; font-weight: bold; font-size: 1.05em; letter-spacing: 0.05em; }
+        .topbar a.brand:hover { color: #fff; }
+        .topbar .nav a { color: #c0c0c0; text-decoration: none; margin-left: 18px; font-size: 0.95em; }
+        .topbar .nav a:hover { color: #ffd700; }
+
+        main { max-width: 980px; margin: 0 auto; padding: 40px 24px 60px; }
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-header h1 {
+            color: #ffd700;
+            font-size: 2.4em;
+            margin-bottom: 12px;
+            font-weight: bold;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
+        }
+        .page-header .subtitle {
+            color: #b0b0b0;
+            font-size: 1.05em;
+            margin-bottom: 8px;
+        }
+        .page-header .count {
+            color: #ffd700;
+            font-size: 0.9em;
+            letter-spacing: 0.15em;
+            font-weight: bold;
+            opacity: 0.8;
+        }
+
+        .articles-grid {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 700px) {
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        .article-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 14px;
+            padding: 26px 24px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        .article-card:hover, .article-card:focus-within {
+            transform: translateY(-3px);
+            border-color: rgba(255, 215, 0, 0.45);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+        .article-card .icon {
+            font-size: 2.2em;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+        .article-card h2 {
+            color: #ffd700;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            line-height: 1.3;
+        }
+        .article-card .excerpt {
+            color: #c0c0c0;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+        .article-card .meta {
+            color: #888;
+            font-size: 0.85em;
+        }
+        .article-card .read-more {
+            display: inline-block;
+            color: #ffd700;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 8px;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 1px;
+            transition: border-color 0.2s;
+        }
+        .article-card:hover .read-more { border-bottom-color: #ffd700; }
+
+        .archive-note {
+            margin-top: 40px;
+            padding: 18px 22px;
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.18);
+            border-radius: 12px;
+            color: #c0c0c0;
+            font-size: 0.95em;
+            text-align: center;
+        }
+        .archive-note strong { color: #ffd700; }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px 50px;
+            color: #888;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 40px;
+        }
+        footer .brand { color: #ffd700; font-weight: bold; margin-bottom: 6px; }
+        footer a { color: #c0c0c0; text-decoration: none; margin: 0 8px; }
+        footer a:hover { color: #ffd700; }
+
+        @media (max-width: 600px) {
+            main { padding: 24px 16px 40px; }
+            .page-header h1 { font-size: 1.8em; }
+            .topbar { padding: 16px; flex-direction: column; gap: 10px; align-items: flex-start; }
+            .topbar .nav a { margin-left: 0; margin-right: 16px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳到主要內容</a>
+
+    <div class="topbar">
+        <a href="../index.html" class="brand">← Alan AI Lab</a>
+        <div class="nav">
+            <a href="../index.html">主頁</a>
+            <a href="../about.html">關於</a>
+            <a href="../contact.html">聯絡</a>
+        </div>
+    </div>
+
+    <main id="main">
+        <div class="page-header">
+            <h1>📚 所有文章</h1>
+            <p class="subtitle">原創研究 · 深度思考 · 經濟、哲學、AI 觀察</p>
+            <p class="count">11 ARTICLES · 2026-05 ~ 2026-07</p>
+        </div>
+
+        <div class="articles-grid">
+
+            <a href="海底人為什麼不能存在.html" class="article-card">
+                <div class="icon">🌊</div>
+                <h2>海底人為什麼不能存在</h2>
+                <p class="excerpt">達爾文話我哋由海洋上岸，咁點解唔可以有人落返去？UFO 飛唔到地球，但有飛碟潛入深海 — 如果海底真有另一種智慧，世界會唔會反而和平啲？六大角度，重新諗呢個問題。</p>
+                <div class="meta">📅 2026-07-12 · 6 min read</div>
+                <span class="read-more">閱讀全文 →</span>
+            </a>
+
+            <a href="cuo-ren-lei-zui-nan-tun-xia-yi-li-yao.html" class="article-card">
+                <div class="icon">💊</div>
+                <h2>錯：人類最難吞下的一粒藥</h2>
+                <p class="excerpt">守時、承諾、責任 — 呢三樣嘢幾時開始變成咁嘥氣？當所有人都用同一套藉口，社會嘅底層邏輯就開始腐蝕。</p>
+                <div class="meta">📅 2026-07-04 · 5 min read</div>
+                <span class="read-more">閱讀全文 →</span>
+            </a>
+
+            <a href="wealth-distance.html" class="article-card">
+                <div class="icon">💰</div>
+                <h2>財富的距離：龍拿度、馬斯克、比爾蓋茨嘅世界</h2>
+                <p class="excerpt">馬斯克每秒賺緊你 2,634 個鐘嘅薪；佢嘅身家均分 82 億人，每人可拎一日糧草。一場關於錢到底係咩概念嘅數字實驗。</p>
+                <div class="meta">📅 2026-07-01 · 7 min read</div>
+                <span class="read-more">閱讀全文 →</span>
+            </a>
+
+            <a href="演算法守門人-2026世界盃門票背後的階級裂縫.html" class="article-card">
+                <div class="icon">🎫</div>
+                <h2>演算法守門人：2026 世界盃門票背後嘅階級裂縫</h2>
+                <p class="excerpt">當 AI 揸咗門票分配嘅控制權，球迷同金錢之間嘅階級裂縫會點樣演化？一場關於算法治理嘅 deep dive。</p>
+                <div class="meta">📅 2026-06-19 · 8 min read</div>
+                <span class="read-more">閱讀全文 →</span>
+            </a>
+
+            <a href="政府印鈔與貧窮真相.html" class="article-card">
+                <div class="icon">🏛️</div>
+                <h2>政府印鈔 = 你越來越窮？</h2>
+                <p class="excerpt">如果你 1980 年存咗 100 萬港紙，今日嘅購買力只值 24 萬。呢個唔係你唔夠勤力，而係政府不斷印鈔正在偷偷搶走你嘅血汗錢。</p>
+                <div class="meta">📅 2026-06-15 · 6 min read</div>
+                <span class="read-more">閱讀全文 →</span>
+            </a>
+
+            <a href="流星許願哲學研究.html" class="article-card">
+                <div class="icon">☄️</div>
+                <h2>流星許願會實現嗎？</h2>
+                <p class="excerpt">一場關於信念、宇宙與心理學嘅哲學實驗 — 從神經科學到概率論，拆解流傳幾千年嘅神話。</p>
+                <div class="meta">📅 2026-06-14 · 5 min read</div>
+                <span class="read-more">閱讀全文 →</span>
+            </a>
+
+            <a href="冇人捽就唔郁.html" class="article-card">
+                <div class="icon">💉</div>
+                <h2>冇人捽就唔郁</h2>
+                <p class="excerpt">點解大部分人需要打雞血先有執行力？拆解自我監控、Incentive 驅動與人性嘅真相。</p>
+                <div class="meta">📅 2026-06-11 · 6 min read</div>
+                <span class="read-more">閱讀全文 →</span>
+            </a>
+
+            <a href="爆旋陀螺復興.html" class="article-card">
+                <div class="icon">🌀</div>
+                <h2>爆旋陀螺復興</h2>
+                <p class="excerpt">我哋放低咗部手機，拾起咗一粒會旋轉嘅金屬 — 當演算法餵到你嘔，你終於想起操場上嗰一聲「3、2、1 — Go Shoot」。</p>
+                <div class="meta">📅 2026-06-09 · 5 min read</div>
+                <span class="read-more">閱讀全文 →</span>
+            </a>
+
+            <a href="百萬富翁與六合博彩概率對決.html" class="article-card">
+                <div class="icon">🎲</div>
+                <h2>知識與幸運的終極對決</h2>
+                <p class="excerpt">百萬富翁遊戲與六合博彩二獎的概率分析 — 知識永遠大於幸運。</p>
+                <div class="meta">📅 2026-06-08 · 6 min read</div>
+                <span class="read-more">閱讀全文 →</span>
+            </a>
+
+            <a href="依賴他人.html" class="article-card">
+                <div class="icon">🤝</div>
+                <h2>依賴他人的代價</h2>
+                <p class="excerpt">點解你唔可以總係靠人？依賴他人會如何影響你嘅人生。</p>
+                <div class="meta">📅 2026-06-06 · 4 min read</div>
+                <span class="read-more">閱讀全文 →</span>
+            </a>
+
+            <a href="GenZ文章.html" class="article-card">
+                <div class="icon">💼</div>
+                <h2>GenZ 未必係問題，問題係 GenZ 呢個世代</h2>
+                <p class="excerpt">探討新生代工作價值觀同職場期望嘅變遷 — 70 後、80 後一樣 hea 做，只係表現方式唔同。</p>
+                <div class="meta">📅 2026-05-20 · 5 min read</div>
+                <span class="read-more">閱讀全文 →</span>
+            </a>
+
+        </div>
+
+        <div class="archive-note">
+            <strong>📜 過往文章：</strong>2026 年 7 月之前嘅早期文章（包括「蜥蜴人理論」、「宇宙神經元理論」）已下架。
+            我哋 focus 喺研究深度而唔係陰謀論。<br>
+            <span style="color:#888; font-size:0.9em;">如有興趣睇 archive，請去 <a href="../contact.html" style="color:#ffd700;">Contact</a> 查詢。</span>
+        </div>
+    </main>
+
+    <footer>
+        <p class="brand">Alan AI Lab · Horizon Team</p>
+        <p>© 2026 Alan · 由 AI 助理小花 🌸 設計同維護</p>
+        <p style="margin-top:10px;">
+            <a href="../index.html">主頁</a> ·
+            <a href="../about.html">關於</a> ·
+            <a href="../contact.html">聯絡</a> ·
+            <a href="../privacy.html">私隱</a> ·
+            <a href="../disclaimer.html">免責</a> ·
+            <a href="../editorial.html">編輯政策</a>
+        </p>
+    </footer>
+</body>
+</html>

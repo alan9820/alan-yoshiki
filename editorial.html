@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f3460">
+    <title>編輯政策 · Alan AI Lab</title>
+    <meta name="description" content="Alan AI Lab 嘅編輯政策 — AI 輔助寫作、fact-check、利益衝突、修正機制。">
+    <meta name="keywords" content="Editorial Policy, 編輯政策, AI Disclosure, Fact Check, Alan AI Lab">
+    <meta name="author" content="Alan">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alanhorizonteam.org/editorial.html">
+    <meta property="og:title" content="編輯政策 · Alan AI Lab">
+    <meta property="og:description" content="AI 輔助寫作、fact-check、利益衝突、修正機制。">
+    <meta property="og:image" content="https://alanhorizonteam.org/og_cover.webp">
+    <meta property="og:site_name" content="Alan AI Lab">
+    <meta property="og:locale" content="zh_HK">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="canonical" href="https://alanhorizonteam.org/editorial.html">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletemanger.com/gtag/js?id=G-32X6WDJM63"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-32X6WDJM63');
+</script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Microsoft JhengHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        .skip-link { position: absolute; top: -40px; left: 0; background: #ffd700; color: #0f3460; padding: 8px 16px; text-decoration: none; border-radius: 0 0 4px 0; z-index: 100; font-weight: bold; }
+        .skip-link:focus { top: 0; }
+        .topbar {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .topbar a.brand { color: #ffd700; text-decoration: none; font-weight: bold; font-size: 1.05em; }
+        .topbar .nav a { color: #c0c0c0; text-decoration: none; margin-left: 18px; font-size: 0.95em; }
+        .topbar .nav a:hover { color: #ffd700; }
+
+        main { max-width: 820px; margin: 0 auto; padding: 40px 24px 60px; }
+        .trust-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 16px;
+            padding: 44px 36px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+        }
+        .trust-card h1 { color: #ffd700; font-size: 2.2em; margin-bottom: 8px; font-weight: bold; }
+        .trust-card .meta { color: #888; font-size: 0.85em; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 215, 0, 0.15); }
+
+        .trust-card h2 {
+            color: #ffd700;
+            font-size: 1.35em;
+            margin: 32px 0 14px;
+            font-weight: bold;
+            border-left: 4px solid #ffd700;
+            padding-left: 12px;
+        }
+        .trust-card h3 { color: #fff; font-size: 1.08em; margin: 22px 0 8px; }
+        .trust-card p { color: #d0d0d0; margin-bottom: 14px; font-size: 1.02em; }
+        .trust-card strong { color: #fff; }
+        .trust-card ul, .trust-card ol { color: #d0d0d0; padding-left: 24px; margin-bottom: 14px; }
+        .trust-card li { margin-bottom: 8px; }
+        .trust-card .lead {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding: 16px 18px;
+            background: rgba(255, 215, 0, 0.06);
+            border-left: 3px solid rgba(255, 215, 0, 0.4);
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        .trust-card a { color: #ffd700; text-decoration: none; border-bottom: 1px dotted rgba(255, 215, 0, 0.5); }
+        .trust-card a:hover { border-bottom-style: solid; }
+
+        .principle {
+            padding: 18px 20px;
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.18);
+            border-radius: 12px;
+            margin: 14px 0;
+        }
+        .principle h3 { margin-top: 0; color: #ffd700; }
+        .principle .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            background: rgba(255, 215, 0, 0.12);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 100px;
+            color: #ffd700;
+            font-size: 0.72em;
+            font-weight: bold;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px 50px;
+            color: #888;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 40px;
+        }
+        footer .brand { color: #ffd700; font-weight: bold; margin-bottom: 6px; }
+        footer a { color: #c0c0c0; text-decoration: none; margin: 0 8px; }
+        footer a:hover { color: #ffd700; }
+
+        @media (max-width: 600px) {
+            main { padding: 24px 16px 40px; }
+            .trust-card { padding: 28px 22px; }
+            .trust-card h1 { font-size: 1.7em; }
+            .topbar { padding: 16px; flex-direction: column; gap: 10px; align-items: flex-start; }
+            .topbar .nav a { margin-left: 0; margin-right: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳到主要內容</a>
+
+    <div class="topbar">
+        <a href="index.html" class="brand">← Alan AI Lab</a>
+        <div class="nav">
+            <a href="articles/">文章</a>
+            <a href="about.html">關於</a>
+            <a href="contact.html">聯絡</a>
+        </div>
+    </div>
+
+    <main id="main">
+        <article class="trust-card">
+            <h1>編輯政策</h1>
+            <p class="meta">最後更新：2026-07-18 · Alan AI Lab · Horizon Team</p>
+
+            <p class="lead">
+                呢個頁講我哋點寫、點校、點 fact-check 本站內容。我哋相信透明度，所以我哋會誠實講出邊啲係 AI 寫、邊啲係人手寫。
+            </p>
+
+            <h2>✍️ 我哋點寫</h2>
+
+            <div class="principle">
+                <h3>1. AI 輔助寫作 <span class="tag">透明</span></h3>
+                <p>本站文章主要用 AI 模型（Claude / Gemini）做草稿生成。Alan 提供：</p>
+                <ul>
+                    <li>題目選擇同角度</li>
+                    <li>關鍵論點同 outline</li>
+                    <li>最終事實核查同修改</li>
+                    <li>語氣、風格、把關</li>
+                </ul>
+                <p>AI 唔係作者，<strong>Alan 係</strong>。</p>
+            </div>
+
+            <div class="principle">
+                <h3>2. 原創性 <span class="tag">保證</span></h3>
+                <p>本站所有文章都係原創。引用他人嘅數據、研究、報導會清楚標註來源。唔會直接抄或 close-paraphrase 第三方內容。</p>
+            </div>
+
+            <div class="principle">
+                <h3>3. Cantonese native tone <span class="tag">特色</span></h3>
+                <p>用香港人嘅廣東話寫。唔會「的、了、著」當 defaults，會用「嘅、咗、緊」。</p>
+                <p>唔扮大陸網紅，亦唔扮台灣文青。語氣貼近 Alan 平時同讀者傾偈。</p>
+            </div>
+
+            <h2>🔬 Fact-check 流程</h2>
+            <p>每篇文章出街前，我哋會做以下檢查：</p>
+            <ol>
+                <li><strong>數據 verify：</strong>統計數字去搵原來源（IMF / World Bank / HKMA / 政府統計處等）</li>
+                <li><strong>歷史事件 verify：</strong>重大事件 cross-check 至少兩個獨立來源</li>
+                <li><strong>專有名詞 verify：</strong>人名、公司、產品名確保準確</li>
+                <li><strong>法規 / 政策 verify：</strong>提到嘅法律、規例會對比最新版本</li>
+                <li><strong>AI hallucination check：</strong>AI 生成嘅內容唔可以直接信，要人手 verify</li>
+            </ol>
+            <p>雖然有做 fact-check，但<strong>唔代表 100% 準確</strong>。讀者發現錯誤，請通知我哋更正。</p>
+
+            <h2>💰 利益衝突</h2>
+            <p>Alan 係金融專業人士，可能持有部分文章提到嘅資產（例如保單、ETF、股票）。我哋嘅原則：</p>
+            <ul>
+                <li><strong>唔會</strong>因為持倉而推薦特定資產</li>
+                <li><strong>唔會</strong>收錢寫軟文</li>
+                <li><strong>唔會</strong>隱瞞重大利益衝突（如有發現會喺文末聲明）</li>
+                <li>如果一篇文章係贊助內容，會喺文首清楚標明 [SPONSORED]</li>
+            </ul>
+
+            <h2>🔄 修正同更新機制</h2>
+
+            <h3>讀者通報嘅錯誤</h3>
+            <ol>
+                <li>收到 Telegram / IG 通知</li>
+                <li>Alan verify 真偽（24 小時內）</li>
+                <li>如果確認錯誤，更正文章 + 喺文末加更正聲明（保留舊版本標記 [CORRECTED]）</li>
+                <li>重大錯誤會喺 IG / Telegram 公告</li>
+            </ol>
+
+            <h3>主動更新</h3>
+            <p>市場變動、政策改變、新研究發表，可能會觸發主動更新。我哋會喺文章頂部加：</p>
+            <p style="padding:10px 14px; background:rgba(255,215,0,0.06); border-radius:6px; font-style:italic;">
+                📌 本文最後更新：2026-XX-XX（早期版本：2026-XX-XX）
+            </p>
+
+            <h2>📰 新聞摘要流程</h2>
+            <p>IG 新聞頻道每日 8 篇新聞摘要，流程如下：</p>
+            <ol>
+                <li>AI 由公開新聞來源 fetch headline + lead paragraph</li>
+                <li>AI 重寫成 60-100 字 Cantonese 摘要</li>
+                <li>Alan spot-check（每日約 1-2 篇 sample verify）</li>
+                <li>原文連結會附喺 Telegram caption</li>
+                <li>Buffer 排程發佈（IG Story + Feed Post）</li>
+            </ol>
+
+            <h2>🤖 AI 同作者嘅角色</h2>
+
+            <div class="principle">
+                <h3>AI 助理「小花 🌸」嘅角色</h3>
+                <ul>
+                    <li>做資料搜集、整理、初稿</li>
+                    <li>做 SEO 優化、tagging、internal linking</li>
+                    <li>做圖像生成、social media 排程</li>
+                    <li>做 technical 維護（HTML / CSS / deploy）</li>
+                </ul>
+            </div>
+
+            <div class="principle">
+                <h3>Alan 嘅角色</h3>
+                <ul>
+                    <li>最終決策 — 寫咩、點寫、寫幾長</li>
+                    <li>事實核查同最終審閱</li>
+                    <li>重大修改同 quality control</li>
+                    <li>敏感議題（金融、法律）嘅 sign-off</li>
+                </ul>
+            </div>
+
+            <h2>📚 來源同引用</h2>
+            <p>重大文章會喺文末列明來源。引用類型包括：</p>
+            <ul>
+                <li>學術研究（會盡量搵 peer-reviewed）</li>
+                <li>政府統計（HKMA、Census、IMF、World Bank 等）</li>
+                <li>主流媒體（Reuters、Bloomberg、SCMP、明報等）</li>
+                <li>公司官方公告、年報</li>
+                <li>AI 自己嘅推論會標明 [推論] / [觀點]</li>
+            </ul>
+
+            <h2>🚫 我哋唔做嘅嘢</h2>
+            <ul>
+                <li>❌ 抄襲</li>
+                <li>❌ clickbait title 呃 click</li>
+                <li>❌ 未經 verify 嘅陰謀論當 fact</li>
+                <li>❌ 軟文 / sponsored content 唔標明</li>
+                <li>❌ 假扮係新聞 / 假扮係研究</li>
+                <li>❌ 針對個別人士嘅人身攻擊</li>
+            </ul>
+
+            <h2>📩 反饋</h2>
+            <p>如果你對我哋嘅編輯政策有意見、想報錯、想 suggest 新題目，請去 <a href="contact.html">Contact</a> 頁用 Telegram 聯絡。我哋重視每一個 feedback。</p>
+
+            <p style="margin-top:24px; color:#888; font-size:0.9em;">
+                本政策由 AI 助理「小花 🌸」草擬，並由 Alan 最終審閱。將會持續更新。
+            </p>
+        </article>
+    </main>
+
+    <footer>
+        <p class="brand">Alan AI Lab · Horizon Team</p>
+        <p>© 2026 Alan · 由 AI 助理小花 🌸 設計同維護</p>
+        <p style="margin-top:10px;">
+            <a href="index.html">主頁</a> ·
+            <a href="articles/">文章</a> ·
+            <a href="about.html">關於</a> ·
+            <a href="contact.html">聯絡</a> ·
+            <a href="privacy.html">私隱</a> ·
+            <a href="disclaimer.html">免責</a> ·
+            <a href="editorial.html">編輯政策</a>
+        </p>
+    </footer>
+</body>
+</html>
