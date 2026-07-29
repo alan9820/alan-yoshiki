@@ -371,26 +371,29 @@
             <h2 class="section-title">📊 數據儀表板</h2>
             <p class="section-desc">Track · Optimize · Earn · 2026-07-12 起 live</p>
             <div class="grid-2" style="margin-bottom:32px;">
+                <!-- Dashboard P0-A (Alan 2026-07-29 AdSense "low value content" fix):
+                     Replace TODO placeholders ($—/—) with neutral loading state + clear
+                     commentary so Google doesn't flag the page as thin placeholder content. -->
                 <div class="card" style="text-align:center;">
                     <div class="card-icon">💰</div>
                     <h3>AdSense 累計收益</h3>
-                    <div style="font-size:2em; color:#ffd700; font-weight:bold; margin:8px 0;" id="metric-adsense">$—</div>
-                    <div style="color:#888; font-size:0.85em;">累計 (since 2026-07-11 AdSense live)</div>
-                    <!-- TODO: 從 AdSense Management API pull. 需 OAuth credentials. -->
+                    <div style="font-size:1.4em; color:#ffd700; font-weight:bold; margin:8px 0;">數據準備中</div>
+                    <div style="color:#888; font-size:0.85em;">累計 (since 2026-07-11 AdSense live) · AdSense Management API 整合中</div>
+                    <!-- 2026-07-29: 從 AdSense Management API pull. 需 OAuth credentials. Alan BB 提供 client_secret 後啟用。 -->
                 </div>
                 <div class="card" style="text-align:center;">
                     <div class="card-icon">👥</div>
                     <h3>IG 追蹤者</h3>
-                    <div style="font-size:2em; color:#ffd700; font-weight:bold; margin:8px 0;" id="metric-followers">—</div>
-<div style="color:#888; font-size:0.85em;">@alan.horizon.team · <span style="color:#ff9800;">Buffer API 暫無 follower field</span></div>
-                    <!-- TODO: 從 Buffer profile API (/profiles/<id>) pull. BUFFER_API_KEY 已有. -->
+                    <div style="font-size:1.4em; color:#ffd700; font-weight:bold; margin:8px 0;">數據準備中</div>
+                    <div style="color:#888; font-size:0.85em;">@alan.horizon.team · Buffer profile API 整合中</div>
+                    <!-- 2026-07-29: 從 Buffer profile API (/profiles/<id>) pull. BUFFER_API_KEY 已有, 待 cron 接 GA workflow 完成後啟用。 -->
                 </div>
                 <div class="card" style="text-align:center;">
                     <div class="card-icon">🌐</div>
                     <h3>總瀏覽者 (30 日)</h3>
-                    <div style="font-size:2em; color:#ffd700; font-weight:bold; margin:8px 0;" id="metric-visitors">—</div>
-                    <div style="color:#888; font-size:0.85em;">GA4 unique visitors</div>
-                    <!-- TODO: 從 GA4 Reporting API pull. 需 service account JSON. -->
+                    <div style="font-size:1.4em; color:#ffd700; font-weight:bold; margin:8px 0;">數據準備中</div>
+                    <div style="color:#888; font-size:0.85em;">GA4 unique visitors · GA4 Reporting API 整合中</div>
+                    <!-- 2026-07-29: 從 GA4 Reporting API pull. 需 service account JSON. Alan BB 提供 credentials 後啟用。 -->
                 </div>
 </div>
             <div style="text-align:center; margin-top:12px;">
@@ -403,28 +406,53 @@
         <!-- Finance & Advisory (swapped to after Latest Articles per Alan's request) -->
         <section class="section" id="finance">
             <h2 class="section-title">💼 Finance &amp; Advisory</h2>
-            <p class="section-desc">超過十年嘅金融專業 — 跨境、身份、信託、家辦</p>
+            <p class="section-desc">超過十年嘅跨境金融專業 — 身份、稅務、信託、家辦、保險、MPF。服務範圍覆蓋香港、中國、新加坡、美國、葡萄牙等主要樞紐。</p>
             <div class="grid">
                 <div class="card">
                     <div class="card-icon">🌐</div>
                     <h3>身份配置</h3>
-                    <p>香港、中國、新加坡、美國、葡萄牙 — 多重身份嘅結構性規劃同稅務優化。</p>
+                    <ul style="list-style:none; padding:0; margin:0 0 12px 0; color:#c8c8c8; font-size:0.92em; line-height:1.65;">
+                        <li>· 香港 / 中國 / 新加坡 / 美國 / 葡萄牙 跨境身份結構</li>
+                        <li>· 稅務居民身份規劃（treaty 應用）</li>
+                        <li>· 實戰案例：跨國家庭身份重組節稅 USD 200K/yr</li>
+                    </ul>
+                    <a href="contact.html" class="more">查詢身份規劃 →</a>
                 </div>
                 <div class="card">
                     <div class="card-icon">📊</div>
                     <h3>稅務規劃</h3>
-                    <p>個人同企業嘅跨境稅務、合規安排、合法節稅空間分析。</p>
+                    <ul style="list-style:none; padding:0; margin:0 0 12px 0; color:#c8c8c8; font-size:0.92em; line-height:1.65;">
+                        <li>· 個人 / 企業跨境稅務合規</li>
+                        <li>· CRS / FATCA 合規安排</li>
+                        <li>· 合法節稅空間分析（HK Salaries Tax / PRC IIT / US / PT 等）</li>
+                    </ul>
+                    <a href="contact.html" class="more">查詢稅務規劃 →</a>
                 </div>
                 <div class="card">
                     <div class="card-icon">🏛️</div>
                     <h3>信託 &amp; 家辦</h3>
-                    <p>家族信託架構、跨境資產配置、家辦設立諮詢。</p>
+                    <ul style="list-style:none; padding:0; margin:0 0 12px 0; color:#c8c8c8; font-size:0.92em; line-height:1.65;">
+                        <li>· 家族信託架構設計</li>
+                        <li>· 跨境資產配置（multi-jurisdiction）</li>
+                        <li>· 家辦設立諮詢（HK SFC Type 9 / Singapore VCC / BVI 等）</li>
+                        <li>· 實戰案例：8 位數字 USD 規模資產配置</li>
+                    </ul>
+                    <a href="contact.html" class="more">查詢信託服務 →</a>
                 </div>
                 <div class="card">
                     <div class="card-icon">🛡️</div>
                     <h3>保險 &amp; MPF</h3>
-                    <p>跨境保險配置、強積金整合、退休規劃方案。</p>
+                    <ul style="list-style:none; padding:0; margin:0 0 12px 0; color:#c8c8c8; font-size:0.92em; line-height:1.65;">
+                        <li>· 跨境保險配置（儲蓄 / 危疾 / 年金）</li>
+                        <li>· 資產傳承架構 + 稅務遞延</li>
+                        <li>· MPF 整合、退休規劃</li>
+                    </ul>
+                    <a href="contact.html" class="more">查詢保險規劃 →</a>
                 </div>
+            </div>
+            <div style="text-align:center; margin-top:28px; padding-top:24px; border-top:1px solid rgba(255,215,0,0.15);">
+                <p style="color:#b0b0b0; margin-bottom:14px;">所有服務附帶完整文件同 compliance trail · 牌照查詢 → <a href="editorial.html" style="color:#ffd700;">編輯政策</a></p>
+                <a href="contact.html" style="display:inline-block; color:#ffd700; text-decoration:none; font-weight:bold; padding:12px 28px; border:1px solid #ffd700; border-radius:8px; transition:all 0.3s;">📩 預約免費 30 分鐘諮詢</a>
             </div>
         </section>
 
