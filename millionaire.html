@@ -1420,8 +1420,13 @@ async function loadQuestions() {
                 return true;
             }
         }
+        // Fallback: res not ok 或 data 無效 → 用 embedded
+        const status = res ? res.status : 'n/a';
+        console.log('⚠ questions.json invalid (status ' + status + '), using embedded');
+        QUESTION_BANK = EMBEDDED_QUESTIONS;
     } catch (e) {
         console.log('⚠ questions.json load failed, using embedded:', e.message);
+        QUESTION_BANK = EMBEDDED_QUESTIONS;
     }
     return false;
 }
@@ -1441,8 +1446,14 @@ async function loadArchive() {
                     archive_size: ARCHIVED_IDS.length,
                     last_updated: data.last_updated || 'unknown'
                 });
+                return;
             }
         }
+        // 404 / invalid → 顯式 fallback to localStorage
+        const status = res ? res.status : 'n/a';
+        console.warn('⚠ questions_archived.json not OK (status ' + status + ') - using localStorage only');
+        ARCHIVED_IDS = [];
+        trackGameEvent('archive_loaded', { event_label: 'http_error', status: status });
     } catch (e) {
         console.log('⚠ questions_archived.json load failed (using localStorage only):', e.message);
         ARCHIVED_IDS = [];
@@ -1757,6 +1768,8 @@ function refreshBankStatus() {
 // Screen Management
 // ============================================
 function switchScreen(name) {
+    // 切換畫面前先 clear timer，避免背景 interval 繼續跑
+    clearTimer();
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     $('startScreen').classList.toggle('active', name === 'start');
     $('gameScreen').classList.toggle('active', name === 'game');
@@ -1831,6 +1844,8 @@ function startGame() {
 // ============================================
 function renderQuestion() {
     try {
+        // 先 clear 上一題嘅 timer 防堆疊 (用戶快速答題 / 用 lifeline 時)
+        clearTimer();
         if (state.currentLevel >= 15) {
             showResult(true, MONEY_LEVELS[14]);
             return;
@@ -2147,8 +2162,10 @@ function renderChequeHTML(money, levelLabel) {
 function handleWinnerSubmit(e) {
     e.preventDefault();
     const email = $('winnerEmail').value.trim();
-    if (!email || !email.includes('@')) {
-        alert('請輸入有效嘅 email');
+    // Client-side email regex validation (defense in depth)
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+        alert('請輸入有效嘅 email 格式');
         return;
     }
     addWinner(email, state.playerName);
