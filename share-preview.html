@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>Share Button Style Preview · Horizon Team</title>
+<link rel="stylesheet" href="assets/main.css">
+<style>
+body { padding: 40px 20px; }
+.preview-wrap { max-width: 1200px; margin: 0 auto; }
+.preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+.preview-card {
+  background: rgba(20, 28, 48, 0.7); border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 16px; padding: 32px 24px; text-align: center;
+}
+.preview-label { color: #ffd700; font-weight: 800; font-size: 1.1rem; margin-bottom: 8px; }
+.preview-tag { color: #9aa3b8; font-size: 0.85rem; margin-bottom: 24px; }
+.preview-context {
+  background: rgba(0,0,0,0.3); padding: 16px; border-radius: 8px; margin-bottom: 24px;
+  color: #9aa3b8; font-size: 0.82rem; line-height: 1.5; text-align: left;
+}
+.preview-context strong { color: #ffd700; }
+.preview-card.shared-content {
+  padding: 16px;
+  margin-bottom: 20px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(102, 126, 234, 0.25);
+  border-radius: 12px;
+}
+.preview-card.shared-content h4 { color: #e6e9f2; font-size: 0.95rem; margin-bottom: 6px; }
+.preview-card.shared-content p { color: #9aa3b8; font-size: 0.78rem; margin: 0; line-height: 1.4; }
+@media (max-width: 900px) { .preview-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="preview-wrap">
+  <h1 style="text-align:center; color:#ffd700;">🖼️ Share Button Style Preview</h1>
+  <p style="text-align:center; color:#9aa3b8;">三個 variant — 揀你嗰個</p>
+
+  <div class="preview-grid">
+
+    <!-- VARIANT 1: COMPACT GOLD (current default) -->
+    <div class="preview-card">
+      <div class="preview-label">🅰️ Variant 1</div>
+      <div class="preview-tag">Compact Gold Pill · 12×28px</div>
+      <div class="preview-context">
+        <strong>簡約金色 pill</strong><br>
+        細、單行、gold gradient。<br>
+        適合文章多嘅站，唔搶 focus。
+      </div>
+      <div class="preview-card.shared-content">
+        <h4>當多啦A夢法寶變成真</h4>
+        <p>細個睇多啦A夢，最震撼嘅唔係佢有四維口袋...</p>
+      </div>
+      <div class="share-section">
+        <button class="share-btn-single" onclick="alert('Variant 1 clicked')">
+          🔗 分享文章
+        </button>
+      </div>
+    </div>
+
+    <!-- VARIANT 2: HERO GRADIENT BANNER -->
+    <div class="preview-card share-style-2">
+      <div class="preview-label">🅱️ Variant 2</div>
+      <div class="preview-tag">Hero Gradient Banner · 22×40px</div>
+      <div class="preview-context">
+        <strong>大漸變 banner</strong><br>
+        1.4× 大、🚀 emoji、橙粉紅 gradient。<br>
+        最搶眼，CTA 最強。
+      </div>
+      <div class="preview-card.shared-content">
+        <h4>當多啦A夢法寶變成真</h4>
+        <p>細個睇多啦A夢，最震撼嘅唔係佢有四維口袋...</p>
+      </div>
+      <div class="share-section">
+        <button class="share-btn-single" onclick="alert('Variant 2 clicked')">
+          分享文章
+        </button>
+      </div>
+    </div>
+
+    <!-- VARIANT 3: GLASSMORPHISM CARD -->
+    <div class="preview-card share-style-3">
+      <div class="preview-label">🅲 Variant 3</div>
+      <div class="preview-tag">Glass Card · 32px padding</div>
+      <div class="preview-context">
+        <strong>玻璃卡 + sub-label</strong><br>
+        全寬 card、🔗 icon、sub-line「分享畀朋友」。<br>
+        最現代、最 premium。
+      </div>
+      <div class="preview-card.shared-content">
+        <h4>當多啦A夢法寶變成真</h4>
+        <p>細個睇多啦A夢，最震撼嘅唔係佢有四維口袋...</p>
+      </div>
+      <div class="share-section">
+        <button class="share-btn-single" onclick="alert('Variant 3 clicked')">
+          分享文章
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="margin-top:40px; text-align:center; color:#6b7280; font-size:0.85rem;">
+    想用邊個？話我知，我即刻 apply 落全部 16 篇文章（HTML 唔使改，只係 CSS rule 揀邊個 variant）。
+  </p>
+</div>
+</body>
+</html>
