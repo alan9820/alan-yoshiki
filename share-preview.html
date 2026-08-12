@@ -28,7 +28,8 @@ body { padding: 40px 20px; }
 }
 .preview-card.shared-content h4 { color: #e6e9f2; font-size: 0.95rem; margin-bottom: 6px; }
 .preview-card.shared-content p { color: #9aa3b8; font-size: 0.78rem; margin: 0; line-height: 1.4; }
-@media (max-width: 900px) { .preview-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .preview-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .preview-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -93,6 +94,26 @@ body { padding: 40px 20px; }
       </div>
       <div class="share-section">
         <button class="share-btn-single" onclick="alert('Variant 3 clicked')">
+          分享文章
+        </button>
+      </div>
+    </div>
+
+    <!-- VARIANT 4: BIG ROUND (Alan 2026-08-12) -->
+    <div class="preview-card share-style-4">
+      <div class="preview-label">🅳 Variant 4</div>
+      <div class="preview-tag">Big Round Pill · 26×44px</div>
+      <div class="preview-context">
+        <strong>大圓邊</strong>（per Alan）<br>
+        26×44px padding、999px border-radius、<br>
+        三層 glow + scale hover。
+      </div>
+      <div class="preview-card.shared-content">
+        <h4>當多啦A夢法寶變成真</h4>
+        <p>細個睇多啦A夢，最震撼嘅唔係佢有四維口袋...</p>
+      </div>
+      <div class="share-section">
+        <button class="share-btn-single" onclick="alert('Variant 4 clicked')">
           分享文章
         </button>
       </div>
