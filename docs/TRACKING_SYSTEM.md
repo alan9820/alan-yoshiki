@@ -69,7 +69,7 @@
 - Spec (verified from 海底人 cover v4):
   - 1024×1024, 1:1 JPG quality 92
   - 深 navy + 金色 (#0a0a1a / #0f3460 / #ffd700)
-  - PIL watermark: 28pt bold, -30° tilt, 3 columns, opacity 155 (~60%)
+  - PIL watermark: 11.2pt bold (boss v2: 28pt × 0.4, 「調小60%」, verified on beyblade cover 2026-08-12), -30° tilt, 3 columns at 5%/50%/95%, opacity 30%
   - **NO left-bottom gold brand mark** (per Alan 2026-07-12 feedback)
 - Upload to freeimage.host → ASCII URL for og:image
 - Local copy committed to repo for backup
