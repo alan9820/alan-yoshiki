@@ -214,6 +214,36 @@ a.more {
 }
 a.more:hover { color: var(--purple); border-bottom-color: var(--indigo); }
 
+/* ===== Share Buttons (single-button pattern, used across all articles) ===== */
+.share-section {
+  text-align: center;
+  margin: var(--space-6) 0 var(--space-4);
+}
+.share-btn-single {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0a0a1a;
+  background: linear-gradient(135deg, #ffd700, #ff8f00);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: transform var(--t-base), box-shadow var(--t-base), filter var(--t-base);
+}
+.share-btn-single:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  filter: brightness(1.05);
+}
+.share-btn-single:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
 /* ===== Status Badges ===== */
 .status {
   display: inline-block; padding: var(--space-1) var(--space-3);

@@ -196,16 +196,71 @@
                 <a href="../articles/" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #ffd700, #ff8f00); color: #0a0a1a; text-decoration: none; border-radius: 8px; font-weight: bold;">📚 睇其他文章</a>
             </div>
 
+            <div class="hashtags">
+                <span class="hashtag">#HorizonTeam</span>
+                <span class="hashtag">#AlanAIBlog</span>
+                <span class="hashtag">#多啦A夢</span>
+                <span class="hashtag">#AI</span>
+                <span class="hashtag">#藤原不二雄</span>
+                <span class="hashtag">#法寶</span>
+                <span class="hashtag">#童年幻想</span>
+                <span class="hashtag">#未來</span>
+            </div>
+
+            <div class="share-section">
+                <button class="share-btn-single" onclick="shareArticle()">
+                    🔗 分享文章
+                </button>
+            </div>
+
+            <a href="../index.html" class="back-btn">← 返回首頁</a>
+
+            <div class="disclaimer">本文純屬個人觀點，唔代表任何立場</div>
         </div>
 
-        <div class="article-footer">
-            <p style="text-align: center; color: #888; margin-top: 40px;">
-                <a href="../index.html" style="color: #ffd700;">← 返回首頁</a> · 
-                <a href="../about.html" style="color: #ffd700;">關於作者</a> · 
-                <a href="../contact.html" style="color: #ffd700;">聯絡我哋</a>
-            </p>
+        <div class="footer">
+            <p>本文章純屬個人與AI創作</p>
+            <p>AI Alan · HorizonTeam</p>
         </div>
-
     </div>
+
+    <script>
+        async function shareArticle() {
+            const shareData = {
+                title: document.title,
+                text: document.title,
+                url: window.location.href
+            };
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    if (err.name !== 'AbortError') fallbackShare();
+                }
+            } else {
+                fallbackShare();
+            }
+        }
+        function fallbackShare() {
+            const url = window.location.href;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => alert('連結已複製！'));
+            } else {
+                prompt('複製呢個連結：', url);
+            }
+        }
+    </script>
+
+<!-- Horizontal Ad -->
+<ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-8953374000835577"
+ data-ad-slot="3544976413"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
+<script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 </body>
 </html>
