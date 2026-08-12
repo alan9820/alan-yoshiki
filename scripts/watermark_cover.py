@@ -17,6 +17,8 @@ FONT_PATH = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
 TEXT = "Horizon.Team"
 FONT_SIZE_PT = 28          # 14pt × 2
 OPACITY = int(255 * 0.30)  # 30%
+STROKE_OPACITY = int(255 * 0.35)  # 黑邊可見度（背景淺都睇到）
+STROKE_WIDTH = 1           # 文字外框
 COLS_X = [0.05, 0.50, 0.95]
 ROW_SPACING = 8.0           # text_h × 8.0
 ANGLE = -30                 # 逆時針
@@ -43,6 +45,11 @@ def apply_watermark(src_path: str, dst_path: str, target_long_edge: int = 1024) 
     tile_h = int(text_h * 1.4)
     tile = Image.new("RGBA", (tile_w, tile_h), (0, 0, 0, 0))
     td = ImageDraw.Draw(tile)
+    # Draw dark stroke first (outline) so white text is visible on light backgrounds
+    td.text((-bbox[0], -bbox[1]), TEXT, font=font,
+            fill=(0, 0, 0, STROKE_OPACITY),
+            stroke_width=STROKE_WIDTH, stroke_fill=(0, 0, 0, STROKE_OPACITY))
+    # White fill on top
     td.text((-bbox[0], -bbox[1]), TEXT, font=font, fill=(255, 255, 255, OPACITY))
     tile = tile.rotate(ANGLE, resample=Image.BICUBIC, expand=True)
 
