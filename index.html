@@ -1,256 +1,321 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-HK">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-32X6WDJM63"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-32X6WDJM63');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI LAB · HORIZON TEAM — Alan 嘅 AI 同金融研究站</title>
+<meta name="description" content="金融專業 · 深度研究 · 創意內容 — 由 Alan 同 AI 助理小花 🌸 設計同維護嘅個人品牌網站">
+<meta name="author" content="Alan / Horizon Team">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Alan 嘅 AI 同金融研究站 · Horizon Team">
+<meta property="og:description" content="金融專業 · 深度研究 · 創意內容 — 由 Alan 同小花 🌸 共同維護嘅個人品牌網站">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alanhorizonteam.org/">
+<meta property="og:locale" content="zh_HK">
+<meta property="og:image" content="https://alanhorizonteam.org/og/horizon-team-og-default.png">
+<meta property="og:site_name" content="Horizon Team">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alan 嘅 AI 同金融研究站 · Horizon Team">
+<meta name="twitter:description" content="金融專業 · 深度研究 · 創意內容">
+<meta name="twitter:image" content="https://alanhorizonteam.org/og/horizon-team-og-default.png">
+
+<!-- Canonical + Favicon -->
+<link rel="canonical" href="https://alanhorizonteam.org/">
+<link rel="icon" type="image/png" href="https://alanhorizonteam.org/favicon.png">
+<link rel="apple-touch-icon" href="https://alanhorizonteam.org/apple-touch-icon.png">
+<meta name="theme-color" content="#0a0e1a">
+
+<!-- Schema.org JSON-LD: WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Horizon Team",
+  "alternateName": "Alan 嘅 AI 同金融研究站",
+  "url": "https://alanhorizonteam.org",
+  "description": "由 Alan 創立嘅個人品牌網站,提供原創深度文章(AI、創意、金融、人文)同跨境金融專業諮詢服務。",
+  "inLanguage": "zh-HK",
+  "author": {
+    "@type": "Person",
+    "name": "Alan",
+    "jobTitle": "跨境金融顧問 / AI 內容創作者",
+    "url": "https://alanhorizonteam.org/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Horizon Team",
+    "url": "https://alanhorizonteam.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://alanhorizonteam.org/logo.png"
+    }
+  }
+}
 </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0f3460">
+<!-- Schema.org JSON-LD: Person (作者) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Alan",
+  "jobTitle": "跨境金融顧問",
+  "description": "超過十年跨境金融專業,專注身份配置、稅務規劃、家族信託同家辦設立。",
+  "url": "https://alanhorizonteam.org/about.html",
+  "knowsAbout": [
+    "跨境身份規劃",
+    "稅務合規",
+    "家族信託",
+    "家辦設立",
+    "AI 內容創作",
+    "金融研究",
+    "CRS",
+    "遺產規劃"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Horizon Team",
+    "url": "https://alanhorizonteam.org"
+  }
+}
+</script>
 
-    <!-- Primary Meta Tags -->
-    <title>Alan 的 AI 網站 · Horizon Team</title>
-    <meta name="title" content="Alan 的 AI 網站 · Horizon Team">
-    <meta name="description" content="Alan 嘅 AI Lab — 金融專業服務 (身份、稅務、信託、家辦、保險、MPF) + 原創研究文章 + 創意遊戲。">
-    <meta name="keywords" content="Alan, HorizonTeam, AI Lab, 金融, 信託, 家辦, MPF, 香港, 財富, 哲學">
-    <meta name="author" content="Alan">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://alanhorizonteam.org/">
-    <meta property="og:title" content="Alan 的 AI 網站 · Horizon Team">
-    <meta property="og:description" content="Alan 嘅 AI Lab — 智能助理 + 金融專業 + 原創研究。">
-    <meta property="og:image" content="https://alanhorizonteam.org/og_cover.webp">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Alan 的 AI 網站 - Horizon Team">
-    <meta property="og:site_name" content="Alan 的 AI 網站">
-    <meta property="og:locale" content="zh_HK">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Alan 的 AI 網站 · Horizon Team">
-    <meta property="twitter:description" content="Alan 嘅 AI Lab — 智能助理 + 金融專業 + 原創研究。">
-    <meta property="twitter:image" content="https://alanhorizonteam.org/og_cover.png">
-
-    <!-- Favicon (reuse existing) -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-    <meta name="msapplication-TileColor" content="#0f3460">
-
-    <!-- Canonical -->
-    <link rel="canonical" href="https://alanhorizonteam.org/">
-    
-    <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="fSJhKZ6c2xrFg6A6Pv6uEBCjT2BpAF0Hv5cU4t6w3Lk" />
-    
-    <!-- TODO: Google AdSense — add publisher ID when ready -->
-    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXX" crossorigin="anonymous"></script> -->
-
-    <link rel="stylesheet" href="assets/main.css">
-
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8953374000835577" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a href="#main" class="skip-link">跳到主要內容</a>
 
-    <main id="main">
-        <!-- Hero -->
-        <section class="hero">
-            <span class="hero-badge">🤖 AI LAB · HORIZON TEAM</span>
-            <h1>Alan 的 AI 網站</h1>
-            <p class="subtitle">
-                金融專業 · 深度研究 · 創意內容<br>
-                由 AI 助理小花 🌸 設計同維護嘅個人品牌網站
-            </p>
-            <p class="tagline">SMART TOOLS FOR FINANCE · TECH · LIFE</p>
-        </section>
+<header>
+  <nav class="top-nav">
+    <a href="index.html" class="logo">🤖 Horizon Team</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">首頁</a></li>
+      <li><a href="index.html#articles">文章</a></li>
+      <li><a href="index.html#finance">金融服務</a></li>
+      <li><a href="about.html">關於</a></li>
+      <li><a href="contact.html">聯絡</a></li>
+      <li><a href="disclaimer.html">免責</a></li>
+    </ul>
+  </nav>
+</header>
 
-        <!-- 所有文章 -->
-        <section class="section" id="articles">
-            <h2 class="section-title">📚 所有文章</h2>
-            <p class="section-desc">原創研究 · 深度思考 · 創意遊戲 — 共 12 篇</p>
-            <div class="grid-2">
-                
-                <article class="card">
-                    <div class="card-icon">🥃</div>
-                    <h3>飲醉酒先肯講真話：呢種朋友，請你好好珍惜</h3>
-                    <p>你身邊有冇一個朋友，平時好少 message，一到夜晚就 inbox 你：「喂，今晚飲嘢？」你以為佢只係悶，但其實佢當你係朋友。呢種朋友，買唔到。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-08-14</div>
-                    <a href="articles/飲醉酒先肯講真話.html" class="more">閱讀全文 →</a>
-</article><article class="card">
-                    <div class="card-icon">🤖</div>
-                    <h3>當多啦A夢法寶變成真：AI 時代的夢想考古學</h3>
-                    <p>任意門、時光機、記憶麵包 — 藤子F不二雄筆下的童年幻想，2026 年竟然一個一個被 AI 做出嚟。下個十年，仲會有咩法寶等緊我哋？</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-08-12</div>
-                    <a href="articles/doraemon-gadgets-to-ai.html" class="more">閱讀全文 →</a>
-</article>
-                <article class="card">
-                    <div class="card-icon">🌊</div>
-                    <h3>海底人為什麼不能存在</h3>
-                    <p>達爾文話我哋由海洋上岸，咁點解唔可以有人落返去？UFO 飛唔到地球，但有飛碟潛入深海 — 如果海底真有另一種智慧，世界會唔會反而和平啲？六大角度，重新諗呢個問題。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-07-12</div>
-                    <a href="articles/海底人為什麼不能存在.html" class="more">閱讀全文 →</a>
-</article>
-                <article class="card">
-                    <div class="card-icon">💊</div>
-                    <h3>錯：人類最難吞下的一粒藥</h3>
-                    <p>守時、承諾、責任 — 呢三樣嘢幾時開始變成咁嘥氣？當所有人都用同一套藉口，社會嘅底層邏輯就開始腐蝕。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-07-04</div>
-                    <a href="articles/cuo-ren-lei-zui-nan-tun-xia-yi-li-yao.html" class="more">閱讀全文 →</a>
-</article>
-                <article class="card">
-                    <div class="card-icon">💰</div>
-                    <h3>財富的距離：龍拿度、馬斯克、比爾蓋茨嘅世界</h3>
-                    <p>馬斯克每秒賺緊你 2,634 個鐘嘅薪；佢嘅身家均分 82 億人，每人可拎一日糧草。一場關於錢到底係咩概念嘅數字實驗。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-07-01</div>
-                    <a href="articles/wealth-distance.html" class="more">閱讀全文 →</a>
-</article>
-                <article class="card">
-                    <div class="card-icon">🎫</div>
-                    <h3>演算法守門人：2026 世界盃門票背後嘅階級裂縫</h3>
-                    <p>當 AI 揸咗門票分配嘅控制權，球迷同金錢之間嘅階級裂縫會點樣演化？一場關於算法治理嘅 deep dive。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-06-19</div>
-                    <a href="articles/演算法守門人-2026世界盃門票背後的階級裂縫.html" class="more">閱讀全文 →</a>
-</article>
-                <article class="card">
-                    <div class="card-icon">🏛️</div>
-                    <h3>政府印鈔 = 貧窮嘅起點？</h3>
-                    <p>政府印鈔背後嘅貨幣供應、通貨膨脹同貧富差距 — 一場從宏觀經濟到民生嘅深度拆解。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-06-15</div>
-                    <a href="articles/政府印鈔與貧窮真相.html" class="more">閱讀全文 →</a>
-</article>
-                <article class="card">
-                    <div class="card-icon">☄️</div>
-                    <h3>流星許願會實現嗎？</h3>
-                    <p>一場關於信念、宇宙與心理學嘅哲學實驗 — 從神經科學到概率論，拆解流傳幾千年嘅神話。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-06-14</div>
-                    <a href="articles/流星許願哲學研究.html" class="more">閱讀全文 →</a>
-</article>
-                <article class="card">
-                    <div class="card-icon">💉</div>
-                    <h3>冇人捽就唔郁</h3>
-                    <p>點解大部分人需要打雞血先有執行力？拆解自我監控、Incentive 驅動與人性嘅真相。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-06-11</div>
-                    <a href="articles/冇人捽就唔郁.html" class="more">閱讀全文 →</a>
-</article>
-                <article class="card">
-                    <div class="card-icon">🌀</div>
-                    <h3>爆旋陀螺復興</h3>
-                    <p>我哋放低咗部手機，拾起咗一粒會旋轉嘅金屬 — 當演算法餵到你嘔，你終於想起操場上嗰一聲「3、2、1 — Go Shoot」。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-06-09</div>
-                    <a href="articles/爆旋陀螺復興.html" class="more">閱讀全文 →</a>
-</article>
-                <article class="card">
-                    <div class="card-icon">🎲</div>
-                    <h3>知識與幸運的終極對決</h3>
-                    <p>百萬富翁遊戲與六合博彩二獎的概率分析 — 知識永遠大於幸運。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-06-08</div>
-                    <a href="articles/百萬富翁與六合博彩概率對決.html" class="more">閱讀全文 →</a>
-</article>
-                <article class="card">
-                    <div class="card-icon">🤝</div>
-                    <h3>依賴他人的代價</h3>
-                    <p>點解你唔可以總係靠人？依賴他人會如何影響你嘅人生。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-06-06</div>
-                    <a href="articles/依賴他人.html" class="more">閱讀全文 →</a>
-</article>
-                <article class="card">
-                    <div class="card-icon">💼</div>
-                    <h3>GenZ 未必係問題，問題係 GenZ 呢個世代</h3>
-                    <p>探討新生代工作價值觀同職場期望嘅變遷 — 70 後、80 後一樣 hea 做，只係表現方式唔同。</p>
-                    <div style="color:#888; font-size:0.85em; margin-bottom:10px;">2026-05-20</div>
-                    <a href="articles/GenZ文章.html" class="more">閱讀全文 →</a>
-</article>
-            </div>
-        </section>
+<main class="container">
 
-        <!-- Finance & Advisory (swapped to after Latest Articles per Alan's request) -->
-        <section class="section" id="finance">
-            <h2 class="section-title">💼 Finance &amp; Advisory</h2>
-            <p class="section-desc">超過十年嘅跨境金融專業 — 身份、稅務、信託、家辦、保險、MPF。服務範圍覆蓋香港、中國、新加坡、美國、葡萄牙等主要樞紐。</p>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon">🌐</div>
-                    <h3>身份配置</h3>
-                    <ul style="list-style:none; padding:0; margin:0 0 12px 0; color:#c8c8c8; font-size:0.92em; line-height:1.65;">
-                        <li>· 香港 / 中國 / 新加坡 / 美國 / 葡萄牙 跨境身份結構</li>
-                        <li>· 稅務居民身份規劃（treaty 應用）</li>
-                        <li>· 實戰案例：跨國家庭身份重組節稅 USD 200K/yr</li>
-                    </ul>
-                    <a href="contact.html" class="more">查詢身份規劃 →</a>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3>稅務規劃</h3>
-                    <ul style="list-style:none; padding:0; margin:0 0 12px 0; color:#c8c8c8; font-size:0.92em; line-height:1.65;">
-                        <li>· 個人 / 企業跨境稅務合規</li>
-                        <li>· CRS / FATCA 合規安排</li>
-                        <li>· 合法節稅空間分析（HK Salaries Tax / PRC IIT / US / PT 等）</li>
-                    </ul>
-                    <a href="contact.html" class="more">查詢稅務規劃 →</a>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🏛️</div>
-                    <h3>信託 &amp; 家辦</h3>
-                    <ul style="list-style:none; padding:0; margin:0 0 12px 0; color:#c8c8c8; font-size:0.92em; line-height:1.65;">
-                        <li>· 家族信託架構設計</li>
-                        <li>· 跨境資產配置（multi-jurisdiction）</li>
-                        <li>· 家辦設立諮詢（HK SFC Type 9 / Singapore VCC / BVI 等）</li>
-                        <li>· 實戰案例：8 位數字 USD 規模資產配置</li>
-                    </ul>
-                    <a href="contact.html" class="more">查詢信託服務 →</a>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🛡️</div>
-                    <h3>保險 &amp; MPF</h3>
-                    <ul style="list-style:none; padding:0; margin:0 0 12px 0; color:#c8c8c8; font-size:0.92em; line-height:1.65;">
-                        <li>· 跨境保險配置（儲蓄 / 危疾 / 年金）</li>
-                        <li>· 資產傳承架構 + 稅務遞延</li>
-                        <li>· MPF 整合、退休規劃</li>
-                    </ul>
-                    <a href="contact.html" class="more">查詢保險規劃 →</a>
-                </div>
-            </div>
-            <div style="text-align:center; margin-top:28px; padding-top:24px; border-top:1px solid rgba(255,215,0,0.15);">
-                <p style="color:#b0b0b0; margin-bottom:14px;">所有服務附帶完整文件同 compliance trail · 牌照查詢 → <a href="editorial.html" style="color:#ffd700;">編輯政策</a></p>
-                <a href="contact.html" style="display:inline-block; color:#ffd700; text-decoration:none; font-weight:bold; padding:12px 28px; border:1px solid #ffd700; border-radius:8px; transition:all 0.3s;">📩 預約免費 30 分鐘諮詢</a>
-            </div>
-        </section>
+  <section class="hero">
+    <h1>🤖 AI LAB · HORIZON TEAM</h1>
+    <p class="hero-subtitle">金融專業 · 深度研究 · 創意內容</p>
+    <p class="hero-tagline">由 AI 助理小花 🌸 設計同維護嘅個人品牌網站</p>
+    <p class="hero-pillars">SMART TOOLS FOR FINANCE · TECH · LIFE</p>
+  </section>
 
-        <!-- Game (featured) -->
-        <section class="section" id="game">
-            <div class="card featured">
-                <div class="card-icon">🎮</div>
-                <h3>百萬富翁遊戲</h3>
-                <p>知識就是力量！挑戰 $1,000,000 獎金。比較你同六合博彩嘅勝率 — 知識永遠大於幸運。</p>
-                <a href="millionaire.html" class="more">開始遊戲 →</a>
-            </div>
-        </section>
-    </main>
+  <section id="articles" class="articles-section">
+    <h2>📚 所有文章</h2>
+    <p class="section-subtitle">原創研究 · 深度思考 · 創意遊戲 — 共 16 篇</p>
 
-    <footer>
-        <p>© 2026 Alan · 由 AI 助理小花 🌸 設計同維護</p>
-        <p style="margin-top:8px; font-size:0.88em;">
-            <a href="about.html">關於</a> ·
-            <a href="contact.html">聯絡</a> ·
-            <a href="privacy.html">私隱</a> ·
-            <a href="disclaimer.html">免責</a> ·
-            <a href="editorial.html">編輯政策</a>
-        </p>
-    </footer>
+    <div class="article-grid">
+
+      <article class="article-card">
+        <h3><a href="articles/crs-2026-overseas-assets-hong-kong.html">CRS 自動交換資料 2026:港人海外資產申報完整指南</a></h3>
+        <p class="article-meta">跨境稅務 · 2026-08-18</p>
+        <p>你個新加坡戶口、你份 BVI 公司、你買嘅 USD 儲蓄保單 — 香港稅局今年會唔會收到通知?10 年跨境金融顧問親自拆解 CRS 對港人嘅影響。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/case-study-cross-border-asset-allocation-8-figures.html">案例研究:HKD 8 位數資產嘅跨境配置完整流程</a></h3>
+        <p class="article-meta">跨境家辦 · 2026-08-18</p>
+        <p>由香港出發,覆蓋 4 個司法管轄區 — 拆解一個真實嘅 HKD 8 位數資產配置案,從診斷、結構重組到傳承架構。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/ai-content-writing-seo-2026.html">AI 寫文 SEO 2026:Google 點睇 AI 內容?</a></h3>
+        <p class="article-meta">AI 與 SEO · 2026-08-18</p>
+        <p>呢篇文章本身就係由 AI 協助撰寫,我哋親身實測 + 引用行業數據,講清楚邊度 AI 寫文有效、邊度必死。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/trust-vs-insurance.html">家族信託 vs 保險:傳承工具嘅結構性比較</a></h3>
+        <p class="article-meta">跨境家辦 · 2026-08-18</p>
+        <p>同樣係「留俾下一代」,但信託同保險嘅底層邏輯完全唔同 — 用錯工具可能比唔做更差。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/飲醉酒先肯講真話.html">飲醉酒先肯講真話:呢種朋友,請你好好珍惜</a></h3>
+        <p class="article-meta">人文 · 2026-08-14</p>
+        <p>你身邊有冇一個朋友,平時好少 message,一到夜晚就 inbox 你:「喂,今晚飲嘢?」你以為佢只係悶,但其實佢當你係朋友。呢種朋友,買唔到。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/doraemon-gadgets-to-ai.html">當多啦A夢法寶變成真:AI 時代的夢想考古學</a></h3>
+        <p class="article-meta">AI · 2026-08-12</p>
+        <p>任意門、時光機、記憶麵包 — 藤子F不二雄筆下的童年幻想,2026 年竟然一個一個被 AI 做出嚟。下個十年,仲會有咩法寶等緊我哋?</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/海底人為什麼不能存在.html">海底人為什麼不能存在</a></h3>
+        <p class="article-meta">哲學 · 2026-07-12</p>
+        <p>達爾文話我哋由海洋上岸,咁點解唔可以有人落返去?UFO 飛唔到地球,但有飛碟潛入深海 — 如果海底真有另一種智慧,世界會唔會反而和平啲?六大角度,重新諗呢個問題。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/cuo-ren-lei-zui-nan-tun-xia-yi-li-yao.html">錯:人類最難吞下的一粒藥</a></h3>
+        <p class="article-meta">人文 · 2026-07-04</p>
+        <p>守時、承諾、責任 — 呢三樣嘢幾時開始變成咁嘥氣?當所有人都用同一套藉口,社會嘅底層邏輯就開始腐蝕。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/wealth-distance.html">財富的距離:龍拿度、馬斯克、比爾蓋茨嘅世界</a></h3>
+        <p class="article-meta">金融 · 2026-07-01</p>
+        <p>馬斯克每秒賺緊你 2,634 個鐘嘅薪;佢嘅身家均分 82 億人,每人可拎一日糧草。一場關於錢到底係咩概念嘅數字實驗。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/演算法守門人-2026世界盃門票背後的階級裂縫.html">演算法守門人:2026 世界盃門票背後嘅階級裂縫</a></h3>
+        <p class="article-meta">AI · 2026-06-19</p>
+        <p>當 AI 揸咗門票分配嘅控制權,球迷同金錢之間嘅階級裂縫會點樣演化?一場關於算法治理嘅 deep dive。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/政府印鈔與貧窮真相.html">政府印鈔 = 貧窮嘅起點?</a></h3>
+        <p class="article-meta">金融 · 2026-06-15</p>
+        <p>政府印鈔背後嘅貨幣供應、通貨膨脹同貧富差距 — 一場從宏觀經濟到民生嘅深度拆解。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/流星許願哲學研究.html">流星許願會實現嗎?</a></h3>
+        <p class="article-meta">哲學 · 2026-06-14</p>
+        <p>一場關於信念、宇宙與心理學嘅哲學實驗 — 從神經科學到概率論,拆解流傳幾千年嘅神話。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/冇人捽就唔郁.html">冇人捽就唔郁</a></h3>
+        <p class="article-meta">人文 · 2026-06-11</p>
+        <p>點解大部分人需要打雞血先有執行力?拆解自我監控、Incentive 驅動與人性嘅真相。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/爆旋陀螺復興.html">爆旋陀螺復興</a></h3>
+        <p class="article-meta">創意 · 2026-06-09</p>
+        <p>我哋放低咗部手機,拾起咗一粒會旋轉嘅金屬 — 當演算法餵到你嘔,你終於想起操場上嗰一聲「3、2、1 — Go Shoot」。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/百萬富翁與六合博彩概率對決.html">知識與幸運的終極對決</a></h3>
+        <p class="article-meta">金融 · 2026-06-08</p>
+        <p>百萬富翁遊戲與六合博彩二獎的概率分析 — 知識永遠大於幸運。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/依賴他人.html">依賴他人的代價</a></h3>
+        <p class="article-meta">人文 · 2026-06-06</p>
+        <p>點解你唔可以總係靠人?依賴他人會如何影響你嘅人生。</p>
+      </article>
+
+      <article class="article-card">
+        <h3><a href="articles/GenZ文章.html">GenZ 未必係問題,問題係 GenZ 呢個世代</a></h3>
+        <p class="article-meta">人文 · 2026-05-20</p>
+        <p>探討新生代工作價值觀同職場期望嘅變遷 — 70 後、80 後一樣 hea 做,只係表現方式唔同。</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="finance" class="finance-section">
+    <h2>💼 Finance & Advisory</h2>
+    <p>超過十年嘅跨境金融專業 — 身份、稅務、信託、家辦、保險、MPF。服務範圍覆蓋香港、中國、新加坡、美國、葡萄牙等主要樞紐。</p>
+
+    <div class="service-grid">
+
+      <div class="service-card">
+        <h3>🌐 身份配置</h3>
+        <ul>
+          <li>香港 / 中國 / 新加坡 / 美國 / 葡萄牙 跨境身份結構</li>
+          <li>稅務居民身份規劃(treaty 應用)</li>
+          <li>實戰案例:跨國家庭身份重組節稅 USD 200K/yr</li>
+        </ul>
+        <a href="contact.html" class="cta-link">查詢身份規劃 →</a>
+      </div>
+
+      <div class="service-card">
+        <h3>📊 稅務規劃</h3>
+        <ul>
+          <li>個人 / 企業跨境稅務合規</li>
+          <li>CRS / FATCA 合規安排</li>
+          <li>合法節稅空間分析(HK Salaries Tax / PRC IIT / US / PT 等)</li>
+        </ul>
+        <a href="contact.html" class="cta-link">查詢稅務規劃 →</a>
+      </div>
+
+      <div class="service-card">
+        <h3>🏛️ 信託 & 家辦</h3>
+        <ul>
+          <li>家族信託架構設計</li>
+          <li>跨境資產配置(multi-jurisdiction)</li>
+          <li>家辦設立諮詢(HK SFC Type 9 / Singapore VCC / BVI 等)</li>
+          <li>實戰案例:<a href="articles/case-study-cross-border-asset-allocation-8-figures.html">8 位數字 USD 規模資產配置</a></li>
+        </ul>
+        <a href="contact.html" class="cta-link">查詢信託服務 →</a>
+      </div>
+
+      <div class="service-card">
+        <h3>🛡️ 保險 & MPF</h3>
+        <ul>
+          <li>跨境保險配置(儲蓄 / 危疾 / 年金)</li>
+          <li>資產傳承架構 + 稅務遞延</li>
+          <li>MPF 整合、退休規劃</li>
+          <li>詳見:<a href="articles/trust-vs-insurance.html">家族信託 vs 保險</a></li>
+        </ul>
+        <a href="contact.html" class="cta-link">查詢保險規劃 →</a>
+      </div>
+
+      <div class="service-card">
+        <h3>🤖 AI × 內容策略</h3>
+        <ul>
+          <li>AI 內容策略諮詢</li>
+          <li>E-E-A-T 優化同透明化</li>
+          <li>詳見:<a href="articles/ai-content-writing-seo-2026.html">AI 寫文 SEO 2026</a></li>
+        </ul>
+        <a href="contact.html" class="cta-link">查詢策略諮詢 →</a>
+      </div>
+
+      <div class="service-card">
+        <h3>🎮 百萬富翁遊戲</h3>
+        <ul>
+          <li>知識就是力量!挑戰 $1,000,000 獎金</li>
+          <li>比較你同六合博彩嘅勝率 — 知識永遠大於幸運</li>
+        </ul>
+        <a href="millionaire.html" class="cta-link">開始遊戲 →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>🤝 想交流?</h2>
+    <p>無論係文章回饋、金融專業查詢、定合作邀請,都歡迎搵我哋。</p>
+    <p><a href="contact.html" class="cta-button">聯絡 Horizon Team →</a></p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2026 Horizon Team · 由 Alan 同小花 🌸 共同維護</p>
+    <nav class="footer-nav">
+      <a href="index.html">首頁</a> ·
+      <a href="about.html">關於</a> ·
+      <a href="contact.html">聯絡</a> ·
+      <a href="privacy.html">私隱政策</a> ·
+      <a href="terms.html">服務條款</a> ·
+      <a href="disclaimer.html">免責聲明</a> ·
+      <a href="sitemap.xml">Sitemap</a>
+    </nav>
+    <p class="footer-contact">📧 contact [at] alanhorizonteam.org</p>
+    <p class="footer-meta">最後更新:2026-08-18 · 共有 16 篇原創文章</p>
+  </div>
+</footer>
+
 </body>
 </html>
