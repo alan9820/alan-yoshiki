@@ -151,6 +151,141 @@ main.container {
 .article-card p { margin: 0 0 12px; color: var(--fg); }
 .article-card p:last-child { margin-bottom: 0; }
 
+/* ===== Credentials bar ===== */
+.cred-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 0 0 56px;
+}
+.cred-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cred-num {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.cred-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ===== Nav CTA ===== */
+.nav-links a.nav-cta {
+  color: #0a0a1a;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  padding: 5px 14px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.nav-links a.nav-cta:hover { text-decoration: none; filter: brightness(1.08); }
+
+/* ===== Hero button ===== */
+.hero-btn { margin-top: 8px; }
+
+/* ===== Services ===== */
+.finance-section h2 {
+  font-size: 1.6rem;
+  margin: 0 0 8px;
+  color: var(--accent);
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.service-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.service-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.service-card h3 { margin: 0 0 12px; font-size: 1.12rem; color: var(--fg); }
+.service-card ul { margin: 0 0 14px; padding-left: 20px; }
+.service-card li { margin-bottom: 7px; color: var(--fg); font-size: 0.92rem; }
+.service-card li a { color: var(--link); }
+.service-card p { margin: 0 0 16px; color: var(--fg); font-size: 0.92rem; }
+.cta-link {
+  margin-top: auto;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.92rem;
+  align-self: flex-start;
+}
+.cta-link:hover { color: var(--accent-2); }
+.service-card-cta {
+  border-color: var(--accent);
+  background: linear-gradient(160deg, rgba(255, 215, 0, 0.07), rgba(255, 143, 0, 0.03));
+}
+.service-card-cta .btn { align-self: flex-start; }
+
+/* ===== Featured research ===== */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+.article-card.featured {
+  border-left: 3px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+}
+.article-card.featured h3 { margin: 0 0 10px; font-size: 1.12rem; }
+.article-card.featured h3 a { color: var(--fg); }
+.article-card.featured h3 a:hover { color: var(--accent); }
+.article-card.featured p { margin: 0 0 12px; color: var(--fg); font-size: 0.93rem; }
+.article-tag {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+/* ===== More reading ===== */
+.more-section h2 { font-size: 1.45rem; margin: 0 0 8px; color: var(--accent); }
+.more-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.more-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  transition: border-color 0.15s ease;
+}
+.more-item:hover { border-color: var(--link); text-decoration: none; }
+.more-title { color: var(--fg); font-size: 0.93rem; font-weight: 600; }
+.more-item:hover .more-title { color: var(--link); }
+.more-tag { color: var(--muted); font-size: 0.75rem; letter-spacing: 0.5px; }
+
+/* ===== CTA ===== */
+.cta-section { text-align: center; margin-top: 56px; }
+.cta-section h2 { font-size: 1.6rem; margin: 0 0 10px; color: var(--accent); }
+.disclaimer-note { color: var(--muted); font-size: 0.8rem; margin-top: 18px; }
+.footer-meta { font-size: 0.78rem; color: var(--muted); margin-top: 10px; }
+
 /* ===== Footer ===== */
 footer {
   background: var(--bg-2);
